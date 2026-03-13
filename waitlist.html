@@ -138,6 +138,13 @@
       transition: opacity 0.15s ease;
     }
     .service-card.selected .check-icon { opacity: 1; }
+
+    @media (max-width: 768px) {
+      header nav { padding: 0 20px !important; }
+      #waitlist-nav-center { display: none !important; }
+      header nav div a.nav-link { display: none !important; }
+      main { padding: 120px 20px 60px !important; }
+    }
   </style>
 </head>
 <body>
@@ -148,7 +155,7 @@
     <a href="index.html" style="text-decoration:none;flex-shrink:0;">
       <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
     </a>
-    <a href="index.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">Home</a>
+    <a id="waitlist-nav-center" href="index.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">Home</a>
     <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
       <a href="faq.html" class="nav-link">The Details</a>
     </div>

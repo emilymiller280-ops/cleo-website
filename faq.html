@@ -71,6 +71,24 @@
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: #F5F0E8; }
     ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+
+    @media (max-width: 768px) {
+      header nav { padding: 0 20px !important; }
+      #faq-nav-center { display: none !important; }
+      header nav div a.nav-link { display: none !important; }
+
+      #faq-hero { padding: 120px 20px 60px !important; }
+
+      section { padding-left: 20px !important; padding-right: 20px !important; }
+      section > div { max-width: 100% !important; }
+
+      #faq-layout { grid-template-columns: 1fr !important; gap: 0 !important; }
+      #faq-sidebar { display: none !important; }
+
+      #questions-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+      #faq-footer-bottom { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    }
   </style>
 </head>
 <body>
@@ -81,7 +99,7 @@
     <a href="index.html" style="text-decoration:none;flex-shrink:0;">
       <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
     </a>
-    <a href="faq.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">The Details</a>
+    <a id="faq-nav-center" href="faq.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">The Details</a>
     <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
       <a href="index.html" class="nav-link">Home</a>
       <a href="waitlist.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;flex-shrink:0;">Join the Waitlist</a>
@@ -90,7 +108,7 @@
 </header>
 
 <!-- HERO -->
-<section style="position:relative;padding:200px 56px 120px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 50%, #E8DDD0 100%);overflow:hidden;">
+<section id="faq-hero" style="position:relative;padding:200px 56px 120px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 50%, #E8DDD0 100%);overflow:hidden;">
   <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:52%;height:110%;background-image:url('brand_assets/stork logo.JPG');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.07;pointer-events:none;"></div>
   <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
     <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">The Details</p>
@@ -102,10 +120,10 @@
 
 <!-- FAQ CONTENT -->
 <section style="padding:120px 56px 140px;background:#FAF8F4;">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:100px;align-items:start;">
+  <div id="faq-layout" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:100px;align-items:start;">
 
     <!-- Sticky category nav -->
-    <div style="position:sticky;top:100px;">
+    <div id="faq-sidebar" style="position:sticky;top:100px;">
       <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:24px;">Categories</p>
       <div style="display:flex;flex-direction:column;gap:4px;">
         <a href="#getting-started" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--navy);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);font-weight:500;">Getting Started</a>
@@ -298,7 +316,7 @@
 
 <!-- STILL HAVE QUESTIONS -->
 <section style="padding:100px 56px;background:#F5F0E8;">
-  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+  <div id="questions-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
     <div>
       <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:24px;opacity:0.6;">Still Have Questions?</p>
       <h2 class="heading-display" style="font-size:clamp(2.25rem,3.5vw,3.25rem);color:var(--ink);line-height:1.05;margin-bottom:24px;">We'd love to hear from you.</h2>
@@ -318,7 +336,7 @@
       <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:16px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
     </div>
 
-    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
+    <div id="faq-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
       <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
       <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
     </div>
