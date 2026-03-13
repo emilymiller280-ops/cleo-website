@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You're on the List — Cleo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
+    :root {
+      --navy: #1B3872; --ink: #0D1F3C; --ink-muted: #7888A8;
+      --olive: #6B7A50; --olive-pale: #EEF1E6; --warm: #F5F0E8;
+    }
+    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;">
+    <a href="index.html" style="text-decoration:none;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+  </nav>
+</header>
+
+<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px;">
+  <div style="text-align:center;max-width:520px;">
+
+    <!-- Heading -->
+    <h1 class="heading-display" style="font-size:clamp(2.25rem,4vw,3rem);color:var(--ink);margin-bottom:24px;">We're so glad you're here.</h1>
+
+    <!-- Body -->
+    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.85;margin-bottom:16px;">
+      You've officially joined the Cleo waitlist. We're building something really special and can't wait to share it with you.
+    </p>
+    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.85;margin-bottom:44px;">
+      Keep an eye on your inbox — you'll be among the first to know when we launch.
+    </p>
+
+    <!-- Divider -->
+    <div style="width:40px;height:1px;background:rgba(107,122,80,0.35);margin:0 auto 44px;"></div>
+
+    <!-- Back link -->
+    <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;transition:border-color 0.15s ease;" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)'">Back to Home</a>
+
+  </div>
+</main>
+
+</body>
+</html>

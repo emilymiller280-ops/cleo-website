@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleo — Postpartum Recovery for New Mothers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* ─── Root ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Spectral', serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Brand Colors ───────────────────────────── */
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --warm-mid: #EDE6D8;
+      --olive: #6B7A50;
+      --olive-light: #8A9B68;
+      --olive-pale: #EEF1E6;
+    }
+
+    /* ─── Headings ───────────────────────────────── */
+    .heading-display {
+      font-family: 'Spectral', serif;
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .body-text {
+      font-family: 'Spectral', serif;
+      line-height: 1.7;
+    }
+
+    /* ─── Nav ────────────────────────────────────── */
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .nav-link:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 2px; }
+
+    /* ─── Buttons ────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32);
+    }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      padding: 15px 35px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1.5px solid var(--navy);
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease;
+    }
+    .btn-ghost:hover { background: rgba(27,56,114,0.06); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+
+    /* ─── Cards ──────────────────────────────────── */
+    .card {
+      background: #fff;
+      border: 1px solid rgba(27,56,114,0.07);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(27,56,114,0.04), 0 8px 24px rgba(27,56,114,0.06);
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 2px 6px rgba(27,56,114,0.06), 0 16px 40px rgba(27,56,114,0.1);
+    }
+
+    /* ─── Quote Mark ──────────────────────────────── */
+    .quote-mark {
+      font-family: 'Spectral', serif;
+      font-size: 6rem;
+      line-height: 0.7;
+      color: var(--olive);
+      opacity: 0.25;
+    }
+
+    /* ─── Divider ─────────────────────────────────── */
+    .section-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--olive);
+      opacity: 0.6;
+    }
+
+    /* ─── Input ───────────────────────────────────── */
+    .email-input {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      padding: 16px 20px;
+      border: 1.5px solid rgba(27,56,114,0.2);
+      border-radius: 4px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      width: 100%;
+    }
+    .email-input::placeholder { color: var(--ink-muted); }
+    .email-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 4px rgba(27,56,114,0.08);
+    }
+
+    /* ─── Animated Word ───────────────────────────── */
+    .word-cycle-wrap {
+      display: inline-block;
+      position: relative;
+      white-space: nowrap;
+    }
+    .word-cycle {
+      display: inline-block;
+      color: var(--navy);
+      font-style: normal;
+      font-weight: 300;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1), transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .word-cycle.exiting { opacity: 0; transform: translateY(-40px); }
+    .word-cycle.entering { opacity: 0; transform: translateY(40px); transition: none; }
+
+    /* ─── Scrollbar ───────────────────────────────── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════ -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="#" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+
+    <a href="index.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">Home</a>
+
+    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+      <a href="faq.html" class="nav-link">The Details</a>
+      <a href="waitlist.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;flex-shrink:0;">Join the Waitlist</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO — Full-bleed, centered, big background visual
+═══════════════════════════════════════════════════ -->
+<section style="position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:76px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 50%, #E8DDD0 100%);">
+
+  <!-- Decorative stork — large background watermark -->
+  <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:65%;height:110%;background-image:url('brand_assets/stork logo.JPG');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.07;pointer-events:none;"></div>
+
+  <!-- Soft radial glow -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 40%, rgba(27,56,114,0.03) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <!-- Centered content -->
+  <div style="position:relative;z-index:1;text-align:center;padding:20px 56px;max-width:1000px;width:100%;">
+
+    <!-- Headline -->
+    <h1 class="heading-display" style="font-size:clamp(2.75rem,5vw,4.5rem);color:var(--ink);margin-bottom:44px;">
+      Postpartum<br/>
+      <span class="word-cycle-wrap"><span class="word-cycle" id="cycleWord">Care</span></span><br/>
+      Simplified.
+    </h1>
+
+    <!-- Body -->
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.1875rem;color:var(--ink-mid);max-width:600px;margin:0 auto 20px;line-height:1.75;text-align:center;">
+      At Cleo we're reimagining a new standard of maternal wellness<br><nobr>through supported postpartum recovery in the comfort of your own home.</nobr>
+    </p>
+    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;color:var(--ink-muted);margin:0 auto 52px;text-align:center;text-transform:uppercase;">Los Angeles · Orange County · Santa Barbara</p>
+
+    <!-- CTAs -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="waitlist.html" class="btn-primary">Join the Waitlist</a>
+      <a href="#about" class="btn-ghost">Learn More</a>
+    </div>
+
+    <!-- Scroll cue -->
+    <div style="position:absolute;bottom:-48px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.35;">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="#1B3872" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     MISSION STATEMENT
+═══════════════════════════════════════════════════ -->
+<section id="about" style="padding:72px 56px;background:#FAF8F4;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- Enter Cleo -->
+    <div style="padding-top:0;margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:24px;">Enter Cleo</p>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(1.5rem,3vw,2.25rem);color:var(--ink);line-height:1.55;max-width:760px;">A concierge postpartum service — vetting, matching and coordinating everything you need to recover fully, at home.</p>
+    </div>
+
+    <!-- Our Process body copy -->
+    <div style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:32px;">Our Process</p>
+      <div style="max-width:720px;">
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:28px;">
+          Each family's postpartum journey is unique — but the need for support is universal. We believe you shouldn't have to navigate this alone, and we built Cleo so you don't have to.        </p>
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;">
+          Through our packages or individual booking options, we craft an integrated recovery program vetted by experts and tailored specifically to your needs. We take care of the details, so you can focus on what matters most.
+        </p>
+      </div>
+    </div>
+
+    <!-- Three Pillars subheading -->
+    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Three Pillars of Recovery</p>
+    <p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.75;max-width:640px;margin-bottom:40px;">While all aspects of healing are deeply connected, we approach our offerings through three interconnected pillars — empowering you to thrive postpartum.</p>
+
+    <!-- Pillars three-box row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:56px;border:1px solid rgba(27,56,114,0.1);border-radius:12px;overflow:hidden;">
+
+      <div style="padding:48px 40px;background:#F5F0E8;">
+        <div style="width:32px;height:2px;background:var(--olive);opacity:0.7;margin-bottom:28px;"></div>
+        <h3 class="heading-display" style="font-size:1.5rem;color:var(--ink);margin-bottom:12px;">Physical</h3>
+        <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Your body has done something extraordinary. Healing it takes more than rest — it takes intentional, expert care. We coordinate targeted bodywork, massage, and acupuncture alongside chef-prepared meals designed specifically for postpartum recovery, all delivered to your door.</p>
+      </div>
+
+      <div style="padding:48px 40px;background:#EDE6D8;">
+        <div style="width:32px;height:2px;background:var(--olive);opacity:0.7;margin-bottom:28px;"></div>
+        <h3 class="heading-display" style="font-size:1.5rem;color:var(--ink);margin-bottom:12px;">Emotional</h3>
+        <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">The fourth trimester is as much an emotional and mental shift as a physical one. Night care gives you the rest you need to feel like yourself again, while licensed mental health therapists ensure the weight of new motherhood is never carried alone.</p>
+      </div>
+
+      <div style="padding:48px 40px;background:#E5DDD0;">
+        <div style="width:32px;height:2px;background:var(--olive);opacity:0.7;margin-bottom:28px;"></div>
+        <h3 class="heading-display" style="font-size:1.5rem;color:var(--ink);margin-bottom:12px;">Connection</h3>
+        <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Confidence is part of recovery. Our lactation consultants and postpartum doulas are there not just to support, but to guide — helping you understand your body, feed your baby, and feel truly equipped for early motherhood.</p>
+      </div>
+
+    </div>
+
+    <!-- Why Cleo Tabbed Section -->
+    <div style="margin-bottom:48px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Why Cleo</p>
+      <h2 class="heading-display" style="font-size:clamp(1.5rem,2.5vw,2rem);color:var(--ink);max-width:640px;margin-bottom:40px;">The fourth trimester is underserved.</h2>
+
+      <!-- Tab buttons -->
+      <div style="display:flex;gap:0;border-bottom:1px solid rgba(27,56,114,0.1);margin-bottom:48px;">
+        <button onclick="showTab('mental')" id="tab-mental" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);background:none;border:none;border-bottom:2px solid var(--olive);padding:12px 28px 12px 0;cursor:pointer;transition:color 0.15s ease;margin-bottom:-1px;">Mental Health</button>
+        <button onclick="showTab('nutrition')" id="tab-nutrition" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);background:none;border:none;border-bottom:2px solid transparent;padding:12px 28px;cursor:pointer;transition:color 0.15s ease;margin-bottom:-1px;">Physical Health</button>
+        <button onclick="showTab('global')" id="tab-global" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);background:none;border:none;border-bottom:2px solid transparent;padding:12px 28px;cursor:pointer;transition:color 0.15s ease;margin-bottom:-1px;">Global Care</button>
+      </div>
+
+      <!-- Tab: Mental Health -->
+      <div id="panel-mental">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:16px;border:1px solid rgba(27,56,114,0.1);border-radius:12px;overflow:hidden;">
+          <div style="padding:40px 32px;background:#F5F0E8;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">1 in 5</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Women experience perinatal mood disorders — a rate that has more than doubled since 2010.<sup style="font-size:0.7em;">1</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#EDE6D8;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">75%</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Of postpartum depression cases go undiagnosed or untreated. One of the most common complications of pregnancy — and one of the most overlooked.<sup style="font-size:0.7em;">2</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#E5DDD0;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">12 Weeks</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">The shortest average maternity leave among developed nations — leaving mothers to recover faster than ever with little structured support.<sup style="font-size:0.7em;">3</sup></p>
+          </div>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.7;opacity:0.75;padding:0 4px;">
+          <sup>1</sup> Trost et al., <em>MMWR</em>, CDC (2023). &nbsp;<sup>2</sup> ACOG Committee Opinion No. 757 (2018). &nbsp;<sup>3</sup> OECD Family Database (2023).
+        </p>
+      </div>
+
+      <!-- Tab: Global Care -->
+      <div id="panel-global" style="display:none;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:16px;border:1px solid rgba(27,56,114,0.1);border-radius:12px;overflow:hidden;">
+          <div style="padding:40px 32px;background:#F5F0E8;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">0</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Mandated postpartum home visits in the US. We are the only high-income country without them — most of Europe, Canada, and Australia send a midwife or nurse to your home within days of birth.<sup style="font-size:0.7em;">4</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#EDE6D8;">
+            <div style="font-family:'Spectral',serif;font-size:2rem;font-weight:600;color:var(--olive);line-height:1.2;margin-bottom:16px;">75%</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Of South Korean mothers spend 2+ weeks in a <em>sanhujoriwon</em> — a postpartum care center with round-the-clock professional support. It's not a luxury. It's just what you do. <a href="https://www.nytimes.com/2024/01/28/world/asia/south-korea-joriwon-postpartum-care.html" target="_blank" rel="noopener" style="color:var(--navy);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--navy);opacity:0.7;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">NYT ↗</a></p>
+          </div>
+          <div style="padding:40px 32px;background:#E5DDD0;">
+            <div style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:600;color:var(--olive);line-height:1.2;margin-bottom:16px;">Global Standard</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">In France, Japan, the UK, and many other developed countries, postpartum home visits by healthcare professionals are routine. In the US, 40% of women don't attend a postpartum visit at all.<sup style="font-size:0.7em;">5</sup></p>
+          </div>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.7;opacity:0.75;padding:0 4px;">
+          <sup>4</sup> WHO (2022); OECD Health at a Glance (2023). &nbsp;<sup>5</sup> OECD Health at a Glance (2023).
+        </p>
+      </div>
+
+      <!-- Tab: Physical Health -->
+      <div id="panel-nutrition" style="display:none;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-bottom:16px;border:1px solid rgba(27,56,114,0.1);border-radius:12px;overflow:hidden;">
+          <div style="padding:40px 32px;background:#F5F0E8;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">80%<span style="font-size:1.25rem;font-weight:300;color:var(--ink-muted);"> → 25%</span></div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Of mothers start breastfeeding, but only 25% are still exclusively breastfeeding at 6 months. Most cite lack of support.<sup style="font-size:0.7em;">6</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#EDE6D8;">
+            <div style="font-family:'Spectral',serif;font-size:3rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:16px;">300–500</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Extra calories per day required while breastfeeding — more than pregnancy itself. Most women are told to "eat healthy" with no guidance.<sup style="font-size:0.7em;">7</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#E5DDD0;">
+            <div style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:600;color:var(--olive);line-height:1.2;margin-bottom:16px;">Iron. Iodine.<br>Choline. DHA. B12.</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">Pregnancy and breastfeeding deplete all five — yet most postpartum women receive no nutritional guidance after leaving the hospital.<sup style="font-size:0.7em;">8</sup></p>
+          </div>
+          <div style="padding:40px 32px;background:#F5F0E8;">
+            <div style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:600;color:var(--olive);line-height:1.2;margin-bottom:16px;">The first<br>3 months.</div>
+            <p class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);line-height:1.65;">New mothers frequently skip meals and rely on convenience food — patterns directly correlated with increased PPD symptoms.<sup style="font-size:0.7em;">9</sup></p>
+          </div>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.7;opacity:0.75;padding:0 4px;">
+          <sup>6</sup> CDC Breastfeeding Report Card (2022). &nbsp;<sup>7</sup> IOM (2005); ACOG (2013). &nbsp;<sup>8</sup> ACOG Committee Opinion No. 762 (2018). &nbsp;<sup>9</sup> Sparling et al., <em>Nutrients</em> (2021).
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════════ -->
+<section id="services" style="padding:80px 56px;background:#F0EBE3;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;margin-bottom:80px;">
+      <div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:32px;">What We Offer</p>
+        <h2 class="heading-display" style="font-size:clamp(2rem,3.2vw,3rem);color:var(--ink);line-height:1.05;">Everything your recovery requires.</h2>
+      </div>
+      <div style="padding-top:80px;">
+        <p class="body-text" style="font-size:1.125rem;color:var(--ink-mid);max-width:520px;">
+          A comprehensive postpartum support system, built around your body, your baby, and your life. In-home and on your terms. All vetted by trusted professionals in one place.
+        </p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(107,122,80,0.15);">
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Postpartum &amp; Birth Doulas</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Lactation Consultants</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Meal Delivery</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Massage Therapy</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Mental Health Support</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Acupuncture</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Night Care</p>
+      </div>
+
+      <div style="padding:14px 0;border-bottom:1px solid rgba(107,122,80,0.15);transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1;">Cleaning Services</p>
+      </div>
+
+      <div style="padding:14px 0;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='1'">
+        <p class="heading-display" style="font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--olive);line-height:1;">And Much More!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════ -->
+<section id="how-it-works" style="padding:80px 56px;background:#FAF8F4;">
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <div style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:24px;">How It Works</p>
+      <p class="body-text" style="font-size:1.125rem;color:var(--ink-mid);line-height:1.75;max-width:720px;">From your first call to your last appointment, Cleo coordinates everything — so you can rest, bond, and recover fully without the logistics.</p>
+    </div>
+
+    <!-- Steps -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(27,56,114,0.1);border-radius:12px;overflow:hidden;margin-bottom:48px;">
+
+      <div style="padding:40px 32px;background:#F5F0E8;border-right:1px solid rgba(27,56,114,0.07);">
+        <div style="font-family:'Spectral',serif;font-size:2rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:20px;">01</div>
+        <h3 style="font-family:'Spectral',serif;font-size:1.0625rem;color:var(--ink);margin-bottom:12px;line-height:1.3;">Join the Waitlist</h3>
+        <p class="body-text" style="font-size:0.875rem;color:var(--ink-muted);line-height:1.65;">Tell us a little about yourself, your due date, and what kind of support you're looking for.</p>
+      </div>
+
+      <div style="padding:40px 32px;background:#EDE6D8;border-right:1px solid rgba(27,56,114,0.07);">
+        <div style="font-family:'Spectral',serif;font-size:2rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:20px;">02</div>
+        <h3 style="font-family:'Spectral',serif;font-size:1.0625rem;color:var(--ink);margin-bottom:12px;line-height:1.3;">Consultation Call</h3>
+        <p class="body-text" style="font-size:0.875rem;color:var(--ink-muted);line-height:1.65;">We connect to understand your needs, timeline, and preferences — and walk you through your options.</p>
+      </div>
+
+      <div style="padding:40px 32px;background:#E5DDD0;border-right:1px solid rgba(27,56,114,0.07);">
+        <div style="font-family:'Spectral',serif;font-size:2rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:20px;">03</div>
+        <h3 style="font-family:'Spectral',serif;font-size:1.0625rem;color:var(--ink);margin-bottom:12px;line-height:1.3;">Your Care Plan</h3>
+        <p class="body-text" style="font-size:0.875rem;color:var(--ink-muted);line-height:1.65;">We match you with vetted practitioners and build your plan. Individual sessions or curated packages — tailored to you.</p>
+      </div>
+
+      <div style="padding:40px 32px;background:#EDE6D8;border-right:1px solid rgba(27,56,114,0.07);">
+        <div style="font-family:'Spectral',serif;font-size:2rem;font-weight:600;color:var(--olive);line-height:1;margin-bottom:20px;">04</div>
+        <h3 style="font-family:'Spectral',serif;font-size:1.0625rem;color:var(--ink);margin-bottom:12px;line-height:1.3;">Care at Home</h3>
+        <p class="body-text" style="font-size:0.875rem;color:var(--ink-muted);line-height:1.65;">Your practitioners come to you. No coordinating, no commuting — just care delivered where you need it most.</p>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     JOIN / CTA
+═══════════════════════════════════════════════════ -->
+<section id="join" style="padding:80px 56px;background:var(--navy);position:relative;overflow:hidden;">
+
+  <!-- Large faint stork watermark -->
+  <div style="position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:57%;height:120%;background-image:url('brand_assets/stork logo.JPG');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.06;filter:brightness(0) invert(1);pointer-events:none;"></div>
+
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+    <div style="max-width:640px;">
+      <h2 class="heading-display" style="font-size:clamp(2rem,3.5vw,3rem);color:#fff;margin-bottom:12px;line-height:1.02;">Cleo</h2>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(1rem,2vw,1.375rem);color:rgba(255,255,255,0.75);margin-bottom:24px;line-height:1.5;">Empowering you to thrive postpartum.</p>
+      <p class="body-text" style="font-size:0.9375rem;color:rgba(255,255,255,0.65);margin-bottom:40px;max-width:480px;line-height:1.75;">
+        Join our waitlist for early access, or apply to bring your practice to the Cleo network.
+      </p>
+
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <a href="waitlist.html" style="display:inline-flex;align-items:center;background:#fff;color:var(--navy);font-family:'Spectral',serif;font-size:0.875rem;font-weight:500;padding:13px 26px;border-radius:4px;text-decoration:none;transition:opacity 0.15s ease;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Join the Waitlist</a>
+        <a href="practitioners.html" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.25);padding-bottom:2px;transition:color 0.15s ease,border-color 0.15s ease;" onmouseover="this.style.color='#fff';this.style.borderColor='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.65)';this.style.borderColor='rgba(255,255,255,0.25)'">Are you a practitioner? Join our network →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     PRACTITIONER SECTION
+═══════════════════════════════════════════════════ -->
+<section style="background:#F5F0E8;padding:72px 56px;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div>
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">For Practitioners</p>
+      <h2 class="heading-display" style="font-size:clamp(1.375rem,2.5vw,1.875rem);color:var(--ink);margin-bottom:16px;line-height:1.1;">Passionate about maternal care?</h2>
+      <p class="body-text" style="font-size:0.875rem;color:var(--ink-mid);line-height:1.75;max-width:420px;margin-bottom:0;">We're building a network of dedicated doulas, lactation consultants, therapists, and wellness practitioners. If you share our commitment to postpartum care, we'd love to hear from you.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:20px;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);flex-shrink:0;"></div>
+          <span class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);">Doulas &amp; birth workers</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);flex-shrink:0;"></div>
+          <span class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);">Lactation consultants</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);flex-shrink:0;"></div>
+          <span class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);">Therapists &amp; mental health providers</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);flex-shrink:0;"></div>
+          <span class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);">Massage therapists &amp; bodyworkers</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);flex-shrink:0;"></div>
+          <span class="body-text" style="font-size:0.9375rem;color:var(--ink-mid);">Nutritionists &amp; meal providers</span>
+        </div>
+      </div>
+      <a href="practitioners.html" style="margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-family:'Spectral',serif;font-size:0.9375rem;color:var(--navy);text-decoration:none;border-bottom:1.5px solid rgba(27,56,114,0.3);padding-bottom:3px;transition:border-color 0.15s ease,color 0.15s ease;" onmouseover="this.style.borderColor='var(--navy)';this.style.color='var(--navy-dark)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)';this.style.color='var(--navy)'">Join our network →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════ -->
+<footer style="background:#070F1E;padding:80px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
+      <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Postpartum care, reimagined.</p>
+      <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:16px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
+      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+      <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Word cycling animation ───────────────────────
+  const words = ['Care', 'Lactation Consultants', 'Doula Support', 'In Home Care', 'Mental Healthcare', 'Meals', 'Acupuncture', 'Wellness', 'Night Care', 'Bodywork', 'Aromatherapy'];
+  let idx = 0;
+  const el = document.getElementById('cycleWord');
+
+  function nextWord() {
+    el.classList.add('exiting');
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove('exiting');
+      el.classList.add('entering');
+      void el.offsetWidth;
+      el.classList.remove('entering');
+    }, 300);
+  }
+
+  setInterval(nextWord, 2000);
+
+  // ── Why Cleo tabs ────────────────────────────────
+  function showTab(name) {
+    ['mental','global','nutrition'].forEach(t => {
+      document.getElementById('panel-' + t).style.display = t === name ? 'block' : 'none';
+      const btn = document.getElementById('tab-' + t);
+      btn.style.color = t === name ? 'var(--olive)' : 'var(--ink-muted)';
+      btn.style.borderBottomColor = t === name ? 'var(--olive)' : 'transparent';
+    });
+  }
+
+  // ── Smooth scroll ────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ── Fade-in on scroll ────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+
+  document.querySelectorAll('[data-fade]').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(28px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

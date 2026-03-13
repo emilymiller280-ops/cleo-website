@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — Cleo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --warm-mid: #EDE6D8;
+      --olive: #6B7A50;
+      --olive-pale: #EEF1E6;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 15px 35px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1.5px solid var(--navy);
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease;
+    }
+    .btn-ghost:hover { background: rgba(27,56,114,0.06); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+
+    /* Form elements */
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+
+    /* Package card */
+    .pkg-card {
+      background: #fff;
+      border: 2px solid rgba(27,56,114,0.12);
+      border-radius: 10px;
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .pkg-card:hover { border-color: var(--navy-light); transform: translateY(-2px); }
+    .pkg-card.selected {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.1);
+      background: var(--navy-wash);
+    }
+    .pkg-card input[type="radio"],
+    .pkg-card input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Duration pill */
+    .duration-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .duration-pill:hover { border-color: var(--navy); color: var(--navy); }
+    .duration-pill.selected {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+
+    /* Step transitions */
+    .form-step {
+      display: none;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .form-step.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .form-step.entering {
+      animation: stepIn 0.32s ease forwards;
+    }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Progress dots */
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(27,56,114,0.15);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .progress-dot.active {
+      background: var(--navy);
+      transform: scale(1.4);
+    }
+    .progress-dot.done {
+      background: var(--navy);
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <a href="index.html" class="nav-link" style="position:absolute;left:50%;transform:translateX(-50%);">Home</a>
+    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+      <a href="faq.html" class="nav-link">The Details</a>
+      <a href="getstarted.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;flex-shrink:0;background:var(--navy-dark);">Get Started</a>
+    </div>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main style="min-height:100vh;padding:140px 56px 100px;">
+  <div style="max-width:720px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="margin-bottom:56px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);opacity:0.6;margin-bottom:16px;">Get Started</p>
+      <h1 class="heading-display" style="font-size:clamp(2.25rem,4vw,3.25rem);color:var(--ink);margin-bottom:16px;">Let's build your plan.</h1>
+      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);line-height:1.75;">Tell us a little about what you're looking for and we'll take it from there.</p>
+    </div>
+
+    <!-- Progress indicator -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:56px;" id="progress-bar">
+      <div class="progress-dot active" id="dot-1"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-2"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-3"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-4"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:-44px;margin-bottom:44px;">
+      <span id="step-label-1" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;color:var(--navy);letter-spacing:0.1em;text-transform:uppercase;">Choose</span>
+      <span id="step-label-2" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Details</span>
+      <span id="step-label-3" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Journey</span>
+      <span id="step-label-4" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Reserve</span>
+    </div>
+
+    <!-- ─── STEP 1: Package Selection ─── -->
+    <div class="form-step active entering" id="step-1">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">What are you looking for?</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">Choose a package or select individual services below.</p>
+
+      <!-- Package type -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+        <label class="pkg-card" id="card-essential" onclick="selectPackage('essential')">
+          <input type="radio" name="package-type" value="essential">
+          <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Package</div>
+          <div class="heading-display" style="font-size:1.375rem;color:var(--ink);margin-bottom:8px;">Essential</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">Meals, self care, mental healthcare & Welcome Home Kit</div>
+        </label>
+        <label class="pkg-card" id="card-premium" onclick="selectPackage('premium')">
+          <input type="radio" name="package-type" value="premium">
+          <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Package</div>
+          <div class="heading-display" style="font-size:1.375rem;color:var(--ink);margin-bottom:8px;">Premium</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">Everything in Essential plus in-home doula support, 12 hrs/day</div>
+        </label>
+      </div>
+
+      <!-- Duration (shown when package selected) -->
+      <div id="duration-section" style="display:none;margin-bottom:32px;">
+        <p class="form-label" style="margin-bottom:16px;">How long would you like support?</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="duration-pill" onclick="selectDuration(this, '1 Week')">1 Week</button>
+          <button class="duration-pill" onclick="selectDuration(this, '2 Weeks')">2 Weeks</button>
+          <button class="duration-pill" onclick="selectDuration(this, '1 Month')">1 Month</button>
+          <button class="duration-pill" onclick="selectDuration(this, '2 Months')">2 Months</button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);letter-spacing:0.08em;text-transform:uppercase;">Or</span>
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      </div>
+
+      <!-- Individual bookings -->
+      <p class="form-label" style="margin-bottom:16px;">Individual bookings — select all that apply</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:40px;">
+        <label class="pkg-card" id="card-meals" onclick="toggleIndividual('meals', this)">
+          <input type="checkbox" name="individual" value="meals">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Meal Delivery</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $85 / day or $30 / meal</div>
+        </label>
+        <label class="pkg-card" id="card-inhome" onclick="toggleIndividual('inhome', this)">
+          <input type="checkbox" name="individual" value="inhome">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">In-Home Care</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $45 / hour</div>
+        </label>
+        <label class="pkg-card" id="card-selfcare" onclick="toggleIndividual('selfcare', this)">
+          <input type="checkbox" name="individual" value="selfcare">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Self Care</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $150 / treatment</div>
+        </label>
+        <label class="pkg-card" id="card-mental" onclick="toggleIndividual('mental', this)">
+          <input type="checkbox" name="individual" value="mental">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Mental Health Support</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $100 / appointment</div>
+        </label>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;">
+        <button class="btn-primary" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 2: Your Details ─── -->
+    <div class="form-step" id="step-2">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">Tell us about yourself.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">We'll use this to reach out and confirm your plan.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+        <div>
+          <label class="form-label" for="first-name">First name</label>
+          <input class="form-input" type="text" id="first-name" placeholder="Emily">
+        </div>
+        <div>
+          <label class="form-label" for="last-name">Last name</label>
+          <input class="form-input" type="text" id="last-name" placeholder="Miller">
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="email">Email address</label>
+        <input class="form-input" type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="phone">Phone number</label>
+        <input class="form-input" type="tel" id="phone" placeholder="(555) 000-0000">
+      </div>
+      <div style="margin-bottom:40px;">
+        <label class="form-label" for="zip">Zip code</label>
+        <input class="form-input" type="text" id="zip" placeholder="10001" style="max-width:200px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;">We'll confirm service availability in your area.</p>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
+        <button class="btn-primary" onclick="goToStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 3: Your Journey ─── -->
+    <div class="form-step" id="step-3">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">About your journey.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">This helps us understand where you are in your postpartum experience.</p>
+
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="due-date">Due date or baby's date of birth</label>
+        <input class="form-input" type="date" id="due-date" style="max-width:280px;">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="referral">How did you hear about Cleo?</label>
+        <select class="form-input" id="referral" style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237888A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;cursor:pointer;">
+          <option value="" disabled selected>Select an option</option>
+          <option value="instagram">Instagram</option>
+          <option value="friend">Friend or family</option>
+          <option value="google">Google</option>
+          <option value="provider">Healthcare provider</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div style="margin-bottom:40px;">
+        <label class="form-label" for="notes">Anything else you'd like us to know? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+        <textarea class="form-input" id="notes" rows="4" placeholder="Tell us about your priorities, any specific needs, or questions you have..." style="resize:vertical;"></textarea>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
+        <button class="btn-primary" onclick="goToStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 4: Reserve ─── -->
+    <div class="form-step" id="step-4">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">Reserve your spot.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">Review your selection below and submit to hold your place.</p>
+
+      <!-- Summary card -->
+      <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:12px;padding:36px 40px;margin-bottom:32px;box-shadow:0 2px 8px rgba(27,56,114,0.04),0 12px 32px rgba(27,56,114,0.05);">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:24px;">Your Selection</p>
+        <div id="summary-content" style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Payment placeholder -->
+      <div style="background:var(--warm);border:1px solid rgba(27,56,114,0.08);border-radius:10px;padding:28px 32px;margin-bottom:36px;display:flex;align-items:flex-start;gap:16px;">
+        <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:var(--navy-wash);display:flex;align-items:center;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#1B3872" stroke-width="1.4"/><path d="M1 7h14" stroke="#1B3872" stroke-width="1.4"/><rect x="3" y="9.5" width="3" height="1.5" rx="0.5" fill="#1B3872" opacity="0.5"/></svg>
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Payment</p>
+          <p class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);line-height:1.6;">We'll be in touch within 24 hours to confirm your plan and finalize payment. No card required today.</p>
+        </div>
+      </div>
+
+      <div id="submit-area">
+        <button class="btn-primary" onclick="submitForm()" style="width:100%;padding:18px;font-size:1rem;">Submit & Reserve Your Spot</button>
+      </div>
+
+      <!-- Confirmation (hidden until submit) -->
+      <div id="confirmation" style="display:none;text-align:center;padding:48px 0;">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:12px;">You're all set.</h3>
+        <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:400px;margin:0 auto 32px;line-height:1.75;">Thank you — we'll be in touch within 24 hours to confirm your plan and next steps.</p>
+        <a href="index.html" class="btn-ghost">Back to Home</a>
+      </div>
+
+      <div style="margin-top:24px;display:flex;justify-content:flex-start;">
+        <button class="btn-ghost" onclick="goToStep(3)" id="back-btn-4">← Back</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#070F1E;padding:80px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
+        <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Committed to improving postpartum recovery for every new mother.</p>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="our-story.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Our Story</a></li>
+          <li><a href="our-team.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Our Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Resources</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="faq.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">FAQ</a></li>
+          <li><a href="offerings.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Offerings</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Support</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="mailto:em.cleo@gmail.com" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact Us</a></li>
+          <li><a href="#" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
+      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+      <a href="https://www.instagram.com/cleo" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // State
+  const state = {
+    packageType: null,   // 'essential' | 'premium' | null
+    duration: null,
+    individual: [],
+  };
+
+  // Step navigation
+  let currentStep = 1;
+
+  function goToStep(n) {
+    const current = document.getElementById('step-' + currentStep);
+    const next = document.getElementById('step-' + n);
+    current.classList.remove('active');
+    current.style.display = 'none';
+    next.style.display = 'block';
+    // Force reflow then animate
+    requestAnimationFrame(() => {
+      next.classList.add('active', 'entering');
+      setTimeout(() => next.classList.remove('entering'), 350);
+    });
+    currentStep = n;
+    updateProgress(n);
+    if (n === 4) buildSummary();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(step) {
+    for (let i = 1; i <= 4; i++) {
+      const dot = document.getElementById('dot-' + i);
+      const label = document.getElementById('step-label-' + i);
+      dot.className = 'progress-dot';
+      label.style.fontWeight = '500';
+      label.style.color = 'var(--ink-muted)';
+      if (i < step) { dot.classList.add('done'); }
+      else if (i === step) {
+        dot.classList.add('active');
+        label.style.fontWeight = '600';
+        label.style.color = 'var(--navy)';
+      }
+    }
+  }
+
+  // Package selection
+  function selectPackage(type) {
+    state.packageType = type;
+    // Clear individual selections when a package is chosen
+    state.individual = [];
+    document.querySelectorAll('[id^="card-meals"],[id^="card-inhome"],[id^="card-selfcare"],[id^="card-mental"]').forEach(c => c.classList.remove('selected'));
+
+    document.getElementById('card-essential').classList.toggle('selected', type === 'essential');
+    document.getElementById('card-premium').classList.toggle('selected', type === 'premium');
+    document.getElementById('duration-section').style.display = 'block';
+  }
+
+  // Duration selection
+  function selectDuration(el, val) {
+    state.duration = val;
+    document.querySelectorAll('.duration-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // Individual bookings
+  function toggleIndividual(key, card) {
+    // Deselect package if individual chosen
+    state.packageType = null;
+    state.duration = null;
+    document.getElementById('card-essential').classList.remove('selected');
+    document.getElementById('card-premium').classList.remove('selected');
+    document.getElementById('duration-section').style.display = 'none';
+    document.querySelectorAll('.duration-pill').forEach(p => p.classList.remove('selected'));
+
+    const idx = state.individual.indexOf(key);
+    if (idx > -1) {
+      state.individual.splice(idx, 1);
+      card.classList.remove('selected');
+    } else {
+      state.individual.push(key);
+      card.classList.add('selected');
+    }
+  }
+
+  // Build summary for step 4
+  const prices = {
+    essential: { '1 Week': '$1,800', '2 Weeks': '$3,400', '1 Month': '$6,000', '2 Months': '$11,500' },
+    premium:   { '1 Week': '$6,000', '2 Weeks': '$11,800', '1 Month': '$22,800', '2 Months': '$44,600' },
+  };
+  const individualLabels = {
+    meals: 'Meal Delivery — From $85 / day',
+    inhome: 'In-Home Care — From $45 / hour',
+    selfcare: 'Self Care — From $150 / treatment',
+    mental: 'Mental Health Support — From $100 / appointment',
+  };
+
+  function buildSummary() {
+    const el = document.getElementById('summary-content');
+    el.innerHTML = '';
+
+    const row = (label, value) => `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.06);">
+        <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink-mid);">${label}</span>
+        <span style="font-family:'Spectral',serif;font-size:1rem;color:var(--navy);">${value}</span>
+      </div>`;
+
+    if (state.packageType) {
+      const pkg = state.packageType === 'essential' ? 'Essential' : 'Premium';
+      const dur = state.duration || 'Duration TBD';
+      const price = state.duration ? prices[state.packageType][state.duration] : 'TBD';
+      el.innerHTML += row('Package', pkg);
+      el.innerHTML += row('Duration', dur);
+      el.innerHTML += row('Starting from', price);
+    } else if (state.individual.length > 0) {
+      state.individual.forEach(key => {
+        el.innerHTML += row(individualLabels[key].split('—')[0].trim(), individualLabels[key].split('—')[1].trim());
+      });
+    } else {
+      el.innerHTML = '<p style="font-family:\'Inter\',sans-serif;font-size:0.9375rem;color:var(--ink-muted);">No selection made — we\'ll discuss options on your intro call.</p>';
+    }
+  }
+
+  // Submit
+  function submitForm() {
+    // Placeholder — Stripe / form submission goes here
+    console.log('Form submitted', {
+      state,
+      name: document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      zip: document.getElementById('zip').value,
+      dueDate: document.getElementById('due-date').value,
+      referral: document.getElementById('referral').value,
+      notes: document.getElementById('notes').value,
+    });
+    document.getElementById('submit-area').style.display = 'none';
+    document.getElementById('back-btn-4').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

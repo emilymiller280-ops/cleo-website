@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Details — Cleo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Spectral', serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
+    :root {
+      --navy: #1B3872; --navy-dark: #0F2352; --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5; --navy-wash: #EBF0FA;
+      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
+      --cream: #FAF8F4; --warm: #F5F0E8; --warm-mid: #EDE6D8;
+    }
+    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
+    .body-text { font-family: 'Spectral', serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400;
+      color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
+      font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
+      text-transform: none; padding: 16px 36px; border-radius: 4px;
+      text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Accordion */
+    .faq-item { border-bottom: 1px solid rgba(27,56,114,0.1); }
+    .faq-item:first-child { border-top: 1px solid rgba(27,56,114,0.1); }
+    .faq-trigger {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; padding: 28px 0; background: none; border: none; cursor: pointer;
+      text-align: left;
+    }
+    .faq-trigger:hover .faq-q { color: var(--navy); }
+    .faq-q {
+      font-family: 'Spectral', serif; font-size: 1.375rem; color: var(--ink);
+      line-height: 1.2; letter-spacing: -0.01em;
+      transition: color 0.2s ease;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+      border: 1.5px solid rgba(27,56,114,0.2); display: flex;
+      align-items: center; justify-content: center;
+      transition: transform 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+    .faq-icon svg { transition: transform 0.25s ease; }
+    .faq-body {
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      opacity: 0;
+    }
+    .faq-body.open { max-height: 600px; opacity: 1; }
+    .faq-body-inner { padding-bottom: 28px; }
+    .faq-item.active .faq-icon { background: var(--navy); border-color: var(--navy); transform: rotate(45deg); }
+    .faq-item.active .faq-icon svg path { stroke: #fff; }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <a href="faq.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">The Details</a>
+    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="waitlist.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;flex-shrink:0;">Join the Waitlist</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section style="position:relative;padding:200px 56px 120px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 50%, #E8DDD0 100%);overflow:hidden;">
+  <div style="position:absolute;right:-2%;top:50%;transform:translateY(-50%);width:52%;height:110%;background-image:url('brand_assets/stork logo.JPG');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.07;pointer-events:none;"></div>
+  <div style="max-width:1100px;margin:0 auto;position:relative;z-index:1;">
+    <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">The Details</p>
+    <h1 class="heading-display" style="font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--ink);max-width:680px;line-height:1.0;margin-bottom:40px;">
+      Questions, answered.
+    </h1>
+  </div>
+</section>
+
+<!-- FAQ CONTENT -->
+<section style="padding:120px 56px 140px;background:#FAF8F4;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:100px;align-items:start;">
+
+    <!-- Sticky category nav -->
+    <div style="position:sticky;top:100px;">
+      <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:24px;">Categories</p>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <a href="#getting-started" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--navy);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);font-weight:500;">Getting Started</a>
+        <a href="#services" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Services &amp; Providers</a>
+        <a href="#packages" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Packages &amp; Pricing</a>
+        <a href="#logistics" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Logistics</a>
+        <a href="#practitioners" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">For Practitioners</a>
+      </div>
+    </div>
+
+    <!-- FAQ groups -->
+    <div>
+
+      <!-- GETTING STARTED -->
+      <div id="getting-started" style="margin-bottom:72px;">
+        <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Getting Started</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What is Cleo and who is it for?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Cleo is a postpartum support service for new mothers and families. We coordinate in-home care, wellness treatments, meal delivery, and mental health support — all through a single concierge. We're for any mother navigating the fourth trimester and wanting expert, personalized care without the chaos of vetting and coordinating herself.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">How do I get started with Cleo?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Join our waitlist <a href="waitlist.html" style="color:var(--navy);text-underline-offset:3px;">here</a>, or reach out via <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-underline-offset:3px;">email</a>.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">How far in advance should I book?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">We ask that you book as soon as possible — ideally before the second trimester, but we will work with you on your timeline. The earlier we connect, the more time we have to build the right plan before your baby arrives.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What areas do you serve?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">We currently serve Los Angeles County, Orange County, and Santa Barbara County. If you're located outside these areas, please contact us and we'll do our best to accommodate your needs or connect you with trusted resources in your area.</p></div></div>
+        </div>
+      </div>
+
+      <!-- SERVICES & PROVIDERS -->
+      <div id="services" style="margin-bottom:72px;">
+        <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Services &amp; Providers</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">How are your experts vetted?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Every practitioner in our network has been personally vetted for their credentials, experience, and commitment to compassionate maternal care. We only partner with licensed professionals who share our mission of supporting mothers through the fourth trimester.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What services do you offer?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">We offer birth and postpartum doula support, lactation consulting, chef-prepared meal delivery, massage therapy, acupuncture, bodywork, mental health therapy, night care, and home cleaning — all coordinated through your care concierge. If there's another service you're curious about, <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-underline-offset:3px;">please let us know here</a>.</p></div></div>
+        </div>
+
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">Are services provided in-home or virtually?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Most Cleo services are delivered in-home — doulas, massage therapists, acupuncturists, night care providers, and cleaning teams all come to you. Mental health support and lactation consulting are also available virtually. Your concierge will confirm the format that works best for each service in your plan.</p></div></div>
+        </div>
+      </div>
+
+      <!-- PACKAGES & PRICING -->
+      <div id="packages" style="margin-bottom:72px;">
+        <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Packages &amp; Pricing</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What's the difference between packages and individual bookings?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Packages are pre-designed plans based on the number of weeks you would like to use our services and a choice between our Essential or Premium offerings. The latter including in-home postpartum doula support. Both package options include daily meal delivery, mental health support, wellness treatments and our Welcome Home Kit.<br><br>Individual bookings are also an option for families that would like to choose specific offerings. For both options, booking will be through our bespoke concierge service so that they can handle the scheduling directly with practitioners. All communication will be streamlined through one point of contact.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">Can I customize a package?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Absolutely. Every plan we build is bespoke. Our sample packages are a starting point — your concierge will adjust frequency, services, and duration based on your specific needs, preferences, and budget.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">I'm not expecting — can I gift Cleo to someone?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Cleo makes a deeply meaningful gift for any new or expecting mother in your life. We offer gift options across both individual bookings and full packages — from a single session to a complete postpartum plan. <a href="waitlist.html" style="color:var(--navy);text-underline-offset:3px;">Join the waitlist here</a>. We'll take it from there.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What do your packages look like?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Packages start at $525 and are designed around your recovery timeline. A sample Essential Package might include two weeks of daily meal delivery, two lactation consults, and a postpartum massage. A sample Premium Package might add postpartum doula visits, night care, acupuncture, and mental health check-ins — all coordinated through your concierge. Every package is customized to your needs.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What does an individual booking look like?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Individual bookings let you choose exactly what you need — a single postpartum massage, a lactation consult, a night care session, or a meal delivery order. Your concierge handles all scheduling and coordination, so you still have one point of contact with no back-and-forth.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">Do you accept insurance?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Insurance coverage for postpartum services varies by plan and provider. Some practitioners in our network — including lactation consultants and mental health therapists — may be covered under your insurance, and we will help you navigate that process. We can assist you in understanding what questions to ask your insurer, what documentation to request from providers, and how to submit for reimbursement where applicable. We recommend reaching out to your insurance provider before your due date to confirm what postpartum benefits are included in your plan.</p></div></div>
+        </div>
+
+      </div>
+
+      <!-- LOGISTICS -->
+      <div id="logistics" style="margin-bottom:72px;">
+        <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Logistics</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">Do you have a physical location?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Cleo is fully, at home — we don't have a physical office or clinic. All of our services come to you, wherever you are, or offer virtual options.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">How does the concierge service work?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Your Cleo concierge is your single point of contact for everything. They coordinate scheduling with all practitioners, handle any changes or logistics, check in on how things are going, and adjust your plan as needed.</p></div></div>
+        </div>
+
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">What if my due date changes or baby arrives early?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">We understand that plans change — especially around pregnancy. Our extensive network allows us to be flexible and work with unexpected circumstances, so if your baby arrives early or your timeline shifts, we'll adapt your plan accordingly. Just reach out to your concierge and we'll take it from there.</p></div></div>
+        </div>
+      </div>
+
+      <!-- FOR PRACTITIONERS -->
+      <div id="practitioners" style="margin-top:64px;">
+        <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">For Practitioners</p>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">How do I join the Cleo network?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">We'd love to have you. Start by filling out <a href="practitioners.html" style="color:var(--navy);text-underline-offset:3px;">this form</a>, or <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-underline-offset:3px;">reach out here</a> to start the conversation. We review each submission individually and will follow up to learn more about your practice.</p></div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" onclick="toggleFaq(this)">
+            <span class="faq-q">Do you help with insurance?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="#1B3872" stroke-width="1.75" stroke-linecap="round"/></svg></div>
+          </button>
+          <div class="faq-body"><div class="faq-body-inner"><p class="body-text" style="font-size:1rem;color:var(--ink-mid);line-height:1.8;">Yes — we help practitioners in our network navigate insurance. Whether you're credentialing for the first time or need support with billing, our team will guide you through the process.</p></div></div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- STILL HAVE QUESTIONS -->
+<section style="padding:100px 56px;background:#F5F0E8;">
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+    <div>
+      <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:24px;opacity:0.6;">Still Have Questions?</p>
+      <h2 class="heading-display" style="font-size:clamp(2.25rem,3.5vw,3.25rem);color:var(--ink);line-height:1.05;margin-bottom:24px;">We'd love to hear from you.</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="mailto:hello@cleocare.co" class="btn-primary">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#070F1E;padding:80px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
+      <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Postpartum care, reimagined.</p>
+      <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:16px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
+      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+      <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(trigger) {
+    const item = trigger.closest('.faq-item');
+    const body = item.querySelector('.faq-body');
+    const isOpen = item.classList.contains('active');
+
+    // Close all
+    document.querySelectorAll('.faq-item.active').forEach(el => {
+      el.classList.remove('active');
+      el.querySelector('.faq-body').classList.remove('open');
+    });
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('active');
+      body.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>

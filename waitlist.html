@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join the Waitlist — Cleo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --olive: #6B7A50;
+      --olive-pale: #EEF1E6;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+      width: 100%;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+    .service-card {
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.12);
+      border-radius: 8px;
+      padding: 16px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+    .service-card:hover { border-color: var(--navy-light); transform: translateY(-1px); }
+    .service-card.selected {
+      border-color: var(--navy);
+      background: var(--navy-wash);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .service-card input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .check-box {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(27,56,114,0.25);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .service-card.selected .check-box {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .check-icon {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+    .service-card.selected .check-icon { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <a href="index.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">Home</a>
+    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+  </nav>
+</header>
+
+<!-- MAIN -->
+<main style="min-height:100vh;padding:140px 56px 100px;">
+  <div style="max-width:600px;margin:0 auto;">
+
+    <!-- Header -->
+    <div style="margin-bottom:52px;text-align:center;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Early Access</p>
+      <h1 class="heading-display" style="font-size:clamp(2.25rem,4vw,3rem);color:var(--ink);margin-bottom:16px;">Join the Waitlist</h1>
+      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);line-height:1.75;max-width:480px;margin:0 auto;">Sign up for early access and updates straight to your inbox.</p>
+    </div>
+
+    <!-- Form -->
+    <form id="waitlist-form" action="https://formspree.io/f/mvzwrrod" method="POST">
+
+      <!-- Name -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+        <div>
+          <label class="form-label" for="first-name">First name</label>
+          <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First name" required>
+        </div>
+        <div>
+          <label class="form-label" for="last-name">Last name</label>
+          <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Last name" required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="email">Email address</label>
+        <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+
+      <!-- Due date -->
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="due-date">Due date <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+        <input class="form-input" type="date" id="due-date" name="due_date" style="max-width:260px;" id="due-date-input">
+        <label style="display:flex;align-items:center;gap:10px;margin-top:12px;cursor:pointer;" onclick="toggleNotExpecting(this)">
+          <div class="check-box" id="not-expecting-box" style="width:18px;height:18px;min-width:18px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.25);background:#fff;display:flex;align-items:center;justify-content:center;transition:background 0.15s ease,border-color 0.15s ease;">
+            <svg id="not-expecting-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s ease;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <input type="checkbox" name="not_expecting" value="Not currently expecting" style="position:absolute;opacity:0;pointer-events:none;" id="not-expecting-cb">
+          <span style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--ink-mid);">Not currently expecting</span>
+        </label>
+      </div>
+
+      <!-- Zip -->
+      <div style="margin-bottom:40px;">
+        <label class="form-label" for="zip">Zip code</label>
+        <input class="form-input" type="text" id="zip" name="zip_code" placeholder="10001" style="max-width:160px;">
+      </div>
+
+      <!-- Services -->
+      <div style="margin-bottom:48px;">
+        <label class="form-label" style="margin-bottom:16px;">Services of interest <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+
+          <label class="service-card" id="svc-meals" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Meal Delivery">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Meal Delivery</span>
+          </label>
+
+          <label class="service-card" id="svc-doula" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Doula Support">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Doula Support</span>
+          </label>
+
+          <label class="service-card" id="svc-lactation" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Lactation Support">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Lactation Support</span>
+          </label>
+
+          <label class="service-card" id="svc-nightcare" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Night Care">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Night Care</span>
+          </label>
+
+          <label class="service-card" id="svc-mental" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Mental Health Support">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Mental Health Support</span>
+          </label>
+
+          <label class="service-card" id="svc-bodywork" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Bodywork">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Bodywork</span>
+          </label>
+
+          <label class="service-card" id="svc-aroma" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Aromatherapy">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Aromatherapy</span>
+          </label>
+
+          <label class="service-card" id="svc-acupuncture" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Acupuncture">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Acupuncture</span>
+          </label>
+
+          <label class="service-card" id="svc-birth" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Birth Support">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Birth Support</span>
+          </label>
+
+          <label class="service-card" id="svc-childcare" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Childcare for Older Siblings">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Childcare for Older Siblings</span>
+          </label>
+
+          <label class="service-card" id="svc-cleaning" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="House Cleaning">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">House Cleaning</span>
+          </label>
+
+        </div>
+
+        <!-- Other field -->
+        <div style="margin-top:12px;">
+          <label class="form-label" for="other-service" style="font-weight:400;color:var(--ink-muted);font-size:0.8125rem;">Other — anything else you'd like to see?</label>
+          <input class="form-input" type="text" id="other-service" name="other_service" placeholder="e.g. Pelvic floor PT, sleep coaching...">
+        </div>
+
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn-primary">Join the Waitlist</button>
+
+    </form>
+
+    <!-- Confirmation (shown after Formspree redirect or JS) -->
+    <div id="confirmation" style="display:none;text-align:center;padding:64px 0;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:12px;">You're on the list.</h3>
+      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:380px;margin:0 auto 32px;line-height:1.75;">Thank you for your interest in Cleo. We'll be in touch with early access details soon.</p>
+      <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;">Back to Home</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#070F1E;padding:60px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:36px;">
+    <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
+    <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+    <a href="mailto:em.cleo@gmail.com" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function toggleNotExpecting(label) {
+    const cb = document.getElementById('not-expecting-cb');
+    const box = document.getElementById('not-expecting-box');
+    const check = document.getElementById('not-expecting-check');
+    cb.checked = !cb.checked;
+    if (cb.checked) {
+      box.style.background = 'var(--navy)';
+      box.style.borderColor = 'var(--navy)';
+      check.style.opacity = '1';
+      document.getElementById('due-date').disabled = true;
+      document.getElementById('due-date').style.opacity = '0.4';
+    } else {
+      box.style.background = '#fff';
+      box.style.borderColor = 'rgba(27,56,114,0.25)';
+      check.style.opacity = '0';
+      document.getElementById('due-date').disabled = false;
+      document.getElementById('due-date').style.opacity = '1';
+    }
+  }
+
+  function toggleService(card) {
+    event.preventDefault();
+    card.classList.toggle('selected');
+    const cb = card.querySelector('input[type="checkbox"]');
+    cb.checked = card.classList.contains('selected');
+  }
+
+  // Handle Formspree AJAX submission for inline confirmation
+  document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        window.location.href = 'waitlist-thank-you.html';
+      } else {
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      alert('Something went wrong. Please try again or email us directly.');
+    }
+  });
+</script>
+
+</body>
+</html>
