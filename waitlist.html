@@ -320,10 +320,36 @@
 
         <!-- Other field -->
         <div style="margin-top:12px;">
-          <label class="form-label" for="other-service" style="font-weight:400;color:var(--ink-muted);font-size:0.8125rem;">Other — anything else you'd like to see?</label>
+          <label class="form-label" for="other-service" style="font-weight:400;color:var(--ink-muted);font-size:0.8125rem;">Other, anything else you'd like to see?</label>
           <input class="form-input" type="text" id="other-service" name="other_service" placeholder="e.g. Pelvic floor PT, sleep coaching...">
         </div>
 
+      </div>
+
+      <!-- Insurance -->
+      <div style="margin-bottom:48px;">
+        <label class="form-label" style="margin-bottom:8px;">Interested in having services covered by insurance?</label>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <label class="service-card" id="ins-yes" onclick="toggleInsurance(this,'yes')" style="max-width:100%;">
+            <input type="radio" name="insurance_interest" value="Yes" style="position:absolute;opacity:0;pointer-events:none;">
+            <div class="check-box" style="border-radius:50%;">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Yes, I'd like to explore insurance coverage</span>
+          </label>
+          <label class="service-card" id="ins-no" onclick="toggleInsurance(this,'no')" style="max-width:100%;">
+            <input type="radio" name="insurance_interest" value="No" style="position:absolute;opacity:0;pointer-events:none;">
+            <div class="check-box" style="border-radius:50%;">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">No, I'll be paying out of pocket</span>
+          </label>
+        </div>
+
+        <div id="insurance-provider-wrap" style="display:none;margin-top:16px;">
+          <label class="form-label" for="insurance-provider">Insurance plan or company</label>
+          <input class="form-input" type="text" id="insurance-provider" name="insurance_provider" placeholder="e.g. Blue Cross Blue Shield, Aetna, United...">
+        </div>
       </div>
 
       <!-- Submit -->
@@ -372,6 +398,24 @@
       document.getElementById('due-date').disabled = false;
       document.getElementById('due-date').style.opacity = '1';
     }
+  }
+
+  function toggleInsurance(card, val) {
+    event.preventDefault();
+    ['ins-yes','ins-no'].forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.remove('selected');
+      el.querySelector('.check-box').style.background = '#fff';
+      el.querySelector('.check-box').style.borderColor = 'rgba(27,56,114,0.25)';
+      el.querySelector('.check-icon').style.opacity = '0';
+      el.querySelector('input').checked = false;
+    });
+    card.classList.add('selected');
+    card.querySelector('.check-box').style.background = 'var(--navy)';
+    card.querySelector('.check-box').style.borderColor = 'var(--navy)';
+    card.querySelector('.check-icon').style.opacity = '1';
+    card.querySelector('input').checked = true;
+    document.getElementById('insurance-provider-wrap').style.display = val === 'yes' ? 'block' : 'none';
   }
 
   function toggleService(card) {
