@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Care | Cleo</title>
+  <meta name="description" content="Choose a Cleo care package and book your postpartum recovery plan. Pre-birth prep, postpartum essential, premium, and complete care options.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Spectral', serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --warm-mid: #EDE6D8;
+      --olive: #6B7A50;
+      --olive-light: #8A9B68;
+      --olive-pale: #EEF1E6;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .nav-link:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 2px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    /* ── Package cards ──────────────────────────────── */
+    .pkg-card {
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.1);
+      border-radius: 12px;
+      padding: 36px 32px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow: 0 1px 3px rgba(27,56,114,0.04), 0 8px 24px rgba(27,56,114,0.05);
+    }
+    .pkg-card.selected {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.1), 0 8px 32px rgba(27,56,114,0.12);
+    }
+    .pkg-card.featured {
+      background: var(--navy);
+    }
+    .pkg-card.featured:hover {
+      border-color: var(--navy-light);
+    }
+    .pkg-card.featured.selected {
+      border-color: #fff;
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.3), 0 8px 32px rgba(27,56,114,0.2);
+    }
+    .pkg-badge {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .pkg-select-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 11px 0;
+      border-radius: 4px;
+      border: 1.5px solid rgba(27,56,114,0.2);
+      background: transparent;
+      color: var(--navy);
+      cursor: pointer;
+      width: 100%;
+      text-align: center;
+      transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+      margin-top: auto;
+    }
+    .pkg-select-btn:hover {
+      background: rgba(27,56,114,0.05);
+      border-color: var(--navy);
+    }
+    .pkg-card.selected .pkg-select-btn {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+    .pkg-card.featured .pkg-select-btn {
+      border-color: rgba(255,255,255,0.4);
+      color: #fff;
+    }
+    .pkg-card.featured .pkg-select-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.8);
+    }
+    .pkg-card.featured.selected .pkg-select-btn {
+      background: #fff;
+      border-color: #fff;
+      color: var(--navy);
+    }
+
+    /* Includes list */
+    .includes-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(27,56,114,0.06);
+    }
+    .includes-item:last-child { border-bottom: none; }
+    .includes-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--olive);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .pkg-card.featured .includes-dot { background: rgba(255,255,255,0.6); }
+    .pkg-card.featured .includes-item { border-bottom-color: rgba(255,255,255,0.08); }
+
+    /* ── Form styles ──────────────────────────────── */
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+
+    /* Duration pills */
+    .dur-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+    .dur-pill:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+    .dur-pill.selected {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+
+    /* Form fade-in */
+    #form-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+    }
+    #form-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Toggle buttons */
+    .toggle-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .toggle-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 13px 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .toggle-btn:hover { border-color: var(--navy-light); }
+    .toggle-btn.active {
+      border-color: var(--navy);
+      background: var(--navy-wash);
+      color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+
+    /* Add-on chips */
+    .choice-chip {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 6px 13px;
+      border-radius: 99px;
+      border: 1.5px solid rgba(27,56,114,0.18);
+      background: transparent;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: border-color 0.13s ease, background 0.13s ease, color 0.13s ease;
+      user-select: none;
+    }
+    .choice-chip:hover { border-color: var(--navy); color: var(--navy); }
+    .choice-chip.selected { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .pkg-card.featured .choice-chip { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6); }
+    .pkg-card.featured .choice-chip:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .pkg-card.featured .choice-chip.selected { background: rgba(255,255,255,0.9); border-color: #fff; color: var(--navy); }
+    .pkg-card.featured-olive .choice-chip { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6); }
+    .pkg-card.featured-olive .choice-chip:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .pkg-card.featured-olive .choice-chip.selected { background: rgba(255,255,255,0.9); border-color: #fff; color: var(--olive); }
+
+    .addon-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 5px 11px;
+      border-radius: 99px;
+      border: 1px solid rgba(27,56,114,0.2);
+      background: transparent;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      user-select: none;
+    }
+    .addon-chip:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+    .addon-chip.selected { background: var(--navy-wash); border-color: var(--navy); color: var(--navy); }
+    .pkg-card.featured .addon-chip { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.55); }
+    .pkg-card.featured .addon-chip:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .pkg-card.featured .addon-chip.selected { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.6); color: #fff; }
+
+    .pkg-card.featured-olive { background: var(--olive); }
+    .pkg-card.featured-olive:hover { border-color: var(--olive-light); }
+    .pkg-card.featured-olive.selected { border-color: #fff; box-shadow: 0 0 0 3px rgba(107,122,80,0.3), 0 8px 32px rgba(107,122,80,0.2); }
+    .pkg-card.featured-olive .includes-dot { background: rgba(255,255,255,0.6); }
+    .pkg-card.featured-olive .includes-item { border-bottom-color: rgba(255,255,255,0.08); }
+    .pkg-card.featured-olive .addon-chip { border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.55); }
+    .pkg-card.featured-olive .addon-chip:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .pkg-card.featured-olive .addon-chip.selected { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.6); color: #fff; }
+    .pkg-card.featured-olive .pkg-select-btn { border-color: rgba(255,255,255,0.4); color: #fff; }
+    .pkg-card.featured-olive .pkg-select-btn:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.8); }
+    .pkg-card.featured-olive.selected .pkg-select-btn { background: #fff; border-color: #fff; color: var(--olive); }
+
+    /* Combo pills */
+    .combo-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 11px 16px;
+      border-radius: 7px;
+      border: 1.5px solid rgba(27,56,114,0.13);
+      background: transparent;
+      color: var(--ink-mid);
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .combo-pill:hover { border-color: var(--navy); color: var(--navy); background: rgba(27,56,114,0.02); }
+    .combo-pill.selected { background: var(--navy-wash); border-color: var(--navy); color: var(--navy); }
+    .combo-pill .combo-price { font-weight: 400; color: var(--ink-muted); font-size: 0.75rem; }
+    .combo-pill.selected .combo-price { color: var(--navy); opacity: 0.7; }
+    /* Stage toggle */
+    .stage-toggle {
+      display: flex;
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.1);
+      border-radius: 9px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .stage-tab {
+      flex: 1;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      padding: 11px 12px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+    .stage-tab:hover { color: var(--navy); background: rgba(27,56,114,0.03); }
+    .stage-tab.active { background: var(--navy); color: #fff; box-shadow: 0 2px 8px rgba(27,56,114,0.18); }
+    .pkg-inner { flex: 1; transition: opacity 0.15s ease; }
+    .pkg-inner.fading { opacity: 0; }
+
+    /* Journey stage selector */
+    .journey-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: 99px;
+      border: 1.5px solid rgba(27,56,114,0.14);
+      background: #fff;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .journey-btn:hover { border-color: var(--navy); color: var(--navy); }
+    .journey-btn.active { background: var(--navy); border-color: var(--navy); color: #fff; box-shadow: 0 2px 12px rgba(27,56,114,0.22); }
+
+    /* Build Your Own service buttons */
+    .custom-svc {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1.5px solid rgba(27,56,114,0.12);
+      background: #fff;
+      color: var(--ink-mid);
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+      user-select: none;
+    }
+    .custom-svc:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+    .custom-svc.selected { background: var(--navy-wash); border-color: var(--navy); color: var(--navy); }
+    .custom-svc:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
+
+    /* Build Your Own duration pills (separate from form pills) */
+    .byo-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+    }
+    .byo-pill:hover { border-color: var(--navy); color: var(--navy); transform: translateY(-1px); }
+    .byo-pill.selected { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+
+    @media (max-width: 900px) {
+      #pkg-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+    }
+    @media (max-width: 640px) {
+      header nav { padding: 0 20px !important; }
+      #nav-center { display: none !important; }
+      #pkg-grid { grid-template-columns: 1fr !important; }
+      .page-pad { padding-left: 20px !important; padding-right: 20px !important; }
+      .two-col { grid-template-columns: 1fr !important; }
+    }
+  
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
+      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
+
+<main>
+
+  <!-- ═══════ HEADER ═══════ -->
+  <section class="page-pad" style="padding: 144px 56px 64px; background: linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 100%);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Book Your Care</p>
+      <h1 class="heading-display" style="font-size:clamp(1.75rem,2.8vw,2.625rem);color:var(--navy);margin-bottom:20px;">Full-Spectrum Maternal Care</h1>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);max-width:560px;line-height:1.75;">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1rem;color:var(--ink-muted);max-width:580px;line-height:1.85;margin-top:16px;">Choose a package that fits your stage, and we'll take it from there. Once booked, your dedicated Cleo concierge will reach out within 48 hours to confirm practitioners and handle all scheduling, coordination, and payment.</p>
+    </div>
+  </section>
+
+  <!-- ═══════ PACKAGE CARDS ═══════ -->
+  <section class="page-pad" style="padding:64px 56px 80px;background:#FAF8F4;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <!-- Insurance callout -->
+      <div style="display:flex;align-items:center;gap:20px;background:var(--olive-pale);border:1px solid rgba(107,122,80,0.2);border-radius:10px;padding:20px 28px;margin-bottom:36px;flex-wrap:wrap;">
+        <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(107,122,80,0.15);display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5a7.5 7.5 0 100 15A7.5 7.5 0 009 1.5zM9 8.25v4.5M9 5.625v.375" stroke="#6B7A50" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--olive);margin-bottom:3px;">Caution: Plans may cost less than they appear.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--olive);opacity:0.85;line-height:1.6;">Mental health support, pelvic floor physical therapy and lactation consultations are covered under many insurance plans. Once booked, we help check your eligibility where applicable and navigate all insurance related headache for you.</p>
+        </div>
+      </div>
+
+      <!-- Journey stage selector -->
+      <div style="margin-bottom:44px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;">Where are you in your journey?</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;">
+          <button class="journey-btn" data-stage="ttc" onclick="setGlobalStage('ttc')">Trying to Conceive</button>
+          <button class="journey-btn active" data-stage="prenatal" onclick="setGlobalStage('prenatal')">Pregnant</button>
+          <button class="journey-btn" data-stage="postpartum" onclick="setGlobalStage('postpartum')">Postpartum</button>
+          <button class="journey-btn" data-stage="complete" onclick="setGlobalStage('complete')">Pregnancy + Postpartum</button>
+        </div>
+      </div>
+
+      <!-- Package grid -->
+      <div id="pkg-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start;margin-bottom:40px;">
+
+        <!-- Essential -->
+        <div class="pkg-card" id="pkg-essential">
+          <div id="pop-essential" style="display:none;position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#fff;color:var(--olive);font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 14px;border-radius:99px;white-space:nowrap;">Most Popular</div>
+          <div id="pkg-essential-inner" class="pkg-inner"></div>
+          <button class="pkg-select-btn" onclick="selectPackage('essential')">Select Package</button>
+        </div>
+
+        <!-- Signature -->
+        <div class="pkg-card featured-olive" id="pkg-signature">
+          <div id="pop-signature" style="display:none;position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#fff;color:var(--olive);font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 14px;border-radius:99px;white-space:nowrap;">Most Popular</div>
+          <div id="pkg-signature-inner" class="pkg-inner"></div>
+          <button class="pkg-select-btn" onclick="selectPackage('signature')">Select Package</button>
+        </div>
+
+        <!-- Premium -->
+        <div class="pkg-card featured" id="pkg-premium">
+          <div id="pop-premium" style="display:none;position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#fff;color:var(--navy);font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:4px 14px;border-radius:99px;white-space:nowrap;">Most Popular</div>
+          <div id="pkg-premium-inner" class="pkg-inner"></div>
+          <button class="pkg-select-btn" onclick="selectPackage('premium')">Select Package</button>
+        </div>
+
+      </div>
+      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.6;opacity:0.7;margin-top:12px;">Final pricing determined based on services selected.</p>
+
+      <!-- Insurance callout -->
+      <div style="display:flex;align-items:flex-start;gap:16px;background:var(--olive-pale);border:1px solid rgba(107,122,80,0.2);border-radius:10px;padding:20px 24px;margin-top:20px;">
+        <div style="width:32px;height:32px;min-width:32px;border-radius:50%;background:rgba(107,122,80,0.12);display:flex;align-items:center;justify-content:center;margin-top:2px;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM8 5v4M8 11h.01" stroke="#6B7A50" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <p style="font-family:'Spectral',serif;font-weight:400;font-size:0.9375rem;color:var(--olive);line-height:1.6;margin-bottom:6px;">Mental health support, pelvic floor physical therapy and lactation consultations are covered under many insurance plans.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;opacity:0.85;">Once booked, we help check your eligibility where applicable and navigate all insurance related headache for you.</p>
+        </div>
+      </div>
+
+      <!-- Welcome Home Kit callout (shown for postpartum/complete) -->
+      <div id="welcome-kit-callout" style="display:none;align-items:center;gap:20px;background:var(--warm);border:1px solid rgba(27,56,114,0.08);border-radius:10px;padding:20px 28px;margin-bottom:48px;flex-wrap:wrap;">
+        <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:rgba(107,122,80,0.1);display:flex;align-items:center;justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2.25c-1.5 0-3 .75-3 2.25 0 1.125.75 1.875 1.5 2.25H6A2.25 2.25 0 003.75 9v1.5H14.25V9A2.25 2.25 0 0012 6.75h-1.5c.75-.375 1.5-1.125 1.5-2.25 0-1.5-1.5-2.25-3-2.25z" stroke="#6B7A50" stroke-width="1.2" stroke-linejoin="round"/><rect x="3" y="11.25" width="12" height="4.5" rx="1" stroke="#6B7A50" stroke-width="1.2"/></svg>
+        </div>
+        <div style="flex:1;min-width:200px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--ink);margin-bottom:3px;">Alert: Welcome Home Kit Incoming.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);opacity:0.85;line-height:1.6;">Each postpartum package is accompanied by our signature welcome home kit complete with custom embroidered pajamas and our network's favorite brands (self-care necessities, supplements, and beyond) to welcome you and your little one.</p>
+        </div>
+      </div>
+
+      <!-- Build Your Own -->
+      <div style="margin-top:48px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;">Or build your own</p>
+        <div class="pkg-card" id="pkg-byo" style="background:var(--warm);border-color:rgba(27,56,114,0.08);max-width:100%;">
+          <div>
+            <span class="pkg-badge" style="background:var(--warm-mid);color:var(--ink-mid);border:1px solid rgba(27,56,114,0.08);">Custom</span>
+            <h2 class="heading-display" style="font-size:1.5rem;color:var(--ink);margin-bottom:4px;">Build Your Own</h2>
+            <p style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:300;color:var(--navy);margin-bottom:6px;">Starting at $200<span style="font-size:0.8125rem;color:var(--ink-muted);font-family:'Inter',sans-serif;font-weight:400;"> / week</span></p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.6;margin-bottom:6px;">Choose exactly the services you need, for however long you need them.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.6;margin-bottom:20px;opacity:0.7;">Final pricing determined based on services selected.</p>
+            <div style="width:28px;height:1.5px;background:var(--olive);opacity:0.4;margin-bottom:20px;"></div>
+            <div style="display:flex;gap:40px;flex-wrap:wrap;">
+              <div style="flex:1;min-width:220px;">
+                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Services</p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+                  <button type="button" class="custom-svc" data-svc="mentalhealth" onclick="toggleCustomService('mentalhealth')"><span class="csvc-icon">+</span>Mental health support</button>
+                  <button type="button" class="custom-svc" data-svc="meals" onclick="toggleCustomService('meals')"><span class="csvc-icon">+</span>Meal delivery</button>
+                  <button type="button" class="custom-svc" data-svc="doula" onclick="toggleCustomService('doula')"><span class="csvc-icon">+</span>Doula support</button>
+<button type="button" class="custom-svc" data-svc="bodywork" onclick="toggleCustomService('bodywork')"><span class="csvc-icon">+</span>Bodywork (massage, acupuncture, etc.)</button>
+                  <button type="button" class="custom-svc" data-svc="lactation" onclick="toggleCustomService('lactation')"><span class="csvc-icon">+</span>Lactation support</button>
+                  <button type="button" class="custom-svc" data-svc="pelvicfloor" onclick="toggleCustomService('pelvicfloor')"><span class="csvc-icon">+</span>Pelvic floor physical therapy</button>
+                  <button type="button" class="custom-svc" data-svc="nightcare" onclick="toggleCustomService('nightcare')"><span class="csvc-icon">+</span>Night care</button>
+                  <button type="button" class="custom-svc" data-svc="nutrition" onclick="toggleCustomService('nutrition')"><span class="csvc-icon">+</span>Nutritional counseling</button>
+                </div>
+              </div>
+              <div>
+                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Duration <span style="font-weight:400;text-transform:none;letter-spacing:0;opacity:0.65;">optional</span></p>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+                  <button type="button" class="byo-pill" onclick="selectByoDuration(this,'1 Week')">1 Week</button>
+                  <button type="button" class="byo-pill" onclick="selectByoDuration(this,'2 Weeks')">2 Weeks</button>
+                  <button type="button" class="byo-pill" onclick="selectByoDuration(this,'1 Month')">1 Month</button>
+                  <button type="button" class="byo-pill" onclick="selectByoDuration(this,'2 Months')">2 Months</button>
+                  <button type="button" class="byo-pill" onclick="selectByoDuration(this,'3 Months')">3 Months</button>
+                </div>
+                <div id="byo-summary" style="display:none;background:rgba(107,122,80,0.08);border-radius:7px;padding:10px 14px;margin-bottom:16px;">
+                  <p id="byo-summary-text" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--olive);line-height:1.6;"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" id="byo-select-btn" onclick="selectCustomPlan()" class="pkg-select-btn" disabled style="opacity:0.4;cursor:not-allowed;">Select my plan</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════ INTAKE FORM ═══════ -->
+  <section id="form-section" class="page-pad" style="padding:0 56px 100px;background:#FAF8F4;">
+    <div style="max-width:720px;margin:0 auto;">
+
+      <!-- Divider with selected package name -->
+      <div style="display:flex;align-items:center;gap:20px;margin-bottom:52px;padding-top:16px;">
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+        <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.12);border-radius:99px;padding:8px 20px;display:flex;align-items:center;gap:8px;flex-shrink:0;">
+          <div style="width:6px;height:6px;border-radius:50%;background:var(--olive);"></div>
+          <span id="selected-label" style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">Package Selected</span>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      </div>
+
+      <h2 class="heading-display" style="font-size:clamp(1.75rem,3vw,2.25rem);color:var(--ink);margin-bottom:10px;">Tell us about yourself.</h2>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1rem;color:var(--ink-muted);margin-bottom:48px;line-height:1.75;">We'll reach out within 48 hours to schedule your consultation and confirm your plan. No payment required today.</p>
+
+      <div id="form-wrap">
+        <form id="booking-form" action="https://formspree.io/f/mvzwrrod" method="POST" style="display:flex;flex-direction:column;gap:24px;">
+          <input type="hidden" name="_subject" value="New booking request | Cleo">
+          <input type="hidden" name="package" id="package-hidden">
+          <input type="hidden" name="addons" id="addons-hidden">
+
+          <!-- Duration (shown for non-prebirth packages) -->
+          <div id="duration-row" style="display:none;">
+            <label class="form-label">How long would you like support?</label>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;" id="dur-pills">
+              <button type="button" class="dur-pill" onclick="selectDuration(this,'1 Week')">1 Week</button>
+              <button type="button" class="dur-pill" onclick="selectDuration(this,'2 Weeks')">2 Weeks</button>
+              <button type="button" class="dur-pill" onclick="selectDuration(this,'1 Month')">1 Month</button>
+              <button type="button" class="dur-pill" onclick="selectDuration(this,'2 Months')">2 Months</button>
+              <button type="button" class="dur-pill" onclick="selectDuration(this,'3 Months')">3 Months</button>
+            </div>
+            <input type="hidden" name="duration" id="duration-hidden">
+          </div>
+
+          <!-- Name -->
+          <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <label class="form-label" for="first-name">First name <span style="color:var(--olive);">*</span></label>
+              <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Jane" required>
+            </div>
+            <div>
+              <label class="form-label" for="last-name">Last name <span style="color:var(--olive);">*</span></label>
+              <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Smith" required>
+            </div>
+          </div>
+
+          <!-- Email + Phone -->
+          <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div>
+              <label class="form-label" for="email">Email <span style="color:var(--olive);">*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" required>
+            </div>
+            <div>
+              <label class="form-label" for="phone">Phone</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="(310) 000-0000">
+            </div>
+          </div>
+
+          <!-- Stage toggle (hidden for prebirth) -->
+          <div id="stage-row">
+            <label class="form-label">Where are you in your journey? <span style="color:var(--olive);">*</span></label>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <button type="button" class="toggle-btn" id="stage-ttc" onclick="setStage('ttc')">Trying to Conceive</button>
+              <button type="button" class="toggle-btn" id="stage-expecting" onclick="setStage('expecting')">Currently expecting</button>
+              <button type="button" class="toggle-btn" id="stage-delivered" onclick="setStage('delivered')">Recently delivered</button>
+              <button type="button" class="toggle-btn" id="stage-gift" onclick="setStage('gift')">For a friend or loved one</button>
+            </div>
+            <input type="hidden" name="stage" id="stage-hidden">
+          </div>
+
+          <!-- Key date -->
+          <div>
+            <label class="form-label" id="date-label" for="key-date">Due date</label>
+            <input class="form-input" type="date" id="key-date" name="key_date" style="max-width:260px;">
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label class="form-label" for="location">Your location <span style="color:var(--olive);">*</span></label>
+            <div style="position:relative;">
+              <select class="form-input" id="location" name="location" required style="cursor:pointer;padding-right:40px;">
+                <option value="" disabled selected>Select your area</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Orange County">Orange County</option>
+                <option value="Santa Barbara">Santa Barbara</option>
+                <option value="Other">Other (let us know below)</option>
+              </select>
+              <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="var(--ink-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+
+          <!-- Insurance toggle -->
+          <div>
+            <label class="form-label">Would you like help navigating insurance coverage?</label>
+            <div class="toggle-pair">
+              <button type="button" class="toggle-btn" id="ins-yes" onclick="setInsurance('yes')">Yes, please</button>
+              <button type="button" class="toggle-btn" id="ins-no" onclick="setInsurance('no')">No, thanks</button>
+            </div>
+            <input type="hidden" name="insurance_help" id="ins-hidden">
+          </div>
+
+          <!-- Insurance details (shown when yes) -->
+          <div id="insurance-details" style="display:none;background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:24px;display:none;flex-direction:column;gap:16px;">
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);margin-bottom:4px;">Tell us about your insurance plan</p>
+            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label" for="ins-provider">Insurance provider</label>
+                <input class="form-input" type="text" id="ins-provider" name="ins_provider" placeholder="e.g. Blue Cross, Aetna">
+              </div>
+              <div>
+                <label class="form-label" for="ins-plan">Plan name</label>
+                <input class="form-input" type="text" id="ins-plan" name="ins_plan" placeholder="e.g. PPO Gold">
+              </div>
+            </div>
+            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label" for="ins-member">Member ID</label>
+                <input class="form-input" type="text" id="ins-member" name="ins_member" placeholder="Member ID">
+              </div>
+              <div>
+                <label class="form-label" for="ins-group">Group number</label>
+                <input class="form-input" type="text" id="ins-group" name="ins_group" placeholder="Group number">
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="ins-notes">Anything else we should know about your coverage?</label>
+              <textarea class="form-input" id="ins-notes" name="ins_notes" rows="2" placeholder="e.g. specific services you think may be covered…" style="resize:vertical;"></textarea>
+            </div>
+          </div>
+
+          <!-- Notes -->
+          <div>
+            <label class="form-label" for="notes">Anything else we should know? <span style="font-family:'Inter',sans-serif;font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+            <textarea class="form-input" id="notes" name="notes" rows="4" placeholder="Specific needs, concerns, timeline details…" style="resize:vertical;min-height:100px;"></textarea>
+          </div>
+
+          <!-- How did you hear -->
+          <div>
+            <label class="form-label" for="referral">How did you hear about Cleo?</label>
+            <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a friend, Google…">
+          </div>
+
+          <!-- Submit -->
+          <div style="padding-top:8px;">
+            <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
+              Request My Care Plan
+            </button>
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">Your concierge will be in touch within 48 hours to confirm your plan.</p>
+          </div>
+
+          <!-- Error -->
+          <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:14px 18px;">
+            <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:#DC2626;">Something went wrong :please try again or email <a href="mailto:hello@cleocare.co" style="color:#DC2626;text-decoration:underline;">hello@cleocare.co</a></p>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="form-success" style="display:none;text-align:center;padding:72px 32px;">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+          <svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M2 10l6.5 6.5L22 2" stroke="var(--olive)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Request Received</p>
+        <h2 class="heading-display" style="font-size:2rem;color:var(--ink);margin-bottom:16px;">We'll be in touch soon.</h2>
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:400px;margin:0 auto 32px;">Thank you. A member of our team will contact you within 48 hours to schedule your consultation and confirm your plan.</p>
+        <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)'">← Back to Cleo</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer style="background:#070F1E;padding:60px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:12px;">Cleo</span>
+      <p style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.38);line-height:1.7;">Maternal care, reimagined.</p>
+      <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:14px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:8px;">
+      <p style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+      <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Package data ─────────────────────────────────
+  const addonLabels = {
+    mentalhealth: 'Mental health support',
+    lactation: 'Lactation support',
+    meals: 'Meal delivery',
+    nightcare: 'Night care',
+    pelvicfloor: 'Pelvic floor physical therapy',
+    doula: 'Doula support',
+    postdoula: 'Postpartum doula support',
+    bodywork: 'Bodywork (massage, acupuncture, etc.)',
+    insurance: 'Insurance navigation',
+    nutrition: 'Nutritional counseling',
+  };
+
+  const packageData = {
+    ttc: {
+      essential: {
+        badgeLabel: 'TTC', badgeStyle: 'background:var(--olive-pale);color:var(--olive);',
+        price: 'From $200', priceNote: '/ week',
+        description: 'Foundational support for your fertility journey: bodywork or mental health support to start.',
+        choices: [{ options: ['Bodywork','Mental health support'] }],
+        includes: [],
+        addons: ['meals','pelvicfloor','nutrition'], mostPopular: false
+      },
+      signature: {
+        badgeLabel: 'TTC', badgeStyle: 'background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);',
+        price: 'From $380', priceNote: '/ week',
+        description: 'Choose two services to anchor your TTC support plan.',
+        choices: [{ count: 2, options: ['Mental health support','Bodywork','Meal delivery'] }],
+        includes: [],
+        addons: ['nutrition'], mostPopular: true
+      },
+      premium: {
+        badgeLabel: 'TTC', badgeStyle: 'background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);',
+        price: 'From $550', priceNote: '/ week',
+        description: 'Comprehensive TTC support. Choose three services to build your plan.',
+        choices: [{ count: 3, options: ['Meal delivery','Mental health support','Pelvic floor physical therapy','Bodywork'] }],
+        includes: [],
+        addons: ['nutrition'], mostPopular: false
+      }
+    },
+    prenatal: {
+      essential: {
+        badgeLabel: 'Prenatal', badgeStyle: 'background:var(--olive-pale);color:var(--olive);',
+        price: 'From $200', priceNote: '/ week',
+        description: 'Foundational pregnancy support: your choice of doula care, meal delivery, or bodywork.',
+        choices: [{ options: ['Mental health support','Doula support','Bodywork'] }],
+        includes: [],
+        addons: ['meals','lactation','pelvicfloor'], mostPopular: false
+      },
+      signature: {
+        badgeLabel: 'Prenatal', badgeStyle: 'background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);',
+        price: 'From $380', priceNote: '/ week',
+        description: 'Choose two core services for your pregnancy support plan.',
+        choices: [{ count: 2, options: ['Mental health support','Meal delivery','Doula support','Bodywork'] }],
+        includes: [],
+        addons: ['lactation','pelvicfloor'], mostPopular: true
+      },
+      premium: {
+        badgeLabel: 'Prenatal', badgeStyle: 'background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);',
+        price: 'From $550', priceNote: '/ week',
+        description: 'Choose three core services for comprehensive prenatal coverage.',
+        choices: [{ count: 3, options: ['Mental health support','Meal delivery','Doula support','Bodywork'] }],
+        includes: [],
+        addons: ['lactation','pelvicfloor'], mostPopular: false
+      }
+    },
+    postpartum: {
+      essential: {
+        badgeLabel: 'Postpartum', badgeStyle: 'background:var(--navy-wash);color:var(--navy);',
+        price: 'From $200', priceNote: '/ week',
+        description: 'Core postpartum recovery at home: choose one service to anchor your plan.',
+        choices: [{ options: ['Mental health support','Postpartum doula support','Bodywork'] }],
+        includes: [],
+        addons: ['meals','lactation','pelvicfloor','nightcare'], mostPopular: false
+      },
+      signature: {
+        badgeLabel: 'Postpartum', badgeStyle: 'background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);',
+        price: 'From $380', priceNote: '/ week',
+        description: 'Choose two core services for your postpartum recovery plan.',
+        choices: [{ count: 2, options: ['Mental health support','Meal delivery','Postpartum doula support','Bodywork'] }],
+        includes: [],
+        addons: ['nightcare','lactation','pelvicfloor'], mostPopular: true
+      },
+      premium: {
+        badgeLabel: 'Postpartum', badgeStyle: 'background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);',
+        price: 'From $550', priceNote: '/ week',
+        description: 'Choose three core services for comprehensive postpartum support.',
+        choices: [{ count: 3, options: ['Mental health support','Meal delivery','Postpartum doula support','Bodywork','Night care'] }],
+        includes: [],
+        addons: ['lactation','pelvicfloor'], mostPopular: false
+      }
+    },
+    complete: {
+      essential: {
+        badgeLabel: 'Pregnancy + Postpartum', badgeStyle: 'background:var(--warm-mid);color:var(--ink-mid);border:1px solid rgba(27,56,114,0.08);',
+        price: 'From $200', priceNote: '/ wk per stage',
+        description: 'Choose one core service at each stage with one concierge throughout.',
+        choices: [
+          { label: 'Prenatal', options: ['Mental health support','Doula support','Bodywork'] },
+          { label: 'Postpartum', options: ['Mental health support','Postpartum doula support','Bodywork'] }
+        ],
+        includes: [],
+        addons: ['meals','lactation','pelvicfloor','nightcare'], mostPopular: false
+      },
+      signature: {
+        badgeLabel: 'Pregnancy + Postpartum', badgeStyle: 'background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85);',
+        price: 'From $380', priceNote: '/ wk per stage',
+        description: 'Choose two core services at each stage across your full journey.',
+        choices: [
+          { label: 'Prenatal', count: 2, options: ['Mental health support','Meal delivery','Doula support','Bodywork'] },
+          { label: 'Postpartum', count: 2, options: ['Mental health support','Meal delivery','Postpartum doula support','Bodywork'] }
+        ],
+        includes: [],
+        addons: ['nightcare','lactation','pelvicfloor'], mostPopular: true
+      },
+      premium: {
+        badgeLabel: 'Pregnancy + Postpartum', badgeStyle: 'background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.75);',
+        price: 'From $550', priceNote: '/ wk per stage',
+        description: 'Choose three core services at each stage for full-journey comprehensive care.',
+        choices: [
+          { label: 'Prenatal', count: 3, options: ['Mental health support','Meal delivery','Doula support','Bodywork'] },
+          { label: 'Postpartum', count: 3, options: ['Mental health support','Meal delivery','Postpartum doula support','Bodywork','Night care'] }
+        ],
+        includes: [],
+        addons: ['lactation','pelvicfloor'], mostPopular: false
+      }
+    }
+  };
+
+  const tierColors = {
+    essential: { text:'var(--ink-mid)', desc:'var(--ink-muted)', addonLabel:'var(--ink-muted)', divider:'var(--olive)', dividerOpacity:'0.5', price:'var(--navy)', priceNote:'var(--ink-muted)', title:'var(--ink)' },
+    signature:  { text:'rgba(255,255,255,0.8)', desc:'rgba(255,255,255,0.65)', addonLabel:'rgba(255,255,255,0.45)', divider:'rgba(255,255,255,0.3)', dividerOpacity:'1', price:'rgba(255,255,255,0.9)', priceNote:'rgba(255,255,255,0.5)', title:'#fff' },
+    premium:    { text:'rgba(255,255,255,0.75)', desc:'rgba(255,255,255,0.6)', addonLabel:'rgba(255,255,255,0.4)', divider:'rgba(255,255,255,0.3)', dividerOpacity:'1', price:'rgba(255,255,255,0.9)', priceNote:'rgba(255,255,255,0.5)', title:'#fff' }
+  };
+
+  const tierNames = { essential: 'Essential', signature: 'Signature', premium: 'Premium' };
+  const stageNames = { ttc: 'Trying to Conceive', prenatal: 'Prenatal', postpartum: 'Postpartum', complete: 'Pregnancy + Postpartum' };
+
+  let globalStage = 'prenatal';
+  const choiceState = {};
+  let selectedPkg = null;
+  const addonState = {};
+
+  function renderCardContent(tier, data, stage) {
+    const c = tierColors[tier];
+    const isLight = (tier === 'essential');
+
+
+    const includesHtml = (data.includes || []).map(item =>
+      `<div class="includes-item"><span class="includes-dot"></span><span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:${c.text};line-height:1.5;">${item}</span></div>`
+    ).join('');
+
+    const choicesHtml = (data.choices || []).map((choice, idx) => {
+      const key = `${tier}-${stage}-choice${idx}`;
+      const selected = choiceState[key] instanceof Set ? choiceState[key] : new Set(choiceState[key] ? [choiceState[key]] : []);
+      const count = choice.count || 1;
+      const countLabel = count === 1 ? 'Choose one' : `Choose ${count}`;
+      const groupLabel = choice.label ? `${choice.label}` : countLabel;
+      const labelHtml = `<p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:${c.addonLabel};margin-bottom:8px;">${groupLabel}${choice.label ? ` <span style="font-weight:400;text-transform:none;opacity:0.6;">(${countLabel})</span>` : ''}</p>`;
+      const btns = choice.options.map(opt => {
+        const isSelected = selected.has(opt);
+        const safeOpt = opt.replace(/'/g, "\\'");
+        return `<button type="button" class="choice-chip${isSelected ? ' selected' : ''}" onclick="selectChoice(event,'${tier}',${idx},'${safeOpt}',${count})">${isSelected ? '✓ ' : ''}${opt}</button>`;
+      }).join('');
+      return `${labelHtml}<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;">${btns}</div>`;
+    }).join('');
+
+    const addonsHtml = data.addons.map(addon => {
+      const key = `${tier}-${stage}-${addon}`;
+      const active = !!addonState[key];
+      return `<button class="addon-chip${active?' selected':''}" onclick="toggleAddon(event,'${tier}','${stage}','${addon}')">${active?'✓ ':'+ '}${addonLabels[addon]}</button>`;
+    }).join('');
+
+    const hasChoices = data.choices && data.choices.length > 0;
+
+    return `<div>
+      <span class="pkg-badge" style="${data.badgeStyle}">${data.badgeLabel}</span>
+      <h2 class="heading-display" style="font-size:1.5rem;color:${c.title};margin-bottom:8px;">${tierNames[tier]}</h2>
+      <p style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:300;color:${c.price};margin-bottom:4px;">${data.price}<span style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:400;color:${c.priceNote};"> ${data.priceNote}</span></p>
+      <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:${c.desc};line-height:1.6;margin-bottom:24px;">${data.description}</p>
+      <div style="width:28px;height:1.5px;background:${c.divider};opacity:${c.dividerOpacity};margin-bottom:20px;"></div>
+      ${hasChoices ? choicesHtml : `<div style="margin-bottom:20px;">${includesHtml}</div>`}
+      <div style="margin-bottom:28px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:${c.addonLabel};margin-bottom:10px;">Add-ons</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">${addonsHtml}</div>
+      </div>
+    </div>`;
+  }
+
+  function renderCard(tier) {
+    const data = packageData[globalStage][tier];
+    const inner = document.getElementById('pkg-' + tier + '-inner');
+    inner.innerHTML = renderCardContent(tier, data, globalStage);
+    const popEl = document.getElementById('pop-' + tier);
+    if (popEl) popEl.style.display = data.mostPopular ? 'block' : 'none';
+  }
+
+  function setGlobalStage(stage) {
+    globalStage = stage;
+    document.querySelectorAll('.journey-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.stage === stage);
+    });
+    ['essential','signature','premium'].forEach(renderCard);
+    const showKit = globalStage === 'postpartum' || globalStage === 'complete';
+    document.getElementById('welcome-kit-callout').style.display = showKit ? 'flex' : 'none';
+    // reset any selected package state when journey changes
+    if (selectedPkg) {
+      ['essential','signature','premium'].forEach(t => {
+        const el = document.getElementById('pkg-' + t);
+        if (el) el.classList.remove('selected');
+      });
+      const byoEl = document.getElementById('pkg-byo');
+      if (byoEl) byoEl.classList.remove('selected');
+      selectedPkg = null;
+    }
+  }
+
+  // ── Choice selection ─────────────────────────────
+  function selectChoice(e, tier, idx, option, count) {
+    e.stopPropagation();
+    const key = `${tier}-${globalStage}-choice${idx}`;
+    const max = count || 1;
+    if (!choiceState[key]) choiceState[key] = new Set();
+    const s = choiceState[key];
+    if (s.has(option)) {
+      s.delete(option);
+    } else if (max === 1) {
+      s.clear();
+      s.add(option);
+    } else if (s.size < max) {
+      s.add(option);
+    }
+    renderCard(tier);
+  }
+
+  // ── Add-on toggle ────────────────────────────────
+  function toggleAddon(e, tier, stage, addon) {
+    e.stopPropagation();
+    const key = `${tier}-${stage}-${addon}`;
+    addonState[key] = !addonState[key];
+    e.currentTarget.classList.toggle('selected', addonState[key]);
+    e.currentTarget.textContent = (addonState[key] ? '✓ ' : '+ ') + addonLabels[addon];
+    updateAddonField();
+  }
+
+  function updateAddonField() {
+    if (!selectedPkg) return;
+    const stage = globalStage;
+    const prefix = `${selectedPkg}-${stage}-`;
+    const selected = Object.keys(addonState)
+      .filter(k => addonState[k] && k.startsWith(prefix))
+      .map(k => addonLabels[k.slice(prefix.length)])
+      .filter(Boolean);
+    document.getElementById('addons-hidden').value = selected.join(', ');
+  }
+
+  function selectPackage(tier) {
+    selectedPkg = tier;
+    const stage = globalStage;
+    const label = `${tierNames[tier]}, ${stageNames[stage]}`;
+
+    ['essential','signature','premium'].forEach(t => {
+      const el = document.getElementById('pkg-' + t);
+      if (el) el.classList.toggle('selected', t === tier);
+    });
+    const byoEl = document.getElementById('pkg-byo');
+    if (byoEl) byoEl.classList.remove('selected');
+
+    document.getElementById('package-hidden').value = label;
+    document.getElementById('selected-label').textContent = label;
+    document.getElementById('duration-row').style.display = 'block';
+
+    ['stage-ttc','stage-expecting','stage-delivered','stage-gift'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('active'); });
+    if (stage === 'postpartum') {
+      document.getElementById('stage-delivered').classList.add('active');
+      document.getElementById('stage-hidden').value = 'delivered';
+    } else if (stage === 'ttc') {
+      document.getElementById('stage-ttc').classList.add('active');
+      document.getElementById('stage-hidden').value = 'ttc';
+    } else {
+      document.getElementById('stage-expecting').classList.add('active');
+      document.getElementById('stage-hidden').value = 'expecting';
+    }
+    document.getElementById('stage-row').style.display = 'block';
+
+    document.getElementById('date-label').textContent =
+      stage === 'ttc' ? 'Target start date (optional)' :
+      stage === 'prenatal' ? 'Due date' :
+      stage === 'postpartum' ? "Baby's birth date" :
+      "Due date or baby's birth date";
+
+    updateAddonField();
+    const formSection = document.getElementById('form-section');
+    formSection.classList.add('visible');
+    setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+
+  function selectDuration(el, val) {
+    document.querySelectorAll('#dur-pills .dur-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('duration-hidden').value = val;
+  }
+
+  // ── Build Your Own ───────────────────────────────
+  const customSelected = new Set();
+  let byoDuration = '';
+
+  const customLabels = {
+    mentalhealth: 'Mental health support',
+    meals: 'Meal delivery',
+    doula: 'Doula support',
+    postdoula: 'Postpartum doula support',
+    bodywork: 'Bodywork (massage, acupuncture, etc.)',
+    lactation: 'Lactation support',
+    pelvicfloor: 'Pelvic floor physical therapy',
+    nightcare: 'Night care',
+    nutrition: 'Nutritional counseling',
+  };
+
+  function toggleCustomService(svc) {
+    if (customSelected.has(svc)) {
+      customSelected.delete(svc);
+    } else {
+      customSelected.add(svc);
+    }
+    const btn = document.querySelector(`[data-svc="${svc}"]`);
+    const active = customSelected.has(svc);
+    btn.classList.toggle('selected', active);
+    btn.querySelector('.csvc-icon').textContent = active ? '✓' : '+';
+    updateByoState();
+  }
+
+  function selectByoDuration(el, val) {
+    document.querySelectorAll('.byo-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+    byoDuration = val;
+    updateByoState();
+  }
+
+  function updateByoState() {
+    const btn = document.getElementById('byo-select-btn');
+    const hasServices = customSelected.size > 0;
+    btn.disabled = !hasServices;
+    btn.style.opacity = hasServices ? '1' : '0.4';
+    btn.style.cursor = hasServices ? 'pointer' : 'not-allowed';
+
+    const summary = document.getElementById('byo-summary');
+    if (hasServices) {
+      const list = [...customSelected].map(s => customLabels[s]).join(', ');
+      document.getElementById('byo-summary-text').textContent = list + (byoDuration ? ' · ' + byoDuration : '');
+      summary.style.display = 'block';
+    } else {
+      summary.style.display = 'none';
+    }
+  }
+
+  function selectCustomPlan() {
+    if (customSelected.size === 0) return;
+
+    // Deselect package cards, select BYO card
+    ['essential','signature','premium'].forEach(t => {
+      const el = document.getElementById('pkg-' + t);
+      if (el) el.classList.remove('selected');
+    });
+    const byoEl = document.getElementById('pkg-byo');
+    if (byoEl) byoEl.classList.add('selected');
+    selectedPkg = null;
+
+    const services = [...customSelected].map(s => customLabels[s]);
+    const label = 'Custom: ' + services.join(', ');
+
+    document.getElementById('package-hidden').value = label;
+    document.getElementById('selected-label').textContent = 'Custom Plan';
+    document.getElementById('addons-hidden').value = '';
+    document.getElementById('duration-row').style.display = 'block';
+
+    // Sync duration to form pills
+    if (byoDuration) {
+      document.getElementById('duration-hidden').value = byoDuration;
+      document.querySelectorAll('#dur-pills .dur-pill').forEach(p => {
+        p.classList.toggle('selected', p.textContent.trim() === byoDuration);
+      });
+    }
+
+    // Reset stage row
+    ['stage-ttc','stage-expecting','stage-delivered','stage-gift'].forEach(id => { const el = document.getElementById(id); if(el) el.classList.remove('active'); });
+    document.getElementById('stage-hidden').value = '';
+    document.getElementById('stage-row').style.display = 'block';
+    document.getElementById('date-label').textContent = "Due date or baby's birth date";
+
+    const formSection = document.getElementById('form-section');
+    formSection.classList.add('visible');
+    setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+
+  function setStage(stage) {
+    ['stage-ttc','stage-expecting','stage-delivered','stage-gift'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.classList.remove('active');
+    });
+    document.getElementById('stage-' + stage).classList.add('active');
+    document.getElementById('stage-hidden').value = stage;
+    const pkgStage = globalStage;
+    document.getElementById('date-label').textContent =
+      stage === 'ttc' ? 'Target start date (optional)' :
+      stage === 'delivered' ? "Baby's birth date" :
+      stage === 'gift' ? "Due date or baby's birth date" :
+      pkgStage === 'prenatal' ? 'Due date' : "Due date or baby's birth date";
+  }
+
+  function setInsurance(val) {
+    document.getElementById('ins-yes').classList.toggle('active', val === 'yes');
+    document.getElementById('ins-no').classList.toggle('active', val === 'no');
+    document.getElementById('ins-hidden').value = val;
+    document.getElementById('insurance-details').style.display = val === 'yes' ? 'flex' : 'none';
+  }
+
+  // Form submission
+  document.getElementById('booking-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+    document.getElementById('form-error').style.display = 'none';
+
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(this),
+      });
+      if (res.ok) {
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('form-section').offsetTop - 80, behavior: 'smooth' });
+      } else {
+        throw new Error();
+      }
+    } catch {
+      document.getElementById('form-error').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Request My Care Plan';
+    }
+  });
+
+  // Initialize
+  function initCards() {
+    ['essential','signature','premium'].forEach(renderCard);
+  }
+  // sync initial journey button active state
+  document.querySelectorAll('.journey-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.stage === globalStage);
+  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCards);
+  } else {
+    initCards();
+  }
+</script>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You — Cleo</title>
+  <title>Thank You | Cleo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -19,23 +19,68 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
     :root {
-      --navy: #1B3872; --ink: #0D1F3C; --ink-muted: #7888A8;
+      --navy: #1B3872; --navy-light: #2A4F9E;
+      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
       --olive: #6B7A50; --olive-pale: #EEF1E6;
     }
     .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
     .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400;
+      color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
+      font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
+      padding: 10px 24px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); }
+  
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
+    }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="index.html" style="text-decoration:none;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
     </a>
+    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
+      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
 
 <main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px;">
   <div style="text-align:center;max-width:480px;">
@@ -43,10 +88,20 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <h1 class="heading-display" style="font-size:clamp(2rem,4vw,2.75rem);color:var(--ink);margin-bottom:20px;">Thank you for your interest in joining our network.</h1>
-    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.8;margin-bottom:40px;">We carefully review each submission and aim to be in touch within 1–2 business days.</p>
+    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.8;margin-bottom:40px;">We carefully review each submission and will reach out within 48 hours.</p>
     <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;transition:border-color 0.15s ease;" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)'">Back to Home</a>
   </div>
 </main>
 
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
 </body>
 </html>

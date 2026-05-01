@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleo | Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --olive: #6B7A50;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .body-text {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 15px 35px;
+      border-radius: 4px;
+      border: 1.5px solid rgba(27,56,114,0.3);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    }
+    .btn-ghost:hover { background: rgba(27,56,114,0.06); border-color: var(--navy); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- Full-page layout -->
+<div style="min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;background:linear-gradient(160deg,#F7F2EB 0%,#EEE5D8 50%,#E8DDD0 100%);">
+
+  <!-- Stork watermark -->
+  <div style="position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:60%;height:120%;background-image:url('brand_assets/stork logo.JPG');background-size:contain;background-repeat:no-repeat;background-position:center right;opacity:0.07;pointer-events:none;"></div>
+
+  <!-- Radial gradient overlay -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 30% 50%, rgba(27,56,114,0.03) 0%, transparent 70%);pointer-events:none;"></div>
+
+  <!-- Logo top left -->
+  <header style="position:relative;z-index:10;padding:40px 56px;">
+    <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+  </header>
+
+  <!-- Centered content -->
+  <main style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px 56px;position:relative;z-index:1;">
+    <div style="max-width:700px;width:100%;">
+
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:32px;">Coming Soon</p>
+
+      <h1 class="heading-display" style="font-size:clamp(2.75rem,6vw,5rem);color:var(--ink);margin-bottom:40px;line-height:1.05;">
+        We're working on launching very soon.
+      </h1>
+
+      <p class="body-text" style="font-size:1.125rem;color:var(--ink-mid);line-height:1.8;margin-bottom:56px;max-width:520px;">
+        If you're curious about a new standard of postpartum care, we'd love to hear from you.
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
+        <a href="https://form.typeform.com/to/XWuvOag0" target="_blank" rel="noopener" class="btn-primary">
+          Join the Waitlist
+        </a>
+        <a href="mailto:em.cleo@gmail.com" class="btn-ghost">
+          Get in Touch
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer style="position:relative;z-index:10;padding:32px 56px;display:flex;align-items:center;justify-content:space-between;">
+    <p class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">© 2025 Cleo. All rights reserved.</p>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="https://www.instagram.com/cleo" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-muted)'">@cleo</a>
+      <a href="mailto:em.cleo@gmail.com" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);text-decoration:none;border-bottom:1px solid rgba(120,136,168,0.4);transition:color 0.15s ease;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-muted)'">em.cleo@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

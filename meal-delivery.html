@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,34 +10,68 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>You're on the List | Cleo</title>
+  <title>Meal Delivery | Cleo</title>
+  <meta name="description" content="Chef-prepared meal delivery for pregnancy and postpartum. Coming soon from Cleo.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
-    :root {
-      --navy: #1B3872; --navy-light: #2A4F9E;
-      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
-      --olive: #6B7A50; --olive-pale: #EEF1E6; --warm: #F5F0E8;
+    body {
+      font-family: 'Spectral', serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
     }
-    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
-    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    :root {
+      --navy: #1B3872;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --olive: #6B7A50;
+      --olive-pale: #EEF1E6;
+    }
     .nav-link {
-      font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400;
-      color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
       transition: color 0.2s ease;
     }
     .nav-link:hover { color: var(--navy); }
     .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
-      font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
-      padding: 10px 24px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
-      transition: background 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
     }
-    .btn-primary:hover { background: var(--navy-light); }
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32);
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
   
     .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
     .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
@@ -56,7 +89,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
   <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
     <a href="index.html" style="text-decoration:none;flex-shrink:0;">
@@ -82,28 +114,26 @@
   <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
 </div>
 
-<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px;">
-  <div style="text-align:center;max-width:520px;">
-
-    <!-- Heading -->
-    <h1 class="heading-display" style="font-size:clamp(2.25rem,4vw,3rem);color:var(--ink);margin-bottom:24px;">We're so glad you're here.</h1>
-
-    <!-- Body -->
-    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.85;margin-bottom:16px;">
-      You've officially joined the Cleo waitlist. We're building something really special and can't wait to share it with you.
-    </p>
-    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.85;margin-bottom:44px;">
-      Keep an eye on your inbox. You'll be among the first to know when we launch.
-    </p>
-
-    <!-- Divider -->
-    <div style="width:40px;height:1px;background:rgba(107,122,80,0.35);margin:0 auto 44px;"></div>
-
-    <!-- Back link -->
-    <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;transition:border-color 0.15s ease;" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)'">Back to Home</a>
-
-  </div>
+<main>
+  <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px 80px;background:linear-gradient(160deg,#F7F2EB 0%,#EEE5D8 100%);">
+    <div style="max-width:560px;text-align:center;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:24px;">Meal Delivery</p>
+      <h1 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2.5rem,5vw,4rem);color:var(--navy);line-height:1.05;letter-spacing:-0.02em;margin-bottom:28px;">More details<br><em style="font-style:italic;">coming soon.</em></h1>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:40px;">Chef-prepared, nutrient-dense meals designed for pregnancy and postpartum recovery. Nourishing for mama and the whole family, delivered to your door.</p>
+      <div style="width:40px;height:1.5px;background:var(--olive);opacity:0.5;margin:0 auto 40px;"></div>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:36px;">Join our waitlist to be the first to know when we launch<br>and stay up to date on everything Cleo.</p>
+      <a href="waitlist.html" class="btn-primary">Join the Waitlist</a>
+    </div>
+  </section>
 </main>
+
+<footer style="background:#070F1E;padding:44px 56px;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
+    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+  </div>
+</footer>
 
 
 <script>

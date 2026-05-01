@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleo's Favorites | Cleo</title>
+  <meta name="description" content="Our favorite brands from TTC to postpartum. Curated with love by the Cleo team.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --olive: #6B7A50;
+      --olive-pale: #EEF1E6;
+    }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Spectral', serif;
+      font-size: 0.9375rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1.5px solid var(--navy);
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), background 0.15s ease, color 0.15s ease;
+    }
+    .btn-outline:hover { background: var(--navy); color: #fff; transform: translateY(-2px); }
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+    .stage-card {
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.1);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stage-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--olive) 0%, rgba(107,122,80,0.3) 100%);
+    }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
+    }
+    @media (max-width: 768px) {
+      .stage-grid { grid-template-columns: 1fr !important; }
+      .cta-row { flex-direction: column !important; align-items: stretch !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
+      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Cleo's Favorites</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
+
+<!-- HERO -->
+<section style="min-height:60vh;display:flex;align-items:center;justify-content:center;padding:140px 56px 80px;background:linear-gradient(160deg,#F7F2EB 0%,#EDE5D9 100%);text-align:center;">
+  <div style="max-width:640px;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Cleo's Favorites</p>
+    <h1 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2.75rem,5vw,4.25rem);color:var(--navy);line-height:1.05;letter-spacing:-0.02em;margin-bottom:24px;">The brands we love,<br><em style="font-style:italic;">curated for your journey.</em></h1>
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:32px;">From trying to conceive to postpartum, we're building a trusted edit of products and brands that actually make a difference. Coming soon.</p>
+    <div style="display:inline-flex;align-items:center;gap:10px;background:var(--olive-pale);border:1px solid rgba(107,122,80,0.2);border-radius:999px;padding:8px 20px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--olive);display:inline-block;"></span>
+      <span style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);">Coming Soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- TELL US YOUR FAVORITES FORM -->
+<section style="padding:100px 56px;background:var(--cream);">
+  <div style="max-width:600px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:52px;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Community</p>
+      <h2 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2rem,3.5vw,2.75rem);color:var(--ink);letter-spacing:-0.02em;margin-bottom:16px;">We'd love to hear from you.</h2>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;">From skincare to supplements, tell us what you couldn't live without.</p>
+    </div>
+
+    <form id="favorites-form" action="https://formspree.io/f/mvzwrrod" method="POST">
+      <input type="hidden" name="_subject" value="Cleo Favorites Submission">
+
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="fav-brand">Brand or product name</label>
+        <input class="form-input" type="text" id="fav-brand" name="brand_name" placeholder="e.g. Ritual, Frida Mom, Hatch...">
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="fav-stage">Stage</label>
+        <select class="form-input" id="fav-stage" name="stage" style="cursor:pointer;">
+          <option value="" disabled selected>Select a stage</option>
+          <option value="Trying to Conceive">Trying to Conceive</option>
+          <option value="Pregnancy">Pregnancy</option>
+          <option value="Postpartum">Postpartum</option>
+          <option value="All Stages">All Stages</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:36px;">
+        <label class="form-label" for="fav-why">Why do you love it? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+        <textarea class="form-input" id="fav-why" name="why_love_it" placeholder="Tell us what makes it a must-have..." rows="4" style="resize:vertical;min-height:110px;"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width:100%;">Share Your Favorite</button>
+    </form>
+
+    <div id="fav-confirmation" style="display:none;text-align:center;padding:64px 0;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-family:'Spectral',serif;font-weight:300;font-size:1.75rem;color:var(--ink);margin-bottom:12px;">Thank you!</h3>
+      <p style="font-family:'Inter',sans-serif;font-size:1rem;color:var(--ink-muted);max-width:360px;margin:0 auto;line-height:1.75;">We love hearing what works for real mamas. We'll review your submission as we build out Cleo's Favorites.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND CTA -->
+<section style="padding:100px 56px;background:linear-gradient(160deg,#F7F2EB 0%,#EDE5D9 100%);">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">For Brands</p>
+    <h2 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2rem,3.5vw,2.75rem);color:var(--ink);letter-spacing:-0.02em;margin-bottom:20px;">Are you a brand<br>we should know about?</h2>
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;margin-bottom:44px;">We're always looking for brands that align with our values of<br>quality, safety, and real support for women navigating this chapter.</p>
+    <a href="mailto:hello@cleocare.co?subject=Brand Partnership Inquiry" class="btn-primary" style="width:auto;">Get in Touch</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#070F1E;padding:60px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:36px;">
+    <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
+    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+    <a href="mailto:hello@cleocare.co" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('favorites-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('fav-confirmation').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again or email us directly.');
+      }
+    } catch {
+      alert('Something went wrong. Please try again or email us directly.');
+    }
+  });
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>

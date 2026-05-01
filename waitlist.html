@@ -11,7 +11,7 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join the Waitlist — Cleo</title>
+  <title>Join the Waitlist | Cleo</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -150,10 +150,23 @@
 
     @media (max-width: 768px) {
       header nav { padding: 0 20px !important; }
-      #waitlist-nav-center { display: none !important; }
+      #nav-center { display: none !important; }
       header nav div { gap: 16px !important; }
       header nav div .btn-primary { padding: 8px 16px !important; font-size: 0.75rem !important; }
       main { padding: 120px 20px 60px !important; }
+    }
+  
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
     }
   </style>
 </head>
@@ -163,14 +176,27 @@
 <header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
   <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
     <a href="index.html" style="text-decoration:none;flex-shrink:0;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:400;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
     </a>
-    <a id="waitlist-nav-center" href="index.html" class="nav-link" style="color:var(--navy);position:absolute;left:50%;transform:translateX(-50%);">Home</a>
-    <div style="display:flex;align-items:center;gap:32px;flex-shrink:0;">
+    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
+      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
       <a href="faq.html" class="nav-link">The Details</a>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 </header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
 
 <!-- MAIN -->
 <main style="min-height:100vh;padding:140px 56px 100px;">
@@ -276,20 +302,20 @@
             <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Bodywork</span>
           </label>
 
-          <label class="service-card" id="svc-aroma" onclick="toggleService(this)">
-            <input type="checkbox" name="services" value="Aromatherapy">
-            <div class="check-box">
-              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Aromatherapy</span>
-          </label>
-
           <label class="service-card" id="svc-acupuncture" onclick="toggleService(this)">
             <input type="checkbox" name="services" value="Acupuncture">
             <div class="check-box">
               <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Acupuncture</span>
+          </label>
+
+          <label class="service-card" id="svc-pelvicfloor" onclick="toggleService(this)">
+            <input type="checkbox" name="services" value="Pelvic Floor PT">
+            <div class="check-box">
+              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Pelvic Floor Physical Therapy</span>
           </label>
 
           <label class="service-card" id="svc-birth" onclick="toggleService(this)">
@@ -308,20 +334,12 @@
             <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Childcare for Older Siblings</span>
           </label>
 
-          <label class="service-card" id="svc-cleaning" onclick="toggleService(this)">
-            <input type="checkbox" name="services" value="House Cleaning">
-            <div class="check-box">
-              <svg class="check-icon" width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">House Cleaning</span>
-          </label>
-
         </div>
 
         <!-- Other field -->
         <div style="margin-top:12px;">
           <label class="form-label" for="other-service" style="font-weight:400;color:var(--ink-muted);font-size:0.8125rem;">Other, anything else you'd like to see?</label>
-          <input class="form-input" type="text" id="other-service" name="other_service" placeholder="e.g. Pelvic floor PT, sleep coaching...">
+          <input class="form-input" type="text" id="other-service" name="other_service" placeholder="">
         </div>
 
       </div>
@@ -363,7 +381,7 @@
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h3 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:12px;">You're on the list.</h3>
-      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:380px;margin:0 auto 32px;line-height:1.75;">Thank you for your interest in Cleo. We'll be in touch with early access details soon.</p>
+      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:380px;margin:0 auto 32px;line-height:1.75;">Thank you for your interest in Cleo. We'll reach out within 48 hours with early access details.</p>
       <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;">Back to Home</a>
     </div>
 
@@ -375,7 +393,8 @@
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:36px;">
     <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
     <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
-    <a href="mailto:em.cleo@gmail.com" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+    <a href="mailto:hello@cleocare.co" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
+    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
   </div>
 </footer>
 
@@ -447,5 +466,15 @@
   });
 </script>
 
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
 </body>
 </html>
