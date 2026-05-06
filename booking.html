@@ -508,7 +508,7 @@
         </div>
         <div style="flex:1;min-width:200px;">
           <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--olive);margin-bottom:3px;">Caution: Plans may cost less than they appear.</p>
-          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--olive);opacity:0.85;line-height:1.6;">Mental health support, pelvic floor physical therapy and lactation consultations are covered under many insurance plans. Once booked, we help check your eligibility where applicable and navigate all insurance related headache for you.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--olive);opacity:0.85;line-height:1.6;">Mental health support, pelvic floor physical therapy and lactation consultations may be covered under your insurance plan*. Once booked, we help check your eligibility where applicable and navigate insurance related headache for you.</p>
         </div>
       </div>
 
@@ -749,6 +749,10 @@
               <label class="form-label" for="ins-notes">Anything else we should know about your coverage?</label>
               <textarea class="form-input" id="ins-notes" name="ins_notes" rows="2" placeholder="e.g. specific services you think may be covered…" style="resize:vertical;"></textarea>
             </div>
+            <div>
+              <label class="form-label" for="ins-dob">Date of birth</label>
+              <input class="form-input" type="date" id="ins-dob" name="ins_dob" style="max-width:280px;">
+            </div>
           </div>
 
           <!-- Notes -->
@@ -761,6 +765,17 @@
           <div>
             <label class="form-label" for="referral">How did you hear about Cleo?</label>
             <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a friend, Google…">
+          </div>
+
+          <!-- Insurance disclaimer (shown when yes) -->
+          <div id="ins-disclaimer" style="display:none;background:var(--olive-pale);border:1.5px solid var(--olive);border-radius:8px;padding:20px 24px;" id="ins-disclaimer">
+            <div style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;" onclick="toggleDisclaimer()">
+              <div id="disclaimer-box" style="flex-shrink:0;width:20px;height:20px;border-radius:4px;border:1.5px solid var(--olive);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:background 0.15s,border-color 0.15s;">
+                <svg id="disclaimer-check" width="12" height="10" viewBox="0 0 12 10" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 5l3.5 3.5L11 1" stroke="var(--olive)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin:0;">I understand that Cleo makes no representation that any provider or service will be covered by my insurance plan. I am responsible for all charges for services rendered, regardless of whether reimbursement is received from my insurer.</p>
+            </div>
+            <input type="hidden" id="disclaimer-hidden" name="insurance_disclaimer" value="">
           </div>
 
           <!-- Submit -->
@@ -1221,16 +1236,38 @@
       pkgStage === 'prenatal' ? 'Due date' : "Due date or baby's birth date";
   }
 
+  let disclaimerChecked = false;
+
   function setInsurance(val) {
     document.getElementById('ins-yes').classList.toggle('active', val === 'yes');
     document.getElementById('ins-no').classList.toggle('active', val === 'no');
     document.getElementById('ins-hidden').value = val;
     document.getElementById('insurance-details').style.display = val === 'yes' ? 'flex' : 'none';
+    document.getElementById('ins-disclaimer').style.display = val === 'yes' ? 'block' : 'none';
+  }
+
+  function toggleDisclaimer() {
+    disclaimerChecked = !disclaimerChecked;
+    const box = document.getElementById('disclaimer-box');
+    const check = document.getElementById('disclaimer-check');
+    const hidden = document.getElementById('disclaimer-hidden');
+    box.style.background = disclaimerChecked ? 'var(--olive-pale)' : '#fff';
+    box.style.borderColor = disclaimerChecked ? 'var(--olive)' : 'var(--olive)';
+    check.style.opacity = disclaimerChecked ? '1' : '0';
+    hidden.value = disclaimerChecked ? 'agreed' : '';
   }
 
   // Form submission
   document.getElementById('booking-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+    const insVal = document.getElementById('ins-hidden').value;
+    if (insVal === 'yes' && !disclaimerChecked) {
+      const disc = document.getElementById('ins-disclaimer');
+      disc.style.borderColor = '#DC2626';
+      disc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => { disc.style.borderColor = 'var(--olive)'; }, 2000);
+      return;
+    }
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.textContent = 'Submitting…';
