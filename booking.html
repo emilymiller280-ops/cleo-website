@@ -314,6 +314,12 @@
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Massage / Bodywork')">Massage / Bodywork</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Acupuncture')">Acupuncture</button>
               </div>
+              <div style="margin-top:10px;">
+                <button type="button" class="service-chip" id="chip-other" onclick="toggleOther(this)">Other</button>
+              </div>
+              <div id="other-service-wrap" style="display:none;margin-top:10px;">
+                <input class="form-input" type="text" id="other-service-input" name="other_service" placeholder="What are you looking for?">
+              </div>
               <input type="hidden" name="services_interested" id="services-hidden">
             </div>
             <div>
@@ -454,6 +460,15 @@
 
     // Service chips
     const selectedServices = new Set();
+    let otherSelected = false;
+
+    function toggleOther(el) {
+      otherSelected = !otherSelected;
+      el.classList.toggle('selected', otherSelected);
+      document.getElementById('other-service-wrap').style.display = otherSelected ? 'block' : 'none';
+      if (!otherSelected) document.getElementById('other-service-input').value = '';
+    }
+
     function toggleChip(el, val) {
       if (selectedServices.has(val)) {
         selectedServices.delete(val);
