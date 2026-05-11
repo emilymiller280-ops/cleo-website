@@ -132,6 +132,26 @@
       margin-bottom: 20px;
     }
 
+    .service-chip {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .service-chip:hover { border-color: var(--navy-light); }
+    .service-chip.selected {
+      background: var(--navy-wash);
+      border-color: var(--navy);
+      color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+
     @media (max-width: 600px) {
       .two-col { grid-template-columns: 1fr !important; }
     }
@@ -237,8 +257,17 @@
               <textarea class="form-input" id="questions" name="questions" rows="3" placeholder="We're here for all of them." style="resize:vertical;min-height:80px;"></textarea>
             </div>
             <div>
-              <label class="form-label" for="other-notes">Anything else we should know? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
-              <textarea class="form-input" id="other-notes" name="other_notes" rows="3" placeholder="Anything at all." style="resize:vertical;min-height:80px;"></textarea>
+              <label class="form-label">Any other services you'd like to enquire about through Cleo? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+                <button type="button" class="service-chip" onclick="toggleService(this,'Massage')">Massage</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Bodywork')">Bodywork</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Acupuncture')">Acupuncture</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Facial')">Facial</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Pelvic Floor PT')">Pelvic Floor PT</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Lactation Consulting')">Lactation Consulting</button>
+                <button type="button" class="service-chip" onclick="toggleService(this,'Mental Health Support')">Mental Health Support</button>
+              </div>
+              <input type="hidden" name="additional_services" id="services-hidden">
             </div>
           </div>
         </div>
@@ -277,6 +306,19 @@
   </footer>
 
   <script>
+    const selectedServices = new Set();
+
+    function toggleService(el, val) {
+      if (selectedServices.has(val)) {
+        selectedServices.delete(val);
+        el.classList.remove('selected');
+      } else {
+        selectedServices.add(val);
+        el.classList.add('selected');
+      }
+      document.getElementById('services-hidden').value = [...selectedServices].join(', ');
+    }
+
     function setFeeling(val) {
       ['great','good','okay','not-sure','not-a-fit'].forEach(v => {
         document.getElementById('feel-' + v).classList.toggle('active', v === val);
