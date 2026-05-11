@@ -199,12 +199,12 @@
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Overall assessment</label>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-                <button type="button" class="toggle-btn" id="assess-excellent" onclick="setAssessment('excellent')">Excellent</button>
-                <button type="button" class="toggle-btn" id="assess-great" onclick="setAssessment('great')">Great</button>
-                <button type="button" class="toggle-btn" id="assess-good" onclick="setAssessment('good')">Good</button>
-                <button type="button" class="toggle-btn" id="assess-followup" onclick="setAssessment('needs-followup')">Needs Follow-Up</button>
-                <button type="button" class="toggle-btn" id="assess-notfit" onclick="setAssessment('not-a-fit')">Not a Fit</button>
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+                <button type="button" class="toggle-btn" id="assess-excellent" onclick="setAssessment('excellent')" style="padding:13px 6px;">Excellent</button>
+                <button type="button" class="toggle-btn" id="assess-great" onclick="setAssessment('great')" style="padding:13px 6px;">Great</button>
+                <button type="button" class="toggle-btn" id="assess-good" onclick="setAssessment('good')" style="padding:13px 6px;">Good</button>
+                <button type="button" class="toggle-btn" id="assess-followup" onclick="setAssessment('needs-followup')" style="padding:13px 6px;">Okay</button>
+                <button type="button" class="toggle-btn" id="assess-notfit" onclick="setAssessment('not-a-fit')" style="padding:13px 6px;">Not a Fit</button>
               </div>
               <input type="hidden" name="assessment" id="assessment-hidden">
             </div>
