@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How Did It Go? | Cleo</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Spectral', serif;
+      background: #FAF8F4;
+      color: #0D1F3C;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #1B3872;
+      --navy-dark: #0F2352;
+      --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5;
+      --navy-wash: #EBF0FA;
+      --ink: #0D1F3C;
+      --ink-mid: #3A4A6A;
+      --ink-muted: #7888A8;
+      --cream: #FAF8F4;
+      --warm: #F5F0E8;
+      --olive: #6B7A50;
+      --olive-pale: #EEF1E6;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+
+    .toggle-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 13px 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .toggle-btn:hover { border-color: var(--navy-light); }
+    .toggle-btn.active {
+      border-color: var(--navy);
+      background: var(--navy-wash);
+      color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid rgba(27,56,114,0.1);
+      margin: 8px 0;
+    }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .two-col { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(27,56,114,0.08);padding:0 32px;">
+    <div style="max-width:1100px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:center;">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
+        <div style="width:32px;height:32px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:600;color:#fff;line-height:1;">C</span>
+        </div>
+        <span style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;color:var(--ink);letter-spacing:0.03em;">Cleo</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="padding:72px 32px 56px;text-align:center;max-width:640px;margin:0 auto;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Client Follow-Up</p>
+    <h1 class="heading-display" style="font-size:clamp(2rem,5vw,3rem);color:var(--ink);margin-bottom:20px;">How did<br>it go?</h1>
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:480px;margin:0 auto;">We want to make sure your experience feels right. Share a little about how your call went and we'll take it from there.</p>
+  </section>
+
+  <!-- Form -->
+  <section style="padding:0 32px 96px;max-width:680px;margin:0 auto;">
+
+    <div id="form-wrap">
+      <form id="client-followup-form" action="https://formspree.io/f/mwvyyedk" method="POST" style="display:flex;flex-direction:column;gap:28px;">
+
+        <!-- Section: About You -->
+        <div>
+          <p class="section-label">About You</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label" for="client-first">Your first name</label>
+                <input class="form-input" type="text" id="client-first" name="client_first_name" placeholder="First" required>
+              </div>
+              <div>
+                <label class="form-label" for="provider-name">Provider you spoke with</label>
+                <input class="form-input" type="text" id="provider-name" name="provider_name" placeholder="Provider's name" required>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="call-date">Date of your call</label>
+              <input class="form-input" type="date" id="call-date" name="call_date" style="max-width:280px;" required>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Section: How It Went -->
+        <div>
+          <p class="section-label">How It Went</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label">Overall, how did the call feel?</label>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+                <button type="button" class="toggle-btn" id="feel-great" onclick="setFeeling('great')">Great</button>
+                <button type="button" class="toggle-btn" id="feel-good" onclick="setFeeling('good')">Good</button>
+                <button type="button" class="toggle-btn" id="feel-okay" onclick="setFeeling('okay')">Okay</button>
+                <button type="button" class="toggle-btn" id="feel-unsure" onclick="setFeeling('not-sure')">Not Sure</button>
+              </div>
+              <input type="hidden" name="overall_feeling" id="feeling-hidden">
+            </div>
+            <div>
+              <label class="form-label" for="call-notes">Tell us about the conversation</label>
+              <textarea class="form-input" id="call-notes" name="call_notes" rows="5" placeholder="How did it go?" style="resize:vertical;min-height:120px;" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Section: Your Care Plan -->
+        <div>
+          <p class="section-label">Your Care Plan</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label" for="plan-thoughts">How are you feeling about the proposed plan?</label>
+              <textarea class="form-input" id="plan-thoughts" name="plan_thoughts" rows="4" placeholder="Does it feel like the right fit? Anything that felt off or unclear?" style="resize:vertical;min-height:100px;" required></textarea>
+            </div>
+            <div>
+              <label class="form-label" for="plan-changes">Anything you'd like to change or add? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <textarea class="form-input" id="plan-changes" name="plan_changes" rows="3" placeholder="No pressure — just let us know if something is on your mind." style="resize:vertical;min-height:80px;"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Section: Anything Else -->
+        <div>
+          <p class="section-label">Anything Else</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label" for="questions">Questions that came up after the call? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <textarea class="form-input" id="questions" name="questions" rows="3" placeholder="We're here for all of them." style="resize:vertical;min-height:80px;"></textarea>
+            </div>
+            <div>
+              <label class="form-label" for="other-notes">Anything else we should know? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <textarea class="form-input" id="other-notes" name="other_notes" rows="3" placeholder="Anything at all." style="resize:vertical;min-height:80px;"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div style="padding-top:8px;">
+          <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
+            Submit
+          </button>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">Your concierge will follow up with you shortly.</p>
+        </div>
+
+        <!-- Error -->
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:14px 18px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:#DC2626;">Something went wrong. Please try again or email <a href="mailto:hello@cleocare.co" style="color:#DC2626;text-decoration:underline;">hello@cleocare.co</a></p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="form-success" style="display:none;text-align:center;padding:72px 32px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+        <svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M2 10l6.5 6.5L22 2" stroke="var(--olive)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Received</p>
+      <h2 class="heading-display" style="font-size:2rem;color:var(--ink);margin-bottom:16px;">Thank you.</h2>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:400px;margin:0 auto;">We've got your feedback and will be in touch soon.</p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid rgba(27,56,114,0.08);padding:32px;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);">© 2025 Cleo. All rights reserved. <a href="mailto:hello@cleocare.co" style="color:var(--ink-muted);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.2);">hello@cleocare.co</a></p>
+  </footer>
+
+  <script>
+    function setFeeling(val) {
+      ['great','good','okay','not-sure'].forEach(v => {
+        document.getElementById('feel-' + v).classList.toggle('active', v === val);
+      });
+      document.getElementById('feeling-hidden').value = val;
+    }
+
+    document.getElementById('client-followup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      document.getElementById('form-error').style.display = 'none';
+
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(this),
+        });
+        if (res.ok) {
+          document.getElementById('form-wrap').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error();
+        }
+      } catch {
+        document.getElementById('form-error').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Submit';
+      }
+    });
+  </script>
+
+</body>
+</html>
