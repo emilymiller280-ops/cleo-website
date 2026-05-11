@@ -157,7 +157,7 @@
   <section style="padding:72px 32px 56px;text-align:center;max-width:640px;margin:0 auto;">
     <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Provider Network</p>
     <h1 class="heading-display" style="font-size:clamp(2rem,5vw,3rem);color:var(--ink);margin-bottom:20px;">About<br>the call.</h1>
-    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:480px;margin:0 auto;">Thank you for connecting with your Cleo client. Please share a bit about the call so we can keep everything moving.</p>
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:480px;margin:0 auto;">Thank you for completing an intro call with a member of our network. Please share a bit about the conversation so we can get into next steps.</p>
   </section>
 
   <!-- Form -->
@@ -180,15 +180,9 @@
                 <input class="form-input" type="text" id="provider-last" name="provider_last_name" placeholder="Last" required>
               </div>
             </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-              <div>
-                <label class="form-label" for="client-first">Client first name</label>
-                <input class="form-input" type="text" id="client-first" name="client_first_name" placeholder="First" required>
-              </div>
-              <div>
-                <label class="form-label" for="client-last">Client last name</label>
-                <input class="form-input" type="text" id="client-last" name="client_last_name" placeholder="Last" required>
-              </div>
+            <div>
+              <label class="form-label" for="client-first">Client first name</label>
+              <input class="form-input" type="text" id="client-first" name="client_first_name" placeholder="First" required>
             </div>
             <div>
               <label class="form-label" for="call-date">Date of intake call</label>
@@ -205,10 +199,12 @@
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Overall assessment</label>
-              <div class="toggle-three">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                <button type="button" class="toggle-btn" id="assess-excellent" onclick="setAssessment('excellent')">Excellent</button>
                 <button type="button" class="toggle-btn" id="assess-great" onclick="setAssessment('great')">Great</button>
                 <button type="button" class="toggle-btn" id="assess-good" onclick="setAssessment('good')">Good</button>
                 <button type="button" class="toggle-btn" id="assess-followup" onclick="setAssessment('needs-followup')">Needs Follow-Up</button>
+                <button type="button" class="toggle-btn" id="assess-notfit" onclick="setAssessment('not-a-fit')">Not a Fit</button>
               </div>
               <input type="hidden" name="assessment" id="assessment-hidden">
             </div>
@@ -233,17 +229,6 @@
               <label class="form-label" for="start-date">Proposed start date</label>
               <input class="form-input" type="date" id="start-date" name="proposed_start_date" style="max-width:280px;">
             </div>
-          </div>
-        </div>
-
-        <hr class="section-rule">
-
-        <!-- Section: Next Steps -->
-        <div>
-          <p class="section-label">Next Steps</p>
-          <div>
-            <label class="form-label" for="next-steps">What happens next?</label>
-            <textarea class="form-input" id="next-steps" name="next_steps" rows="4" placeholder="Action items, follow-up needed, who is responsible for what..." style="resize:vertical;min-height:100px;" required></textarea>
           </div>
         </div>
 
@@ -293,7 +278,7 @@
 
   <script>
     function setAssessment(val) {
-      ['great','good','needs-followup'].forEach(v => {
+      ['excellent','great','good','needs-followup','not-a-fit'].forEach(v => {
         document.getElementById('assess-' + v).classList.toggle('active', v === val);
       });
       document.getElementById('assessment-hidden').value = val;
