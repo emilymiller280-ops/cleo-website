@@ -253,7 +253,7 @@
               <textarea class="form-input" id="questions" name="questions" rows="3" placeholder="We're here for all of them." style="resize:vertical;min-height:80px;"></textarea>
             </div>
             <div>
-              <label class="form-label">Any other services you'd like to enquire about through Cleo? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <label class="form-label">Any other services you'd like to explore? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
               <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
                 <button type="button" class="service-chip" onclick="toggleService(this,'Massage')">Massage</button>
                 <button type="button" class="service-chip" onclick="toggleService(this,'Bodywork')">Bodywork</button>
@@ -263,12 +263,12 @@
                 <button type="button" class="service-chip" onclick="toggleService(this,'Lactation Consulting')">Lactation Consulting</button>
                 <button type="button" class="service-chip" onclick="toggleService(this,'Mental Health Support')">Mental Health Support</button>
                 <button type="button" class="service-chip" onclick="toggleService(this,'Night Care')">Night Care</button>
+                <button type="button" class="service-chip" id="chip-other" onclick="toggleOther(this)">Other</button>
+              </div>
+              <div id="other-service-wrap" style="display:none;margin-top:10px;">
+                <input class="form-input" type="text" id="other-service-input" name="other_service" placeholder="What are you looking for?">
               </div>
               <input type="hidden" name="additional_services" id="services-hidden">
-            </div>
-            <div>
-              <label class="form-label" for="other-services">Any other Cleo services we're missing? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
-              <input class="form-input" type="text" id="other-services" name="other_services" placeholder="Tell us what you're looking for...">
             </div>
           </div>
         </div>
@@ -308,6 +308,14 @@
 
   <script>
     const selectedServices = new Set();
+    let otherSelected = false;
+
+    function toggleOther(el) {
+      otherSelected = !otherSelected;
+      el.classList.toggle('selected', otherSelected);
+      document.getElementById('other-service-wrap').style.display = otherSelected ? 'block' : 'none';
+      if (!otherSelected) document.getElementById('other-service-input').value = '';
+    }
 
     function toggleService(el, val) {
       if (selectedServices.has(val)) {
