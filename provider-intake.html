@@ -170,7 +170,7 @@
   <section style="padding:0 32px 96px;max-width:680px;margin:0 auto;" id="form-section">
 
     <div id="form-wrap">
-      <form id="provider-form" action="https://formspree.io/f/mnjwwarp" method="POST" style="display:flex;flex-direction:column;gap:28px;">
+      <form id="provider-form" action="https://formspree.io/f/mnjwwarp" method="POST" enctype="multipart/form-data" style="display:flex;flex-direction:column;gap:28px;">
 
         <!-- Section: About You -->
         <div>
@@ -277,6 +277,14 @@
               </div>
             </div>
             <div>
+              <label class="form-label" for="other-socials">Other social media handles <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <input class="form-input" type="text" id="other-socials" name="other_socials" placeholder="TikTok, Facebook, LinkedIn...">
+            </div>
+            <div>
+              <label class="form-label" for="mailing-address">Mailing address</label>
+              <input class="form-input" type="text" id="mailing-address" name="mailing_address" placeholder="Street, City, State, ZIP" required>
+            </div>
+            <div>
               <label class="form-label" for="location">City and state where you practice</label>
               <input class="form-input" type="text" id="location" name="location" placeholder="e.g. Los Angeles, CA" required>
             </div>
@@ -318,6 +326,43 @@
               </div>
               <input type="hidden" name="sliding_scale" id="sliding-hidden">
             </div>
+            <div>
+              <label class="form-label">Do you offer home visits?</label>
+              <div class="toggle-pair">
+                <button type="button" class="toggle-btn" id="hv-yes" onclick="setToggle('homevisit','yes')">Yes</button>
+                <button type="button" class="toggle-btn" id="hv-no" onclick="setToggle('homevisit','no')">No</button>
+              </div>
+              <input type="hidden" name="home_visits" id="homevisit-hidden">
+            </div>
+            <div id="travel-wrap" style="display:none;">
+              <label class="form-label" for="travel-distance">How far will you travel?</label>
+              <input class="form-input" type="text" id="travel-distance" name="travel_distance" placeholder="e.g. Up to 20 miles from downtown LA">
+            </div>
+            <div>
+              <label class="form-label" for="service-area">Service area</label>
+              <input class="form-input" type="text" id="service-area" name="service_area" placeholder="e.g. Greater Los Angeles, NYC metro" required>
+            </div>
+            <div>
+              <label class="form-label" for="availability">General availability</label>
+              <textarea class="form-input" id="availability" name="availability" rows="3" placeholder="e.g. Weekdays 9am-5pm, some evenings available, limited weekend slots..." style="resize:vertical;min-height:80px;" required></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Section: Rates -->
+        <div>
+          <p class="section-label">Rates</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label" for="hourly-rate">Hourly rate</label>
+              <input class="form-input" type="text" id="hourly-rate" name="hourly_rate" placeholder="e.g. $150/hr" required>
+            </div>
+            <div>
+              <label class="form-label" for="service-rates">Service-specific rates <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <textarea class="form-input" id="service-rates" name="service_rates" rows="3" placeholder="e.g. Birth package $1,200, postpartum visit $175..." style="resize:vertical;min-height:80px;"></textarea>
+            </div>
           </div>
         </div>
 
@@ -340,6 +385,56 @@
               <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a colleague, Google...">
             </div>
           </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Section: Documents -->
+        <div>
+          <p class="section-label">Documents</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:20px;">Please upload the following. If you'd prefer to email them, send to <a href="mailto:emily@cleocare.co" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.25);">emily@cleocare.co</a>.</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label" for="upload-headshot">Professional headshot</label>
+              <input class="form-input" type="file" id="upload-headshot" name="headshot" accept="image/*" style="padding:10px 16px;cursor:pointer;">
+            </div>
+            <div style="background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:20px 24px;display:flex;flex-direction:column;gap:16px;">
+              <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">Liability insurance certificate</p>
+              <div>
+                <label class="form-label" for="upload-liability">Upload certificate</label>
+                <input class="form-input" type="file" id="upload-liability" name="liability_certificate" accept=".pdf,.jpg,.jpeg,.png" style="padding:10px 16px;cursor:pointer;">
+              </div>
+              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="ins-provider-name">Insurance provider / carrier</label>
+                  <input class="form-input" type="text" id="ins-provider-name" name="liability_provider" placeholder="e.g. Proliability, CM&F">
+                </div>
+                <div>
+                  <label class="form-label" for="ins-policy-number">Policy number</label>
+                  <input class="form-input" type="text" id="ins-policy-number" name="liability_policy_number" placeholder="Policy #">
+                </div>
+              </div>
+              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="ins-coverage-dates">Coverage dates</label>
+                  <input class="form-input" type="text" id="ins-coverage-dates" name="liability_coverage_dates" placeholder="e.g. 01/01/2025 - 01/01/2026">
+                </div>
+                <div>
+                  <label class="form-label" for="ins-coverage-limits">Coverage limits</label>
+                  <input class="form-input" type="text" id="ins-coverage-limits" name="liability_coverage_limits" placeholder="e.g. $1M / $3M">
+                </div>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="upload-w9">W-9</label>
+              <input class="form-input" type="file" id="upload-w9" name="w9" accept=".pdf,.jpg,.jpeg,.png" style="padding:10px 16px;cursor:pointer;">
+            </div>
+          </div>
+        </div>
+
+        <!-- Stripe note -->
+        <div style="background:var(--olive-pale);border:1.5px solid rgba(107,122,80,0.25);border-radius:8px;padding:18px 22px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">Cleo pays providers through <strong style="color:var(--ink);font-weight:600;">Stripe Connect</strong>. Once your application is reviewed, you'll receive a separate link to complete Stripe onboarding before becoming fully active in the network.</p>
         </div>
 
         <!-- Submit -->
@@ -399,6 +494,7 @@
         telehealth: { yes: 'th-yes', no: 'th-no', both: 'th-both', hidden: 'telehealth-hidden' },
         insurance:  { yes: 'ins-yes', no: 'ins-no', hidden: 'insurance-hidden' },
         sliding:    { yes: 'ss-yes', no: 'ss-no', hidden: 'sliding-hidden' },
+        homevisit:  { yes: 'hv-yes', no: 'hv-no', hidden: 'homevisit-hidden' },
       };
       const g = map[group];
       Object.keys(g).forEach(k => {
@@ -410,6 +506,9 @@
 
       if (group === 'insurance') {
         document.getElementById('insurance-plans-wrap').style.display = val === 'yes' ? 'block' : 'none';
+      }
+      if (group === 'homevisit') {
+        document.getElementById('travel-wrap').style.display = val === 'yes' ? 'block' : 'none';
       }
     }
 
