@@ -193,11 +193,12 @@
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Overall, how did the call feel?</label>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
                 <button type="button" class="toggle-btn" id="feel-great" onclick="setFeeling('great')">Great</button>
                 <button type="button" class="toggle-btn" id="feel-good" onclick="setFeeling('good')">Good</button>
                 <button type="button" class="toggle-btn" id="feel-okay" onclick="setFeeling('okay')">Okay</button>
                 <button type="button" class="toggle-btn" id="feel-unsure" onclick="setFeeling('not-sure')">Not Sure</button>
+                <button type="button" class="toggle-btn" id="feel-notfit" onclick="setFeeling('not-a-fit')">Not a Fit</button>
               </div>
               <input type="hidden" name="overall_feeling" id="feeling-hidden">
             </div>
@@ -277,7 +278,7 @@
 
   <script>
     function setFeeling(val) {
-      ['great','good','okay','not-sure'].forEach(v => {
+      ['great','good','okay','not-sure','not-a-fit'].forEach(v => {
         document.getElementById('feel-' + v).classList.toggle('active', v === val);
       });
       document.getElementById('feeling-hidden').value = val;
