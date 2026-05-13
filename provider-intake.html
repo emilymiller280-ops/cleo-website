@@ -206,54 +206,24 @@
           <p class="section-label">Your Credentials</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
-              <label class="form-label" for="provider-type">Provider type</label>
-              <div style="position:relative;">
-                <select class="form-input" id="provider-type" name="provider_type" required style="padding-right:40px;cursor:pointer;">
-                  <option value="" disabled selected>Select your specialty</option>
-                  <option>Doula (Birth)</option>
-                  <option>Doula (Postpartum)</option>
-                  <option>Doula (Birth + Postpartum)</option>
-                  <option>Lactation Consultant (IBCLC)</option>
-                  <option>Pelvic Floor Physical Therapist</option>
-                  <option>Mental Health Therapist / Psychologist</option>
-                  <option>Nutritionist / Registered Dietitian</option>
-                  <option>Perinatal Massage Therapist</option>
-                  <option>Bodywork</option>
-                  <option>Acupuncture</option>
-                  <option>Sleep Consultant</option>
-                  <option>Other</option>
-                </select>
-                <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="var(--ink-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <label class="form-label">Specialty <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Birth)')">Doula (Birth)</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Postpartum)')">Doula (Postpartum)</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Birth + Postpartum)')">Doula (Birth + Postpartum)</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Lactation Consultant (IBCLC)')">Lactation Consultant (IBCLC)</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Pelvic Floor Physical Therapist')">Pelvic Floor PT</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Mental Health Therapist / Psychologist')">Mental Health Therapist</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Nutritionist / Registered Dietitian')">Nutritionist / RD</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Perinatal Massage Therapist')">Perinatal Massage</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Bodywork')">Bodywork</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Acupuncture')">Acupuncture</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Sleep Consultant')">Sleep Consultant</button>
+                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Other')">Other</button>
               </div>
+              <input type="hidden" name="specialties" id="specialties-hidden">
             </div>
-            <div id="other-type-wrap" style="display:none;">
-              <label class="form-label" for="provider-type-other">Please specify</label>
-              <input class="form-input" type="text" id="provider-type-other" name="provider_type_other" placeholder="Your specialty">
-            </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-              <div>
-                <label class="form-label" for="license-number">License or credential number <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
-                <input class="form-input" type="text" id="license-number" name="license_number" placeholder="License #">
-              </div>
-              <div>
-                <label class="form-label" for="license-state">State(s) licensed / practicing in</label>
-                <input class="form-input" type="text" id="license-state" name="license_state" placeholder="e.g. CA, NY" required>
-              </div>
-            </div>
-            <div>
-              <label class="form-label" for="years-practice">Years in practice</label>
-              <div style="position:relative;">
-                <select class="form-input" id="years-practice" name="years_practice" required style="padding-right:40px;cursor:pointer;">
-                  <option value="" disabled selected>Select</option>
-                  <option>Less than 1 year</option>
-                  <option>1-3 years</option>
-                  <option>3-5 years</option>
-                  <option>5-10 years</option>
-                  <option>10+ years</option>
-                </select>
-                <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="var(--ink-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-            </div>
+            <div id="specialty-details" style="display:flex;flex-direction:column;gap:16px;"></div>
           </div>
         </div>
 
@@ -280,14 +250,6 @@
             <div>
               <label class="form-label" for="other-socials">Other social media handles <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
               <input class="form-input" type="text" id="other-socials" name="other_socials" placeholder="TikTok, Facebook, LinkedIn...">
-            </div>
-            <div>
-              <label class="form-label" for="mailing-address">Mailing address</label>
-              <input class="form-input" type="text" id="mailing-address" name="mailing_address" placeholder="Street, City, State, ZIP" required>
-            </div>
-            <div>
-              <label class="form-label" for="location">City and state where you practice</label>
-              <input class="form-input" type="text" id="location" name="location" placeholder="e.g. Los Angeles, CA" required>
             </div>
           </div>
         </div>
@@ -457,10 +419,67 @@
       }, 80);
     });
 
-    // Show "Other" specialty field
-    document.getElementById('provider-type').addEventListener('change', function() {
-      document.getElementById('other-type-wrap').style.display = this.value === 'Other' ? 'block' : 'none';
-    });
+    // Specialty multi-select with per-specialty detail cards
+    const selectedSpecialties = new Set();
+
+    function slugify(val) {
+      return val.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    }
+
+    function toggleSpecialty(el, val) {
+      const slug = slugify(val);
+      if (selectedSpecialties.has(val)) {
+        selectedSpecialties.delete(val);
+        el.classList.remove('selected');
+        const card = document.getElementById('spec-card-' + slug);
+        if (card) card.remove();
+      } else {
+        selectedSpecialties.add(val);
+        el.classList.add('selected');
+        addSpecialtyCard(val, slug);
+      }
+      document.getElementById('specialties-hidden').value = [...selectedSpecialties].join(', ');
+    }
+
+    function addSpecialtyCard(val, slug) {
+      const container = document.getElementById('specialty-details');
+      const card = document.createElement('div');
+      card.id = 'spec-card-' + slug;
+      card.style.cssText = 'background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:20px 24px;display:flex;flex-direction:column;gap:14px;';
+      card.innerHTML = `
+        <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">${val}</p>
+        <div>
+          <label class="form-label">Degrees &amp; credentials <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+          <input class="form-input" type="text" name="credentials_${slug}" placeholder="e.g. LMFT, PsyD, IBCLC, DPT, CPM">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div>
+            <label class="form-label">License number <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+            <input class="form-input" type="text" name="license_${slug}" placeholder="License #">
+          </div>
+          <div>
+            <label class="form-label">State(s) licensed in</label>
+            <input class="form-input" type="text" name="states_${slug}" placeholder="e.g. CA, NY">
+          </div>
+        </div>
+        <div>
+          <label class="form-label">Years in practice</label>
+          <div style="position:relative;">
+            <select class="form-input" name="years_${slug}" style="padding-right:40px;cursor:pointer;">
+              <option value="" disabled selected>Select</option>
+              <option>Less than 1 year</option>
+              <option>1-3 years</option>
+              <option>3-5 years</option>
+              <option>5-10 years</option>
+              <option>10+ years</option>
+            </select>
+            <svg style="position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="var(--ink-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        ${val === 'Other' ? `<div><label class="form-label">Please specify</label><input class="form-input" type="text" name="specialty_other" placeholder="Your specialty"></div>` : ''}
+      `;
+      container.appendChild(card);
+    }
 
     // Generic toggle handler
     const toggleState = {};
