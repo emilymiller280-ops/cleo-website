@@ -139,6 +139,23 @@
       margin-bottom: 20px;
     }
 
+    .spec-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--ink-mid);
+      border-bottom: 1px solid rgba(27,56,114,0.06);
+      transition: background 0.1s ease;
+    }
+    .spec-option:last-child { border-bottom: none; }
+    .spec-option:hover { background: var(--navy-wash); }
+    .spec-option input[type="checkbox"] { width:16px; height:16px; accent-color:var(--navy); cursor:pointer; flex-shrink:0; }
+    .spec-option span { line-height: 1.4; }
+
     @media (max-width: 600px) {
       .two-col { grid-template-columns: 1fr !important; }
       .toggle-three { grid-template-columns: 1fr !important; }
@@ -205,21 +222,27 @@
         <div>
           <p class="section-label">Your Credentials</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
-            <div>
+            <div style="position:relative;">
               <label class="form-label">Specialty <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-              <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Birth)')">Doula (Birth)</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Postpartum)')">Doula (Postpartum)</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Doula (Birth + Postpartum)')">Doula (Birth + Postpartum)</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Lactation Consultant (IBCLC)')">Lactation Consultant (IBCLC)</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Pelvic Floor Physical Therapist')">Pelvic Floor PT</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Mental Health Therapist / Psychologist')">Mental Health Therapist</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Nutritionist / Registered Dietitian')">Nutritionist / RD</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Perinatal Massage Therapist')">Perinatal Massage</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Bodywork')">Bodywork</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Acupuncture')">Acupuncture</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Sleep Consultant')">Sleep Consultant</button>
-                <button type="button" class="service-chip" onclick="toggleSpecialty(this,'Other')">Other</button>
+              <button type="button" id="specialty-trigger" onclick="toggleSpecialtyDropdown()" style="width:100%;display:flex;align-items:center;justify-content:space-between;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink-muted);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:14px 16px;cursor:pointer;text-align:left;transition:border-color 0.15s ease;">
+                <span id="specialty-trigger-text">Select your specialty</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;transition:transform 0.2s ease;" id="specialty-chevron"><path d="M4 6l4 4 4-4" stroke="var(--ink-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div id="specialty-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;box-shadow:0 4px 16px rgba(27,56,114,0.1);z-index:20;overflow:hidden;">
+                <div style="max-height:280px;overflow-y:auto;">
+                  <label class="spec-option"><input type="checkbox" value="Doula (Birth)" onchange="handleSpecialtyCheck(this)"><span>Doula (Birth)</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Doula (Postpartum)" onchange="handleSpecialtyCheck(this)"><span>Doula (Postpartum)</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Doula (Birth + Postpartum)" onchange="handleSpecialtyCheck(this)"><span>Doula (Birth + Postpartum)</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Lactation Consultant (IBCLC)" onchange="handleSpecialtyCheck(this)"><span>Lactation Consultant (IBCLC)</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Pelvic Floor Physical Therapist" onchange="handleSpecialtyCheck(this)"><span>Pelvic Floor Physical Therapist</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Mental Health Therapist / Psychologist" onchange="handleSpecialtyCheck(this)"><span>Mental Health Therapist / Psychologist</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Nutritionist / Registered Dietitian" onchange="handleSpecialtyCheck(this)"><span>Nutritionist / Registered Dietitian</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Perinatal Massage Therapist" onchange="handleSpecialtyCheck(this)"><span>Perinatal Massage Therapist</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Bodywork" onchange="handleSpecialtyCheck(this)"><span>Bodywork</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Acupuncture" onchange="handleSpecialtyCheck(this)"><span>Acupuncture</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Sleep Consultant" onchange="handleSpecialtyCheck(this)"><span>Sleep Consultant</span></label>
+                  <label class="spec-option"><input type="checkbox" value="Other" onchange="handleSpecialtyCheck(this)"><span>Other</span></label>
+                </div>
               </div>
               <input type="hidden" name="specialties" id="specialties-hidden">
             </div>
@@ -419,27 +442,52 @@
       }, 80);
     });
 
-    // Specialty multi-select with per-specialty detail cards
+    // Specialty multi-select dropdown
     const selectedSpecialties = new Set();
+    let specialtyDropdownOpen = false;
 
     function slugify(val) {
       return val.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     }
 
-    function toggleSpecialty(el, val) {
+    function toggleSpecialtyDropdown() {
+      specialtyDropdownOpen = !specialtyDropdownOpen;
+      const dd = document.getElementById('specialty-dropdown');
+      const chevron = document.getElementById('specialty-chevron');
+      const trigger = document.getElementById('specialty-trigger');
+      dd.style.display = specialtyDropdownOpen ? 'block' : 'none';
+      chevron.style.transform = specialtyDropdownOpen ? 'rotate(180deg)' : '';
+      trigger.style.borderColor = specialtyDropdownOpen ? 'var(--navy)' : 'rgba(27,56,114,0.15)';
+    }
+
+    function handleSpecialtyCheck(checkbox) {
+      const val = checkbox.value;
       const slug = slugify(val);
-      if (selectedSpecialties.has(val)) {
+      if (checkbox.checked) {
+        selectedSpecialties.add(val);
+        addSpecialtyCard(val, slug);
+      } else {
         selectedSpecialties.delete(val);
-        el.classList.remove('selected');
         const card = document.getElementById('spec-card-' + slug);
         if (card) card.remove();
-      } else {
-        selectedSpecialties.add(val);
-        el.classList.add('selected');
-        addSpecialtyCard(val, slug);
       }
       document.getElementById('specialties-hidden').value = [...selectedSpecialties].join(', ');
+      const count = selectedSpecialties.size;
+      const trigger = document.getElementById('specialty-trigger-text');
+      trigger.style.color = count > 0 ? 'var(--ink)' : 'var(--ink-muted)';
+      trigger.textContent = count === 0 ? 'Select your specialty' : count === 1 ? [...selectedSpecialties][0] : `${count} specialties selected`;
     }
+
+    document.addEventListener('click', function(e) {
+      const dd = document.getElementById('specialty-dropdown');
+      const trigger = document.getElementById('specialty-trigger');
+      if (specialtyDropdownOpen && !dd.contains(e.target) && e.target !== trigger && !trigger.contains(e.target)) {
+        specialtyDropdownOpen = false;
+        dd.style.display = 'none';
+        document.getElementById('specialty-chevron').style.transform = '';
+        trigger.style.borderColor = 'rgba(27,56,114,0.15)';
+      }
+    });
 
     function addSpecialtyCard(val, slug) {
       const container = document.getElementById('specialty-details');
