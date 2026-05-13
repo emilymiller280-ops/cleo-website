@@ -322,12 +322,16 @@
               <input class="form-input" type="text" id="insurance-plans" name="insurance_plans" placeholder="e.g. Blue Cross, Aetna, United">
             </div>
             <div>
-              <label class="form-label">Do you offer a sliding scale?</label>
+              <label class="form-label">Do you have a physical office?</label>
               <div class="toggle-pair">
-                <button type="button" class="toggle-btn" id="ss-yes" onclick="setToggle('sliding','yes')">Yes</button>
-                <button type="button" class="toggle-btn" id="ss-no" onclick="setToggle('sliding','no')">No</button>
+                <button type="button" class="toggle-btn" id="office-yes" onclick="setToggle('office','yes')">Yes</button>
+                <button type="button" class="toggle-btn" id="office-no" onclick="setToggle('office','no')">No</button>
               </div>
-              <input type="hidden" name="sliding_scale" id="sliding-hidden">
+              <input type="hidden" name="physical_office" id="office-hidden">
+            </div>
+            <div id="office-location-wrap" style="display:none;">
+              <label class="form-label" for="office-location">Where is it located?</label>
+              <input class="form-input" type="text" id="office-location" name="office_location" placeholder="e.g. 123 Main St, Los Angeles, CA">
             </div>
             <div>
               <label class="form-label">Do you offer home visits?</label>
@@ -488,7 +492,7 @@
       const map = {
         telehealth: { yes: 'th-yes', no: 'th-no', both: 'th-both', hidden: 'telehealth-hidden' },
         insurance:  { yes: 'ins-yes', no: 'ins-no', hidden: 'insurance-hidden' },
-        sliding:    { yes: 'ss-yes', no: 'ss-no', hidden: 'sliding-hidden' },
+        office:     { yes: 'office-yes', no: 'office-no', hidden: 'office-hidden' },
         homevisit:  { yes: 'hv-yes', no: 'hv-no', hidden: 'homevisit-hidden' },
       };
       const g = map[group];
@@ -501,6 +505,9 @@
 
       if (group === 'insurance') {
         document.getElementById('insurance-plans-wrap').style.display = val === 'yes' ? 'block' : 'none';
+      }
+      if (group === 'office') {
+        document.getElementById('office-location-wrap').style.display = val === 'yes' ? 'block' : 'none';
       }
       if (group === 'homevisit') {
         document.getElementById('travel-wrap').style.display = val === 'yes' ? 'block' : 'none';
