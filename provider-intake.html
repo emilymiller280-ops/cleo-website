@@ -401,26 +401,6 @@
                 <label class="form-label" for="upload-liability">Upload certificate</label>
                 <input class="form-input" type="file" id="upload-liability" name="liability_certificate" accept=".pdf,.jpg,.jpeg,.png" style="padding:10px 16px;cursor:pointer;">
               </div>
-              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-                <div>
-                  <label class="form-label" for="ins-provider-name">Insurance provider / carrier</label>
-                  <input class="form-input" type="text" id="ins-provider-name" name="liability_provider" placeholder="e.g. Proliability, CM&F">
-                </div>
-                <div>
-                  <label class="form-label" for="ins-policy-number">Policy number</label>
-                  <input class="form-input" type="text" id="ins-policy-number" name="liability_policy_number" placeholder="Policy #">
-                </div>
-              </div>
-              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-                <div>
-                  <label class="form-label" for="ins-coverage-dates">Coverage dates</label>
-                  <input class="form-input" type="text" id="ins-coverage-dates" name="liability_coverage_dates" placeholder="e.g. 01/01/2025 - 01/01/2026">
-                </div>
-                <div>
-                  <label class="form-label" for="ins-coverage-limits">Coverage limits</label>
-                  <input class="form-input" type="text" id="ins-coverage-limits" name="liability_coverage_limits" placeholder="e.g. $1M / $3M">
-                </div>
-              </div>
             </div>
             <div>
               <label class="form-label" for="upload-w9">W-9</label>
@@ -431,15 +411,15 @@
 
         <!-- Stripe note -->
         <div style="background:var(--olive-pale);border:1.5px solid rgba(107,122,80,0.25);border-radius:8px;padding:18px 22px;">
-          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">Cleo pays providers through <strong style="color:var(--ink);font-weight:600;">Stripe Connect</strong>. Once your application is reviewed, you'll receive a separate link to complete Stripe onboarding before becoming fully active in the network.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">Cleo pays providers through <strong style="color:var(--ink);font-weight:600;">Stripe Connect</strong>. Once your details are reviewed, you'll receive a separate link to complete Stripe onboarding before becoming fully active in the network.</p>
         </div>
 
         <!-- Submit -->
         <div style="padding-top:8px;">
           <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
-            Submit Application
+            Submit
           </button>
-          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">We review all applications personally and will be in touch within a few business days.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">We review all details personally and will be in touch within a few business days.</p>
         </div>
 
         <!-- Error -->
