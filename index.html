@@ -303,11 +303,11 @@
     <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.1875rem;color:var(--ink-mid);max-width:600px;margin:0 auto 20px;line-height:1.75;text-align:center;">
       At Cleo we're reimagining a new standard of maternal wellness<br><nobr>from fertility through postpartum, in the comfort of your own home.</nobr>
     </p>
-    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:500;letter-spacing:0.08em;color:var(--ink-muted);margin:0 auto 52px;text-align:center;text-transform:uppercase;">Los Angeles · Orange County · Santa Barbara</p>
 
     <!-- CTAs -->
     <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;">
-      <a href="#services" class="btn-primary">Learn More</a>
+      <a href="#services" class="btn-primary hero-cta-desktop">Learn More</a>
+      <a href="booking.html" class="btn-primary hero-cta-mobile">Book Care</a>
     </div>
 
     <!-- Scroll cue -->
@@ -880,5 +880,25 @@
     document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
   }
 </script>
+
+<!-- ═══════════════════════════════════════════════════
+     MOBILE STICKY CTA BAR
+═══════════════════════════════════════════════════ -->
+<div id="mobile-cta-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(27,56,114,0.1);padding:12px 20px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(27,56,114,0.1);">
+  <a href="booking.html" style="display:flex;align-items:center;justify-content:center;width:100%;background:var(--navy);color:#fff;font-family:'Spectral',serif;font-size:1rem;font-weight:400;letter-spacing:0.04em;padding:16px 24px;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(27,56,114,0.25),0 8px 24px rgba(27,56,114,0.2);">
+    Book Care
+  </a>
+</div>
+
+<style>
+  .hero-cta-mobile { display: none; }
+  @media (max-width: 768px) {
+    #mobile-cta-bar { display: block !important; }
+    body { padding-bottom: 80px; }
+    .hero-cta-desktop { display: none !important; }
+    .hero-cta-mobile { display: inline-flex !important; }
+  }
+</style>
+
 </body>
 </html>
