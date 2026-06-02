@@ -374,6 +374,41 @@
                 <label class="form-label" for="ins-notes">Anything else we should know about your coverage? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
                 <textarea class="form-input" id="ins-notes" name="ins_notes" rows="2" placeholder="e.g. specific services you think may be covered…" style="resize:vertical;"></textarea>
               </div>
+
+              <!-- Not covered follow-up -->
+              <div>
+                <label class="form-label" style="margin-bottom:12px;">If a service isn't covered by your insurance, would you still like to be matched with a provider?</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <button type="button" class="toggle-btn" id="not-covered-yes" onclick="setNotCovered('yes')">Yes, match me anyway</button>
+                  <button type="button" class="toggle-btn" id="not-covered-no" onclick="setNotCovered('no')">No, only if covered</button>
+                </div>
+                <input type="hidden" name="match_if_not_covered" id="not-covered-hidden">
+              </div>
+
+              <!-- Inline authorization -->
+              <div style="border-top:1px solid rgba(27,56,114,0.1);padding-top:20px;">
+                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required — Insurance Authorization</p>
+                <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:16px;">To verify your benefits and submit claims on your behalf, we need your authorization below.</p>
+                <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:8px;padding:18px 20px;max-height:200px;overflow-y:auto;margin-bottom:16px;">
+                  <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">1. Authorization to Release Health Information</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:14px;">I authorize Cleo Care, LLC and its designated staff to contact my insurer and to request, receive, and discuss information regarding my insurance coverage and benefits for the purpose of verifying my eligibility. This may include my plan status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage for specific services, and any prior authorization requirements. I may revoke this authorization at any time in writing.</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">2. Authorization for Claims Submission</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me — Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label class="form-label" for="auth-sig">Full legal name <span style="font-weight:400;color:var(--ink-muted);">(electronic signature)</span></label>
+                  <input class="form-input" type="text" id="auth-sig" name="insurance_auth_signature" placeholder="Type your full name" autocomplete="name">
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;" onclick="toggleAuthAgree()">
+                  <div id="auth-agree-box" style="flex-shrink:0;width:20px;height:20px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.3);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:background 0.15s,border-color 0.15s;">
+                    <svg id="auth-agree-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I have read and agree to both authorizations above. I understand that typing my name acts as my electronic signature.</span>
+                </div>
+                <input type="hidden" id="auth-agreed-hidden" name="insurance_auth_agreed" value="">
+                <p id="auth-error" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#DC2626;margin-top:10px;display:none;">Please enter your full name and check the box to continue.</p>
+              </div>
+
             </div>
           </div>
         </div>
@@ -482,12 +517,30 @@
 
     // Insurance
     let disclaimerChecked = false;
+    let authAgreeChecked = false;
+
     function setInsurance(val) {
       document.getElementById('ins-yes').classList.toggle('active', val === 'yes');
       document.getElementById('ins-no').classList.toggle('active', val === 'no');
       document.getElementById('ins-hidden').value = val;
       document.getElementById('insurance-details').style.display = val === 'yes' ? 'flex' : 'none';
       document.getElementById('ins-disclaimer').style.display = val === 'yes' ? 'block' : 'none';
+    }
+
+    function setNotCovered(val) {
+      document.getElementById('not-covered-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('not-covered-no').classList.toggle('active', val === 'no');
+      document.getElementById('not-covered-hidden').value = val;
+    }
+
+    function toggleAuthAgree() {
+      authAgreeChecked = !authAgreeChecked;
+      const box = document.getElementById('auth-agree-box');
+      const check = document.getElementById('auth-agree-check');
+      box.style.background = authAgreeChecked ? 'var(--navy)' : '#fff';
+      box.style.borderColor = authAgreeChecked ? 'var(--navy)' : 'rgba(27,56,114,0.3)';
+      check.style.opacity = authAgreeChecked ? '1' : '0';
+      document.getElementById('auth-agreed-hidden').value = authAgreeChecked ? 'agreed' : '';
     }
 
     function toggleDisclaimer() {
@@ -501,6 +554,15 @@
     document.getElementById('booking-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const insVal = document.getElementById('ins-hidden').value;
+      if (insVal === 'yes') {
+        const sigName = document.getElementById('auth-sig').value.trim();
+        if (sigName.length < 2 || !authAgreeChecked) {
+          document.getElementById('auth-error').style.display = 'block';
+          document.getElementById('auth-sig').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        document.getElementById('auth-error').style.display = 'none';
+      }
       if (insVal === 'yes' && !disclaimerChecked) {
         const disc = document.getElementById('ins-disclaimer');
         disc.style.borderColor = '#DC2626';
