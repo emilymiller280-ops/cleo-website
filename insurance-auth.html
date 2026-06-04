@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Insurance Authorization | Cleo Care</title>
+  <meta name="description" content="Authorize Cleo Care to verify your insurance benefits on your behalf.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+</head>
+<body style="margin:0;padding:0;min-height:100vh;">
+
+<div id="cleo-root">
+  <div class="bg-grain"></div>
+
+  <!-- ===== CONSENT VIEW ===== -->
+  <main class="wrap" id="consent-view">
+    <header class="masthead">
+      <div class="brand">Cleo Care</div>
+      <div class="kicker">Insurance Authorization</div>
+    </header>
+
+    <section class="card">
+      <p class="greeting" id="greeting">Welcome.</p>
+      <h1 class="title">Authorization to verify your insurance benefits</h1>
+      <p class="lede">
+        This lets Cleo Care contact your insurer to check your coverage on your behalf —
+        and, where it applies, submit claims for you. Please read the two authorizations
+        below, then add your name and agree at the bottom.
+      </p>
+
+      <div class="onfile">
+        This authorization applies to the insurance and member information you already
+        provided to Cleo at sign-up (provider, plan, member ID, group number, date of birth).
+        There's nothing to re-enter here.
+      </div>
+
+      <div class="auth">
+        <div class="auth-num">1</div>
+        <div class="auth-body">
+          <h2>Authorization to Release Health Information</h2>
+          <p>
+            I authorize Cleo Care, LLC and its designated staff to contact my insurer and to
+            request, receive, and discuss information regarding my insurance coverage and benefits
+            for the purpose of verifying my eligibility and benefits. This may include my plan
+            status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage
+            for specific services, in-network and out-of-network benefits, and any prior
+            authorization requirements.
+          </p>
+          <p>
+            I authorize the release of information necessary to perform this verification —
+            including my name, date of birth, member identification number, and group number —
+            to my insurer and its representatives.
+          </p>
+          <p>
+            I understand I may revoke this authorization at any time by submitting a written
+            request to Cleo Care, LLC, and that revocation will not affect actions already taken
+            in reliance on it. I understand that information disclosed under this authorization may
+            no longer be protected by HIPAA once received by my insurer, and that my insurer's own
+            privacy policies will govern its use thereafter.
+          </p>
+        </div>
+      </div>
+
+      <div class="auth">
+        <div class="auth-num">2</div>
+        <div class="auth-body">
+          <h2>Authorization for Claims Submission</h2>
+          <p>
+            I designate Cleo Care, LLC as my authorized agent for submitting health insurance
+            claims to my insurer on my behalf. I understand and agree that:
+          </p>
+          <ul>
+            <li>Cleo will submit claims using superbills and session documentation provided by my treating provider(s).</li>
+            <li>All reimbursements are issued directly to me by my insurer; Cleo will not receive, handle, or redirect any reimbursement funds on my behalf.</li>
+            <li>Cleo acts solely as a submission agent and is not an insurance company, third-party administrator, or claims adjudicator.</li>
+            <li>This authorization does not transfer any insurance benefits or rights to Cleo.</li>
+            <li>I remain responsible for verifying my own coverage, deductibles, and any insurer-specific requirements.</li>
+            <li>I may revoke this authorization at any time in writing; revocation takes effect going forward and does not apply to claims already submitted.</li>
+            <li>Some insurers may require a separate authorization on file directly with them before accepting third-party claim submissions. Cleo will notify me if this applies to my plan.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ===== SIGN ===== -->
+      <div class="sign">
+        <h3>Add your signature</h3>
+        <label class="field">
+          <span class="field-label">Full legal name</span>
+          <input type="text" id="sig-name" class="sig-input" placeholder="Type your full name" autocomplete="name" />
+        </label>
+        <div class="sig-meta">
+          <span>Signed electronically on <strong id="today"></strong></span>
+        </div>
+
+        <label class="agree">
+          <input type="checkbox" id="agree-box" />
+          <span>I have read and understand both authorizations above, and I agree to them. I understand that typing my name acts as my electronic signature.</span>
+        </label>
+
+        <button id="submit-btn" class="submit" disabled>Agree &amp; Sign</button>
+        <p class="err" id="err"></p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      Cleo Care, LLC · cleocare.co · Your information is handled confidentially.
+    </footer>
+  </main>
+
+  <!-- ===== CONFIRMATION VIEW ===== -->
+  <main class="wrap hidden" id="done-view">
+    <section class="card done-card">
+      <div class="check">
+        <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" fill="none"/><path fill="none" d="M14 27l8 8 16-16"/></svg>
+      </div>
+      <h1 class="title">Thank you, <span id="done-name">friend</span>.</h1>
+      <p class="lede">
+        Your authorization has been recorded. Cleo can now verify your benefits with your insurer
+        on your behalf — we'll be in touch shortly with what we find.
+      </p>
+      <p class="done-stamp" id="done-stamp"></p>
+    </section>
+    <footer class="foot">Cleo Care, LLC · cleocare.co</footer>
+  </main>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600&family=Caveat:wght@500;600&display=swap');
+
+  #cleo-root {
+    --sage-900:#26392f; --sage-800:#2f4a3c; --sage-600:#5c7a68;
+    --sage-300:#a9c2b2; --sage-100:#e6efe8; --sage-50:#f2f6f3;
+    --cream:#f7f5ee; --paper:#fffdf8; --ink:#2a2a26; --muted:#6f7a72;
+    --line:#dde6df; --gold:#c2a86b;
+    position:relative; min-height:100%; width:100%;
+    background:
+      radial-gradient(1100px 540px at 82% -8%, #eef4ee 0%, rgba(238,244,238,0) 60%),
+      radial-gradient(900px 520px at -8% 12%, #f4efe2 0%, rgba(244,239,226,0) 55%),
+      linear-gradient(180deg, var(--cream) 0%, #f3f1e8 100%);
+    color:var(--ink);
+    font-family:'Hanken Grotesk', sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+    padding:0 18px;
+  }
+  #cleo-root *{box-sizing:border-box;}
+  .bg-grain{position:fixed; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");}
+
+  .wrap{max-width:680px; margin:0 auto; padding:44px 0 60px;}
+  .wrap.hidden{display:none;}
+
+  .masthead{display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:22px; animation:rise .7s cubic-bezier(.2,.7,.2,1) both;}
+  .brand{font-family:'Fraunces',serif; font-weight:600; font-size:24px; letter-spacing:.2px; color:var(--sage-800);}
+  .kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--sage-600);}
+
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:20px;
+    padding:40px 38px; box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 22px 50px -28px rgba(38,57,47,.4);
+    animation:rise .8s .06s cubic-bezier(.2,.7,.2,1) both;}
+
+  .greeting{font-family:'Caveat',cursive; font-size:26px; color:var(--sage-600); margin:0 0 4px; line-height:1;}
+  .title{font-family:'Fraunces',serif; font-weight:500; font-size:30px; line-height:1.18;
+    letter-spacing:-.01em; color:var(--sage-900); margin:0 0 14px;}
+  .lede{font-size:16px; color:#3c463f; margin:0 0 22px;}
+
+  .onfile{background:var(--sage-50); border:1px solid var(--sage-100); border-left:3px solid var(--sage-300);
+    border-radius:10px; padding:14px 16px; font-size:13.5px; color:#46524a; margin-bottom:30px;}
+
+  .auth{display:flex; gap:16px; padding:22px 0; border-top:1px solid var(--line);}
+  .auth-num{flex:0 0 34px; height:34px; border-radius:50%; background:var(--sage-800); color:#fff;
+    font-family:'Fraunces',serif; font-size:16px; display:flex; align-items:center; justify-content:center;
+    margin-top:2px;}
+  .auth-body h2{font-family:'Fraunces',serif; font-weight:500; font-size:18px; color:var(--sage-900);
+    margin:2px 0 10px;}
+  .auth-body p{font-size:14.5px; color:#454f48; margin:0 0 11px;}
+  .auth-body ul{margin:0; padding-left:18px;}
+  .auth-body li{font-size:14px; color:#454f48; margin-bottom:8px;}
+
+  .sign{margin-top:14px; padding:26px; background:linear-gradient(180deg,#fbfdfa,#f4f8f4);
+    border:1px solid var(--sage-100); border-radius:16px;}
+  .sign h3{font-family:'Fraunces',serif; font-weight:500; font-size:19px; color:var(--sage-900); margin:0 0 16px;}
+  .field{display:block; margin-bottom:6px;}
+  .field-label{display:block; font-size:12px; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--sage-600); margin-bottom:7px;}
+  .sig-input{width:100%; border:none; border-bottom:1.5px solid var(--sage-300); background:transparent;
+    padding:6px 2px 10px; font-family:'Caveat',cursive; font-size:30px; color:var(--sage-900);
+    outline:none; transition:border-color .25s;}
+  .sig-input::placeholder{font-family:'Hanken Grotesk',sans-serif; font-size:16px; color:#aab5ad;}
+  .sig-input:focus{border-color:var(--sage-800);}
+  .sig-meta{font-size:13px; color:var(--muted); margin:10px 0 20px;}
+
+  .agree{display:flex; gap:12px; align-items:flex-start; cursor:pointer; font-size:13.5px; color:#46524a;
+    margin-bottom:22px;}
+  .agree input{appearance:none; flex:0 0 22px; width:22px; height:22px; margin-top:1px; border:1.5px solid var(--sage-300);
+    border-radius:6px; background:#fff; cursor:pointer; position:relative; transition:all .2s;}
+  .agree input:checked{background:var(--sage-800); border-color:var(--sage-800);}
+  .agree input:checked::after{content:""; position:absolute; left:7px; top:3px; width:6px; height:11px;
+    border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);}
+
+  .submit{width:100%; border:none; border-radius:12px; padding:16px; font-family:'Fraunces',serif;
+    font-size:16px; font-weight:500; letter-spacing:.01em; color:#fff; cursor:pointer;
+    background:linear-gradient(180deg,var(--sage-800),var(--sage-900));
+    box-shadow:0 12px 22px -12px rgba(38,57,47,.7); transition:transform .15s, box-shadow .15s, opacity .2s;}
+  .submit:hover:not(:disabled){transform:translateY(-1px); box-shadow:0 16px 26px -12px rgba(38,57,47,.75);}
+  .submit:active:not(:disabled){transform:translateY(0);}
+  .submit:disabled{opacity:.45; cursor:not-allowed; box-shadow:none;}
+  .err{color:#a4533f; font-size:13px; min-height:16px; margin:10px 0 0; text-align:center;}
+
+  .foot{text-align:center; font-size:11.5px; letter-spacing:.04em; color:var(--sage-600);
+    margin-top:24px; opacity:.85;}
+
+  .done-card{text-align:center; padding:54px 38px;}
+  .check{width:64px; height:64px; margin:0 auto 22px;}
+  .check svg{width:64px; height:64px;}
+  .check circle{stroke:var(--sage-300); stroke-width:2; stroke-dasharray:151; stroke-dashoffset:151;
+    animation:draw .6s .1s ease forwards;}
+  .check path{stroke:var(--sage-800); stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:40; stroke-dashoffset:40; animation:draw .5s .55s ease forwards;}
+  .done-stamp{font-size:12.5px; color:var(--muted); margin-top:18px;}
+
+  @keyframes rise{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  @media (max-width:560px){
+    .card{padding:30px 22px; border-radius:16px;}
+    .title{font-size:25px;}
+    .auth{gap:12px;}
+  }
+</style>
+
+<script>
+  const CONFIG = {
+    FORM_ENDPOINT: "https://formspree.io/f/mkoedrel",
+    NOTIFY_EMAIL: "emily@cleocare.co",
+    CLIENT_FIRST_NAME: ""
+  };
+
+  (function(){
+    const root = document.getElementById('cleo-root');
+    const nameInput = root.querySelector('#sig-name');
+    const agreeBox  = root.querySelector('#agree-box');
+    const submitBtn = root.querySelector('#submit-btn');
+    const errEl     = root.querySelector('#err');
+    const todayEl   = root.querySelector('#today');
+    const greetEl   = root.querySelector('#greeting');
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    todayEl.textContent = dateStr;
+    if (CONFIG.CLIENT_FIRST_NAME) greetEl.textContent = "Hi " + CONFIG.CLIENT_FIRST_NAME + ",";
+
+    function validate(){
+      const ok = nameInput.value.trim().length >= 2 && agreeBox.checked;
+      submitBtn.disabled = !ok;
+      if (ok) errEl.textContent = "";
+      return ok;
+    }
+    nameInput.addEventListener('input', validate);
+    agreeBox.addEventListener('change', validate);
+
+    submitBtn.addEventListener('click', async function(){
+      if (!validate()) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Recording…";
+
+      const record = {
+        form: "Cleo Insurance Authorization",
+        client_name: nameInput.value.trim(),
+        agreed_release_of_information: true,
+        agreed_claims_submission: true,
+        signed_date: dateStr,
+        signed_timestamp: now.toISOString(),
+        user_agent: navigator.userAgent
+      };
+
+      try {
+        if (CONFIG.FORM_ENDPOINT) {
+          const res = await fetch(CONFIG.FORM_ENDPOINT, {
+            method:"POST",
+            headers:{"Content-Type":"application/json","Accept":"application/json"},
+            body: JSON.stringify(record)
+          });
+          if (!res.ok) throw new Error("Network response was not ok");
+        } else {
+          const subject = encodeURIComponent("Insurance Authorization signed — " + record.client_name);
+          const body = encodeURIComponent(
+            "Insurance authorization signed via Cleo consent page.\n\n" +
+            "Name: " + record.client_name + "\n" +
+            "Agreed to release of information: Yes\n" +
+            "Agreed to claims submission: Yes\n" +
+            "Date: " + record.signed_date + "\n" +
+            "Timestamp: " + record.signed_timestamp
+          );
+          window.location.href = "mailto:" + CONFIG.NOTIFY_EMAIL + "?subject=" + subject + "&body=" + body;
+        }
+        showDone(record.client_name);
+      } catch (e) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Agree & Sign";
+        errEl.textContent = "Something went wrong sending your signature. Please try again, or contact Cleo directly.";
+      }
+    });
+
+    function showDone(name){
+      root.querySelector('#consent-view').classList.add('hidden');
+      const done = root.querySelector('#done-view');
+      done.classList.remove('hidden');
+      done.querySelector('#done-name').textContent = (CONFIG.CLIENT_FIRST_NAME || name.split(' ')[0] || "friend");
+      done.querySelector('#done-stamp').textContent = "Signed by " + name + " · " + dateStr;
+      done.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  })();
+</script>
+
+</body>
+</html>

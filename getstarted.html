@@ -400,9 +400,57 @@
         <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;">Required for insurance eligibility verification.</p>
       </div>
 
+      <!-- Insurance extra — shown when Yes is selected -->
+      <div id="insurance-extra" style="display:none;">
+
+        <!-- Not covered follow-up -->
+        <div style="margin-bottom:32px;">
+          <label class="form-label" style="margin-bottom:16px;">If a service isn't covered by your insurance, would you still like to be matched with a provider?</label>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <label class="pkg-card" id="not-covered-yes-card" onclick="toggleNotCovered('yes')" style="max-width:100%;">
+              <input type="radio" name="not_covered_match" value="yes" id="not-covered-yes-input">
+              <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Yes, I'd still like to be matched</span>
+            </label>
+            <label class="pkg-card" id="not-covered-no-card" onclick="toggleNotCovered('no')" style="max-width:100%;">
+              <input type="radio" name="not_covered_match" value="no" id="not-covered-no-input">
+              <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">No, only match me if covered</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Inline insurance authorization -->
+        <div style="background:var(--navy-wash);border:1px solid rgba(27,56,114,0.12);border-radius:12px;padding:32px;margin-bottom:32px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required to proceed</p>
+          <h3 style="font-family:'Spectral',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:8px;">Insurance Authorization</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:24px;">By signing below, you authorize Cleo Care to verify your insurance benefits and, where applicable, submit claims on your behalf.</p>
+
+          <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:8px;padding:20px 24px;margin-bottom:20px;max-height:220px;overflow-y:auto;">
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;color:var(--ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">1. Authorization to Release Health Information</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:14px;">I authorize Cleo Care, LLC and its designated staff to contact my insurer and to request, receive, and discuss information regarding my insurance coverage and benefits for the purpose of verifying my eligibility. This may include my plan status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage for specific services, and any prior authorization requirements. I may revoke this authorization at any time in writing.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;color:var(--ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">2. Authorization for Claims Submission</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me by my insurer — Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label class="form-label" for="auth-sig-name">Full legal name <span style="font-weight:400;color:var(--ink-muted);">(acts as your electronic signature)</span></label>
+            <input class="form-input" type="text" id="auth-sig-name" placeholder="Type your full name" autocomplete="name" oninput="validateAuthSig()">
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-bottom:16px;">Signed electronically on <strong id="auth-date"></strong></p>
+
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+            <div id="auth-agree-box" onclick="toggleAuthAgree()" style="width:20px;height:20px;min-width:20px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.3);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:background 0.15s,border-color 0.15s;">
+              <svg id="auth-agree-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I have read and agree to both authorizations above. I understand that typing my name acts as my electronic signature.</span>
+          </label>
+          <p id="auth-error" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#DC2626;margin-top:10px;display:none;">Please enter your full name and check the box above to continue.</p>
+        </div>
+
+      </div>
+
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
-        <button class="btn-primary" onclick="goToStep(3)">Continue →</button>
+        <button class="btn-primary" onclick="continueFromStep2()">Continue →</button>
       </div>
     </div>
 
@@ -654,19 +702,56 @@
 
   // Insurance navigation
   let insuranceNav = null;
+  let notCoveredMatch = null;
+  let authAgreeChecked = false;
   let disclaimerChecked = false;
 
   function toggleInsuranceNav(val) {
     insuranceNav = val;
-    const yesCard = document.getElementById('ins-yes-card');
-    const noCard = document.getElementById('ins-no-card');
-    yesCard.classList.toggle('selected', val === 'yes');
-    noCard.classList.toggle('selected', val === 'no');
+    document.getElementById('ins-yes-card').classList.toggle('selected', val === 'yes');
+    document.getElementById('ins-no-card').classList.toggle('selected', val === 'no');
     document.getElementById('ins-yes-input').checked = val === 'yes';
     document.getElementById('ins-no-input').checked = val === 'no';
     document.getElementById('dob-section').style.display = val === 'yes' ? 'block' : 'none';
-    // Show/hide disclaimer on step 4 when navigating there
+    document.getElementById('insurance-extra').style.display = val === 'yes' ? 'block' : 'none';
+    if (val === 'yes') {
+      const today = new Date().toLocaleDateString(undefined, {year:'numeric',month:'long',day:'numeric'});
+      document.getElementById('auth-date').textContent = today;
+    }
     updateDisclaimerVisibility();
+  }
+
+  function toggleNotCovered(val) {
+    notCoveredMatch = val;
+    document.getElementById('not-covered-yes-card').classList.toggle('selected', val === 'yes');
+    document.getElementById('not-covered-no-card').classList.toggle('selected', val === 'no');
+    document.getElementById('not-covered-yes-input').checked = val === 'yes';
+    document.getElementById('not-covered-no-input').checked = val === 'no';
+  }
+
+  function toggleAuthAgree() {
+    authAgreeChecked = !authAgreeChecked;
+    const box = document.getElementById('auth-agree-box');
+    const check = document.getElementById('auth-agree-check');
+    box.style.background = authAgreeChecked ? 'var(--navy)' : '#fff';
+    box.style.borderColor = authAgreeChecked ? 'var(--navy)' : 'rgba(27,56,114,0.3)';
+    check.style.opacity = authAgreeChecked ? '1' : '0';
+  }
+
+  function validateAuthSig() {
+    document.getElementById('auth-error').style.display = 'none';
+  }
+
+  function continueFromStep2() {
+    if (insuranceNav === 'yes') {
+      const name = document.getElementById('auth-sig-name').value.trim();
+      if (name.length < 2 || !authAgreeChecked) {
+        document.getElementById('auth-error').style.display = 'block';
+        document.getElementById('auth-sig-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+    }
+    goToStep(3);
   }
 
   function updateDisclaimerVisibility() {
@@ -702,6 +787,8 @@
       zip: document.getElementById('zip').value,
       dob: document.getElementById('dob').value,
       insuranceNav,
+      notCoveredMatch,
+      insuranceAuthSig: insuranceNav === 'yes' ? document.getElementById('auth-sig-name').value.trim() : null,
       dueDate: document.getElementById('due-date').value,
       referral: document.getElementById('referral').value,
       notes: document.getElementById('notes').value,
