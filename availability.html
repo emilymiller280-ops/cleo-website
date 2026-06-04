@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Availability | Cleo</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Spectral', serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
+    :root {
+      --navy: #1B3872; --navy-light: #2A4F9E; --navy-pale: #D6E0F5; --navy-wash: #EBF0FA;
+      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
+      --cream: #FAF8F4; --warm: #F5F0E8; --olive: #6B7A50; --olive-pale: #EEF1E6;
+    }
+    .heading-display { font-family: 'Spectral', serif; font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; }
+    .form-label { font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600; color: var(--ink); letter-spacing: 0.03em; display: block; margin-bottom: 8px; }
+    .form-input {
+      width: 100%; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: var(--ink);
+      background: #fff; border: 1.5px solid rgba(27,56,114,0.15); border-radius: 6px;
+      padding: 14px 16px; outline: none; transition: border-color 0.15s ease, box-shadow 0.15s ease; appearance: none;
+    }
+    .form-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,56,114,0.08); }
+    .form-input::placeholder { color: var(--ink-muted); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
+      font-size: 1rem; font-weight: 400; letter-spacing: 0.04em;
+      padding: 16px 36px; border-radius: 4px; text-decoration: none;
+      border: none; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+    .section-rule { border: none; border-top: 1px solid rgba(27,56,114,0.08); margin: 8px 0; }
+    .section-label { font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); margin-bottom: 20px; }
+    .nav-link { font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--navy); }
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      .two-col { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;">Our Favorites</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
+
+<!-- Hero -->
+<section style="padding:140px 32px 48px;text-align:center;max-width:600px;margin:0 auto;">
+  <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Almost There</p>
+  <h1 class="heading-display" style="font-size:clamp(1.75rem,4vw,2.5rem);color:var(--navy);margin-bottom:20px;">When are you free?</h1>
+  <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;">Select the windows that work for a 30-minute intro call. We'll find a time that fits your schedule.</p>
+</section>
+
+<!-- Form -->
+<section style="padding:0 32px 96px;max-width:640px;margin:0 auto;">
+  <div id="form-wrap">
+    <form id="avail-form" action="https://formspree.io/f/mvzwrrod" method="POST" style="display:flex;flex-direction:column;gap:28px;">
+
+      <!-- Name -->
+      <div>
+        <p class="section-label">About You</p>
+        <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label class="form-label" for="first-name">First name</label>
+            <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First" required>
+          </div>
+          <div>
+            <label class="form-label" for="last-name">Last name</label>
+            <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Last" required>
+          </div>
+        </div>
+        <div>
+          <label class="form-label" for="email">Email</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@email.com" required>
+        </div>
+      </div>
+
+      <hr class="section-rule">
+
+      <!-- Availability -->
+      <div>
+        <p class="section-label">Your Availability</p>
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:0.9375rem;color:var(--ink-muted);margin-bottom:24px;line-height:1.7;">Tap any time that could work. Pick as many as you like — more options make it easier to find a match.</p>
+        <div id="availability-grid" style="border:1px solid rgba(27,56,114,0.1);border-radius:10px;overflow:hidden;"></div>
+        <input type="hidden" name="availability" id="availability-hidden">
+      </div>
+
+      <!-- Submit -->
+      <div style="padding-top:4px;">
+        <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
+          Send My Availability
+        </button>
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">We'll follow up within 24 hours to confirm your call time.</p>
+      </div>
+
+      <!-- Error -->
+      <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:14px 18px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:#DC2626;">Something went wrong. Please try again or email <a href="mailto:hello@cleocare.co" style="color:#DC2626;text-decoration:underline;">hello@cleocare.co</a></p>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Success -->
+  <div id="form-success" style="display:none;text-align:center;padding:72px 32px;">
+    <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+      <svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M2 10l6.5 6.5L22 2" stroke="var(--olive)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h2 class="heading-display" style="font-size:1.75rem;color:var(--navy);margin-bottom:16px;">Got it, thank you.</h2>
+    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:420px;margin:0 auto;">We'll be in touch within 24 hours to confirm your intro call. We can't wait to connect.</p>
+  </div>
+</section>
+
+<script>
+  // Availability grid
+  (function() {
+    const grid = document.getElementById('availability-grid');
+    if (!grid) return;
+    const slots = ['Morning', 'Afternoon', 'Evening'];
+    const selected = new Set();
+
+    for (let i = 1; i <= 14; i++) {
+      const d = new Date();
+      d.setDate(d.getDate() + i);
+      const dayName  = d.toLocaleDateString('en-US', { weekday: 'short' });
+      const dateStr  = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      const isWeekend = d.getDay() === 0 || d.getDay() === 6;
+      const isLast   = i === 14;
+
+      const row = document.createElement('div');
+      row.style.cssText = `display:flex;align-items:center;gap:12px;padding:11px 16px;${isLast ? '' : 'border-bottom:1px solid rgba(27,56,114,0.07);'}background:${isWeekend ? 'rgba(27,56,114,0.025)' : '#fff'};flex-wrap:wrap;`;
+
+      const lbl = document.createElement('div');
+      lbl.style.cssText = 'flex-shrink:0;min-width:88px;';
+      lbl.innerHTML = `<span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.75rem;color:var(--ink);letter-spacing:0.02em;">${dayName}</span> <span style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);">${dateStr}</span>`;
+
+      const chips = document.createElement('div');
+      chips.style.cssText = 'display:flex;gap:7px;flex-wrap:wrap;';
+
+      slots.forEach(slot => {
+        const key = `${dayName} ${dateStr} – ${slot}`;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = slot;
+        btn.style.cssText = 'font-family:"Inter",sans-serif;font-size:0.75rem;font-weight:500;padding:6px 13px;border-radius:99px;border:1.5px solid rgba(27,56,114,0.18);background:#fff;color:var(--ink-mid);cursor:pointer;transition:border-color 0.15s,background 0.15s,color 0.15s;-webkit-tap-highlight-color:transparent;';
+        btn.addEventListener('mouseenter', () => { if (!selected.has(key)) btn.style.borderColor = 'var(--navy)'; });
+        btn.addEventListener('mouseleave', () => { if (!selected.has(key)) btn.style.borderColor = 'rgba(27,56,114,0.18)'; });
+        btn.addEventListener('click', () => {
+          if (selected.has(key)) {
+            selected.delete(key);
+            btn.style.background = '#fff';
+            btn.style.border = '1.5px solid rgba(27,56,114,0.18)';
+            btn.style.color = 'var(--ink-mid)';
+          } else {
+            selected.add(key);
+            btn.style.background = 'var(--navy)';
+            btn.style.border = '1.5px solid var(--navy)';
+            btn.style.color = '#fff';
+          }
+          document.getElementById('availability-hidden').value = [...selected].join(', ');
+        });
+        chips.appendChild(btn);
+      });
+
+      row.appendChild(lbl);
+      row.appendChild(chips);
+      grid.appendChild(row);
+    }
+  })();
+
+  // Form submit
+  document.getElementById('avail-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    document.getElementById('form-error').style.display = 'none';
+
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { Accept: 'application/json' }
+      });
+      if (res.ok) {
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('submission failed');
+      }
+    } catch {
+      document.getElementById('form-error').style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send My Availability';
+    }
+  });
+
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn  = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+
+</body>
+</html>
