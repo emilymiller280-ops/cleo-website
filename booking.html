@@ -421,12 +421,11 @@
           <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a friend, Google…">
         </div>
 
-        <hr class="section-rule">
-
-        <!-- Availability -->
-        <div>
-          <p class="section-label">When Are You Free?</p>
-          <p style="font-family:'Spectral',serif;font-weight:300;font-size:0.9375rem;color:var(--ink-muted);margin-bottom:24px;line-height:1.7;">Select any windows that work for a 30-min intro call over the next two weeks. Pick as many as you like — we'll find what works.</p>
+        <!-- Availability (shown only for doula / mental health / night care) -->
+        <div id="availability-section" style="display:none;">
+          <hr class="section-rule" style="margin-bottom:28px;">
+          <p class="section-label">Schedule Your Intro Call</p>
+          <p style="font-family:'Spectral',serif;font-weight:300;font-size:0.9375rem;color:var(--ink-muted);margin-bottom:24px;line-height:1.7;">Select windows that work for a 30-minute intro call with your potential provider over the next two weeks. Pick as many as you like.</p>
           <div id="availability-grid" style="border:1px solid rgba(27,56,114,0.1);border-radius:10px;overflow:hidden;"></div>
           <input type="hidden" name="availability" id="availability-hidden">
         </div>
@@ -514,6 +513,8 @@
       if (!otherSelected) document.getElementById('other-service-input').value = '';
     }
 
+    const AVAIL_TRIGGERS = new Set(['Postpartum Doula', 'Birth Doula', 'Mental Health Support', 'Night Care']);
+
     function toggleChip(el, val) {
       if (selectedServices.has(val)) {
         selectedServices.delete(val);
@@ -523,6 +524,15 @@
         el.classList.add('selected');
       }
       document.getElementById('services-hidden').value = [...selectedServices].join(', ');
+
+      const needsAvail = [...selectedServices].some(s => AVAIL_TRIGGERS.has(s));
+      const section = document.getElementById('availability-section');
+      if (needsAvail && section.style.display === 'none') {
+        section.style.display = 'block';
+        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else if (!needsAvail) {
+        section.style.display = 'none';
+      }
     }
 
     // Insurance
