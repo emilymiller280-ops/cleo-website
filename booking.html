@@ -421,15 +421,6 @@
           <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a friend, Google…">
         </div>
 
-        <!-- Availability (shown only for doula / mental health / night care) -->
-        <div id="availability-section" style="display:none;">
-          <hr class="section-rule" style="margin-bottom:28px;">
-          <p class="section-label">When Are You Free?</p>
-          <p style="font-family:'Spectral',serif;font-weight:300;font-size:0.9375rem;color:var(--ink-muted);margin-bottom:24px;line-height:1.7;">Please select all windows that work for a 30-minute intro call with your potential provider(s) over the next two weeks.</p>
-          <div id="availability-grid" style="border:1px solid rgba(27,56,114,0.1);border-radius:10px;overflow:hidden;"></div>
-          <input type="hidden" name="availability" id="availability-hidden">
-        </div>
-
         <!-- Insurance disclaimer (shown when yes) -->
         <div id="ins-disclaimer" style="display:none;background:var(--olive-pale);border:1.5px solid var(--olive);border-radius:8px;padding:20px 24px;">
           <div style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;" onclick="toggleDisclaimer()">
@@ -513,8 +504,6 @@
       if (!otherSelected) document.getElementById('other-service-input').value = '';
     }
 
-    const AVAIL_TRIGGERS = new Set(['Postpartum Doula', 'Birth Doula', 'Mental Health Support', 'Night Care']);
-
     function toggleChip(el, val) {
       if (selectedServices.has(val)) {
         selectedServices.delete(val);
@@ -524,15 +513,6 @@
         el.classList.add('selected');
       }
       document.getElementById('services-hidden').value = [...selectedServices].join(', ');
-
-      const needsAvail = [...selectedServices].some(s => AVAIL_TRIGGERS.has(s));
-      const section = document.getElementById('availability-section');
-      if (needsAvail && section.style.display === 'none') {
-        section.style.display = 'block';
-        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      } else if (!needsAvail) {
-        section.style.display = 'none';
-      }
     }
 
     // Insurance
@@ -613,65 +593,6 @@
         btn.textContent = 'Request My Care Plan';
       }
     });
-  </script>
-
-  <script>
-    // Availability grid — generates next 14 days with Morning / Afternoon / Evening chips
-    (function() {
-      const grid = document.getElementById('availability-grid');
-      if (!grid) return;
-      const slots = ['Morning', 'Afternoon', 'Evening'];
-      const selected = new Set();
-
-      for (let i = 1; i <= 14; i++) {
-        const d = new Date();
-        d.setDate(d.getDate() + i);
-        const dayName = d.toLocaleDateString('en-US', { weekday: 'short' });
-        const dateStr  = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-        const isWeekend = d.getDay() === 0 || d.getDay() === 6;
-        const isLast = i === 14;
-
-        const row = document.createElement('div');
-        row.style.cssText = `display:flex;align-items:center;gap:12px;padding:11px 16px;${isLast ? '' : 'border-bottom:1px solid rgba(27,56,114,0.07);'}background:${isWeekend ? 'rgba(27,56,114,0.025)' : '#fff'};flex-wrap:wrap;`;
-
-        const label = document.createElement('div');
-        label.style.cssText = 'flex-shrink:0;min-width:88px;';
-        label.innerHTML = `<span style="font-family:'Inter',sans-serif;font-weight:600;font-size:0.75rem;color:var(--ink);letter-spacing:0.02em;">${dayName}</span> <span style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);">${dateStr}</span>`;
-
-        const chips = document.createElement('div');
-        chips.style.cssText = 'display:flex;gap:7px;flex-wrap:wrap;';
-
-        slots.forEach(slot => {
-          const key = `${dayName} ${dateStr} – ${slot}`;
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.textContent = slot;
-          btn.style.cssText = 'font-family:"Inter",sans-serif;font-size:0.75rem;font-weight:500;padding:6px 13px;border-radius:99px;border:1.5px solid rgba(27,56,114,0.18);background:#fff;color:var(--ink-mid);cursor:pointer;transition:border-color 0.15s,background 0.15s,color 0.15s;';
-          btn.addEventListener('mouseenter', () => { if (!selected.has(key)) btn.style.borderColor = 'var(--navy)'; });
-          btn.addEventListener('mouseleave', () => { if (!selected.has(key)) btn.style.borderColor = 'rgba(27,56,114,0.18)'; });
-          btn.addEventListener('click', () => {
-            if (selected.has(key)) {
-              selected.delete(key);
-              btn.style.cssText = btn.style.cssText.replace(/background:[^;]+;/, 'background:#fff;').replace(/border:[^;]+;|border-color:[^;]+;/, 'border:1.5px solid rgba(27,56,114,0.18);').replace(/color:[^;]+;/, 'color:var(--ink-mid);');
-              btn.style.background = '#fff';
-              btn.style.border = '1.5px solid rgba(27,56,114,0.18)';
-              btn.style.color = 'var(--ink-mid)';
-            } else {
-              selected.add(key);
-              btn.style.background = 'var(--navy)';
-              btn.style.border = '1.5px solid var(--navy)';
-              btn.style.color = '#fff';
-            }
-            document.getElementById('availability-hidden').value = [...selected].join(', ');
-          });
-          chips.appendChild(btn);
-        });
-
-        row.appendChild(label);
-        row.appendChild(chips);
-        grid.appendChild(row);
-      }
-    })();
   </script>
 
 </body>
