@@ -119,10 +119,36 @@
     <div style="max-width:560px;text-align:center;">
       <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:24px;">Meal Delivery</p>
       <h1 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2.5rem,5vw,4rem);color:var(--navy);line-height:1.05;letter-spacing:-0.02em;margin-bottom:28px;">More details<br><em style="font-style:italic;">coming soon.</em></h1>
-      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:40px;">Chef-prepared, nutrient-dense meals designed for pregnancy and postpartum recovery. Nourishing for mama and the whole family, delivered to your door.</p>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:36px;">Chef-prepared, nutrient-dense meals designed for pregnancy and postpartum recovery. Nourishing for mama and the whole family, delivered to your door.</p>
+
+      <p style="font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;color:var(--ink);margin-bottom:18px;">Interested in learning more? Be the first to hear when we're live.</p>
+      <form id="meal-waitlist-form" action="https://app.cleocare.co/api/meal-waitlist" method="POST" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
+        <input name="email" type="email" required placeholder="you@example.com" style="width:100%;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:14px 16px;outline:none;">
+        <button type="submit" class="btn-primary" style="justify-content:center;width:100%;">Keep me posted →</button>
+      </form>
+      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:14px;">No spam — just one note when Cleo Care meals are ready.</p>
+
+      <div id="meal-waitlist-confirm" style="display:none;padding:16px 0;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#EEF1E6;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.5rem;color:var(--navy);">You're on the list! 🌿</p>
+      </div>
     </div>
   </section>
 </main>
+<script>
+  document.getElementById('meal-waitlist-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; document.getElementById('meal-waitlist-confirm').style.display = 'block'; }
+      else alert('Something went wrong. Please try again or email hello@cleocare.co.');
+    } catch { alert('Something went wrong. Please try again or email hello@cleocare.co.'); }
+  });
+</script>
 
 <footer style="background:#070F1E;padding:44px 56px;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
