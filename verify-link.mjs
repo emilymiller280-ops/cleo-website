@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const LINK = 'https://app.cleocare.co/go?token=eyJ1aWQiOiIzZjBmMTVmNS04NzVmLTRlZGEtYTFiNi00N2ZkODM1MDg0OTciLCJyb2xlIjoiY2xpZW50IiwicHVycG9zZSI6ImFjY291bnQiLCJleHAiOjE3ODUyNjUwMDMyNTB9.8uo59gwTnsy5e9v5e_Jp8UHvlipy9Nxyv9RCXj1n31A&next=%2Fclient%2Faccount';
+const browser = await chromium.launch();
+const page = await browser.newPage();
+await page.goto(LINK, { waitUntil: 'networkidle' });
+await page.waitForTimeout(4000);
+await page.goto('https://app.cleocare.co/client/appointments', { waitUntil: 'networkidle' });
+const joinLink = await page.locator('a:has-text("Join video call")').first();
+const count = await joinLink.count();
+const href = count ? await joinLink.getAttribute('href') : null;
+console.log('Join video call button present:', count > 0);
+console.log('Button links to:', href);
+await browser.close();

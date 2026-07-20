@@ -1,0 +1,21 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+const errs = [];
+page.on('pageerror', e => errs.push(String(e)));
+await page.goto('http://localhost:3000/build-program.html', { waitUntil: 'networkidle' });
+await page.click('[data-comp="bld"]');
+await page.click('[data-portion="medium"]');
+await page.click('[data-dur="40"]');
+// default self visible, gift hidden
+const selfVis1 = await page.isVisible('#self-fields');
+const giftVis1 = await page.isVisible('#gift-fields');
+await page.click('[data-mode="gift"]');
+const selfVis2 = await page.isVisible('#self-fields');
+const giftVis2 = await page.isVisible('#gift-fields');
+const recName = await page.isVisible('#rec-name');
+console.log('Default -> self:', selfVis1, 'gift:', giftVis1);
+console.log('After gift toggle -> self:', selfVis2, 'gift:', giftVis2, 'recipient field:', recName);
+console.log('JS errors:', errs.length ? errs : 'none');
+await page.screenshot({ path: './screenshots/build-program-gift.png', fullPage: true });
+await browser.close();

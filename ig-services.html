@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IG Slide — Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1080px; height: 1080px; overflow: hidden; background: #E6DED2; }
+    body {
+      font-family: 'Spectral', serif;
+      background: linear-gradient(145deg, #F2EDE4 0%, #EAE2D6 55%, #E2D9CC 100%);
+      color: #1B3872;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    .wordmark {
+      position: absolute;
+      top: 56px;
+      left: 64px;
+      font-family: 'Spectral', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: rgba(27,56,114,0.45);
+    }
+    .inner {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      padding: 56px 64px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #6B7A50;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+    .headline {
+      font-family: 'Spectral', serif;
+      font-size: 68px;
+      font-weight: 400;
+      color: #1B3872;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: rgba(107,122,80,0.4);
+      margin-bottom: 36px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .service {
+      font-family: 'Spectral', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: rgba(27,56,114,0.75);
+      line-height: 1.3;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(27,56,114,0.1);
+      padding-right: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wordmark">Cleo</div>
+  <div class="inner">
+    <div class="eyebrow">What we offer</div>
+    <div class="headline">Everything<br>your recovery requires.</div>
+    <div class="divider"></div>
+    <div class="services-grid">
+      <div class="service">Night Care</div>
+      <div class="service">Mental Health Support</div>
+      <div class="service">Meal Delivery</div>
+      <div class="service">Birth + Postpartum Doulas</div>
+      <div class="service">Lactation Consultants</div>
+      <div class="service">Massage + Bodywork</div>
+      <div class="service">Acupuncture</div>
+      <div class="service">Pelvic Floor PT</div>
+      <div class="service">Birth Support</div>
+      <div class="service">Home Cleaning Services</div>
+      <div class="service">Sibling Childcare</div>
+      <div class="service" style="color:#6B7A50;font-style:italic;">&amp; much, much more!</div>
+    </div>
+  </div>
+</body>
+</html>
