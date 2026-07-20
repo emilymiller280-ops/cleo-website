@@ -433,6 +433,19 @@
           <input type="hidden" id="disclaimer-hidden" name="insurance_disclaimer" value="">
         </div>
 
+        <!-- Federal healthcare program screening (eligibility gate) -->
+        <div>
+          <label class="form-label">Are you currently covered by Medicaid / Medi-Cal, TRICARE, or IHS?</label>
+          <div style="display:flex;gap:12px;margin-top:4px;">
+            <button type="button" class="toggle-btn" id="fed-no" onclick="setFederal('no')">No</button>
+            <button type="button" class="toggle-btn" id="fed-yes" onclick="setFederal('yes')">Yes</button>
+          </div>
+          <input type="hidden" name="federal_beneficiary" id="fed-hidden">
+          <div id="fed-notice" style="display:none;margin-top:14px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.8125rem;color:#B5654A;line-height:1.6;">
+            We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time. Please reach out to <a href="mailto:hello@cleocare.co" style="color:#B5654A;text-decoration:underline;">hello@cleocare.co</a> with any questions.
+          </div>
+        </div>
+
         <!-- Submit -->
         <div style="padding-top:8px;">
           <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
@@ -528,6 +541,16 @@
       document.getElementById('ins-disclaimer').style.display = val === 'yes' ? 'block' : 'none';
     }
 
+    function setFederal(val) {
+      document.getElementById('fed-no').classList.toggle('active', val === 'no');
+      document.getElementById('fed-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('fed-hidden').value = val;
+      document.getElementById('fed-notice').style.display = val === 'yes' ? 'block' : 'none';
+      const b = document.getElementById('submit-btn');
+      b.disabled = val === 'yes';
+      b.style.opacity = val === 'yes' ? '0.5' : '1';
+    }
+
     function setNotCovered(val) {
       document.getElementById('not-covered-yes').classList.toggle('active', val === 'yes');
       document.getElementById('not-covered-no').classList.toggle('active', val === 'no');
@@ -554,6 +577,16 @@
     // Submit
     document.getElementById('booking-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      const fedVal = document.getElementById('fed-hidden').value;
+      if (fedVal !== 'no') {
+        const notice = document.getElementById('fed-notice');
+        notice.textContent = fedVal === 'yes'
+          ? "We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time."
+          : 'Please answer the eligibility question above to continue.';
+        notice.style.display = 'block';
+        notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
       const insVal = document.getElementById('ins-hidden').value;
       if (insVal === 'yes') {
         const sigName = document.getElementById('auth-sig').value.trim();
