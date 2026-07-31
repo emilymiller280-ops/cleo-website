@@ -383,6 +383,45 @@
                 <label class="form-label" for="ins-dob">Date of birth</label>
                 <input class="form-input" type="date" id="ins-dob" name="ins_dob" style="max-width:280px;">
               </div>
+
+              <!-- Home address (required for insurance claims) -->
+              <div>
+                <label class="form-label">Home address <span style="font-weight:400;color:var(--ink-muted);">(for insurance claims)</span></label>
+                <input class="form-input" type="text" name="ins_street" placeholder="Street address" style="margin-bottom:10px;">
+                <div class="two-col" style="display:grid;grid-template-columns:2fr 1fr;gap:14px;">
+                  <input class="form-input" type="text" name="ins_city" placeholder="City">
+                  <input class="form-input" type="text" name="ins_state" placeholder="State" maxlength="2" style="text-transform:uppercase;">
+                </div>
+              </div>
+
+              <!-- Policyholder -->
+              <div>
+                <label class="form-label" style="margin-bottom:12px;">Are you the primary policyholder on this plan?</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <button type="button" class="toggle-btn" id="ph-yes" onclick="setPolicyholder('yes')">Yes, it's mine</button>
+                  <button type="button" class="toggle-btn" id="ph-no" onclick="setPolicyholder('no')">No, someone else's</button>
+                </div>
+                <input type="hidden" name="policyholder_self" id="ph-hidden">
+                <div id="subscriber-details" style="display:none;margin-top:16px;flex-direction:column;gap:14px;">
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">Policyholder's information</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div><label class="form-label" for="sub-first">First name</label><input class="form-input" type="text" id="sub-first" name="subscriber_first_name"></div>
+                    <div><label class="form-label" for="sub-last">Last name</label><input class="form-input" type="text" id="sub-last" name="subscriber_last_name"></div>
+                  </div>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div><label class="form-label" for="sub-dob">Their date of birth</label><input class="form-input" type="date" id="sub-dob" name="subscriber_dob"></div>
+                    <div><label class="form-label" for="sub-rel">Relationship to you</label>
+                      <select class="form-input" id="sub-rel" name="subscriber_relationship">
+                        <option value="">Select…</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="parent">Parent</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <label class="form-label" for="ins-notes">Anything else we should know about your coverage? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
                 <textarea class="form-input" id="ins-notes" name="ins_notes" rows="2" placeholder="e.g. specific services you think may be covered…" style="resize:vertical;"></textarea>
@@ -621,6 +660,13 @@
       document.getElementById('not-covered-yes').classList.toggle('active', val === 'yes');
       document.getElementById('not-covered-no').classList.toggle('active', val === 'no');
       document.getElementById('not-covered-hidden').value = val;
+    }
+
+    function setPolicyholder(val) {
+      document.getElementById('ph-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('ph-no').classList.toggle('active', val === 'no');
+      document.getElementById('ph-hidden').value = val;
+      document.getElementById('subscriber-details').style.display = val === 'no' ? 'flex' : 'none';
     }
 
     function toggleAuthAgree() {
