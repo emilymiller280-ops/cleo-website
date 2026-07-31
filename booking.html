@@ -325,6 +325,16 @@
               </div>
               <input type="hidden" name="services_interested" id="services-hidden">
             </div>
+            <div id="care-setting-wrap" style="display:none;">
+              <label class="form-label">How would you like to receive care? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
+              <div id="setting-chips" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;">
+                <button type="button" class="service-chip" data-setting="home" onclick="toggleSetting(this,'In-home')">In your home</button>
+                <button type="button" class="service-chip" data-setting="virtual" onclick="toggleSetting(this,'Telehealth')">Virtual (telehealth)</button>
+                <button type="button" class="service-chip" data-setting="office" onclick="toggleSetting(this,'In-office')">In office</button>
+              </div>
+              <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;line-height:1.5;">We only show the settings your selected services support (for example, bodywork &amp; acupuncture aren't offered virtually; mental health isn't offered in-home).</p>
+              <input type="hidden" name="care_settings" id="care-settings-hidden">
+            </div>
             <div>
               <label class="form-label" for="notes">Tell us more about what you're looking for <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
               <textarea class="form-input" id="notes" name="notes" rows="4" placeholder="Specific needs, concerns, timeline, anything on your mind..." style="resize:vertical;min-height:100px;"></textarea>
@@ -518,6 +528,7 @@
       el.classList.toggle('selected', otherSelected);
       document.getElementById('other-service-wrap').style.display = otherSelected ? 'block' : 'none';
       if (!otherSelected) document.getElementById('other-service-input').value = '';
+      updateCareSettings();
     }
 
     function toggleChip(el, val) {
@@ -529,6 +540,59 @@
         el.classList.add('selected');
       }
       document.getElementById('services-hidden').value = [...selectedServices].join(', ');
+      updateCareSettings();
+    }
+
+    // Which care settings each service can be delivered in. Bodywork/acupuncture
+    // are never virtual; mental health is never in-home. Meal delivery has no
+    // "setting" choice.
+    const SERVICE_SETTINGS = {
+      'Meal Delivery': [],
+      'Postpartum Doula': ['home', 'virtual'],
+      'Birth Doula': ['home', 'virtual'],
+      'Lactation Consulting': ['home', 'virtual', 'office'],
+      'Pelvic Floor PT': ['office', 'home'],
+      'Mental Health Support': ['virtual', 'office'],
+      'Night Care': ['home'],
+      'Massage / Bodywork': ['home', 'office'],
+      'Acupuncture': ['home', 'office'],
+    };
+    const SETTING_LABEL = { home: 'In-home', virtual: 'Telehealth', office: 'In-office' };
+    const selectedSettings = new Set();
+
+    function syncSettings() {
+      document.getElementById('care-settings-hidden').value = [...selectedSettings].join(', ');
+    }
+
+    // Show only the settings valid for the selected services; hide the section if none apply.
+    function updateCareSettings() {
+      const allowed = new Set();
+      selectedServices.forEach(s => (SERVICE_SETTINGS[s] || []).forEach(x => allowed.add(x)));
+      if (otherSelected) ['home', 'virtual', 'office'].forEach(x => allowed.add(x));
+      const wrap = document.getElementById('care-setting-wrap');
+      if (allowed.size === 0) {
+        wrap.style.display = 'none';
+        selectedSettings.clear();
+        syncSettings();
+        return;
+      }
+      wrap.style.display = 'block';
+      document.querySelectorAll('#setting-chips [data-setting]').forEach(btn => {
+        const key = btn.getAttribute('data-setting');
+        const ok = allowed.has(key);
+        btn.style.display = ok ? '' : 'none';
+        if (!ok && selectedSettings.has(SETTING_LABEL[key])) {
+          selectedSettings.delete(SETTING_LABEL[key]);
+          btn.classList.remove('selected');
+        }
+      });
+      syncSettings();
+    }
+
+    function toggleSetting(el, label) {
+      if (selectedSettings.has(label)) { selectedSettings.delete(label); el.classList.remove('selected'); }
+      else { selectedSettings.add(label); el.classList.add('selected'); }
+      syncSettings();
     }
 
     // Insurance
