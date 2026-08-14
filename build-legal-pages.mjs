@@ -3,7 +3,7 @@
 //   node build-legal-pages.mjs
 //
 // These two pages are generated, never hand-edited — when RG sends a new
-// version, drop it in Downloads, update DOCS below, and re-run. Hand edits
+// version, drop it in the Legal Docs folder below and re-run. Hand edits
 // would be silently overwritten and would also mean the live page no longer
 // matches the document that was reviewed.
 import { writeFileSync } from 'node:fs';
