@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Cleo</title>
+  <meta name="description" content="How Cleo collects, uses, and protects your information." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
+    :root {
+      --navy: #1B3872; --navy-dark: #0F2352; --navy-light: #2A4F9E;
+      --navy-pale: #D6E0F5; --navy-wash: #EBF0FA;
+      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
+      --cream: #FAF8F4; --warm: #F5F0E8;
+    }
+    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link { font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
+      font-size: 0.9375rem; font-weight: 400; letter-spacing: 0.04em;
+      padding: 16px 40px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible, .nav-link:focus-visible, .legal-body a:focus-visible { outline: 2px solid var(--navy-light); outline-offset: 3px; border-radius: 2px; }
+
+    /* ---- Legal document typography ---- */
+    .legal-body { max-width: 760px; }
+    .legal-h2 {
+      font-family: 'Spectral', serif; font-size: 1.5rem; font-weight: 400;
+      color: var(--ink); letter-spacing: -0.01em; line-height: 1.3;
+      margin: 56px 0 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(27,56,114,0.12);
+      scroll-margin-top: 100px;
+    }
+    .legal-h3 {
+      font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy);
+      line-height: 1.5; margin: 40px 0 14px; scroll-margin-top: 100px;
+    }
+    .legal-h2:first-child, .legal-h3:first-child { margin-top: 0; }
+    .legal-p {
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem; line-height: 1.85;
+      color: var(--ink-mid); margin-bottom: 18px;
+    }
+    .legal-p strong { color: var(--ink); font-weight: 600; }
+    .legal-list { margin: 0 0 20px 0; padding-left: 22px; list-style: disc; }
+    .legal-list li {
+      font-family: 'Inter', sans-serif; font-size: 0.9375rem; line-height: 1.85;
+      color: var(--ink-mid); margin-bottom: 10px; padding-left: 4px;
+    }
+    .legal-body a { color: var(--navy); text-decoration: none; border-bottom: 1px solid rgba(27,56,114,0.3); transition: border-color 0.15s ease; }
+    .legal-body a:hover { border-bottom-color: var(--navy); }
+    .legal-table-wrap { overflow-x: auto; margin: 0 0 24px; border: 1px solid rgba(27,56,114,0.12); border-radius: 8px; }
+    .legal-table { width: 100%; border-collapse: collapse; background: #fff; }
+    .legal-table th, .legal-table td {
+      font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.7;
+      text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(27,56,114,0.09); vertical-align: top;
+    }
+    .legal-table th { background: var(--navy-wash); color: var(--ink); font-weight: 600; }
+    .legal-table td { color: var(--ink-mid); }
+    .legal-table tr:last-child th, .legal-table tr:last-child td { border-bottom: none; }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-links { display:none !important; }
+      header nav { padding: 0 20px !important; }
+      .legal-hero { padding: 130px 20px 48px !important; }
+      .legal-main { padding: 40px 20px 80px !important; }
+      .legal-h2 { font-size: 1.3rem; }
+      footer { padding: 60px 20px 36px !important; }
+      #legal-footer-bottom { flex-direction: column; align-items: flex-start !important; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
+  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
+    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
+      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
+    </a>
+    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
+      <a href="favorites.html" class="nav-link">Our Favorites</a>
+      <a href="https://app.cleocare.co/gift" class="nav-link">Gift</a>
+      <a href="faq.html" class="nav-link">The Details</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
+  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
+  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
+  <a href="https://app.cleocare.co/gift" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Gift</a>
+  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
+  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+</div>
+
+<!-- HERO -->
+<section class="legal-hero" style="padding:170px 56px 56px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 55%, #E8DDD0 100%);">
+  <div style="max-width:760px;margin:0 auto;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);opacity:0.65;margin-bottom:14px;">Legal</p>
+    <h1 class="heading-display" style="font-size:clamp(2.1rem,5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:16px;">Privacy Policy</h1>
+    <p class="body-text" style="font-size:1rem;color:var(--ink-mid);max-width:560px;">How Cleo collects, uses, and protects your information.</p>
+    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);margin-top:20px;">Last updated August 13, 2026</p>
+  </div>
+</section>
+
+<!-- DOCUMENT -->
+<main class="legal-main" style="padding:56px 56px 110px;">
+  <div class="legal-body" style="margin:0 auto;">
+<p class="legal-p">Privacy Policy</p>
+<p class="legal-p">Cleo Care, LLC (collectively, “Cleo Care”, “<strong>we</strong>”, “<strong>us</strong>”, “<strong>our</strong>”) is in the business of connecting individuals and families navigating fertility, pregnancy, postpartum, and related wellness needs with full-spectrum maternal care, both clinical and non-clinical. Cleo Care is the creator of the Cleo Care website located at https://cleocare.co/ (the ”<strong>Website</strong>”) and other related websites, applications, and platforms (collectively, the “<strong>Platform</strong>”). The Platform, together with all related content, products, services, and functionality associated with the Platform, are collectively referred to as the “<strong>Services.</strong>”</p>
+<p class="legal-p">We are committed to protecting your Personal Information (as defined below) and making sure you understand your rights related to our use and disclosure of such information while providing Services to you. Your access and use of the Services, or anything associated therewith, including its content ("<strong>Content</strong>"), are subject to this Privacy Policy (“<strong>Privacy Policy</strong>”) unless specifically stated otherwise. Capitalized terms not otherwise defined in this Privacy Policy have the same meaning as set forth in the <a href="Cleo%20TOS.docx" target="_blank" rel="noopener">Terms of Service</a> ("<strong>Terms of Service</strong>").</p>
+<p class="legal-p">In keeping with this commitment, this Privacy Policy describes:</p>
+<ul class="legal-list">
+<li>Personal Information that we collect from you or about you when you interact with the Services, whether provided directly by you or collected automatically or passively, including search queries on the Platform</li>
+<li>How we use and process the Personal Information that we receive</li>
+<li>If and why Personal Information may be disclosed to third parties</li>
+<li>Your choices regarding the collection and processing of your Personal Information</li>
+</ul>
+<p class="legal-p">When you access the Services or send your Personal Information (as defined below) to us via email, text messages, or other electronic messages, you consent to receive communications from us, in accordance with this Privacy Policy.</p>
+<p class="legal-p">Please read this Privacy Policy carefully. If you don’t agree with this Privacy Policy, do not use our Services. By accessing or using our Services, you agree that you have read this Privacy Policy and you understand, and consent to be bound by, the terms and conditions herein. If you have not done so already, please also review our Terms of Service. The Terms of Service contain provisions that may limit our liability to you. If you are using the Services on behalf of an individual other than yourself, you represent that you are authorized by such individual to act on such individual's behalf and that such individual acknowledges and agrees to the terms and conditions herein.</p>
+<h3 id="healthcare-information" class="legal-h3"><strong>Healthcare Information</strong></h3>
+<p class="legal-p">To the extent Cleo Care is subject to the Health Insurance Portability and Accountability Act of 1996, Public Law 104-191, and its related regulations and amendments from time to time (collectively,<strong> </strong>“<strong>HIPAA</strong>”), or to other state laws regarding specific protections for medical records information (“<strong>Privacy Laws</strong>”), Cleo Care will comply with HIPAA and such Privacy Laws, as applicable.</p>
+<p class="legal-p">If you receive healthcare services from an Affiliated Professional using the Platform, that provider’s privacy policy or HIPAA <strong>Notice of Privacy Practices </strong>(“<strong>NPP</strong>”) defines how that Provider may use and disclose your Personal Information and, if applicable, describes your rights under HIPAA. This Privacy Policy does not replace the Affiliated Professional’s policy—it applies only to Cleo Care’s use and disclosure of your Personal Information.</p>
+<h3 id="changes-to-this-privacy-policy-and-notifications" class="legal-h3"><strong>Changes to this privacy policy</strong><strong> and notifications</strong></h3>
+<p class="legal-p">We reserve the right to amend this Privacy Policy at any time. We will notify you and/or require you to accept the updated Privacy Policy only if the supplemented, amended or otherwise modified Privacy Policy implements material changes from Cleo Care's then-current Privacy Policy. It is your responsibility to carefully review this Privacy Policy each time you visit, access or use the Service. </p>
+<p class="legal-p">Cleo Care may provide you with notices, including those regarding changes to this Privacy Policy, using any reasonable means now known or hereafter developed, including by email, regular mail, SMS, MMS, text message, or postings on the Website, subject to applicable legal limitations. When we make material changes to this Privacy Policy, we will notify you through one or more of these means and will update the “Last Updated” date at the top of this Privacy Policy. Such notices may not be received if you violate this Privacy Policy by accessing the Platform in an unauthorized manner. You agree that you are deemed to have received any and all notices that would have been delivered had you accessed the Services in an authorized manner. </p>
+<p class="legal-p">We will not make retroactive changes that reduce your privacy rights unless we are legally required to do so. For material changes affecting how we use or disclose your Personal Information, we will provide prominent advance notice and, where required by applicable law or where the changes involve sensitive or health-related information, obtain your consent before the changes take effect. <strong>Your continued use of our </strong><strong>Services</strong><strong> </strong><strong>after we make changes shall constitute your acceptance of those changes, so please check this Privacy Policy periodically for updates.</strong> The amended Privacy Policy supersedes all previous versions.</p>
+<h3 id="information-we-collect-about-you" class="legal-h3"><strong>Information we collect about you</strong></h3>
+<p class="legal-p">In this Privacy Policy, “Personal Information” means information that identifies, relates to, describes, is reasonably capable of being associated with, or could reasonably be linked, directly or indirectly, to a particular individual or household, including all of the categories of information described above.</p>
+<p class="legal-p">The Personal Information we collect depends on how you interact with us, the portions of the Service you use, and the choices you make. We receive and collect information that you directly submit to us or that we gather when you use our Services or interact with our advertising and applications on third-party websites and services, including:</p>
+<ul class="legal-list">
+<li>Identifiers and contact information that we collect directly from individual consumers, such as your name, mailing address, telephone number, email address, account credentials, limited demographic information provided at intake (e.g., age, gender, ethnicity), payment information (processed by our third-party payment processor, Stripe; we do not store full payment card numbers), communications via text and email, appointment and scheduling history, and other identifiers or commercial information you provide to us or that we collect in connection with your use of the Services.</li>
+<li>Provider information that we collect directly from healthcare providers who use the Services, such as name, business contact information, California license type and number, National Provider Identifier (NPI), specialty, availability, and payout and tax information (e.g., a taxpayer identification number (TIN) for 1099 reporting).</li>
+<li>Device and usage data, such as IP addresses and device information, and usage data, including information that is passively or automatically collected through cookies, your browser or device, or other services, and information we create or generate. </li>
+<li>Limited inferences from other data we collect, used solely to match individuals with appropriate providers (e.g., based on specialty or stated need). We do not create inferences for advertising purposes. We do not collect precise geolocation; we infer only your general, region-level location (such as city, state, and country) based on your self-reported location and/or IP address.</li>
+<li>Health-related information that we collect from individual consumers at intake, or infer, in connection with providing, administering, improving, securing, and evaluating your eligibility for Services and for related business purposes such as fraud prevention, analytics, and compliance (“<strong>Healthcare Information</strong>”). This includes reproductive, sexual, and maternal-health information and appointment and scheduling information. For in-network bookings, we also collect insurance eligibility information. </li>
+<li>We also receive information from third parties in connection with the Services. For example, we receive credentialing and availability information from independent healthcare providers, insurance eligibility responses from our third-party eligibility provider, and payment status information from our third-party payment processor (Stripe). We do not receive information about you from advertising partners.</li>
+</ul>
+<p class="legal-p">When you are asked to provide Personal Information, you may decline, and you may use web browser or operating system controls to prevent certain types of automatic data collection. Some of the information identified above may be considered Sensitive Data under certain laws. We will collect and process sensitive personal data, including reproductive, sexual, and maternal-health information, only with your consent, except where another legal basis is permitted or required by applicable law. But if you choose not to provide or allow information that is necessary for certain services or features, those services or features may not be available or fully functional.</p>
+<h3 id="cookies-and-other-data-collection-tools" class="legal-h3"><strong>Cookies</strong><strong> and Other Data Collection Tools</strong></h3>
+<p class="legal-p"><strong>Cookies</strong> are small text files placed by a website and stored by your browser on your device. A cookie can later be read when your browser connects to a web server in the same domain that placed the cookie. The text in a cookie contains a string of numbers and letters that may uniquely identify your device and can contain other information, as well. This allows the web server to recognize your browser over time, each time it connects to that web server. </p>
+<p class="legal-p">We do not currently use web beacons, pixels, or similar tracking technologies on our Services, and we do not deploy third-party advertising or social media pixels or tracking tools.</p>
+<p class="legal-p"><u>How do we and our partners use cookies and similar technologies?</u></p>
+<p class="legal-p">We and our service providers use cookies and local storage in our Services for essential and functional purposes-such as maintaining your session, enabling authentication and sign-in, and remembering your settings and preferences-including through our hosting, scheduling, and payment providers (e.g., AWS, Acuity, and Stripe). We also use these technologies to recognize users, analyze how our Services perform, and combat fraud. We do not use these technologies for interest-based or cross-context behavioral advertising, and we do not currently use third-party analytics, advertising, or marketing technologies. We do not permit third-party tracking technologies on pages where you submit health-related information. We do not share the data collected through these technologies with third parties for advertising purposes.</p>
+<p class="legal-p"><em>Cookie controls</em>. Most web browsers are set to accept cookies by default. If you prefer, you can go to your browser settings to learn how to delete or reject cookies. If you choose to delete or reject cookies, this could affect certain features or services of the Platform, including sign-in and session functionality. To find out more about cookies, including how to manage and delete cookies, visit <a href="http://www.allaboutcookies/" target="_blank" rel="noopener">www.allaboutcookies</a>.org.</p>
+<p class="legal-p"><em>Do Not Track</em>. Some browsers include a "Do Not Track" (DNT) setting intended to signal that you do not wish to be tracked. Because there is no common standard for interpreting DNT signals, the Platform does not respond to them. You can instead use the cookie controls described above to manage certain data collection.</p>
+<h3 id="how-we-use-your-personal-information" class="legal-h3"><strong>How we use your Personal Information</strong></h3>
+<p class="legal-p">Cleo Care processes your Personal Information for legitimate business purposes, the fulfillment of our services to you, compliance with our legal obligations, and/or your consent.<strong> </strong>We use Personal Information to:</p>
+<ul class="legal-list">
+<li>fulfill the reason for which you shared such information. </li>
+<li>communicate with you about and manage your account;</li>
+<li>understand you and your preferences to enhance your experience and enjoyment using our Services;</li>
+<li>properly store and track your data within our system;</li>
+<li>determine your eligibility for the services available through the Services, including confirming your location;</li>
+<li>respond to lawful requests from public and government authorities, and to comply with applicable state/federal law, including cooperation with judicial proceedings and court orders;</li>
+<li>protect our rights, privacy, safety, or property, and/or that of you or others by providing proper notices, pursuing available legal remedies, and acting to limit our damages;</li>
+<li>manage and improve our operations, the Services, including the development of additional functionality;</li>
+<li>evaluate the quality of service you receive, identify usage trends, conduct research, and improve your experience;</li>
+<li>develop, test, add to, or improve the Services and content, features and/or products or services offered via the Service, and identify or create new Services; </li>
+<li>keep our Services safe and secure; </li>
+<li>send you information about changes to our terms, conditions, and policies; </li>
+<li>carry out our obligations and enforce our rights arising from any contracts entered between users and us, including for collection of payments; </li>
+<li>provide you with email alerts, event registrations, and other notices concerning our products or services, or events or news, that may be of interest to you; and</li>
+<li>testing, research, analysis and product development.</li>
+</ul>
+<p class="legal-p">We may help you discover, book, and manage appointments with affiliated healthcare providers <u>(collectively, "</u><u><strong>Affiliated Professional</strong></u><u><strong>s</strong></u><u>")</u>, each of which may be subject to HIPAA. If you choose to book with an Affiliated Professional through the Services, we may disclose your information, including health-related intake, scheduling, and contact information to that provider as needed to facilitate the appointment and related services. Providers are responsible for the professional services they provide and their privacy practices. </p>
+<p class="legal-p">We may de-identify your information and use and create such de-identified information for any business or other purpose not prohibited by applicable law. We do not currently disclose de-identified information to third parties. If we do so in the future, we will maintain the information in de-identified form, will not attempt to re-identify it except as permitted by law, and will contractually require recipients to comply with the same restrictions.</p>
+<p class="legal-p">We may use your Personal Information to contact you with offers, promotions, and other marketing communications. We may also use cookies to provide other communications or services.<strong>‍ </strong>You may opt out of receiving these messages at any time by following the unsubscribe link within the applicable message or by contacting us at hello@cleocare.co.</p>
+<h3 id="text-messaging" class="legal-h3"><strong>Text Messaging</strong></h3>
+<p class="legal-p">By opting to use the Services provided by Cleo Care, you consent to receive SMS (text) messages from Cleo Care, its affiliates, and its partners pertaining to your account, services you have requested, and your interaction with Cleo Care's Services. These messages may include, but are not limited to, appointment reminders, updates on services, promotional offers, and information relevant to your account and services.</p>
+<p class="legal-p">You acknowledge and agree that:</p>
+<ul class="legal-list">
+<li>You are the owner of the mobile device you used in order to initiate SMS Enrollment and that you are authorized to consent to receive and pay for messages at that number;</li>
+<li>SMS messages may be sent using automated technology;</li>
+<li>You do not have to consent to receive SMS messages as a condition of purchasing any goods or services;</li>
+<li>Standard message and data rates may apply to any SMS messages sent or received;</li>
+<li>The frequency of messages varies – you may receive messages periodically based on your interaction with Cleo Care's Services; and</li>
+<li>Cleo Care shall not be liable for delayed or undelivered messages.</li>
+</ul>
+<p class="legal-p">To opt out of SMS messages at any time, reply "STOP" to any message you receive. Upon receiving your request, we will send you a confirmation message and cease sending you SMS messages. For assistance or more information, reply "HELP."</p>
+<p class="legal-p">If you are experiencing any issues with Cleo Care’s text messaging or email services, or if you have any concerns about sending or receiving any sensitive information through text or email, please contact us directly at hello@cleocare.co. If you have questions specific to your text or data plan, please contact your wireless provider.</p>
+<h3 id="disclosure-of-your-personal-information" class="legal-h3"><strong>Disclosure of your</strong><strong> Personal</strong><strong> </strong><strong>I</strong><strong>nformation</strong></h3>
+<p class="legal-p">We do not sell, share, or otherwise disclose your Personal Information for reasons other than those described in this Privacy Policy.</p>
+<p class="legal-p">We may disclose your Personal Information to a few third parties, including:</p>
+<ul class="legal-list">
+<li>Affiliated Professionals with whom you choose to book or receive services through the Platform, as needed to facilitate your appointment and related care; </li>
+<li>the third-party service providers, contractors, subcontractors, and business associates we use to support our business (e.g., cloud hosting, scheduling and appointment-management providers, payment processors, insurance eligibility providers, and email and communications providers); </li>
+<li>law enforcement or government agencies in order to protect the security, safety, and rights of our users and ourselves or when we believe that doing so is necessary to comply with applicable law or respond to valid legal process; and</li>
+<li>to any company we might merge with or acquire, or that acquires us, or in the event of structural change of our company of any form (e.g., a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of our assets, whether as a going concern or as part of bankruptcy, liquidation, or similar proceeding).</li>
+</ul>
+<p class="legal-p">We do not disclose your Personal Information to advertising partners or to analytics or ad-tech providers for marketing purposes. We do not disclose your Personal Information to labs or pharmacies. Healthcare-related disclosures are made only to the independent Affiliated Professional with whom you book, as needed to schedule and coordinate your appointment.</p>
+<h3 id="how-we-keep-your-personal-information-secure" class="legal-h3"><strong>How we keep your </strong><strong>Personal Information </strong><strong>secure</strong></h3>
+<p class="legal-p">We strive to use industry-standard data collection, storage, and processing practices and security measures to protect against any unauthorized access to, accidental loss of, or disclosure of your information. These safeguards may vary based on the sensitivity of the information that we collect and store.</p>
+<p class="legal-p">Remember, no security method or combination of methods is foolproof. We will always do our best and will work with third-party service providers that strive to do the same, but we cannot warrant or guarantee the absolute security of any Personal Information that may be transmitted to or from our Services. There is no guarantee that Personal Information may not be accessed, disclosed, altered, or destroyed by breach of any of our physical, technical, or managerial safeguards. Therefore, any transmission of Personal Information is at your own risk. We are not responsible for circumvention of any privacy settings or security measures contained on the Services or your computer or mobile device.</p>
+<p class="legal-p">We are not responsible for any interception or interruption of any communications through the internet or for changes to or losses of data. You are responsible for maintaining the security of any password, user ID or other form of authentication involved in obtaining access to password protected or secure areas of our Services. To protect you and your data, we may suspend your use of any of the Services without notice, pending an investigation, if any breach of security is suspected. If you have reason to believe that the security of your Account has been compromised, please notify us immediately at hello@cleocare.co. </p>
+<p class="legal-p">Please note that we will never send you an email requesting confidential information, such as account numbers, usernames, passwords, or Social Security Numbers.</p>
+<p class="legal-p">In the event of a data or security breach, we will take the following actions: (i) promptly investigate the security incident, validate the root cause, and, where applicable, remediate any vulnerabilities within our control which may have given rise to the security incident; (ii) comply with laws and regulations directly applicable to us in connection with such security incident; (iii) as applicable, cooperate with any affected user in accordance with the terms of our contract with such user; and (iv) document and record actions taken by us in connection with the security incident; and (v) conduct a post-incident review of the circumstances related to the incident and actions/recommendations taken to prevent similar security incidents in the future. We will notify you of any data or security breaches as required by and in accordance with applicable law.</p>
+<h3 id="data-retention" class="legal-h3"><strong>Data Retention</strong></h3>
+<p class="legal-p">We retain your Personal Information for a reasonable period as necessary for our business purposes and in alignment with applicable law, including to comply with our legal obligations, resolve disputes, and enforce our agreements. When you close your account, we will retain the Personal Information associated with your account for three (3) years after closure, after which we will delete it, except to the extent we are required or permitted to retain it for a longer period under applicable law (for example, to comply with our legal obligations, resolve disputes, or enforce our agreements). We may dispose of or delete any such information at our discretion, subject to any other agreement you may have with us or as required by applicable law.</p>
+<p class="legal-p">Similarly, our Affiliated Professionals may retain your Personal Information for periods they deem necessary for their operational purposes, to comply with their legal obligations, to resolve disputes, and to enforce their agreements. These Affiliated Professionals may dispose of or delete your information in accordance with their own retention policies, except as otherwise outlined in any agreements you have with them or as required by law.</p>
+<h3 id="links-to-other-sites" class="legal-h3"><strong>Links to other sites</strong></h3>
+<p class="legal-p">Our Services may contain links to third-party websites, services, applications, or other resources not operated by us (“Third Party Services”). Any information you provide to these parties is not subject to the terms of this Privacy Policy. It is your responsibility to review these policies, as they govern how these third parties handle your Personal Information, including the duration for which it is retained and the conditions under which it may be disposed of or deleted.</p>
+<p class="legal-p">This Privacy Policy does not address, and we are not responsible for, the privacy, information, or other practices of any Third-Party Service, including any third party operating a website or service to which the Services link.  The inclusion of a link on the Services does not imply our endorsement of the linked site or service. Personal Information collected by our Affiliated Professionals is subject to those providers’ Notice of Privacy Practices or other data privacy notices, which you can request at the time of your receipt of healthcare services.</p>
+<p class="legal-p">We are not responsible for the information collection, use, disclosure, or security policies or practices of other organizations, such as Facebook, Twitter, Instagram, YouTube, Pinterest, LinkedIn, Apple, Google, Microsoft, or any other social media platform, operating system provider, wireless service provider, or device manufacturer, including any Personal Information you disclose to other organizations through our social media pages.</p>
+<h3 id="children-under-the-age-of-18" class="legal-h3"><strong>Children under the age of 18</strong></h3>
+<p class="legal-p">Cleo Care’s Platform is not for persons under the age of 18 (collectively, “<strong>Minors</strong>”). Minors are not authorized to use the Platform, or to provide any information through the Services. We do not solicit or knowingly collect information from Minors, and if we become aware of any such information being collected, we will take immediate action to delete it. Should you become aware that we have collected Personal Information from a Minor, please contact us at hello@cleocare.co.</p>
+<h3 id="opt-out-and-unsubscribe" class="legal-h3"><strong>Opt-out and </strong><strong>u</strong><strong>nsubscribe</strong></h3>
+<p class="legal-p">We may send communications, including emails, to you using your Personal Information. You may opt out of receiving marketing communications (e.g., newsletters, promotions) by emailing us your preference. However, even if you opt out, we will continue to send you transactional and service communications necessary to provide the Services you request, including appointment reminders, billing and invoice notices, and legal or service-related notices.</p>
+<p class="legal-p">We will only send you offers, promotions  and other marketing communications if you have expressly agreed to receive those types of messages. If you agree to receive these communications, but later change your mind and wish to opt-out of receiving offers, promotions, and other marketing communications, you may do so by emailing  hello@cleocare.co.<strong> </strong></p>
+<h3 id="jurisdiction-and-cross-border-transfer" class="legal-h3"><strong>Jurisdiction and cross-border transfer</strong></h3>
+<p class="legal-p">The Service may only be used within California. Accordingly, this Privacy Policy, and our collection, use, and disclosure of your information, is governed by California law.</p>
+<h3 id="contacting-us" class="legal-h3"><strong>Contacting us</strong></h3>
+<p class="legal-p">If you’d like to receive additional information about our privacy practices, have questions, or would like to make a request, you may contact us at the below addresses.</p>
+<p class="legal-p">hello@cleocare.co</p>
+<h3 id="cleo-care" class="legal-h3"><strong>Cleo Care</strong></h3>
+<p class="legal-p">10 E Yanonali St. </p>
+<p class="legal-p">Santa Barbara, CA 93101</p>
+    <div style="margin-top:56px;padding-top:28px;border-top:1px solid rgba(27,56,114,0.12);">
+      <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--ink-muted);line-height:1.8;">
+        Questions about this document? Email <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);">hello@cleocare.co</a>.
+        See also our <a href="terms.html" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);">Terms of Service</a>.
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer style="background:#070F1E;padding:80px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
+      <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Maternal care, reimagined.</p>
+      <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:16px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
+    </div>
+    <div id="legal-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;gap:20px;flex-wrap:wrap;">
+      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo Care, LLC. All rights reserved.</p>
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
+        <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
+        <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+        <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>
