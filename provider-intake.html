@@ -294,6 +294,11 @@
               </div>
               <input type="hidden" name="telehealth" id="telehealth-hidden">
             </div>
+            <div id="telehealth-link-wrap" style="display:none;">
+              <label class="form-label" for="telehealth-link">Do you have a recurring video call link? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <input class="form-input" type="url" id="telehealth-link" name="telehealth_link" placeholder="https://your-secure-video-room.com/…">
+              <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);line-height:1.6;margin-top:6px;">If you use a standing room — Doxy.me, SimplePractice, Zoom for Healthcare — paste it here and we'll include it in your clients' confirmations and reminders. You can change it anytime.</p>
+            </div>
             <div>
               <label class="form-label">Do you accept insurance?</label>
               <div class="toggle-pair">
@@ -528,6 +533,9 @@
       });
       document.getElementById(g.hidden).value = val;
 
+      if (group === 'telehealth') {
+        document.getElementById('telehealth-link-wrap').style.display = (val === 'yes' || val === 'both') ? 'block' : 'none';
+      }
       if (group === 'insurance') {
         document.getElementById('insurance-plans-wrap').style.display = val === 'yes' ? 'block' : 'none';
       }
