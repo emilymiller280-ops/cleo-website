@@ -497,6 +497,23 @@
           </div>
         </div>
 
+        <!-- Terms + Privacy acceptance. Required: this is the point of collection,
+             so the notice has to be here, not only in the footer. -->
+        <div style="border-top:1px solid rgba(27,56,114,0.1);padding-top:24px;">
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+            <input type="checkbox" id="legal-cb" name="legal_accepted" value="yes" required
+                   style="width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:#1B3872;cursor:pointer;flex-shrink:0;">
+            <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">
+              I have read and agree to Cleo Care&rsquo;s
+              <a href="https://cleocare.co/terms" target="_blank" rel="noopener" style="color:#1B3872;text-decoration:underline;">Terms of Service</a>
+              and
+              <a href="https://cleocare.co/privacy" target="_blank" rel="noopener" style="color:#1B3872;text-decoration:underline;">Privacy Policy</a>,
+              including how my health information is collected and shared with the providers I&rsquo;m matched with.
+            </span>
+          </label>
+          <input type="hidden" name="legal_version" value="2026-08-13">
+        </div>
+
         <!-- Submit -->
         <div style="padding-top:8px;">
           <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
