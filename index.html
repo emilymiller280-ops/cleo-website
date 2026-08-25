@@ -650,15 +650,24 @@
 ═══════════════════════════════════════════════════ -->
 <!-- From the Journal (Cleo Substack — live via app.cleocare.co/api/substack-feed) -->
 <style>
-  #journal-grid{ grid-template-columns:repeat(3,1fr); }
-  @media (max-width:900px){ #journal-grid{ grid-template-columns:1fr 1fr !important; } }
-  @media (max-width:640px){ #journal{ padding:56px 24px !important; } #journal-grid{ grid-template-columns:1fr !important; } }
+  /* Grid mode (3+ posts) */
+  #journal-grid.j-grid{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:900px){ #journal-grid.j-grid{ grid-template-columns:1fr 1fr !important; } }
+  @media (max-width:640px){ #journal-grid.j-grid{ grid-template-columns:1fr !important; } }
+  /* Featured banner (1–2 posts): image beside text, stacks on mobile */
+  .jf-img{ width:46%; min-height:300px; flex-shrink:0; }
+  .jf-body{ flex:1; }
+  @media (max-width:760px){
+    .jf-card{ flex-direction:column !important; }
+    .jf-img{ width:100% !important; min-height:200px !important; }
+    .jf-body{ padding:26px 24px !important; }
+  }
+  @media (max-width:640px){ #journal{ padding:56px 24px !important; } }
 </style>
 <section id="journal" style="padding:80px 56px;background:#F5F1EA;border-top:1px solid rgba(27,56,114,0.07);">
   <div style="max-width:1100px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:48px;">
-      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">From the Journal</p>
-      <h2 style="font-family:'Spectral',serif;font-size:2.25rem;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:14px;">Writing from Cleo</h2>
+      <h2 style="font-family:'Spectral',serif;font-size:2.25rem;font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:14px;">Cleo's Calling</h2>
       <p style="font-family:'Spectral',serif;font-size:1.0625rem;font-weight:300;color:var(--ink-mid);max-width:560px;margin:0 auto;line-height:1.6;">Notes on maternal care, provider spotlights, and the ideas shaping how we support women through every stage.</p>
     </div>
     <div id="journal-grid" style="display:grid;gap:24px;margin-bottom:40px;"></div>
@@ -671,7 +680,6 @@
 <script>
 (function(){
   var grid = document.getElementById('journal-grid');
-  var section = document.getElementById('journal');
   if(!grid) return;
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function card(p){
@@ -687,12 +695,36 @@
       + '<span style="font-family:\'Inter\',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.03em;color:#1B3872;">Read →</span>'
       + '</div></a>';
   }
+  function featured(p){
+    var media = p.image
+      ? '<div class="jf-img" style="background:#EBF0FA url(\''+esc(p.image)+'\') center/cover no-repeat;"></div>'
+      : '<div class="jf-img" style="background:linear-gradient(160deg,#EBF0FA,#D6E0F5);"></div>';
+    return '<a href="'+esc(p.link)+'" target="_blank" rel="noopener" class="jf-card" style="display:flex;background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:14px;overflow:hidden;text-decoration:none;box-shadow:0 1px 2px rgba(27,56,114,0.05);transition:transform .18s ease,box-shadow .18s ease;" onmouseover="this.style.transform=\'translateY(-4px)\';this.style.boxShadow=\'0 14px 34px rgba(27,56,114,0.13)\'" onmouseout="this.style.transform=\'translateY(0)\';this.style.boxShadow=\'0 1px 2px rgba(27,56,114,0.05)\'">'
+      + media
+      + '<div class="jf-body" style="padding:34px 38px;display:flex;flex-direction:column;justify-content:center;">'
+      + (p.date ? '<p style="font-family:\'Inter\',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#7888A8;margin:0 0 12px;">'+esc(p.date)+'</p>' : '')
+      + '<h3 style="font-family:\'Spectral\',serif;font-size:1.65rem;font-weight:400;color:#0D1F3C;line-height:1.25;margin:0 0 12px;">'+esc(p.title)+'</h3>'
+      + (p.excerpt ? '<p style="font-family:\'Spectral\',serif;font-size:1rem;font-weight:300;color:#3A4A6A;line-height:1.6;margin:0 0 20px;">'+esc(p.excerpt)+'</p>' : '')
+      + '<span style="font-family:\'Inter\',sans-serif;font-size:0.8125rem;font-weight:600;letter-spacing:0.03em;color:#1B3872;">Read the post →</span>'
+      + '</div></a>';
+  }
   fetch('https://app.cleocare.co/api/substack-feed').then(function(r){ return r.json(); }).then(function(d){
     var posts = (d && d.posts) || [];
     if(!posts.length){ grid.style.display='none'; return; }
-    grid.innerHTML = posts.map(card).join('');
-    if(posts.length===1){ grid.style.gridTemplateColumns='minmax(320px,460px)'; grid.style.justifyContent='center'; }
-    else if(posts.length===2){ grid.style.gridTemplateColumns='repeat(2,minmax(280px,1fr))'; grid.style.maxWidth='760px'; grid.style.margin='0 auto 40px'; }
+    if(posts.length >= 3){
+      grid.className = 'j-grid';
+      grid.style.display = 'grid';
+      grid.style.gap = '24px';
+      grid.style.gridTemplateColumns = 'repeat(3,1fr)';
+      grid.innerHTML = posts.map(card).join('');
+    } else {
+      grid.style.display = 'flex';
+      grid.style.flexDirection = 'column';
+      grid.style.gap = '20px';
+      grid.style.maxWidth = '860px';
+      grid.style.margin = '0 auto 40px';
+      grid.innerHTML = posts.map(featured).join('');
+    }
   }).catch(function(){ grid.style.display='none'; });
 })();
 </script>
