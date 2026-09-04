@@ -10,8 +10,8 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meal Delivery | Cleo</title>
-  <meta name="description" content="Chef-prepared meal delivery for pregnancy and postpartum. Coming soon from Cleo.">
+  <title>Cleo Care | Meal Delivery for Fertility, Pregnancy &amp; Postpartum</title>
+  <meta name="description" content="Cleo Care is chef-prepared meal delivery for trying to conceive, pregnancy, and postpartum. Nutrient-dense, omega-3 forward, and screened for each stage. Nourishing for the whole family. A Kooshi Gourmet program, delivered through Cleo.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,8 +95,8 @@
       <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
     </a>
     <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
-      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
-      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="meal-delivery.html" class="nav-link" style="color:var(--navy);">Meal Delivery</a>
       <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
       <a href="favorites.html" class="nav-link">Our Favorites</a>
       <a href="https://app.cleocare.co/gift" class="nav-link">Gift</a>
@@ -116,6 +116,22 @@
   <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
 </div>
 
+<style>
+  :root { --sage:#8FA99C; --teal:#6FA39B; --slate:#4B5563; }
+  .k-wrap { max-width:1000px; margin:0 auto; }
+  .k-2col { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  .k-3col { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .k-benefits { display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
+  .k-eyebrow { font-family:'Inter',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--olive); }
+  .k-h2 { font-family:'Spectral',serif; font-weight:300; font-size:clamp(2rem,3.8vw,2.9rem); color:var(--navy); line-height:1.1; letter-spacing:-0.02em; }
+  .k-body { font-family:'Spectral',serif; font-weight:300; font-size:1.0625rem; color:var(--ink-mid); line-height:1.8; }
+  @media (max-width:768px) {
+    .k-2col, .k-3col, .k-benefits { grid-template-columns:1fr !important; gap:32px; }
+    section.k-sec { padding-left:24px !important; padding-right:24px !important; }
+  }
+  html { scroll-behavior:smooth; }
+</style>
+
 <main>
   <section style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px 80px;background:linear-gradient(160deg,#F7F2EB 0%,#EEE5D8 100%);">
     <div style="max-width:560px;text-align:center;">
@@ -129,7 +145,18 @@
         <input name="email" type="email" required placeholder="you@example.com" style="width:100%;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:14px 16px;outline:none;">
         <button type="submit" class="btn-primary" style="justify-content:center;width:100%;">Keep me posted →</button>
       </form>
-      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:14px;">No spam — just one note when Cleo Care meals are ready.</p>
+      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:14px;">No spam. Just one note when Cleo Care meals are ready.</p>
+
+
+      <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(27,56,114,0.12);">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;">Friends at Kooshi</p>
+        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1rem;color:var(--ink-mid);line-height:1.7;margin-bottom:16px;">Enter your password to view the preview.</p>
+        <form id="kooshi-gate" style="display:flex;gap:10px;max-width:400px;margin:0 auto;">
+          <input id="kooshi-pw" type="password" placeholder="Password" autocomplete="off" style="flex:1;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:13px 15px;outline:none;">
+          <button type="submit" class="btn-primary" style="padding:13px 24px;font-size:0.875rem;">Enter</button>
+        </form>
+        <p id="kooshi-err" style="display:none;font-family:'Inter',sans-serif;font-size:0.8125rem;color:#B4443C;margin-top:12px;">That password isn't right. Try again or email hello@cleocare.co.</p>
+      </div>
 
       <div id="meal-waitlist-confirm" style="display:none;padding:16px 0;">
         <div style="width:52px;height:52px;border-radius:50%;background:#EEF1E6;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
@@ -139,8 +166,7 @@
       </div>
     </div>
   </section>
-</main>
-<script>
+</main><script>
   document.getElementById('meal-waitlist-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const form = e.target;
@@ -151,15 +177,31 @@
     } catch { alert('Something went wrong. Please try again or email hello@cleocare.co.'); }
   });
 </script>
+<script>
+  // Courtesy gate for the Kooshi preview. The password is compared as a SHA-256
+  // digest so the literal string isn't sitting in the page source, but this is a
+  // static site: it keeps casual visitors out, it is not real access control.
+  document.getElementById('kooshi-gate').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const pw = document.getElementById('kooshi-pw').value.trim();
+    const err = document.getElementById('kooshi-err');
+    const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)))]
+      .map(b => b.toString(16).padStart(2, '0')).join('');
+    if (digest === '99245e70eced8348856428019100af5aad6f897936d66605369480de81186f41') {
+      try { localStorage.setItem('cleo_kooshi_preview', '1'); } catch (e) {}
+      window.location.href = 'meal-delivery-preview.html';
+    } else {
+      err.style.display = 'block';
+      document.getElementById('kooshi-pw').value = '';
+    }
+  });
+</script>
 
 <footer style="background:#070F1E;padding:44px 56px;">
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
     <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
     <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
-    <div style="display:flex;align-items:center;gap:20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
-        <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
-        <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
-        <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a></div>
+    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
   </div>
 </footer>
 
