@@ -6,22 +6,44 @@
 // version, drop it in the Legal Docs folder below and re-run. Hand edits
 // would be silently overwritten and would also mean the live page no longer
 // matches the document that was reviewed.
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readdirSync, statSync } from 'node:fs';
+import { join } from 'node:path';
 import { convertDocx } from './docx-to-legal-html.mjs';
 
 // Source of truth is the "Legal Docs" folder on Emily's Desktop — NOT Downloads,
 // which accumulates older duplicates from counsel.
 const LEGAL_DIR = `${process.env.HOME}/Desktop/Cleo/Documents/Legal Docs`;
+
+// Emily renames these files every time counsel sends a revision ("Cleo TOS.docx"
+// has also been "TOS 9.15.docx" and "Terms of Service 9.16.docx"). Exact filenames
+// meant the build silently kept publishing the previous version — the live Terms
+// sat a revision behind for three days that way. Resolve by PATTERN instead, the
+// same approach build-agreement.mjs already uses, and take the newest match.
+function resolveSrc(patterns, label) {
+  const files = readdirSync(LEGAL_DIR)
+    .filter(f => f.endsWith('.docx') && !f.startsWith('~$'))
+    .filter(f => patterns.some(re => re.test(f)))
+    .map(f => ({ f, m: statSync(join(LEGAL_DIR, f)).mtimeMs }))
+    .sort((a, b) => b.m - a.m);
+  if (!files.length) {
+    throw new Error(`No .docx in "${LEGAL_DIR}" matches ${label}. Looked for: ${patterns}`);
+  }
+  if (files.length > 1) {
+    console.warn(`  ! ${files.length} candidates for ${label}; using newest: ${files[0].f}`);
+  }
+  return join(LEGAL_DIR, files[0].f);
+}
+
 const DOCS = [
   {
-    src: `${LEGAL_DIR}/Cleo TOS.docx`,
+    src: resolveSrc([/\bTOS\b/i, /terms\s*of\s*service/i], 'Terms of Service'),
     out: 'terms.html',
     title: 'Terms of Service',
     metaTitle: 'Terms of Service | Cleo',
     blurb: 'The agreement that governs your use of Cleo’s website and platform.',
   },
   {
-    src: `${LEGAL_DIR}/Cleo Care - Privacy Policy.docx`,
+    src: resolveSrc([/privacy\s*policy/i], 'Privacy Policy'),
     out: 'privacy.html',
     title: 'Privacy Policy',
     metaTitle: 'Privacy Policy | Cleo',
