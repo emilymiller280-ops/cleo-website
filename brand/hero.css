@@ -1,0 +1,97 @@
+/* ============================================================
+   CLEO CARE — Interior page hero (Born ID)
+   Self-contained: link this file on any page and add a
+   <section class="page-hero h-COLOR"> block. No global
+   overrides (won't touch body font/tokens), so it layers
+   safely on top of the token-remap overlay pages.
+   Colors: h-sky · h-butter (light)  |  h-blush · h-coral · h-burgundy (dark)
+   ============================================================ */
+
+/* ---- Fonts (same faces as brand.css; browser dedupes by URL) ---- */
+@font-face{ font-family:"Rosevale"; src:url("fonts/rosevale.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Palmello"; src:url("fonts/palmello.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Host Grotesk"; src:url("fonts/host-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Host Grotesk"; src:url("fonts/host-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face{ font-family:"Host Grotesk"; src:url("fonts/host-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+
+.page-hero{
+  /* Born ID tokens, scoped so nothing leaks into the page */
+  --sky:#99AADB;      --sky-deep:#7C8FCB;
+  --coral:#E1654B;    --coral-deep:#C74E36;
+  --burgundy:#6B0826; --burgundy-deep:#4E0519;
+  --blush:#CD96B3;
+  --butter:#FAF6B7;   --butter-deep:#F1EA8E;
+  --ivory:#FFFEF7;    --text:#463A33;
+
+  position:relative; overflow:hidden; text-align:center;
+  background:var(--sky); color:var(--text);
+}
+
+/* Squiggle texture wash */
+.page-hero__tex{ position:absolute; inset:0; z-index:0;
+  -webkit-mask:url("img/texture-mono.svg") center/120% no-repeat;
+          mask:url("img/texture-mono.svg") center/120% no-repeat; }
+
+.page-hero__inner{ position:relative; z-index:1; max-width:820px; margin-inline:auto;
+  padding-inline:clamp(22px,5vw,72px);
+  padding-block:clamp(132px,15vw,190px) clamp(60px,8vw,96px); }
+
+/* Compact variant for form/utility pages (banner sits above a form) */
+.page-hero--compact .page-hero__inner{ padding-block:clamp(120px,13vw,158px) clamp(40px,5vw,60px); }
+
+.page-hero__eyebrow{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600;
+  font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:20px; }
+.page-hero h1{ font-family:"Rosevale",Georgia,serif; font-weight:400; line-height:1.06;
+  letter-spacing:-.01em; font-size:clamp(2.4rem,5.2vw,4.2rem); margin:0 auto .26em; }
+.page-hero h1 em{ font-style:italic; }
+.page-hero__lede{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:400;
+  font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.65; max-width:56ch; margin:0 auto; }
+.page-hero__lede + .page-hero__lede{ margin-top:1em; font-size:1.02rem; opacity:.88; }
+.page-hero__note{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:1rem; line-height:1.75;
+  max-width:56ch; margin:1em auto 0; opacity:.85; }
+
+/* CTA row + inline category nav */
+.page-hero__cta{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:34px; }
+.page-hero__nav{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; align-items:center; margin-top:30px; }
+.page-hero__nav a{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:.75rem; font-weight:600;
+  letter-spacing:.1em; text-transform:uppercase; text-decoration:none; padding-bottom:2px; }
+.page-hero__nav .sep{ opacity:.5; font-size:.75rem; }
+
+.page-hero .hbtn{ display:inline-flex; align-items:center; gap:.5em; font-family:"Host Grotesk",system-ui,sans-serif;
+  font-weight:600; font-size:.98rem; letter-spacing:.01em; padding:15px 30px; border-radius:999px;
+  border:1.5px solid transparent; text-decoration:none; cursor:pointer;
+  transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease, color .16s ease, box-shadow .18s ease; }
+.page-hero .hbtn:hover{ transform:translateY(-2px); }
+
+/* ---------- LIGHT blocks: burgundy display + espresso body ---------- */
+.page-hero.h-sky{ background:var(--sky); }
+.page-hero.h-sky .page-hero__tex{ background:var(--sky-deep); opacity:.45; }
+.page-hero.h-butter{ background:var(--butter); }
+.page-hero.h-butter .page-hero__tex{ background:var(--butter-deep); opacity:.6; }
+
+.page-hero.h-sky h1,.page-hero.h-butter h1{ color:var(--burgundy); }
+.page-hero.h-sky .page-hero__eyebrow,.page-hero.h-butter .page-hero__eyebrow{ color:var(--burgundy); opacity:.72; }
+.page-hero.h-sky .page-hero__lede,.page-hero.h-butter .page-hero__lede,
+.page-hero.h-sky .page-hero__note,.page-hero.h-butter .page-hero__note{ color:var(--text); }
+.page-hero.h-sky .page-hero__nav a,.page-hero.h-butter .page-hero__nav a{ color:var(--burgundy); border-bottom:1.5px solid rgba(107,8,38,.35); }
+.page-hero.h-sky .hbtn--primary,.page-hero.h-butter .hbtn--primary{ background:var(--burgundy); color:var(--ivory); box-shadow:0 6px 18px rgba(107,8,38,.3); }
+.page-hero.h-sky .hbtn--primary:hover,.page-hero.h-butter .hbtn--primary:hover{ background:var(--burgundy-deep); box-shadow:0 10px 26px rgba(107,8,38,.42); }
+.page-hero.h-sky .hbtn--ghost,.page-hero.h-butter .hbtn--ghost{ background:transparent; color:var(--burgundy); border-color:var(--burgundy); }
+.page-hero.h-sky .hbtn--ghost:hover,.page-hero.h-butter .hbtn--ghost:hover{ background:var(--burgundy); color:var(--ivory); }
+
+/* ---------- DARK blocks: butter display + ivory body ---------- */
+.page-hero.h-blush{ background:var(--blush); }
+.page-hero.h-coral{ background:var(--coral); }
+.page-hero.h-burgundy{ background:var(--burgundy); }
+.page-hero.h-blush .page-hero__tex,.page-hero.h-coral .page-hero__tex{ background:var(--ivory); opacity:.12; }
+.page-hero.h-burgundy .page-hero__tex{ background:var(--butter); opacity:.07; }
+
+.page-hero.h-blush h1,.page-hero.h-coral h1,.page-hero.h-burgundy h1{ color:var(--butter); }
+.page-hero.h-blush .page-hero__eyebrow,.page-hero.h-coral .page-hero__eyebrow,.page-hero.h-burgundy .page-hero__eyebrow{ color:var(--butter); opacity:.9; }
+.page-hero.h-blush .page-hero__lede,.page-hero.h-coral .page-hero__lede,.page-hero.h-burgundy .page-hero__lede,
+.page-hero.h-blush .page-hero__note,.page-hero.h-coral .page-hero__note,.page-hero.h-burgundy .page-hero__note{ color:var(--ivory); }
+.page-hero.h-blush .page-hero__nav a,.page-hero.h-coral .page-hero__nav a,.page-hero.h-burgundy .page-hero__nav a{ color:var(--ivory); border-bottom:1.5px solid rgba(255,254,247,.4); }
+.page-hero.h-blush .hbtn--primary,.page-hero.h-coral .hbtn--primary,.page-hero.h-burgundy .hbtn--primary{ background:var(--butter); color:var(--burgundy); }
+.page-hero.h-blush .hbtn--primary:hover,.page-hero.h-coral .hbtn--primary:hover,.page-hero.h-burgundy .hbtn--primary:hover{ background:var(--butter-deep); }
+.page-hero.h-blush .hbtn--ghost,.page-hero.h-coral .hbtn--ghost,.page-hero.h-burgundy .hbtn--ghost{ background:transparent; color:var(--ivory); border-color:rgba(255,254,247,.6); }
+.page-hero.h-blush .hbtn--ghost:hover,.page-hero.h-coral .hbtn--ghost:hover,.page-hero.h-burgundy .hbtn--ghost:hover{ background:var(--ivory); color:var(--burgundy); }

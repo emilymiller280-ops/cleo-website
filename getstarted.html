@@ -12,32 +12,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get Started | Cleo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #FAF8F4;
-      color: #0D1F3C;
+      background: #FAF6B7;
+      color: #463A33;
       -webkit-font-smoothing: antialiased;
     }
     :root {
-      --navy: #1B3872;
-      --navy-dark: #0F2352;
-      --navy-light: #2A4F9E;
-      --navy-pale: #D6E0F5;
-      --navy-wash: #EBF0FA;
-      --ink: #0D1F3C;
-      --ink-mid: #3A4A6A;
-      --ink-muted: #7888A8;
-      --cream: #FAF8F4;
-      --warm: #F5F0E8;
-      --warm-mid: #EDE6D8;
-      --olive: #6B7A50;
-      --olive-pale: #EEF1E6;
+      --navy: #6B0826;
+      --navy-dark: #4E0519;
+      --navy-light: #E1654B;
+      --navy-pale: #C9D3EE;
+      --navy-wash: #F6F2DA;
+      --ink: #463A33;
+      --ink-mid: #6B5A52;
+      --ink-muted: #8A7B72;
+      --cream: #FAF6B7;
+      --warm: #E3C4D5;
+      --warm-mid: #CD96B3;
+      --olive: #E1654B;
+      --olive-pale: #F6F2DA;
     }
     .heading-display {
       font-family: 'Spectral', serif;
@@ -207,7 +205,7 @@
     }
 
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #F5F0E8; }
+    ::-webkit-scrollbar-track { background: #E3C4D5; }
     ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
   
     .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
@@ -223,47 +221,58 @@
       #nav-center { display:none !important; }
     }
   </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
-<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
-    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
-    </a>
-    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
-      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
-      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
-      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
-      <a href="favorites.html" class="nav-link">Our Favorites</a>
-      <a href="https://app.cleocare.co/gift" class="nav-link">Gift</a>
-      <a href="faq.html" class="nav-link">The Details</a>
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
-  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
-  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
-  <a href="https://app.cleocare.co/gift" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Gift</a>
-  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
-  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
-</div>
+  </header>
+
+<!-- HERO -->
+<section class="page-hero h-blush page-hero--compact">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner">
+    <span class="page-hero__eyebrow">Get Started</span>
+    <h1>Let's build your plan.</h1>
+    <p class="page-hero__lede">Tell us a little about what you're looking for and we'll take it from there.</p>
+  </div>
+</section>
 
 <!-- MAIN -->
-<main style="min-height:100vh;padding:140px 56px 100px;">
+<main style="padding:56px 56px 100px;">
   <div style="max-width:720px;margin:0 auto;">
-
-    <!-- Header -->
-    <div style="margin-bottom:56px;">
-      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);opacity:0.6;margin-bottom:16px;">Get Started</p>
-      <h1 class="heading-display" style="font-size:clamp(2.25rem,4vw,3.25rem);color:var(--ink);margin-bottom:16px;">Let's build your plan.</h1>
-      <p class="body-text" style="font-size:1rem;color:var(--ink-muted);line-height:1.75;">Tell us a little about what you're looking for and we'll take it from there.</p>
-    </div>
 
     <!-- Progress indicator -->
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:56px;" id="progress-bar">
@@ -503,7 +512,7 @@
       <!-- Payment placeholder -->
       <div style="background:var(--warm);border:1px solid rgba(27,56,114,0.08);border-radius:10px;padding:28px 32px;margin-bottom:36px;display:flex;align-items:flex-start;gap:16px;">
         <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:var(--navy-wash);display:flex;align-items:center;justify-content:center;">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#1B3872" stroke-width="1.4"/><path d="M1 7h14" stroke="#1B3872" stroke-width="1.4"/><rect x="3" y="9.5" width="3" height="1.5" rx="0.5" fill="#1B3872" opacity="0.5"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#6B0826" stroke-width="1.4"/><path d="M1 7h14" stroke="#6B0826" stroke-width="1.4"/><rect x="3" y="9.5" width="3" height="1.5" rx="0.5" fill="#6B0826" opacity="0.5"/></svg>
         </div>
         <div>
           <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Payment</p>
@@ -529,7 +538,7 @@
       <!-- Confirmation (hidden until submit) -->
       <div id="confirmation" style="display:none;text-align:center;padding:48px 0;">
         <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#E1654B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <h3 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:12px;">You're all set.</h3>
         <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:400px;margin:0 auto 32px;line-height:1.75;">Thank you — we'll be in touch within 48 hours to confirm your plan and next steps.</p>

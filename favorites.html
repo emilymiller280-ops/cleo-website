@@ -13,31 +13,29 @@
   <title>Cleo's Favorites | Cleo</title>
   <meta name="description" content="Our favorite brands from TTC to postpartum. Curated with love by the Cleo team.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #FAF8F4;
-      color: #0D1F3C;
+      background: #FAF6B7;
+      color: #463A33;
       -webkit-font-smoothing: antialiased;
     }
     :root {
-      --navy: #1B3872;
-      --navy-dark: #0F2352;
-      --navy-light: #2A4F9E;
-      --navy-pale: #D6E0F5;
-      --navy-wash: #EBF0FA;
-      --ink: #0D1F3C;
-      --ink-mid: #3A4A6A;
-      --ink-muted: #7888A8;
-      --cream: #FAF8F4;
-      --warm: #F5F0E8;
-      --olive: #6B7A50;
-      --olive-pale: #EEF1E6;
+      --navy: #6B0826;
+      --navy-dark: #4E0519;
+      --navy-light: #E1654B;
+      --navy-pale: #C9D3EE;
+      --navy-wash: #F6F2DA;
+      --ink: #463A33;
+      --ink-mid: #6B5A52;
+      --ink-muted: #8A7B72;
+      --cream: #FAF6B7;
+      --warm: #E3C4D5;
+      --olive: #E1654B;
+      --olive-pale: #F6F2DA;
     }
     .nav-link {
       font-family: 'Spectral', serif;
@@ -148,47 +146,73 @@
       .cta-row { flex-direction: column !important; align-items: stretch !important; }
     }
   </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
 </head>
 <body>
 
-<!-- NAV -->
-<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
-    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
-    </a>
-    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
-      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
-      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
-      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
-      <a href="favorites.html" class="nav-link">Our Favorites</a>
-      <a href="faq.html" class="nav-link">The Details</a>
-    </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
-  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
-  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Cleo's Favorites</a>
-  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
-  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
+<!-- Coming-soon gate (password-protected preview) -->
+<div id="fav-gate" style="position:fixed;inset:0;z-index:9999;background:#E1654B;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;overflow:auto;">
+  <div style="position:absolute;inset:0;background:#FFFEF7;opacity:.12;-webkit-mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;"></div>
+  <div style="position:relative;z-index:1;max-width:460px;">
+    <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#FAF6B7;margin:0 0 18px;">Our Favorites</p>
+    <h1 style="font-family:'Rosevale',Georgia,serif;font-weight:400;font-size:clamp(2.6rem,7vw,4rem);color:#FAF6B7;line-height:1.05;margin:0 0 16px;">Coming soon.</h1>
+    <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-size:1.05rem;line-height:1.6;color:#FFFEF7;margin:0 0 28px;">We're putting the finishing touches on Cleo's edit of the brands we love. Have the password? Take a peek.</p>
+    <form id="fav-gate-form" style="display:flex;gap:10px;max-width:400px;margin:0 auto;justify-content:center;flex-wrap:wrap;">
+      <input id="fav-pw" type="password" placeholder="Password" autocomplete="off" style="flex:1;min-width:200px;font-family:'Host Grotesk',system-ui,sans-serif;font-size:1rem;color:#463A33;background:#FFFEF7;border:1.5px solid rgba(255,254,247,.6);border-radius:999px;padding:14px 20px;outline:none;">
+      <button type="submit" style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:1rem;color:#6B0826;background:#FAF6B7;border:none;border-radius:999px;padding:14px 28px;cursor:pointer;">Enter</button>
+    </form>
+    <p id="fav-err" style="display:none;font-family:'Host Grotesk',system-ui,sans-serif;font-size:.85rem;color:#FFFEF7;margin-top:14px;opacity:.9;">That password isn't right. Try again or email hello@cleocare.co.</p>
+  </div>
 </div>
 
+<!-- NAV -->
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
+    </div>
+  </header>
+
 <!-- HERO -->
-<section style="min-height:60vh;display:flex;align-items:center;justify-content:center;padding:140px 56px 80px;background:linear-gradient(160deg,#F7F2EB 0%,#EDE5D9 100%);text-align:center;">
-  <div style="max-width:640px;">
-    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Cleo's Favorites</p>
-    <h1 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2.75rem,5vw,4.25rem);color:var(--navy);line-height:1.05;letter-spacing:-0.02em;margin-bottom:24px;">The brands we love,<br><em style="font-style:italic;">curated for your journey.</em></h1>
-    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:32px;">From trying to conceive to postpartum, we're building a trusted edit of products and brands that actually make a difference.</p>
-    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-      <a href="#cat-ttc" onclick="showCategory('ttc');return false;" style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);text-decoration:none;border-bottom:1.5px solid rgba(107,122,80,0.35);padding-bottom:2px;">TTC</a>
-      <span style="color:var(--ink-muted);font-size:0.75rem;">·</span>
-      <a href="#cat-pregnancy" onclick="showCategory('pregnancy');return false;" style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);text-decoration:none;border-bottom:1.5px solid rgba(107,122,80,0.35);padding-bottom:2px;">Pregnancy</a>
-      <span style="color:var(--ink-muted);font-size:0.75rem;">·</span>
-      <a href="#cat-postpartum" onclick="showCategory('postpartum');return false;" style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--olive);text-decoration:none;border-bottom:1.5px solid rgba(107,122,80,0.35);padding-bottom:2px;">Postpartum</a>
+<section class="page-hero h-coral">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner">
+    <span class="page-hero__eyebrow">Cleo's Favorites</span>
+    <h1>The brands we love,<br><em>curated for your journey.</em></h1>
+    <p class="page-hero__lede">From trying to conceive to postpartum, we're building a trusted edit of products and brands that actually make a difference.</p>
+    <div class="page-hero__nav">
+      <a href="#cat-ttc" onclick="showCategory('ttc');return false;">TTC</a>
+      <span class="sep">·</span>
+      <a href="#cat-pregnancy" onclick="showCategory('pregnancy');return false;">Pregnancy</a>
+      <span class="sep">·</span>
+      <a href="#cat-postpartum" onclick="showCategory('postpartum');return false;">Postpartum</a>
     </div>
   </div>
 </section>
@@ -230,7 +254,7 @@
 
       <!-- Mira -->
       <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06);transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 4px 16px rgba(27,56,114,0.1),0 16px 40px rgba(27,56,114,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06)'">
-        <div style="height:160px;background:linear-gradient(135deg,#EBF0FA 0%,#D6E0F5 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="height:160px;background:linear-gradient(135deg,#F6F2DA 0%,#C9D3EE 100%);display:flex;align-items:center;justify-content:center;">
           <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:300;color:var(--navy);letter-spacing:0.02em;">Mira</span>
         </div>
         <div style="padding:28px 24px;flex:1;display:flex;flex-direction:column;">
@@ -241,7 +265,7 @@
       </div>
 
       <!-- Editorial note -->
-      <div style="background:linear-gradient(160deg,#EEF1E6 0%,#E2E8D5 100%);border:1.5px solid rgba(107,122,80,0.16);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:34px 30px;">
+      <div style="background:linear-gradient(160deg,#F6F2DA 0%,#E2E8D5 100%);border:1.5px solid rgba(107,122,80,0.16);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:34px 30px;">
         <span style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;display:block;">A note from Cleo</span>
         <p style="font-family:'Spectral',serif;font-weight:300;font-style:italic;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;">Fertility is a two-person journey. We curate for both partners — and your Cleo care team is always here to help you build the right routine.</p>
       </div>
@@ -265,7 +289,7 @@
 
       <!-- Osea -->
       <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06);transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 4px 16px rgba(27,56,114,0.1),0 16px 40px rgba(27,56,114,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06)'">
-        <div style="height:160px;background:linear-gradient(135deg,#EBF0FA 0%,#D6E0F5 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="height:160px;background:linear-gradient(135deg,#F6F2DA 0%,#C9D3EE 100%);display:flex;align-items:center;justify-content:center;">
           <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:300;color:var(--navy);letter-spacing:0.02em;">Osea</span>
         </div>
         <div style="padding:28px 24px;flex:1;display:flex;flex-direction:column;">
@@ -277,7 +301,7 @@
 
       <!-- Mamala -->
       <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06);transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 4px 16px rgba(27,56,114,0.1),0 16px 40px rgba(27,56,114,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06)'">
-        <div style="height:160px;background:linear-gradient(135deg,#EEF1E6 0%,#DDE4D0 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="height:160px;background:linear-gradient(135deg,#F6F2DA 0%,#DDE4D0 100%);display:flex;align-items:center;justify-content:center;">
           <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:300;color:var(--olive);letter-spacing:0.02em;">Mamala</span>
         </div>
         <div style="padding:28px 24px;flex:1;display:flex;flex-direction:column;">
@@ -306,7 +330,7 @@
 
       <!-- Restorative Roots -->
       <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06);transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 4px 16px rgba(27,56,114,0.1),0 16px 40px rgba(27,56,114,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06)'">
-        <div style="height:160px;background:linear-gradient(135deg,#EEF1E6 0%,#DDE4D0 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="height:160px;background:linear-gradient(135deg,#F6F2DA 0%,#DDE4D0 100%);display:flex;align-items:center;justify-content:center;">
           <span style="font-family:'Spectral',serif;font-size:1.5rem;font-weight:300;color:var(--olive);letter-spacing:0.02em;">Restorative Roots</span>
         </div>
         <div style="padding:28px 24px;flex:1;display:flex;flex-direction:column;">
@@ -319,7 +343,7 @@
 
       <!-- Earth Mama -->
       <div style="background:#fff;border:1.5px solid rgba(27,56,114,0.09);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06);transition:transform 0.2s ease,box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 4px 16px rgba(27,56,114,0.1),0 16px 40px rgba(27,56,114,0.12)'" onmouseout="this.style.transform='';this.style.boxShadow='0 2px 8px rgba(27,56,114,0.06),0 8px 24px rgba(27,56,114,0.06)'">
-        <div style="height:160px;background:linear-gradient(135deg,#EBF0FA 0%,#D6E0F5 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="height:160px;background:linear-gradient(135deg,#F6F2DA 0%,#C9D3EE 100%);display:flex;align-items:center;justify-content:center;">
           <span style="font-family:'Spectral',serif;font-size:1.5rem;font-weight:300;color:var(--navy);letter-spacing:0.02em;">Earth Mama</span>
         </div>
         <div style="padding:28px 24px;flex:1;display:flex;flex-direction:column;">
@@ -458,7 +482,7 @@
 
     <div id="fav-confirmation" style="display:none;text-align:center;padding:64px 0;">
       <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#E1654B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <h3 style="font-family:'Spectral',serif;font-weight:300;font-size:1.75rem;color:var(--ink);margin-bottom:12px;">Thank you!</h3>
     </div>
@@ -521,7 +545,7 @@
 
 <!-- BESTIE GIFT POPUP -->
 <div id="gift-popup-overlay" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(13,31,60,0.34);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)closeGiftPopup()">
-  <div style="background:#FAF8F4;border-radius:20px;max-width:452px;width:100%;padding:44px 38px 36px;position:relative;box-shadow:0 24px 70px rgba(13,31,60,0.3);border:1px solid rgba(27,56,114,0.08);">
+  <div style="background:#FAF6B7;border-radius:20px;max-width:452px;width:100%;padding:44px 38px 36px;position:relative;box-shadow:0 24px 70px rgba(13,31,60,0.3);border:1px solid rgba(27,56,114,0.08);">
     <button onclick="closeGiftPopup()" aria-label="Close" style="position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.4rem;color:var(--ink-muted);cursor:pointer;line-height:1;">×</button>
     <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;">A little something</p>
     <h3 style="font-family:'Spectral',serif;font-weight:300;font-size:1.75rem;color:var(--navy);letter-spacing:-0.01em;line-height:1.15;margin-bottom:14px;">Have a bestie expecting? 💛</h3>
@@ -565,7 +589,7 @@
 </style>
 
 <div id="mobile-cta-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(27,56,114,0.1);padding:12px 20px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(27,56,114,0.1);">
-  <a href="booking.html" style="display:flex;align-items:center;justify-content:center;width:100%;background:#1B3872;color:#fff;font-family:'Spectral',serif;font-size:1rem;font-weight:400;letter-spacing:0.04em;padding:16px 24px;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(27,56,114,0.25),0 8px 24px rgba(27,56,114,0.2);">
+  <a href="booking.html" style="display:flex;align-items:center;justify-content:center;width:100%;background:#6B0826;color:#fff;font-family:'Spectral',serif;font-size:1rem;font-weight:400;letter-spacing:0.04em;padding:16px 24px;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(27,56,114,0.25),0 8px 24px rgba(27,56,114,0.2);">
     Book Care
   </a>
 </div>
@@ -575,5 +599,24 @@
     body { padding-bottom: 80px; }
   }
 </style>
+<script>
+  // Courtesy "coming soon" gate. SHA-256 digest so the literal password isn't in
+  // the source. Static site — keeps casual visitors out, not real access control.
+  (function(){
+    var gate = document.getElementById('fav-gate');
+    var HASH = '99245e70eced8348856428019100af5aad6f897936d66605369480de81186f41';
+    function unlock(){ gate.style.display='none'; document.body.style.overflow=''; }
+    try { if (sessionStorage.getItem('cleo_fav_unlocked')==='1'){ unlock(); } else { document.body.style.overflow='hidden'; } }
+    catch(e){ document.body.style.overflow='hidden'; }
+    document.getElementById('fav-gate-form').addEventListener('submit', async function(e){
+      e.preventDefault();
+      var pw = document.getElementById('fav-pw').value.trim();
+      var err = document.getElementById('fav-err');
+      var digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)))].map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+      if (digest === HASH){ try{ sessionStorage.setItem('cleo_fav_unlocked','1'); }catch(e){} unlock(); }
+      else { err.style.display='block'; document.getElementById('fav-pw').value=''; }
+    });
+  })();
+</script>
 </body>
 </html>

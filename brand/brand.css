@@ -1,0 +1,116 @@
+/* ============================================================
+   CLEO CARE — Brand system (Born ID)
+   Single source of truth: tokens, type, and components.
+   Website + app both consume this. Rebrand = edit here.
+   ============================================================ */
+
+/* ---- Fonts (self-hosted, web-optimized) ---- */
+@font-face { font-family:"Rosevale"; src:url("fonts/rosevale.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Palmello"; src:url("fonts/palmello.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-300.woff2") format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-400.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-400i.woff2") format("woff2"); font-weight:400; font-style:italic; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-500.woff2") format("woff2"); font-weight:500; font-style:normal; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"Host Grotesk"; src:url("fonts/host-700.woff2") format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+:root{
+  /* Brand palette (Born ID, exact) */
+  --sky:#99AADB;        --sky-deep:#7C8FCB;   --sky-soft:#C9D3EE;
+  --coral:#E1654B;      --coral-deep:#C74E36;
+  --burgundy:#6B0826;   --burgundy-deep:#4E0519;
+  --blush:#CD96B3;      --blush-soft:#E3C4D5;
+  --butter:#FAF6B7;     --butter-deep:#F1EA8E;
+  --ivory:#FFFEF7;
+  /* Working ink + neutrals. --ink (burgundy) = ACCENT type only (display + script).
+     --text = MAIN/body font, a warm espresso so reading copy is never red or black. */
+  --ink:#6B0826;        --text:#463A33;   --ink-soft:#8A7B72;   --line:rgba(107,8,38,.14);
+  /* Journey → color */
+  --fertility:var(--blush); --pregnancy:var(--burgundy); --postpartum:var(--coral);
+
+  /* Type */
+  --font-display:"Rosevale", Georgia, serif;
+  --font-body:"Host Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-script:"Palmello", "Rosevale", cursive;
+
+  /* Rhythm */
+  --radius:16px; --radius-lg:26px; --radius-pill:999px;
+  --shadow-sm:0 1px 2px rgba(36,28,30,.05);
+  --shadow:0 10px 30px rgba(36,28,30,.10);
+  --shadow-lift:0 18px 44px rgba(36,28,30,.16);
+  --pad-section:clamp(64px,9vw,128px);
+  --pad-x:clamp(22px,5vw,72px);
+  --maxw:1240px;
+}
+
+/* ---- Base ---- */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; }
+body{
+  margin:0; background:var(--ivory); color:var(--text);
+  font-family:var(--font-body); font-size:17px; line-height:1.7; font-weight:400;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+
+/* ---- Type ---- */
+.display,h1,h2,h3{ font-family:var(--font-display); font-weight:400; line-height:1.06; letter-spacing:-.01em; color:var(--ink); margin:0; }
+h1,.h1{ font-size:clamp(2.7rem,6vw,5.2rem); }
+h2,.h2{ font-size:clamp(2rem,4.2vw,3.4rem); line-height:1.08; }
+h3,.h3{ font-size:clamp(1.35rem,2.2vw,1.9rem); }
+.script{ font-family:var(--font-script); font-weight:400; line-height:1; }
+.eyebrow{ font-family:var(--font-body); font-weight:600; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-soft); }
+.lede{ font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.65; color:var(--ink); }
+.muted{ color:var(--ink-soft); }
+p{ margin:0 0 1.1em; }
+p:last-child{ margin-bottom:0; }
+
+/* ---- Layout ---- */
+.wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad-x); }
+.section{ padding-block:var(--pad-section); }
+.stack>*+*{ margin-top:1.1rem; }
+
+/* ---- Buttons ---- */
+.btn{ display:inline-flex; align-items:center; gap:.5em; font-family:var(--font-body); font-weight:600;
+  font-size:.98rem; letter-spacing:.01em; padding:15px 30px; border-radius:var(--radius-pill);
+  border:1.5px solid transparent; cursor:pointer; text-decoration:none; transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease, color .16s ease, box-shadow .18s ease; }
+.btn:hover{ transform:translateY(-2px); }
+.btn--primary{ background:var(--burgundy); color:var(--ivory); box-shadow:0 6px 18px rgba(107,8,38,.3); }
+.btn--primary:hover{ background:var(--burgundy-deep); box-shadow:0 10px 26px rgba(107,8,38,.42); }
+.btn--dark{ background:var(--burgundy); color:var(--ivory); box-shadow:0 6px 18px rgba(107,8,38,.3); }
+.btn--dark:hover{ background:var(--burgundy-deep); }
+.btn--ghost{ background:transparent; color:var(--ink); border-color:var(--ink); }
+.btn--ghost:hover{ background:var(--ink); color:var(--ivory); }
+.btn--on-dark{ background:var(--butter); color:var(--burgundy); }
+.btn--on-dark:hover{ background:var(--butter-deep); }
+
+/* ---- Brand marks (mask = exact artwork, any color) ---- */
+.logo{ display:inline-block; width:132px; height:82px; background:var(--ink);
+  -webkit-mask:url("img/logo-mono.svg") center/contain no-repeat; mask:url("img/logo-mono.svg") center/contain no-repeat; }
+.logo.--butter{ background:var(--butter); } .logo.--ivory{ background:var(--ivory); } .logo.--sky{ background:var(--sky); } .logo.--burgundy{ background:var(--burgundy); }
+
+.jicon{ display:inline-block; width:64px; height:64px; background:currentColor;
+  -webkit-mask-position:center; mask-position:center; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-size:contain; mask-size:contain; }
+.jicon.fertility{ -webkit-mask-image:url("img/icon-fertility.svg"); mask-image:url("img/icon-fertility.svg"); }
+.jicon.pregnancy{ -webkit-mask-image:url("img/icon-pregnancy.svg"); mask-image:url("img/icon-pregnancy.svg"); }
+.jicon.postpartum{ -webkit-mask-image:url("img/icon-postpartum.svg"); mask-image:url("img/icon-postpartum.svg"); }
+
+/* ---- Squiggle texture (recolorable, decorative) ---- */
+.squiggle{ position:relative; isolation:isolate; }
+.squiggle::before{ content:""; position:absolute; inset:0; z-index:-1; background:currentColor; opacity:.14;
+  -webkit-mask:url("img/texture-mono.svg") center/cover no-repeat; mask:url("img/texture-mono.svg") center/cover no-repeat; }
+
+/* ---- Card ---- */
+.card{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg); box-shadow:var(--shadow-sm);
+  transition:transform .2s ease, box-shadow .2s ease; }
+.card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lift); }
+
+/* ---- Pills / chips ---- */
+.chip{ display:inline-flex; align-items:center; gap:.5em; font-size:.8rem; font-weight:600; letter-spacing:.02em;
+  padding:6px 14px; border-radius:var(--radius-pill); background:var(--butter); color:var(--burgundy); }
+
+/* ---- Color-block section helpers ---- */
+.bg-sky{ background:var(--sky); } .bg-blush{ background:var(--blush); } .bg-coral{ background:var(--coral); }
+.bg-burgundy{ background:var(--burgundy); color:var(--ivory); } .bg-butter{ background:var(--butter); } .bg-ivory{ background:var(--ivory); }
+.on-dark{ color:var(--ivory); } .on-dark .eyebrow{ color:rgba(255,254,247,.7); } .on-dark h1,.on-dark h2,.on-dark h3{ color:var(--ivory); }

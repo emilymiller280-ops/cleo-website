@@ -12,16 +12,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | Cleo</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #FAF8F4; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', sans-serif; background: #FAF6B7; color: #463A33; -webkit-font-smoothing: antialiased; }
     :root {
-      --navy: #1B3872; --navy-light: #2A4F9E;
-      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
-      --olive: #6B7A50; --olive-pale: #EEF1E6;
+      --navy: #6B0826; --navy-light: #E1654B;
+      --ink: #463A33; --ink-mid: #6B5A52; --ink-muted: #8A7B72;
+      --olive: #E1654B; --olive-pale: #F6F2DA;
     }
     .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
     .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
@@ -53,43 +51,54 @@
       #nav-center { display:none !important; }
     }
   </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
 </head>
 <body>
 
 <!-- NAV -->
-<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
-    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
-    </a>
-    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
-      <a href="index.html" class="nav-link" style="color:var(--navy);">Home</a>
-      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
-      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
-      <a href="favorites.html" class="nav-link">Our Favorites</a>
-      <a href="faq.html" class="nav-link">The Details</a>
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
-  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
-  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
-  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
-  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
-</div>
+  </header>
 
-<main style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 56px;">
-  <div style="text-align:center;max-width:480px;">
-    <div style="width:64px;height:64px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 32px;">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#6B7A50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<main class="page-hero h-blush" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner" style="max-width:520px;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,254,247,.18);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FAF6B7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <h1 class="heading-display" style="font-size:clamp(2rem,4vw,2.75rem);color:var(--ink);margin-bottom:20px;">Thank you for your interest in joining our network.</h1>
-    <p class="body-text" style="font-size:1.0625rem;color:var(--ink-muted);line-height:1.8;margin-bottom:40px;">We carefully review each submission and will reach out within 48 hours.</p>
-    <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;transition:border-color 0.15s ease;" onmouseover="this.style.borderColor='var(--navy)'" onmouseout="this.style.borderColor='rgba(27,56,114,0.3)'">Back to Home</a>
+    <h1 style="font-size:clamp(2rem,4vw,2.9rem);">Thank you for your interest in joining our network.</h1>
+    <p class="page-hero__lede" style="margin-top:1.1em;">We carefully review each submission and will reach out within 48 hours.</p>
+    <div class="page-hero__cta"><a href="index.html" class="hbtn hbtn--primary">Back to Home</a></div>
   </div>
 </main>
 

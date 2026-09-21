@@ -15,33 +15,31 @@
   <meta name="description" content="Apply to join the Cleo maternal care provider network. We connect women with trusted practitioners across every stage of their journey.">
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Spectral', serif;
-      background: #FAF8F4;
-      color: #0D1F3C;
+      background: #FAF6B7;
+      color: #463A33;
       -webkit-font-smoothing: antialiased;
     }
     :root {
-      --navy: #1B3872;
-      --navy-dark: #0F2352;
-      --navy-light: #2A4F9E;
-      --navy-pale: #D6E0F5;
-      --navy-wash: #EBF0FA;
-      --ink: #0D1F3C;
-      --ink-mid: #3A4A6A;
-      --ink-muted: #7888A8;
-      --cream: #FAF8F4;
-      --warm: #F5F0E8;
-      --warm-mid: #EDE6D8;
-      --olive: #6B7A50;
-      --olive-light: #8A9B68;
-      --olive-pale: #EEF1E6;
+      --navy: #6B0826;
+      --navy-dark: #4E0519;
+      --navy-light: #E1654B;
+      --navy-pale: #C9D3EE;
+      --navy-wash: #F6F2DA;
+      --ink: #463A33;
+      --ink-mid: #6B5A52;
+      --ink-muted: #8A7B72;
+      --cream: #FAF6B7;
+      --warm: #E3C4D5;
+      --warm-mid: #CD96B3;
+      --olive: #E1654B;
+      --olive-light: #C74E36;
+      --olive-pale: #F6F2DA;
     }
     .heading-display {
       font-family: 'Spectral', serif;
@@ -161,26 +159,52 @@
       .toggle-three { grid-template-columns: 1fr !important; }
     }
   </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
 </head>
 <body>
 
-  <!-- Header -->
-  <header style="position:sticky;top:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(27,56,114,0.08);padding:0 32px;">
-    <div style="max-width:1100px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:center;">
-      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:10px;">
-        <div style="width:32px;height:32px;background:var(--navy);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:600;color:#fff;line-height:1;">C</span>
-        </div>
-        <span style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;color:var(--ink);letter-spacing:0.03em;">Cleo</span>
-      </a>
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section style="padding:72px 32px 56px;text-align:center;max-width:640px;margin:0 auto;">
-    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:20px;">Provider Network</p>
-    <h1 class="heading-display" style="font-size:clamp(2rem,5vw,3rem);color:var(--ink);margin-bottom:20px;">Care with Cleo.</h1>
-    <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:500px;margin:0 auto;">Please share a bit about your practice and we'll take it from there.</p>
+  <section class="page-hero h-burgundy page-hero--compact">
+    <div class="page-hero__tex"></div>
+    <div class="page-hero__inner">
+      <span class="page-hero__eyebrow">Provider Network</span>
+      <h1>Care with Cleo.</h1>
+      <p class="page-hero__lede">Please share a bit about your practice and we'll take it from there.</p>
+    </div>
   </section>
 
   <!-- Form -->
