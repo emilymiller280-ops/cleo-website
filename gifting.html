@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gifting | Cleo Care</title>
+<meta name="description" content="Give the gift of care. Send a Cleo gift toward meals, doula support, bodywork, mental health, and more, for the mother in your life.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%236B0826'/><text y='.9em' font-size='74' font-family='Georgia,serif' fill='%23FAF6B7' x='50%' text-anchor='middle' dy='0.06em'>C</text></svg>">
+<link rel="stylesheet" href="/brand/brand.css">
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
+<style>
+  .gift-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:1040px; margin:0 auto; }
+  .gift-card{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg);
+    padding:38px 30px; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); position:relative; }
+  .gift-card .script{ font-size:2rem; color:var(--burgundy); margin-bottom:8px; }
+  .gift-card p{ color:var(--text); font-size:.98rem; margin:0; }
+  .gift-card .tag{ position:absolute; top:-11px; left:30px; font-family:var(--font-body); font-weight:600;
+    font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; background:var(--coral); color:var(--ivory);
+    padding:5px 12px; border-radius:var(--radius-pill); }
+  .gift-how{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; max-width:920px; margin:0 auto; }
+  .gift-how .sn{ font-family:var(--font-script); font-size:2.6rem; color:var(--coral); display:block; line-height:1; margin-bottom:10px; }
+  .gift-how h3{ font-size:1.15rem; margin-bottom:8px; }
+  .gift-how p{ color:var(--text); font-size:.94rem; }
+  .foot{ position:relative; overflow:hidden; background:var(--burgundy); color:var(--butter); }
+  .foot .wrap{ position:relative; z-index:1; padding-block:56px 30px; }
+  .foot a{ color:rgba(250,246,183,.85); text-decoration:none; } .foot a:hover{ color:var(--butter); }
+  .foot-bar{ border-top:1px solid rgba(250,246,183,.24); margin-top:34px; padding-top:22px;
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
+  @media(max-width:820px){ .gift-grid,.gift-how{ grid-template-columns:1fr; } }
+
+  /* Full pink squiggle field behind the whole page */
+  body{ background:#E3C4D5; position:relative; }
+  body::before{ content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#CD96B3; opacity:.34;
+    -webkit-mask:url('/brand/img/texture-mono.svg') center/140% no-repeat;
+    mask:url('/brand/img/texture-mono.svg') center/140% no-repeat; }
+  /* Every band rides the pink field */
+  .page-hero.h-butter{ background:transparent !important; }
+  .page-hero .page-hero__tex{ display:none !important; }
+  .section.bg-butter, .section.bg-sky{ background:transparent !important; }
+  .section.bg-sky .page-hero__tex{ display:none !important; }
+  .foot{ background:transparent !important; }
+  .foot .wrap{ color:var(--text); }
+  .foot a{ color:var(--burgundy) !important; }
+  .foot .eyebrow{ color:var(--burgundy) !important; opacity:.7; }
+  .foot p, .foot span{ color:var(--text) !important; }
+  .foot{ border-top:1px solid rgba(107,8,38,0.14); }
+  .foot-bar{ border-top-color:rgba(107,8,38,0.14) !important; }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="cleo-nav">
+  <div class="cleo-nav__inner">
+    <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+    <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+    <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <nav class="cleo-nav__links">
+      <a href="faq.html">How We Work</a>
+      <a href="meal-delivery.html">Meal Delivery</a>
+      <a href="favorites.html">Our Favorites</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="page-hero h-butter">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner">
+    <span class="page-hero__eyebrow">Gifting</span>
+    <h1>Give the gift of care.</h1>
+    <p class="page-hero__lede">The most meaningful gift for a new or expecting mother isn't another onesie, it's support. Send a Cleo gift toward the care she actually needs.</p>
+    <div class="page-hero__cta">
+      <a href="https://app.cleocare.co/gift" class="hbtn hbtn--primary">Send a gift</a>
+    </div>
+  </div>
+</section>
+
+<!-- What you can gift -->
+<section class="section bg-butter">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;max-width:640px;margin:0 auto 48px;">
+      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">What you can give</span>
+      <h2>A gift she'll actually use.</h2>
+    </div>
+    <div class="gift-grid">
+      <article class="gift-card">
+        <span class="script">A single session</span>
+        <p>Treat her to one meaningful visit, a prenatal massage, a lactation consult, or a night of newborn care so she can rest.</p>
+      </article>
+      <article class="gift-card">
+        <span class="tag">Most loved</span>
+        <span class="script">A care credit</span>
+        <p>Give an open credit she can put toward whatever she needs most, whenever she needs it. The easiest way to say "I've got you."</p>
+      </article>
+      <article class="gift-card">
+        <span class="script">Ongoing support</span>
+        <p>Cover a stretch of care across her journey, from meals and bodywork to doula and night support, coordinated by Cleo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- How gifting works -->
+<section class="section bg-sky" style="position:relative;overflow:hidden;">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="section-head" style="text-align:center;max-width:640px;margin:0 auto 44px;">
+      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">How it works</span>
+      <h2>Simple to send, lovely to receive.</h2>
+    </div>
+    <div class="gift-how">
+      <div><span class="sn">1</span><h3>Choose your gift</h3><p>Pick an amount or a specific service, and add a personal note.</p></div>
+      <div><span class="sn">2</span><h3>We deliver it</h3><p>She receives a beautiful message with everything she needs to redeem.</p></div>
+      <div><span class="sn">3</span><h3>She gets cared for</h3><p>Cleo matches her with trusted providers and coordinates every detail.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a href="https://app.cleocare.co/gift" class="btn btn--primary">Send a gift &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-display);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined. Fertility through postpartum, across Los Angeles, Orange County &amp; Santa Barbara.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How We Work</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

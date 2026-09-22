@@ -113,10 +113,11 @@ body{background:#FAF6B7;}
       <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
       <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
       <nav class="cleo-nav__links">
-        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="faq.html">How We Work</a>
+        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="favorites.html">Our Favorites</a>
-        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="gifting.html">Gifting</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
     </div>
@@ -136,6 +137,24 @@ body{background:#FAF6B7;}
     section.k-sec { padding-left:24px !important; padding-right:24px !important; }
   }
   html { scroll-behavior:smooth; }
+
+  /* One continuous, soft light-yellow squiggle behind everything */
+  body{ position:relative; background:#F6F2DA !important; }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#E9E09A; opacity:.14;
+    -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
+    mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
+  }
+  /* Hero rides the same field so the squiggle is continuous top-to-bottom */
+  .page-hero.h-butter{ background:transparent !important; }
+  .page-hero .page-hero__tex{ display:none !important; }
+  /* The meal card lifts off the squiggle, favorites-style */
+  .meal-card{
+    background:var(--ivory); border:1px solid rgba(107,8,38,0.10);
+    border-radius:26px; padding:clamp(36px,5vw,56px) clamp(28px,5vw,52px);
+    box-shadow:0 18px 44px rgba(36,28,30,.10);
+  }
 </style>
 
 <main>
@@ -149,10 +168,10 @@ body{background:#FAF6B7;}
     </div>
   </section>
 
-  <section style="display:flex;align-items:center;justify-content:center;padding:56px 56px 80px;">
-    <div style="max-width:560px;text-align:center;">
+  <section style="display:flex;align-items:center;justify-content:center;padding:48px 24px 88px;">
+    <div class="meal-card" style="max-width:560px;width:100%;text-align:center;">
 
-      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.125rem;color:var(--ink-mid);line-height:1.75;margin-bottom:18px;">Register your interest here</p>
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);margin-bottom:18px;">Register your interest here</p>
       <form id="meal-waitlist-form" action="https://app.cleocare.co/api/meal-waitlist" method="POST" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
         <input name="email" type="email" required placeholder="you@example.com" style="width:100%;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:14px 16px;outline:none;">
@@ -210,11 +229,11 @@ body{background:#FAF6B7;}
   });
 </script>
 
-<footer style="background:#070F1E;padding:44px 56px;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
-    <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
-    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
-    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
+<footer style="background:transparent;border-top:1px solid rgba(107,8,38,0.12);padding:40px 56px;position:relative;z-index:1;">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <span style="font-family:'Spectral',serif;font-size:1.375rem;font-weight:400;color:var(--navy);">Cleo Care</span>
+    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);">© 2026 Cleo Care, LLC. All rights reserved.</p>
+    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--navy);text-decoration:none;">@cleo.care.co</a>
   </div>
 </footer>
 

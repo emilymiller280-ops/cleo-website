@@ -33,6 +33,34 @@
   .stat{ background:var(--burgundy-deep); padding:36px 30px; }
   .stat .num{ font-family:var(--font-display); font-size:clamp(2.2rem,3.6vw,3.2rem); color:var(--butter); line-height:1; margin-bottom:12px; }
   .stat p{ font-size:.92rem; color:rgba(255,254,247,.9); margin:0; line-height:1.55; }
+  .stat sup a{ color:var(--butter); text-decoration:none; font-size:.62em; opacity:.8; padding-left:1px; }
+  .stat sup a:hover{ text-decoration:underline; opacity:1; }
+  .why-sources{ list-style:none; padding:0; margin:32px auto 0; max-width:820px; counter-reset:src;
+    display:grid; grid-template-columns:1fr 1fr; gap:4px 36px; }
+  .why-sources li{ counter-increment:src; font-size:.62rem; line-height:1.45; color:rgba(255,254,247,.5);
+    position:relative; padding-left:16px; }
+  .why-sources li::before{ content:counter(src); position:absolute; left:0; top:0; color:var(--butter); opacity:.7; font-weight:600; font-size:.6rem; }
+  .why-sources a{ color:rgba(255,254,247,.72); text-decoration:underline; text-underline-offset:2px; }
+  .why-sources a:hover{ color:var(--butter); }
+  @media(max-width:700px){ .why-sources{ grid-template-columns:1fr; } }
+
+  /* Cleo's Calling — post previews + mini signup */
+  .posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:44px; }
+  .post{ display:flex; flex-direction:column; background:var(--ivory); border-radius:var(--radius-lg);
+    padding:26px 24px; text-decoration:none; box-shadow:var(--shadow-sm);
+    transition:transform .18s ease, box-shadow .18s ease; }
+  .post:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .post .tag{ font-family:var(--font-body); font-weight:600; font-size:.62rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--coral); margin-bottom:12px; }
+  .post h3{ font-size:1.12rem; line-height:1.25; margin-bottom:10px; color:var(--burgundy); }
+  .post p{ font-size:.88rem; color:var(--text); line-height:1.6; margin:0 0 16px; flex:1; }
+  .post .more{ font-family:var(--font-body); font-weight:600; font-size:.8rem; color:var(--burgundy); }
+  .signup-mini{ max-width:540px; margin:0 auto; text-align:center; }
+  .signup-mini form{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+  .signup-mini input[type=email]{ flex:1; min-width:220px; font-family:var(--font-body); font-size:1rem;
+    padding:14px 18px; border-radius:var(--radius-pill); border:1.5px solid rgba(255,254,247,.5);
+    background:var(--ivory); color:var(--text); outline:none; }
+  @media(max-width:820px){ .posts{ grid-template-columns:1fr; } }
 
   /* Enter Cleo */
   .enter{ max-width:820px; margin:0 auto; text-align:center; }
@@ -100,14 +128,46 @@
   .foot-col .eyebrow{ color:rgba(250,246,183,.7); margin-bottom:16px; }
   .foot-bar{ border-top:1px solid rgba(250,246,183,.28); padding-block:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
 
+  /* One continuous sky squiggle spanning Cleo's Calling + the footer */
+  .sky-field{ position:relative; background:var(--sky); isolation:isolate; }
+  .sky-field::before{ content:""; position:absolute; inset:0; z-index:0; background:var(--sky-deep); opacity:.42;
+    -webkit-mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; }
+  .sky-field > *{ position:relative; z-index:1; }
+  .sky-field .foot{ background:transparent; }
+  .sky-field .foot::before{ display:none; }
+  .sky-field .hero{ background:transparent; }
+  /* Care-for-the-whole-woman on the blue field: butter/ivory writing */
+  .sky-field .p3 .script{ color:var(--butter); }
+  .sky-field .p3 p{ color:var(--ivory); }
+  .sky-field .svc{ color:var(--butter); border-color:rgba(255,254,247,.6); background:transparent; }
+
   @media(max-width:900px){
     .journeys,.pillars3,.stats{ grid-template-columns:1fr; } .steps{ grid-template-columns:1fr 1fr; }
     .prac{ grid-template-columns:1fr; } .journal-card{ grid-template-columns:1fr; } .nav-links{ display:none; }
   }
   @media(max-width:560px){ .steps{ grid-template-columns:1fr; } }
+
+  /* Homepage: nav rides transparent over the blue squiggle hero (butter type),
+     then solidifies to the ivory bar once you scroll past it. */
+  body.home .cleo-nav{ background:transparent; backdrop-filter:none; -webkit-backdrop-filter:none;
+    border-bottom-color:transparent; transition:background .25s ease, border-color .25s ease; }
+  body.home .cleo-nav__brand,
+  body.home .cleo-nav__links a{ color:var(--butter); }
+  body.home .cleo-nav__burger span{ background:var(--butter); }
+  body.home .cleo-nav__cta{ background:var(--burgundy); color:var(--ivory)!important;
+    box-shadow:0 4px 16px rgba(78,5,25,.38); }
+  body.home .cleo-nav--solid{ background:rgba(255,254,247,.92); backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px); border-bottom-color:rgba(107,8,38,.10); }
+  body.home .cleo-nav--solid .cleo-nav__brand,
+  body.home .cleo-nav--solid .cleo-nav__links a{ color:var(--burgundy); }
+  body.home .cleo-nav--solid .cleo-nav__burger span{ background:var(--burgundy); }
+  @media(max-width:900px){
+    /* mobile dropdown panel is ivory, so its links read burgundy even over the hero */
+    body.home .cleo-nav__links a{ color:var(--burgundy); }
+  }
 </style>
 </head>
-<body>
+<body class="home">
 
 <!-- Nav -->
 <header class="cleo-nav">
@@ -116,28 +176,43 @@
     <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
     <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
     <nav class="cleo-nav__links">
-        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="faq.html">How We Work</a>
+        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="favorites.html">Our Favorites</a>
-        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="gifting.html">Gifting</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
   </div>
 </header>
 
+<!-- HERO + JOURNEYS share one continuous sky squiggle -->
+<div class="sky-field">
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-squiggle"></div>
   <div class="wrap hero-inner">
     <div class="hero-cleo">CLEO</div>
     <p class="eyebrow hero-eyebrow">Maternal care, simplified</p>
     <p class="lede">We're reimagining a new standard of maternal wellness, connecting you with vetted specialists for personal, human support, exactly when you need it.</p>
     <div class="hero-cta">
-      <a href="booking.html" class="btn btn--primary">Find your match</a>
-      <a href="#how" class="btn btn--on-dark">How it works</a>
+      <a href="booking.html" class="btn btn--primary">Start here</a>
+      <a href="faq.html" class="btn btn--on-dark">How we work</a>
     </div>
   </div>
 </section>
+
+<!-- JOURNEYS -->
+<section class="section" id="journeys" style="position:relative;padding-block:clamp(56px,7vw,88px);">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Every stage, supported</span><h2 style="color:var(--butter);">Wherever you are, we meet you there.</h2></div>
+    <div class="journeys">
+      <article class="journey j-fertility"><div class="j-tex"></div><span class="jicon fertility"></span><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next, from experts who listen first.</p><span class="more">Explore fertility care →</span></article>
+      <article class="journey j-pregnancy"><div class="j-tex"></div><span class="jicon pregnancy"></span><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week. Physical, emotional, and everything between.</p><span class="more">Explore pregnancy care →</span></article>
+      <article class="journey j-postpartum"><div class="j-tex"></div><span class="jicon postpartum"></span><span class="script jname">Postpartum</span><p>Because you deserve care, too. Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></article>
+    </div>
+  </div>
+</section>
+</div><!-- /sky-field -->
 
 <!-- PROBLEM / STATS -->
 <section class="section bg-burgundy">
@@ -147,55 +222,45 @@
       <h2>Maternal health is underserved.</h2>
     </div>
     <div class="stats">
-      <div class="stat"><div class="num">1 in 5</div><p>Women experience perinatal mood disorders, a rate that has more than doubled since 2010.</p></div>
-      <div class="stat"><div class="num">75%</div><p>Of postpartum depression cases go undiagnosed or untreated, one of the most common, and most overlooked, complications of pregnancy.</p></div>
-      <div class="stat"><div class="num">40%</div><p>Of women undergoing fertility treatment meet the criteria for clinical depression or anxiety, comparable to cancer patients.</p></div>
-      <div class="stat"><div class="num">12 weeks</div><p>The shortest average maternity leave among developed nations, leaving mothers to recover with little structured support.</p></div>
-      <div class="stat"><div class="num">Zero</div><p>Mandated postpartum home visits in the US. We're the only high-income country without them.</p></div>
-      <div class="stat"><div class="num">Highest</div><p>The US has the highest maternal mortality rate of any high-income nation, and it's been rising.</p></div>
+      <div class="stat"><div class="num">1 in 5</div><p>Women experience perinatal mood disorders, a rate that has more than doubled since 2010.<sup><a href="#why-src-1" aria-label="Source 1">1</a></sup></p></div>
+      <div class="stat"><div class="num">75%</div><p>Of maternal mental health conditions go undiagnosed and untreated, among the most common, and most overlooked, complications of pregnancy.<sup><a href="#why-src-2" aria-label="Source 2">2</a></sup></p></div>
+      <div class="stat"><div class="num">40%</div><p>Of women undergoing fertility treatment meet the criteria for clinical depression or anxiety, comparable to cancer patients.<sup><a href="#why-src-3" aria-label="Source 3">3</a></sup></p></div>
+      <div class="stat"><div class="num">Only one</div><p>High-income country with no national paid parental leave. Federal law guarantees just 12 weeks, unpaid.<sup><a href="#why-src-4" aria-label="Source 4">4</a></sup></p></div>
+      <div class="stat"><div class="num">Zero</div><p>Guaranteed postpartum home visits in the US. We're the only wealthy nation that doesn't provide them.<sup><a href="#why-src-5" aria-label="Source 5">5</a></sup></p></div>
+      <div class="stat"><div class="num">Highest</div><p>The US has the highest maternal mortality rate of any high-income nation, and it's been rising.<sup><a href="#why-src-6" aria-label="Source 6">6</a></sup></p></div>
     </div>
+    <ol class="why-sources">
+      <li id="why-src-1">Prevalence: Policy Center for Maternal Mental Health, <a href="https://policycentermmh.org/maternal-mental-health-fact-sheet/" target="_blank" rel="noopener">Maternal Mental Health Fact Sheet</a>. Rise since 2010: <a href="https://www.healthaffairs.org/doi/10.1377/hlthaff.2023.01437" target="_blank" rel="noopener">Health Affairs, 2023</a> (PMAD diagnoses up ~93%, 2008&ndash;2020).</li>
+      <li id="why-src-2"><a href="https://www.aamc.org/about-us/mission-areas/health-care/maternal-mental-health" target="_blank" rel="noopener">Association of American Medical Colleges</a>; <a href="https://policycentermmh.org/maternal-mental-health-fact-sheet/" target="_blank" rel="noopener">Policy Center for Maternal Mental Health</a>.</li>
+      <li id="why-src-3"><a href="https://www.sciencedirect.com/science/article/pii/S0015028214013922" target="_blank" rel="noopener">Fertility &amp; Sterility</a> (depression in fertility patients); comparison to cancer/HIV patients per Domar et&nbsp;al., Harvard Medical School.</li>
+      <li id="why-src-4"><a href="https://www.pewresearch.org/short-reads/2019/12/16/u-s-lacks-mandated-paid-parental-leave/" target="_blank" rel="noopener">Pew Research Center</a> / OECD; 12 weeks unpaid via the federal FMLA.</li>
+      <li id="why-src-5"><a href="https://www.commonwealthfund.org/publications/issue-briefs/2020/nov/maternal-mortality-maternity-care-us-compared-10-countries" target="_blank" rel="noopener">The Commonwealth Fund, 2020</a>.</li>
+      <li id="why-src-6"><a href="https://www.commonwealthfund.org/press-release/2024/report-finds-us-maternal-mortality-rates-far-exceed-those-other-high-income" target="_blank" rel="noopener">The Commonwealth Fund, 2024</a>.</li>
+    </ol>
   </div>
 </section>
 
+<!-- ENTER CLEO + CARE share one continuous sky squiggle -->
+<div class="sky-field">
 <!-- ENTER CLEO -->
-<section class="section bg-butter">
-  <div class="wrap enter">
-    <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:14px;">Enter Cleo</span>
-    <h2 style="margin-bottom:.4em;">A full-spectrum maternal care concierge.</h2>
-    <p class="lede">Vetting, matching, and coordinating everything you need, wherever you are in your journey.</p>
-    <p style="margin-top:1.1em;color:var(--text);">Cleo isn't just a platform. It's your well-connected confidante who deeply understands your needs, does the legwork, and coordinates every detail.</p>
+<section class="section" style="position:relative;">
+  <div class="wrap enter" style="position:relative;z-index:1;">
+    <span class="eyebrow" style="color:var(--butter);display:block;margin-bottom:14px;">Enter Cleo</span>
+    <h2 style="margin-bottom:.4em;color:var(--butter);">Empowering women through knowledge, clarity, and trusted guidance.</h2>
+    <p class="lede" style="color:var(--ivory);">Cleo exists to simplify complexity. By thoughtfully connecting women with the right care at the right time, we replace uncertainty with confidence, making healthcare feel intuitive, informed, and empowering rather than overwhelming.</p>
   </div>
 </section>
 
-<!-- JOURNEYS -->
-<section class="section bg-butter" id="journeys" style="padding-top:0;">
+<!-- CARE SYSTEM (pillars + services combined) -->
+<section class="section">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:var(--coral);">Every stage, supported</span><h2>Wherever you are, we meet you there.</h2></div>
-    <div class="journeys">
-      <article class="journey j-fertility"><div class="j-tex"></div><span class="jicon fertility"></span><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next, from experts who listen first.</p><span class="more">Explore fertility care →</span></article>
-      <article class="journey j-pregnancy"><div class="j-tex"></div><span class="jicon pregnancy"></span><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week. Physical, emotional, and everything between.</p><span class="more">Explore pregnancy care →</span></article>
-      <article class="journey j-postpartum"><div class="j-tex"></div><span class="jicon postpartum"></span><span class="script jname">Postpartum</span><p>Because you deserve care, too. Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></article>
-    </div>
-  </div>
-</section>
-
-<!-- THREE PILLARS -->
-<section class="section bg-blush">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:var(--burgundy);">Three pillars of care</span><h2>Care for the whole woman.</h2><p class="muted" style="margin-top:.6em;">While all aspects of wellbeing are connected, we support you through three interconnected pillars, at every stage.</p></div>
+    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Care for the whole woman</span><h2 style="color:var(--butter);">Everything your journey requires.</h2><p class="muted" style="margin-top:.6em;max-width:62ch;margin-inline:auto;color:rgba(255,254,247,.9);">A comprehensive maternal care system, in-home or on your terms, all vetted by trusted professionals in one place.</p></div>
     <div class="pillars3">
       <div class="p3"><span class="script">Physical</span><p>Your body carries an enormous amount through fertility, pregnancy, and birth. We coordinate targeted bodywork, massage, acupuncture, and chef-prepared meals tailored to where you are.</p></div>
       <div class="p3"><span class="script">Emotional</span><p>The emotional weight of this journey is real, and often invisible. Licensed mental health therapists, night care, and ongoing support ensure no part is carried alone.</p></div>
       <div class="p3"><span class="script">Connection</span><p>From fertility advocates and birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section bg-butter">
-  <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:var(--coral);">What we offer</span><h2>Everything your journey requires.</h2><p class="muted" style="margin-top:.6em;">A comprehensive maternal care system, in-home and on your terms, all vetted by trusted professionals in one place.</p></div>
-    <div class="services">
+    <div class="services" style="margin-top:52px;">
       <span class="svc">Birth &amp; Postpartum Doulas</span>
       <span class="svc">Lactation Consultants</span>
       <span class="svc">Meal Delivery</span>
@@ -207,23 +272,10 @@
     </div>
   </div>
 </section>
-
-<!-- HOW IT WORKS -->
-<section class="section bg-sky" id="how" style="position:relative;overflow:hidden;">
-  <div class="hero-squiggle" style="opacity:.28;"></div>
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="section-head"><span class="eyebrow" style="color:var(--burgundy);">How it works</span><h2>We coordinate everything.</h2><p style="margin-top:.6em;color:var(--text);">From your first call to your last appointment, so you can rest, bond, and recover fully, without the logistics.</p></div>
-    <div class="steps">
-      <div class="step"><span class="sn">01</span><h3>Book your care</h3><p>Tell us a little about yourself, where you are in your journey, and what support you're looking for.</p></div>
-      <div class="step"><span class="sn">02</span><h3>Consultation call</h3><p>We connect to understand your needs, timeline, and preferences, and walk you through your options.</p></div>
-      <div class="step"><span class="sn">03</span><h3>Your care plan</h3><p>We match you with vetted practitioners and build your plan, individual sessions or curated packages.</p></div>
-      <div class="step"><span class="sn">04</span><h3>Care at home</h3><p>Your practitioners come to you. No coordinating, no commuting. Just care, delivered where you need it.</p></div>
-    </div>
-  </div>
-</section>
+</div><!-- /sky-field -->
 
 <!-- FOR PRACTITIONERS -->
-<section class="section bg-burgundy">
+<section class="section bg-coral">
   <div class="wrap prac on-dark">
     <div>
       <span class="eyebrow">For practitioners</span>
@@ -241,50 +293,39 @@
   </div>
 </section>
 
-<!-- JOURNAL -->
-<section class="section bg-butter" id="journal">
-  <div class="wrap">
-    <div class="section-head"><h2>Cleo's Calling</h2><p class="muted" style="margin-top:.6em;">Notes on maternal care, provider spotlights, and the ideas shaping how we support women.</p></div>
-    <div class="journal-card">
-      <div class="journal-media"></div>
-      <div class="journal-body">
-        <p class="eyebrow" style="color:var(--burgundy);margin-bottom:12px;">Latest · Word of Mouth</p>
-        <h3 style="margin-bottom:12px;">The whisper network, made trustworthy.</h3>
-        <p style="margin-bottom:22px;color:var(--text);">Provider spotlights and the questions worth asking, from the friend who always knows where to begin.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="https://cleocare.substack.com/subscribe" class="btn btn--dark" style="padding:12px 24px;">Subscribe on Substack →</a>
-          <a href="https://cleocare.substack.com" class="btn btn--ghost" style="padding:12px 24px;">Read all posts</a>
-        </div>
-      </div>
+<!-- CLEO'S CALLING + FOOTER share one continuous sky squiggle -->
+<div class="sky-field">
+<section class="section" id="journal">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Cleo's Calling</span><h2 style="color:var(--butter);">Notes on maternal care.</h2><p class="lede" style="color:var(--ivory);max-width:54ch;margin:.5em auto 0;">Provider spotlights and the ideas shaping how we support women, from the friends who always know where to begin.</p></div>
+    <div class="posts">
+      <a class="post" href="https://cleocare.substack.com/p/word-of-mouth-4-lana-mihaiyu-ibclc" target="_blank" rel="noopener">
+        <span class="tag">Word of Mouth · No. 4</span>
+        <h3>Lana Mihaiyu, IBCLC</h3>
+        <p>Why choosing a lactation consultant is a nervous-system decision, and how to prep before birth.</p>
+        <span class="more">Read on Substack →</span>
+      </a>
+      <a class="post" href="https://cleocare.substack.com/p/word-of-mouth-3-kiki-lazarus-birth" target="_blank" rel="noopener">
+        <span class="tag">Word of Mouth · No. 3</span>
+        <h3>Kiki Lazarus, Doula</h3>
+        <p>The questions she hopes clients ask, and what to keep in mind when finding the right match.</p>
+        <span class="more">Read on Substack →</span>
+      </a>
+      <a class="post" href="https://cleocare.substack.com/p/cortisol-101-with-dr-thara-vayali" target="_blank" rel="noopener">
+        <span class="tag">Expert Q&amp;A</span>
+        <h3>Cortisol 101 with Dr. Thara Vayali, ND</h3>
+        <p>Her advice to battle its daily curve may surprise you.</p>
+        <span class="more">Read on Substack →</span>
+      </a>
     </div>
-  </div>
-</section>
-
-<!-- MAILING LIST -->
-<section class="section bg-coral">
-  <div class="wrap signup on-dark">
-    <span class="eyebrow" style="color:var(--butter);display:block;margin-bottom:14px;">Stay in the loop</span>
-    <h2 style="color:var(--ivory);">Welcome to Cleo.</h2>
-    <p class="lede" style="color:var(--ivory);max-width:44ch;margin:.4em auto 0;">Stay in the loop on our official launch, partnerships, events, and other news.</p>
-    <form action="https://app.cleocare.co/api/waitlist" method="POST">
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
-      <input type="email" name="email" placeholder="you@email.com" required>
-      <button type="submit" class="btn btn--dark">Subscribe</button>
-    </form>
-    <p class="fine">No spam. Unsubscribe any time.</p>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="section">
-  <div class="wrap">
-    <div class="band-cta bg-sky squiggle on-dark" style="color:var(--sky-deep);">
-      <div style="position:relative;">
-        <p class="eyebrow" style="color:var(--butter);margin-bottom:16px;">Ready when you are</p>
-        <h2 style="color:var(--ivory);">Let's find the care that's right for you.</h2>
-        <p class="lede" style="color:var(--ivory);max-width:46ch;margin:.4em auto 2em;">Tell us where you are in your journey, and we'll match you with a trusted provider.</p>
-        <a href="booking.html" class="btn btn--primary">Find your match</a>
-      </div>
+    <div class="signup-mini">
+      <p style="color:var(--ivory);font-size:1rem;margin-bottom:4px;">Stay in the loop on our launch, partnerships, and events.</p>
+      <form action="https://app.cleocare.co/api/waitlist" method="POST">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+        <input type="email" name="email" placeholder="you@email.com" required>
+        <button type="submit" class="btn btn--dark">Subscribe</button>
+      </form>
+      <p style="color:rgba(255,254,247,.75);font-size:.8rem;margin-top:12px;">No spam. Unsubscribe any time. &nbsp;·&nbsp; <a href="https://cleocare.substack.com" target="_blank" rel="noopener" style="color:var(--butter);text-decoration:underline;">Read all posts</a></p>
     </div>
   </div>
 </section>
@@ -298,7 +339,7 @@
         <p style="opacity:.8;margin-top:16px;font-size:.95rem;">Maternal care, reimagined. Fertility through postpartum, across Los Angeles, Orange County &amp; Santa Barbara.</p>
       </div>
       <div class="foot-cols">
-        <div class="foot-col"><p class="eyebrow">Care</p><a href="booking.html">Book Care</a><a href="meal-delivery.html">Meal Delivery</a><a href="favorites.html">Our Favorites</a><a href="faq.html">The Details</a></div>
+        <div class="foot-col"><p class="eyebrow">Care</p><a href="booking.html">Book Care</a><a href="faq.html">How We Work</a><a href="meal-delivery.html">Meal Delivery</a><a href="favorites.html">Our Favorites</a><a href="our-story.html">Our Story</a><a href="gifting.html">Gifting</a></div>
         <div class="foot-col"><p class="eyebrow">Providers</p><a href="provider-intake.html">Join the network</a><a href="mailto:hello@cleocare.co">Contact</a></div>
         <div class="foot-col"><p class="eyebrow">Follow</p><a href="https://cleocare.substack.com">Substack</a><a href="https://instagram.com/cleocare">Instagram</a></div>
       </div>
@@ -309,6 +350,18 @@
     </div>
   </div>
 </footer>
+</div><!-- /sky-field -->
+
+<script>
+  /* Homepage nav: transparent over the hero, solid once scrolled past it */
+  (function(){
+    var nav = document.querySelector('.cleo-nav');
+    if(!nav) return;
+    function sync(){ nav.classList.toggle('cleo-nav--solid', window.scrollY > 60); }
+    sync();
+    window.addEventListener('scroll', sync, { passive:true });
+  })();
+</script>
 
 </body>
 </html>

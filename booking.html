@@ -172,6 +172,22 @@
       border-top: 1px solid rgba(27,56,114,0.1);
       margin: 8px 0;
     }
+
+    /* Per-service follow-up cards (revealed as each care type is chosen) */
+    #service-followups { display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+    #service-followups:empty, #service-followups.is-empty { display:none; }
+    .svc-followup {
+      background: var(--navy-wash);
+      border: 1.5px solid rgba(107,8,38,0.12);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .svc-followup__title {
+      font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--navy);
+      opacity: 0.85; margin-bottom: 14px;
+    }
+    .svc-followup .form-input { background:#fff; }
     .section-label {
       font-family: 'Inter', sans-serif;
       font-size: 0.6875rem;
@@ -214,6 +230,16 @@ body{background:#FAF6B7;}
 </style>
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
+<style id="cleo-sky-field">
+  /* Continuous light-blue squiggle behind the whole Book Care page */
+  body{ background:#E4EAF6 !important; position:relative; }
+  body::before{ content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#99AADB; opacity:.2;
+    -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
+    mask:url('/brand/img/texture-mono.svg') center/150% no-repeat; }
+  .page-hero.h-sky{ background:transparent !important; }
+  .page-hero .page-hero__tex{ display:none !important; }
+</style>
 </head>
 <body>
 
@@ -224,10 +250,11 @@ body{background:#FAF6B7;}
       <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
       <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
       <nav class="cleo-nav__links">
-        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="faq.html">How We Work</a>
+        <a href="meal-delivery.html">Meal Delivery</a>
         <a href="favorites.html">Our Favorites</a>
-        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="gifting.html">Gifting</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
     </div>
@@ -241,6 +268,7 @@ body{background:#FAF6B7;}
       <h1>Full-Spectrum Maternal Care</h1>
       <p class="page-hero__lede">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
       <p class="page-hero__note">Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan.</p>
+      <p class="page-hero__note" style="font-weight:600;margin-top:.7em;">It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees.</p>
     </div>
   </section>
 
@@ -332,6 +360,185 @@ body{background:#FAF6B7;}
                 <input class="form-input" type="text" id="other-service-input" name="other_service" placeholder="What are you looking for?">
               </div>
               <input type="hidden" name="services_interested" id="services-hidden">
+
+              <!-- Per-service follow-ups: appear as each care type is selected -->
+              <div id="service-followups" class="is-empty">
+
+                <div class="svc-followup" data-svc="Meal Delivery" style="display:none;">
+                  <p class="svc-followup__title">A little more on meal delivery</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="md-freq">How often would you like meals?</label>
+                      <select class="form-input" id="md-freq" name="md_frequency">
+                        <option value="">Select…</option>
+                        <option>A few meals a week</option>
+                        <option>Most days</option>
+                        <option>A full week of meals</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="md-diet">Dietary needs or preferences</label>
+                      <input class="form-input" id="md-diet" name="md_dietary" type="text" placeholder="e.g. vegetarian, dairy-free, none">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Postpartum Doula" style="display:none;">
+                  <p class="svc-followup__title">A little more on postpartum doula support</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="ppd-when">When do you need support?</label>
+                      <select class="form-input" id="ppd-when" name="ppd_when">
+                        <option value="">Select…</option>
+                        <option>Daytime</option>
+                        <option>Overnight</option>
+                        <option>Both day and night</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="ppd-weeks">How much support are you envisioning?</label>
+                      <select class="form-input" id="ppd-weeks" name="ppd_duration">
+                        <option value="">Select…</option>
+                        <option>A few visits</option>
+                        <option>A few weeks</option>
+                        <option>Several months</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Birth Doula" style="display:none;">
+                  <p class="svc-followup__title">A little more on birth doula support</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="bd-place">Where are you planning to give birth?</label>
+                      <select class="form-input" id="bd-place" name="bd_birth_setting">
+                        <option value="">Select…</option>
+                        <option>Hospital</option>
+                        <option>Birth center</option>
+                        <option>Home</option>
+                        <option>Undecided</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="bd-exp">Have you worked with a doula before?</label>
+                      <select class="form-input" id="bd-exp" name="bd_experience">
+                        <option value="">Select…</option>
+                        <option>Yes</option>
+                        <option>No, this is my first time</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Lactation Consulting" style="display:none;">
+                  <p class="svc-followup__title">A little more on lactation consulting</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="lc-focus">What are you hoping to work on?</label>
+                      <select class="form-input" id="lc-focus" name="lc_focus">
+                        <option value="">Select…</option>
+                        <option>Prenatal preparation</option>
+                        <option>Currently breastfeeding</option>
+                        <option>Pumping / returning to work</option>
+                        <option>Weaning</option>
+                        <option>Something else</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="lc-when">How soon do you need support?</label>
+                      <select class="form-input" id="lc-when" name="lc_urgency">
+                        <option value="">Select…</option>
+                        <option>As soon as possible</option>
+                        <option>Within a couple of weeks</option>
+                        <option>Planning ahead</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Pelvic Floor PT" style="display:none;">
+                  <p class="svc-followup__title">A little more on pelvic floor PT</p>
+                  <div>
+                    <label class="form-label" for="pf-focus">What brings you in?</label>
+                    <select class="form-input" id="pf-focus" name="pf_focus">
+                      <option value="">Select…</option>
+                      <option>Prenatal / preparing for birth</option>
+                      <option>Postpartum recovery</option>
+                      <option>Pain or discomfort</option>
+                      <option>Prevention &amp; strengthening</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Mental Health Support" style="display:none;">
+                  <p class="svc-followup__title">A little more on mental health support</p>
+                  <div>
+                    <label class="form-label" for="mh-type">What kind of support are you looking for?</label>
+                    <select class="form-input" id="mh-type" name="mh_type">
+                      <option value="">Select…</option>
+                      <option>Individual therapy</option>
+                      <option>Medication management</option>
+                      <option>Couples / family</option>
+                      <option>Support group</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Night Care" style="display:none;">
+                  <p class="svc-followup__title">A little more on night care</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="nc-nights">How many nights per week?</label>
+                      <select class="form-input" id="nc-nights" name="nc_nights">
+                        <option value="">Select…</option>
+                        <option>1–2 nights</option>
+                        <option>3–4 nights</option>
+                        <option>5+ nights</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="nc-start">When would you like to start?</label>
+                      <input class="form-input" id="nc-start" name="nc_start" type="text" placeholder="e.g. after baby arrives, a date…">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Massage / Bodywork" style="display:none;">
+                  <p class="svc-followup__title">A little more on massage &amp; bodywork</p>
+                  <div>
+                    <label class="form-label" for="mb-type">What type of bodywork?</label>
+                    <select class="form-input" id="mb-type" name="mb_type">
+                      <option value="">Select…</option>
+                      <option>Prenatal massage</option>
+                      <option>Postpartum massage</option>
+                      <option>General / relaxation</option>
+                      <option>Not sure yet</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Acupuncture" style="display:none;">
+                  <p class="svc-followup__title">A little more on acupuncture</p>
+                  <div>
+                    <label class="form-label" for="ac-focus">What would you like to focus on?</label>
+                    <select class="form-input" id="ac-focus" name="ac_focus">
+                      <option value="">Select…</option>
+                      <option>Fertility support</option>
+                      <option>Pregnancy</option>
+                      <option>Postpartum</option>
+                      <option>General wellness</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              <input type="hidden" name="service_details" id="service-details-hidden">
             </div>
             <div id="care-setting-wrap" style="display:none;">
               <label class="form-label">How would you like to receive care? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
@@ -447,13 +654,13 @@ body{background:#FAF6B7;}
 
               <!-- Inline authorization -->
               <div style="border-top:1px solid rgba(27,56,114,0.1);padding-top:20px;">
-                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required — Insurance Authorization</p>
+                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required · Insurance Authorization</p>
                 <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:16px;">To verify your benefits and submit claims on your behalf, we need your authorization below.</p>
                 <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:8px;padding:18px 20px;max-height:200px;overflow-y:auto;margin-bottom:16px;">
                   <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">1. Authorization to Release Health Information</p>
                   <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:14px;">I authorize Cleo Care, LLC and its designated staff to contact my insurer and to request, receive, and discuss information regarding my insurance coverage and benefits for the purpose of verifying my eligibility. This may include my plan status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage for specific services, and any prior authorization requirements. I may revoke this authorization at any time in writing.</p>
                   <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">2. Authorization for Claims Submission</p>
-                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me — Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me. Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
                 </div>
                 <div style="margin-bottom:12px;">
                   <label class="form-label" for="auth-sig">Full legal name <span style="font-weight:400;color:var(--ink-muted);">(electronic signature)</span></label>
@@ -501,7 +708,7 @@ body{background:#FAF6B7;}
           </div>
           <input type="hidden" name="federal_beneficiary" id="fed-hidden">
           <div id="fed-notice" style="display:none;margin-top:14px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.8125rem;color:#B5654A;line-height:1.6;">
-            We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time. Please reach out to <a href="mailto:hello@cleocare.co" style="color:#B5654A;text-decoration:underline;">hello@cleocare.co</a> with any questions.
+            We're so sorry, Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time. Please reach out to <a href="mailto:hello@cleocare.co" style="color:#B5654A;text-decoration:underline;">hello@cleocare.co</a> with any questions.
           </div>
         </div>
 
@@ -551,6 +758,17 @@ body{background:#FAF6B7;}
 
     <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:40px;line-height:1.7;">*Insurance coverage varies by plan. Cleo makes no guarantee of reimbursement.</p>
 
+  </section>
+
+  <!-- Ready when you are (moved from the homepage) -->
+  <section style="background:#6B0826;padding:clamp(56px,8vw,88px) 32px;text-align:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:#4E0519;opacity:.5;-webkit-mask:url('/brand/img/texture-mono.svg') center/130% no-repeat;mask:url('/brand/img/texture-mono.svg') center/130% no-repeat;"></div>
+    <div style="position:relative;z-index:1;max-width:600px;margin:0 auto;">
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#FAF6B7;margin-bottom:16px;">Ready when you are</p>
+      <h2 class="heading-display" style="font-size:clamp(2rem,3.5vw,2.75rem);color:#FFFEF7;margin-bottom:16px;">Let's find the care that's right for you.</h2>
+      <p style="font-family:'Spectral',serif;font-size:1.0625rem;color:#FFFEF7;opacity:.92;line-height:1.7;margin-bottom:28px;">Tell us where you are in your journey, and we'll match you with a trusted provider.</p>
+      <a href="#booking-form" class="btn-primary" style="background:#FAF6B7;color:#6B0826;box-shadow:none;">Start your request</a>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -605,6 +823,40 @@ body{background:#FAF6B7;}
       }
       document.getElementById('services-hidden').value = [...selectedServices].join(', ');
       updateCareSettings();
+      updateFollowups();
+    }
+
+    // Show the follow-up card for each selected service; hide the rest.
+    function updateFollowups() {
+      const wrap = document.getElementById('service-followups');
+      let anyVisible = false;
+      wrap.querySelectorAll('.svc-followup').forEach(block => {
+        const svc = block.getAttribute('data-svc');
+        const show = selectedServices.has(svc);
+        block.style.display = show ? 'block' : 'none';
+        if (show) anyVisible = true;
+      });
+      wrap.classList.toggle('is-empty', !anyVisible);
+    }
+
+    // Roll the visible follow-up answers into one readable field so they're
+    // captured even if the backend doesn't map each one individually.
+    function compileServiceDetails() {
+      const lines = [];
+      document.querySelectorAll('#service-followups .svc-followup').forEach(block => {
+        if (block.style.display === 'none') return;
+        const svc = block.getAttribute('data-svc');
+        const bits = [];
+        block.querySelectorAll('select, input, textarea').forEach(f => {
+          if (f.value && f.value.trim()) {
+            const lbl = block.querySelector('label[for="' + f.id + '"]');
+            const q = lbl ? lbl.textContent.trim() : (f.name || '');
+            bits.push(q + ' ' + f.value.trim());
+          }
+        });
+        if (bits.length) lines.push(svc + ': ' + bits.join('; '));
+      });
+      document.getElementById('service-details-hidden').value = lines.join(' | ');
     }
 
     // Which care settings each service can be delivered in. Bodywork/acupuncture
@@ -714,11 +966,12 @@ body{background:#FAF6B7;}
     // Submit
     document.getElementById('booking-form').addEventListener('submit', async function(e) {
       e.preventDefault();
+      compileServiceDetails();
       const fedVal = document.getElementById('fed-hidden').value;
       if (fedVal !== 'no') {
         const notice = document.getElementById('fed-notice');
         notice.textContent = fedVal === 'yes'
-          ? "We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time."
+          ? "We're so sorry, Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time."
           : 'Please answer the eligibility question above to continue.';
         notice.style.display = 'block';
         notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
