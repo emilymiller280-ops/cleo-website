@@ -21,7 +21,7 @@
       font-family: 'Spectral', serif;
       background: #FAF6B7;
       color: #463A33;
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     }
     :root {
       --navy: #6B0826;
@@ -255,6 +255,7 @@ body{background:#FAF6B7;}
         <a href="favorites.html">Our Favorites</a>
         <a href="our-story.html">Our Story</a>
         <a href="gifting.html">Gifting</a>
+        <a href="provider-intake.html">For Providers</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
     </div>
@@ -352,6 +353,7 @@ body{background:#FAF6B7;}
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Night Care')">Night Care</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Massage / Bodywork')">Massage / Bodywork</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Acupuncture')">Acupuncture</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Sleep Support')">Sleep Support</button>
               </div>
               <div style="margin-top:10px;text-align:center;">
                 <button type="button" class="service-chip" id="chip-other" onclick="toggleOther(this)">Other</button>
@@ -534,6 +536,32 @@ body{background:#FAF6B7;}
                       <option>Postpartum</option>
                       <option>General wellness</option>
                     </select>
+                  </div>
+                </div>
+
+                <div class="svc-followup" data-svc="Sleep Support" style="display:none;">
+                  <p class="svc-followup__title">A little more on sleep support</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div>
+                      <label class="form-label" for="sl-who">Who is the sleep support for?</label>
+                      <select class="form-input" id="sl-who" name="sl_who">
+                        <option value="">Select…</option>
+                        <option>Newborn (0–4 months)</option>
+                        <option>Infant (4–12 months)</option>
+                        <option>Toddler / older</option>
+                        <option>Parent sleep &amp; recovery</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="form-label" for="sl-focus">What would help most?</label>
+                      <select class="form-input" id="sl-focus" name="sl_focus">
+                        <option value="">Select…</option>
+                        <option>A personalized sleep plan</option>
+                        <option>Overnight / hands-on support</option>
+                        <option>Guidance &amp; coaching</option>
+                        <option>Not sure yet</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
 
@@ -732,7 +760,7 @@ body{background:#FAF6B7;}
         <!-- Submit -->
         <div style="padding-top:8px;">
           <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
-            Request My Care Plan
+            Request Care
           </button>
           <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">Your concierge will be in touch within 48 hours to confirm your plan.</p>
         </div>
@@ -872,6 +900,7 @@ body{background:#FAF6B7;}
       'Night Care': ['home'],
       'Massage / Bodywork': ['home', 'office'],
       'Acupuncture': ['home', 'office'],
+      'Sleep Support': ['virtual', 'home'],
     };
     const SETTING_LABEL = { home: 'In-home', virtual: 'Telehealth', office: 'In-office' };
     const selectedSettings = new Set();
@@ -1014,7 +1043,7 @@ body{background:#FAF6B7;}
       } catch {
         document.getElementById('form-error').style.display = 'block';
         btn.disabled = false;
-        btn.textContent = 'Request My Care Plan';
+        btn.textContent = 'Request Care';
       }
     });
   </script>

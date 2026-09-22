@@ -21,7 +21,7 @@
       font-family: 'Inter', sans-serif;
       background: #FAF6B7;
       color: #463A33;
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     }
     :root {
       --navy: #6B0826;
@@ -112,6 +112,8 @@
       box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
     }
     .form-input::placeholder { color: var(--ink-muted); }
+    .gate-label { font-family:'Host Grotesk',system-ui,sans-serif; font-size:0.8125rem; font-weight:600;
+      color:#FAF6B7; letter-spacing:0.03em; display:block; margin-bottom:8px; }
     .stage-card {
       background: #fff;
       border: 1.5px solid rgba(27,56,114,0.1);
@@ -169,9 +171,9 @@ body{background:#FAF6B7;}
 <body>
 
 <!-- Coming-soon gate (password-protected preview) -->
-<div id="fav-gate" style="position:fixed;top:74px;left:0;right:0;bottom:0;z-index:90;background:#E1654B;display:flex;align-items:center;justify-content:center;text-align:center;padding:32px;overflow:auto;">
+<div id="fav-gate" style="position:fixed;top:74px;left:0;right:0;bottom:0;z-index:90;background:#E1654B;display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:48px 32px;overflow:auto;">
   <div style="position:absolute;inset:0;background:#FFFEF7;opacity:.12;-webkit-mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;"></div>
-  <div style="position:relative;z-index:1;max-width:460px;">
+  <div style="position:relative;z-index:1;max-width:520px;width:100%;margin:auto;">
     <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#FAF6B7;margin:0 0 18px;">Our Favorites</p>
     <h1 style="font-family:'Rosevale',Georgia,serif;font-weight:400;font-size:clamp(2.6rem,7vw,4rem);color:#FAF6B7;line-height:1.05;margin:0 0 16px;">Coming soon.</h1>
     <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-size:1.05rem;line-height:1.6;color:#FFFEF7;margin:0 0 28px;">We're putting the finishing touches on Cleo's edit of the brands we love. Have the password? Take a peek.</p>
@@ -180,6 +182,38 @@ body{background:#FAF6B7;}
       <button type="submit" style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:1rem;color:#6B0826;background:#FAF6B7;border:none;border-radius:999px;padding:14px 28px;cursor:pointer;">Enter</button>
     </form>
     <p id="fav-err" style="display:none;font-family:'Host Grotesk',system-ui,sans-serif;font-size:.85rem;color:#FFFEF7;margin-top:14px;opacity:.9;">That password isn't right. Try again or email hello@cleocare.co.</p>
+
+    <!-- Drop a brand you love (visible before unlock) -->
+    <div style="margin-top:44px;padding-top:34px;border-top:1px solid rgba(255,254,247,.28);">
+      <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#FAF6B7;margin:0 0 8px;">Have a favorite?</p>
+      <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-size:1rem;line-height:1.6;color:#FFFEF7;margin:0 0 22px;">Drop a brand you love and we'll consider it for Cleo's edit.</p>
+      <form id="favorites-form" action="https://app.cleocare.co/api/favorite-suggestion" method="POST" style="text-align:left;">
+        <input type="hidden" name="_subject" value="Cleo Favorites Submission">
+        <div style="margin-bottom:16px;">
+          <label class="gate-label" for="fav-brand">Brand or product name</label>
+          <input class="form-input" type="text" id="fav-brand" name="brand_name" placeholder="e.g. Ritual, Frida Mom, Hatch...">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label class="gate-label" for="fav-stage">Stage</label>
+          <select class="form-input" id="fav-stage" name="stage" style="cursor:pointer;">
+            <option value="" disabled selected>Select a stage</option>
+            <option value="Trying to Conceive">Trying to Conceive</option>
+            <option value="Pregnancy">Pregnancy</option>
+            <option value="Postpartum">Postpartum</option>
+            <option value="All Stages">All Stages</option>
+          </select>
+        </div>
+        <div style="margin-bottom:24px;">
+          <label class="gate-label" for="fav-why">Why do you love it? <span style="font-weight:400;opacity:.75;">(optional)</span></label>
+          <textarea class="form-input" id="fav-why" name="why_love_it" placeholder="Tell us what makes it a must-have..." rows="3" style="resize:vertical;min-height:84px;"></textarea>
+        </div>
+        <button type="submit" style="width:100%;font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:1rem;color:#FFFEF7;background:#6B0826;border:none;border-radius:999px;padding:14px 28px;cursor:pointer;">Share your favorite</button>
+        <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-size:.75rem;color:#FFFEF7;opacity:.8;text-align:center;margin-top:12px;">All submissions are anonymous.</p>
+      </form>
+      <div id="fav-confirmation" style="display:none;text-align:center;padding:22px 0;">
+        <p style="font-family:'Rosevale',Georgia,serif;font-size:1.6rem;color:#FAF6B7;">Thank you! 🌿</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -196,6 +230,7 @@ body{background:#FAF6B7;}
         <a href="favorites.html">Our Favorites</a>
         <a href="our-story.html">Our Story</a>
         <a href="gifting.html">Gifting</a>
+        <a href="provider-intake.html">For Providers</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
     </div>
@@ -444,51 +479,6 @@ body{background:#FAF6B7;}
   @media (max-width: 600px) { .gift-grid { grid-template-columns: 1fr !important; } }
 </style>
 
-<!-- TELL US YOUR FAVORITES FORM -->
-<section style="padding:100px 56px;background:var(--cream);">
-  <div style="max-width:600px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:52px;">
-      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Community</p>
-      <h2 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2rem,3.5vw,2.75rem);color:var(--ink);letter-spacing:-0.02em;margin-bottom:16px;">We'd love to hear from you.</h2>
-      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;">From skincare to supplements, tell us what you couldn't live without.</p>
-    </div>
-
-    <form id="favorites-form" action="https://app.cleocare.co/api/favorite-suggestion" method="POST">
-      <input type="hidden" name="_subject" value="Cleo Favorites Submission">
-
-      <div style="margin-bottom:20px;">
-        <label class="form-label" for="fav-brand">Brand or product name</label>
-        <input class="form-input" type="text" id="fav-brand" name="brand_name" placeholder="e.g. Ritual, Frida Mom, Hatch...">
-      </div>
-
-      <div style="margin-bottom:20px;">
-        <label class="form-label" for="fav-stage">Stage</label>
-        <select class="form-input" id="fav-stage" name="stage" style="cursor:pointer;">
-          <option value="" disabled selected>Select a stage</option>
-          <option value="Trying to Conceive">Trying to Conceive</option>
-          <option value="Pregnancy">Pregnancy</option>
-          <option value="Postpartum">Postpartum</option>
-          <option value="All Stages">All Stages</option>
-        </select>
-      </div>
-
-      <div style="margin-bottom:36px;">
-        <label class="form-label" for="fav-why">Why do you love it? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
-        <textarea class="form-input" id="fav-why" name="why_love_it" placeholder="Tell us what makes it a must-have..." rows="4" style="resize:vertical;min-height:110px;"></textarea>
-      </div>
-
-      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-bottom:16px;letter-spacing:0.01em;">All submissions are anonymous.</p>
-      <button type="submit" class="btn-primary" style="width:100%;">Share Your Favorite</button>
-    </form>
-
-    <div id="fav-confirmation" style="display:none;text-align:center;padding:64px 0;">
-      <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#E1654B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h3 style="font-family:'Spectral',serif;font-weight:300;font-size:1.75rem;color:var(--ink);margin-bottom:12px;">Thank you!</h3>
-    </div>
-  </div>
-</section>
 
 <!-- BRAND CTA -->
 <section style="padding:100px 56px;background:linear-gradient(160deg,#F7F2EB 0%,#EDE5D9 100%);">

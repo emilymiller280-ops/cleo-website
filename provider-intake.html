@@ -23,7 +23,7 @@
       font-family: 'Spectral', serif;
       background: #FAF6B7;
       color: #463A33;
-      -webkit-font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
     }
     :root {
       --navy: #6B0826;
@@ -178,6 +178,20 @@ body{background:#FAF6B7;}
 </style>
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
+<style>
+  /* One continuous, soft light-yellow squiggle behind everything (matches Meal Delivery) */
+  body{ position:relative; background:#F6F2DA !important; }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:#E9E09A; opacity:.14;
+    -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
+    mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
+  }
+  /* Hero rides the same field so the squiggle is continuous top-to-bottom */
+  .page-hero.h-butter{ background:transparent !important; }
+  .page-hero .page-hero__tex{ display:none !important; }
+  footer{ background:transparent !important; }
+</style>
 </head>
 <body>
 
@@ -193,18 +207,19 @@ body{background:#FAF6B7;}
         <a href="favorites.html">Our Favorites</a>
         <a href="our-story.html">Our Story</a>
         <a href="gifting.html">Gifting</a>
+        <a href="provider-intake.html">For Providers</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="page-hero h-burgundy page-hero--compact">
+  <section class="page-hero h-butter page-hero--compact">
     <div class="page-hero__tex"></div>
     <div class="page-hero__inner">
       <span class="page-hero__eyebrow">Provider Network</span>
-      <h1>Care with Cleo.</h1>
-      <p class="page-hero__lede">Please share a bit about your practice and we'll take it from there.</p>
+      <h1>Care with Cleo</h1>
+      <p class="page-hero__lede" style="font-size:1.02rem;">Join a network of trusted practitioners.<br>Tell us a bit more about your practice, and we'll take it from there.</p>
     </div>
   </section>
 
@@ -407,7 +422,7 @@ body{background:#FAF6B7;}
 
         <!-- Stripe note -->
         <div style="background:var(--olive-pale);border:1.5px solid rgba(107,122,80,0.25);border-radius:8px;padding:18px 22px;">
-          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">Cleo pays providers through <strong style="color:var(--ink);font-weight:600;">Stripe Connect</strong>. Once your details are reviewed, you'll receive a separate link to complete Stripe onboarding before becoming fully active in the network.</p>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">Cleo pays providers through <strong style="color:var(--ink);font-weight:600;">Stripe Connect</strong>. Once your details are reviewed, you'll receive secure links to review and sign your <strong style="color:var(--ink);font-weight:600;">Provider Agreement</strong> and complete Stripe onboarding before becoming fully active in the network.</p>
         </div>
 
         <!-- Submit -->

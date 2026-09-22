@@ -22,7 +22,9 @@
   .hero-cleo{ font-family:var(--font-display); color:var(--butter); font-size:clamp(3.4rem,15vw,11.8rem); line-height:.82; letter-spacing:.03em; margin:0 0 .16em; }
   .hero-eyebrow{ color:var(--butter); font-size:clamp(.85rem,2.2vw,1.7rem); letter-spacing:.1em; line-height:1.12; margin-bottom:26px; }
   .hero h1{ color:var(--ivory); font-size:clamp(1.55rem,3.3vw,2.7rem); font-weight:400; margin:0 auto .5em; max-width:26ch; }
-  .hero .lede{ color:var(--ivory); max-width:52ch; margin:0 auto 2.2em; opacity:.95; }
+  .hero .lede{ color:var(--ivory); max-width:60ch; margin:0 auto 2.2em; opacity:.95; text-wrap:balance; }
+  .oneline{ white-space:nowrap; }
+  @media(max-width:860px){ .oneline{ white-space:normal; } }
   .hero-cta{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
 
   .section-head{ text-align:center; max-width:680px; margin:0 auto 52px; }
@@ -68,11 +70,18 @@
 
   /* Journeys */
   .journeys{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-  .journey{ border-radius:var(--radius-lg); padding:40px 32px 36px; color:var(--ivory); position:relative; overflow:hidden; min-height:340px; display:flex; flex-direction:column; }
+  .journey{ border-radius:var(--radius-lg); padding:40px 32px 36px; color:var(--ivory); position:relative; overflow:hidden; min-height:340px; display:flex; flex-direction:column; text-decoration:none; transition:transform .18s ease, box-shadow .18s ease; }
+  .journey:hover{ transform:translateY(-3px); box-shadow:var(--shadow); }
+  .journey:hover .more{ text-decoration:underline; text-underline-offset:3px; }
   .journey .jicon{ width:58px; height:58px; color:var(--butter); }
   .journey .jname{ font-size:2.2rem; margin:18px 0 2px; color:var(--butter); }
   .journey p{ opacity:.94; font-size:1rem; color:var(--ivory); }
   .journey .more{ margin-top:auto; padding-top:20px; font-weight:600; font-size:.9rem; letter-spacing:.02em; }
+  /* Journey icon strip (matches How We Work) */
+  .jstrip{ display:flex; justify-content:center; gap:clamp(34px,8vw,96px); flex-wrap:wrap; align-items:flex-start; margin-bottom:36px; }
+  .jstrip .col{ display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .jstrip .ico{ width:clamp(52px,6vw,74px); height:clamp(52px,6vw,74px); display:block; }
+  .jstrip .lbl{ font-family:var(--font-display); font-size:1.15rem; letter-spacing:.01em; }
   .j-fertility{ background:var(--blush); } .j-pregnancy{ background:var(--burgundy); } .j-postpartum{ background:var(--coral); }
   .j-tex{ position:absolute; inset:0; z-index:0; background:var(--ivory); opacity:.10;
     -webkit-mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; }
@@ -165,6 +174,58 @@
     /* mobile dropdown panel is ivory, so its links read burgundy even over the hero */
     body.home .cleo-nav__links a{ color:var(--burgundy); }
   }
+
+  /* Instagram module (Cleo's Calling) */
+  .ig{ margin-top:60px; text-align:center; }
+  .ig-handle{ display:inline-flex; align-items:center; gap:10px; margin-top:6px; font-family:var(--font-display);
+    font-size:clamp(1.5rem,3vw,2.05rem); color:var(--butter); text-decoration:none; }
+  .ig-handle svg{ width:.9em; height:.9em; }
+  .ig-handle:hover{ text-decoration:underline; text-underline-offset:4px; }
+  .ig-feed{ max-width:760px; margin:26px auto 30px;
+    --behold-row-gap:16px; --behold-column-gap:16px; --behold-border-radius:var(--radius-lg); }
+
+  /* Welcome email-capture popup */
+  .welcome{ position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
+    padding:24px; background:rgba(78,5,25,.52); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+    opacity:0; visibility:hidden; transition:opacity .3s ease, visibility .3s ease; }
+  .welcome.is-open{ opacity:1; visibility:visible; }
+  .welcome__card{ position:relative; width:100%; max-width:460px; background:var(--ivory);
+    border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 30px 70px rgba(36,28,30,.34);
+    transform:translateY(16px) scale(.98); transition:transform .34s cubic-bezier(.2,.9,.3,1); }
+  .welcome.is-open .welcome__card{ transform:translateY(0) scale(1); }
+  .welcome__band{ position:relative; overflow:hidden; background:var(--sky);
+    padding:38px 40px 30px; text-align:center; }
+  .welcome__band::before{ content:""; position:absolute; inset:0; z-index:0; color:var(--sky-deep); opacity:.5;
+    background:currentColor; -webkit-mask:url("/brand/img/texture-mono.svg") center/160% no-repeat;
+    mask:url("/brand/img/texture-mono.svg") center/160% no-repeat; }
+  .welcome__band > *{ position:relative; z-index:1; }
+  .welcome__eyebrow{ font-family:var(--font-body); font-weight:600; font-size:.7rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--butter); margin-bottom:12px; }
+  .welcome__title{ font-family:var(--font-display); color:var(--butter); font-size:clamp(1.9rem,6vw,2.5rem);
+    line-height:1.02; margin:0; }
+  .welcome__body{ padding:30px 40px 36px; text-align:center; }
+  .welcome__body p{ color:var(--text); font-size:1rem; line-height:1.6; margin:0 0 20px; }
+  .welcome__form{ display:flex; flex-direction:column; gap:12px; }
+  .welcome__form input[type=email]{ font-family:var(--font-body); font-size:1rem; padding:15px 20px;
+    border-radius:var(--radius-pill); border:1.5px solid rgba(107,8,38,.22); background:#FFFEF7;
+    color:var(--text); outline:none; transition:border-color .16s; }
+  .welcome__form input[type=email]:focus-visible{ border-color:var(--burgundy); }
+  .welcome__form .btn{ width:100%; }
+  .welcome__fine{ font-size:.78rem; color:var(--ink-soft); margin:16px 0 0 !important; }
+  .welcome__close{ position:absolute; top:14px; right:14px; z-index:2; width:34px; height:34px;
+    border:none; border-radius:50%; background:rgba(255,254,247,.85); color:var(--burgundy);
+    font-size:1.15rem; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .16s, transform .16s; }
+  .welcome__close:hover{ background:var(--butter); transform:rotate(90deg); }
+  .welcome__close:focus-visible{ outline:2px solid var(--butter); outline-offset:2px; }
+  .welcome__success{ display:none; }
+  .welcome.is-done .welcome__form,
+  .welcome.is-done .welcome__intro{ display:none; }
+  .welcome.is-done .welcome__success{ display:block; }
+  @media(prefers-reduced-motion:reduce){
+    .welcome, .welcome__card, .welcome__close{ transition:none; }
+    .welcome__card{ transform:none; }
+  }
 </style>
 </head>
 <body class="home">
@@ -181,6 +242,7 @@
         <a href="favorites.html">Our Favorites</a>
         <a href="our-story.html">Our Story</a>
         <a href="gifting.html">Gifting</a>
+        <a href="provider-intake.html">For Providers</a>
         <a href="booking.html" class="cleo-nav__cta">Book Care</a>
       </nav>
   </div>
@@ -204,11 +266,25 @@
 <!-- JOURNEYS -->
 <section class="section" id="journeys" style="position:relative;padding-block:clamp(56px,7vw,88px);">
   <div class="wrap" style="position:relative;z-index:1;">
-    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Every stage, supported</span><h2 style="color:var(--butter);">Wherever you are, we meet you there.</h2></div>
+    <div class="jstrip">
+      <div class="col">
+        <span class="ico" style="background:#E3C4D5;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--butter);">Fertility</span>
+      </div>
+      <div class="col">
+        <span class="ico" style="background:#F1EA8E;-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--butter);">Pregnancy</span>
+      </div>
+      <div class="col">
+        <span class="ico" style="background:#E1654B;-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--butter);">Postpartum</span>
+      </div>
+    </div>
+    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Every stage, supported</span><h2 class="oneline" style="color:var(--butter);">Wherever you are, we meet you there.</h2></div>
     <div class="journeys">
-      <article class="journey j-fertility"><div class="j-tex"></div><span class="jicon fertility"></span><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next, from experts who listen first.</p><span class="more">Explore fertility care →</span></article>
-      <article class="journey j-pregnancy"><div class="j-tex"></div><span class="jicon pregnancy"></span><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week. Physical, emotional, and everything between.</p><span class="more">Explore pregnancy care →</span></article>
-      <article class="journey j-postpartum"><div class="j-tex"></div><span class="jicon postpartum"></span><span class="script jname">Postpartum</span><p>Because you deserve care, too. Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></article>
+      <a href="booking.html" class="journey j-fertility"><div class="j-tex"></div><span class="jicon fertility"></span><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next.</p><span class="more">Explore fertility care →</span></a>
+      <a href="booking.html" class="journey j-pregnancy"><div class="j-tex"></div><span class="jicon pregnancy"></span><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week.</p><span class="more">Explore pregnancy care →</span></a>
+      <a href="booking.html" class="journey j-postpartum"><div class="j-tex"></div><span class="jicon postpartum"></span><span class="script jname">Postpartum</span><p>Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></a>
     </div>
   </div>
 </section>
@@ -223,7 +299,7 @@
     </div>
     <div class="stats">
       <div class="stat"><div class="num">1 in 5</div><p>Women experience perinatal mood disorders, a rate that has more than doubled since 2010.<sup><a href="#why-src-1" aria-label="Source 1">1</a></sup></p></div>
-      <div class="stat"><div class="num">75%</div><p>Of maternal mental health conditions go undiagnosed and untreated, among the most common, and most overlooked, complications of pregnancy.<sup><a href="#why-src-2" aria-label="Source 2">2</a></sup></p></div>
+      <div class="stat"><div class="num">1 in 6</div><p>People worldwide are affected by infertility, yet the path to support is rarely clear or coordinated.<sup><a href="#why-src-2" aria-label="Source 2">2</a></sup></p></div>
       <div class="stat"><div class="num">40%</div><p>Of women undergoing fertility treatment meet the criteria for clinical depression or anxiety, comparable to cancer patients.<sup><a href="#why-src-3" aria-label="Source 3">3</a></sup></p></div>
       <div class="stat"><div class="num">Only one</div><p>High-income country with no national paid parental leave. Federal law guarantees just 12 weeks, unpaid.<sup><a href="#why-src-4" aria-label="Source 4">4</a></sup></p></div>
       <div class="stat"><div class="num">Zero</div><p>Guaranteed postpartum home visits in the US. We're the only wealthy nation that doesn't provide them.<sup><a href="#why-src-5" aria-label="Source 5">5</a></sup></p></div>
@@ -231,7 +307,7 @@
     </div>
     <ol class="why-sources">
       <li id="why-src-1">Prevalence: Policy Center for Maternal Mental Health, <a href="https://policycentermmh.org/maternal-mental-health-fact-sheet/" target="_blank" rel="noopener">Maternal Mental Health Fact Sheet</a>. Rise since 2010: <a href="https://www.healthaffairs.org/doi/10.1377/hlthaff.2023.01437" target="_blank" rel="noopener">Health Affairs, 2023</a> (PMAD diagnoses up ~93%, 2008&ndash;2020).</li>
-      <li id="why-src-2"><a href="https://www.aamc.org/about-us/mission-areas/health-care/maternal-mental-health" target="_blank" rel="noopener">Association of American Medical Colleges</a>; <a href="https://policycentermmh.org/maternal-mental-health-fact-sheet/" target="_blank" rel="noopener">Policy Center for Maternal Mental Health</a>.</li>
+      <li id="why-src-2"><a href="https://www.who.int/news/item/04-04-2023-1-in-6-people-globally-affected-by-infertility" target="_blank" rel="noopener">World Health Organization, 2023</a> (roughly 1 in 6 adults worldwide experience infertility in their lifetime).</li>
       <li id="why-src-3"><a href="https://www.sciencedirect.com/science/article/pii/S0015028214013922" target="_blank" rel="noopener">Fertility &amp; Sterility</a> (depression in fertility patients); comparison to cancer/HIV patients per Domar et&nbsp;al., Harvard Medical School.</li>
       <li id="why-src-4"><a href="https://www.pewresearch.org/short-reads/2019/12/16/u-s-lacks-mandated-paid-parental-leave/" target="_blank" rel="noopener">Pew Research Center</a> / OECD; 12 weeks unpaid via the federal FMLA.</li>
       <li id="why-src-5"><a href="https://www.commonwealthfund.org/publications/issue-briefs/2020/nov/maternal-mortality-maternity-care-us-compared-10-countries" target="_blank" rel="noopener">The Commonwealth Fund, 2020</a>.</li>
@@ -244,21 +320,21 @@
 <div class="sky-field">
 <!-- ENTER CLEO -->
 <section class="section" style="position:relative;">
-  <div class="wrap enter" style="position:relative;z-index:1;">
+  <div class="wrap enter" style="position:relative;z-index:1;max-width:980px;">
     <span class="eyebrow" style="color:var(--butter);display:block;margin-bottom:14px;">Enter Cleo</span>
-    <h2 style="margin-bottom:.4em;color:var(--butter);">Empowering women through knowledge, clarity, and trusted guidance.</h2>
-    <p class="lede" style="color:var(--ivory);">Cleo exists to simplify complexity. By thoughtfully connecting women with the right care at the right time, we replace uncertainty with confidence, making healthcare feel intuitive, informed, and empowering rather than overwhelming.</p>
+    <h2 style="margin-bottom:.4em;color:var(--butter);text-wrap:balance;">Empowering women through knowledge, clarity, and trusted guidance.</h2>
+    <p class="lede" style="color:var(--ivory);max-width:760px;margin-inline:auto;">Cleo exists to simplify complexity. By thoughtfully connecting women with the right care at the right time, we replace uncertainty with confidence.</p>
   </div>
 </section>
 
 <!-- CARE SYSTEM (pillars + services combined) -->
 <section class="section">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Care for the whole woman</span><h2 style="color:var(--butter);">Everything your journey requires.</h2><p class="muted" style="margin-top:.6em;max-width:62ch;margin-inline:auto;color:rgba(255,254,247,.9);">A comprehensive maternal care system, in-home or on your terms, all vetted by trusted professionals in one place.</p></div>
+    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Care for the whole woman</span><h2 style="color:var(--butter);">Everything your journey requires.</h2><p class="muted" style="margin-top:.6em;max-width:62ch;margin-inline:auto;color:rgba(255,254,247,.9);">A comprehensive maternal care system, vetted, in-home or on your terms. Our goal is to make your healthcare feel intuitive, informed, and empowering rather than overwhelming.</p></div>
     <div class="pillars3">
       <div class="p3"><span class="script">Physical</span><p>Your body carries an enormous amount through fertility, pregnancy, and birth. We coordinate targeted bodywork, massage, acupuncture, and chef-prepared meals tailored to where you are.</p></div>
-      <div class="p3"><span class="script">Emotional</span><p>The emotional weight of this journey is real, and often invisible. Licensed mental health therapists, night care, and ongoing support ensure no part is carried alone.</p></div>
-      <div class="p3"><span class="script">Connection</span><p>From fertility advocates and birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
+      <div class="p3"><span class="script">Emotional</span><p>The weight of this journey is real, and often invisible. Licensed mental health therapists and ongoing support ensure no part is carried alone.</p></div>
+      <div class="p3"><span class="script">Connection</span><p>From birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
     </div>
     <div class="services" style="margin-top:52px;">
       <span class="svc">Birth &amp; Postpartum Doulas</span>
@@ -275,12 +351,12 @@
 </div><!-- /sky-field -->
 
 <!-- FOR PRACTITIONERS -->
-<section class="section bg-coral">
+<section class="section bg-burgundy">
   <div class="wrap prac on-dark">
     <div>
       <span class="eyebrow">For practitioners</span>
       <h2 style="margin:14px 0 .5em;">Passionate about maternal care?</h2>
-      <p style="color:rgba(255,254,247,.9);max-width:44ch;">We're building a network of dedicated doulas, lactation consultants, therapists, and wellness practitioners. If you share our commitment to full-spectrum care, we'd love to hear from you.</p>
+      <p style="color:rgba(255,254,247,.9);max-width:44ch;">We're building a network of dedicated practitioners. If you share our commitment to full-spectrum care, we'd love to hear from you.</p>
       <a href="provider-intake.html" class="btn btn--on-dark" style="margin-top:26px;">Join our network →</a>
     </div>
     <ul>
@@ -289,6 +365,9 @@
       <li>Therapists &amp; mental health providers</li>
       <li>Massage therapists &amp; bodyworkers</li>
       <li>Nutritionists &amp; meal providers</li>
+      <li>Pelvic floor PTs</li>
+      <li>Acupuncturists</li>
+      <li>Sleep consultants</li>
     </ul>
   </div>
 </section>
@@ -327,6 +406,19 @@
       </form>
       <p style="color:rgba(255,254,247,.75);font-size:.8rem;margin-top:12px;">No spam. Unsubscribe any time. &nbsp;·&nbsp; <a href="https://cleocare.substack.com" target="_blank" rel="noopener" style="color:var(--butter);text-decoration:underline;">Read all posts</a></p>
     </div>
+
+    <!-- Instagram -->
+    <div class="ig">
+      <span class="eyebrow" style="color:var(--butter);display:block;">Follow along</span>
+      <a class="ig-handle" href="https://instagram.com/cleocare" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        @cleocare
+      </a>
+      <div class="ig-feed">
+        <behold-widget feed-id="x0ckfuIJWszvSuqK93BB"></behold-widget>
+      </div>
+      <a class="btn btn--on-dark" href="https://instagram.com/cleocare" target="_blank" rel="noopener">Follow @cleocare →</a>
+    </div>
   </div>
 </section>
 
@@ -360,6 +452,84 @@
     function sync(){ nav.classList.toggle('cleo-nav--solid', window.scrollY > 60); }
     sync();
     window.addEventListener('scroll', sync, { passive:true });
+  })();
+</script>
+
+<!-- WELCOME EMAIL CAPTURE -->
+<div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title" hidden>
+  <div class="welcome__card">
+    <button type="button" class="welcome__close" id="welcome-close" aria-label="Close">&times;</button>
+    <div class="welcome__band">
+      <p class="welcome__eyebrow">Welcome to Cleo Care</p>
+      <h2 class="welcome__title" id="welcome-title">Stay in the loop.</h2>
+    </div>
+    <div class="welcome__body">
+      <div class="welcome__intro">
+        <p>Be the first to know about our launch, partnerships, and events, plus notes on maternal care worth reading.</p>
+        <form class="welcome__form" action="https://app.cleocare.co/api/waitlist" method="POST" target="welcome-sink" id="welcome-form">
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+          <input type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>
+          <button type="submit" class="btn btn--primary">Join us</button>
+        </form>
+        <p class="welcome__fine">No spam. Unsubscribe any time.</p>
+      </div>
+      <div class="welcome__success">
+        <p style="font-family:var(--font-display);color:var(--burgundy);font-size:1.6rem;margin-bottom:8px;">Welcome to the Cleo community.</p>
+        <p>Now we'll let you look around.</p>
+      </div>
+    </div>
+  </div>
+  <iframe name="welcome-sink" title="hidden" style="display:none;" aria-hidden="true"></iframe>
+</div>
+<script>
+  (function(){
+    var KEY = 'cleo_welcome_seen';
+    var el = document.getElementById('welcome');
+    if(!el) return;
+    var closeBtn = document.getElementById('welcome-close');
+    var form = document.getElementById('welcome-form');
+    var emailInput = form ? form.querySelector('input[type=email]') : null;
+    var seen;
+    try{ seen = localStorage.getItem(KEY); }catch(e){ seen = null; }
+    if(seen) return;
+
+    function open(){
+      el.hidden = false;
+      /* force reflow so the transition runs */
+      void el.offsetWidth;
+      el.classList.add('is-open');
+      if(emailInput){ try{ emailInput.focus({ preventScroll:true }); }catch(e){} }
+    }
+    function close(){
+      el.classList.remove('is-open');
+      try{ localStorage.setItem(KEY, '1'); }catch(e){}
+      setTimeout(function(){ el.hidden = true; }, 320);
+    }
+
+    closeBtn.addEventListener('click', close);
+    el.addEventListener('click', function(e){ if(e.target === el) close(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && !el.hidden && el.classList.contains('is-open')) close();
+    });
+    if(form){
+      form.addEventListener('submit', function(){
+        /* iframe target keeps us on the page; show success, remember, auto-dismiss */
+        el.classList.add('is-done');
+        try{ localStorage.setItem(KEY, '1'); }catch(e){}
+        setTimeout(close, 2600);
+      });
+    }
+
+    setTimeout(open, 3000);
+  })();
+</script>
+
+<!-- Behold Instagram feed loader -->
+<script>
+  (() => {
+    if(window.__bhldScript)return;window.__bhldScript=true;
+    const d=document,s=d.createElement("script");s.type="module";
+    s.src="https://w.behold.so/widget.js";setTimeout(()=>{d.head.append(s);},0);
   })();
 </script>
 
