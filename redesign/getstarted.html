@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started | Cleo</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FAF6B7;
+      color: #463A33;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #6B0826;
+      --navy-dark: #4E0519;
+      --navy-light: #E1654B;
+      --navy-pale: #C9D3EE;
+      --navy-wash: #F6F2DA;
+      --ink: #463A33;
+      --ink-mid: #6B5A52;
+      --ink-muted: #8A7B72;
+      --cream: #FAF6B7;
+      --warm: #E3C4D5;
+      --warm-mid: #CD96B3;
+      --olive: #E1654B;
+      --olive-pale: #F6F2DA;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--navy);
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 15px 35px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1.5px solid var(--navy);
+      cursor: pointer;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease;
+    }
+    .btn-ghost:hover { background: rgba(27,56,114,0.06); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+
+    /* Form elements */
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+
+    /* Package card */
+    .pkg-card {
+      background: #fff;
+      border: 2px solid rgba(27,56,114,0.12);
+      border-radius: 10px;
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+      position: relative;
+    }
+    .pkg-card:hover { border-color: var(--navy-light); transform: translateY(-2px); }
+    .pkg-card.selected {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.1);
+      background: var(--navy-wash);
+    }
+    .pkg-card input[type="radio"],
+    .pkg-card input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Duration pill */
+    .duration-pill {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .duration-pill:hover { border-color: var(--navy); color: var(--navy); }
+    .duration-pill.selected {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #fff;
+    }
+
+    /* Step transitions */
+    .form-step {
+      display: none;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .form-step.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .form-step.entering {
+      animation: stepIn 0.32s ease forwards;
+    }
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Progress dots */
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(27,56,114,0.15);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .progress-dot.active {
+      background: var(--navy);
+      transform: scale(1.4);
+    }
+    .progress-dot.done {
+      background: var(--navy);
+      opacity: 0.4;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #E3C4D5; }
+    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
+  
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
+    }
+  </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
+</head>
+<body>
+
+<!-- NAV -->
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
+    </div>
+  </header>
+
+<!-- HERO -->
+<section class="page-hero h-blush page-hero--compact">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner">
+    <span class="page-hero__eyebrow">Get Started</span>
+    <h1>Let's build your plan.</h1>
+    <p class="page-hero__lede">Tell us a little about what you're looking for and we'll take it from there.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main style="padding:56px 56px 100px;">
+  <div style="max-width:720px;margin:0 auto;">
+
+    <!-- Progress indicator -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:56px;" id="progress-bar">
+      <div class="progress-dot active" id="dot-1"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-2"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-3"></div>
+      <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      <div class="progress-dot" id="dot-4"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:-44px;margin-bottom:44px;">
+      <span id="step-label-1" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;color:var(--navy);letter-spacing:0.1em;text-transform:uppercase;">Choose</span>
+      <span id="step-label-2" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Details</span>
+      <span id="step-label-3" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Journey</span>
+      <span id="step-label-4" style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:500;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;">Reserve</span>
+    </div>
+
+    <!-- ─── STEP 1: Package Selection ─── -->
+    <div class="form-step active entering" id="step-1">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">What are you looking for?</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">Choose a package or select individual services below.</p>
+
+      <!-- Package type -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+        <label class="pkg-card" id="card-essential" onclick="selectPackage('essential')">
+          <input type="radio" name="package-type" value="essential">
+          <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Package</div>
+          <div class="heading-display" style="font-size:1.375rem;color:var(--ink);margin-bottom:8px;">Essential</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">Meals, self care, mental healthcare & Welcome Home Kit</div>
+        </label>
+        <label class="pkg-card" id="card-premium" onclick="selectPackage('premium')">
+          <input type="radio" name="package-type" value="premium">
+          <div style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;">Package</div>
+          <div class="heading-display" style="font-size:1.375rem;color:var(--ink);margin-bottom:8px;">Premium</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">Everything in Essential plus in-home doula support, 12 hrs/day</div>
+        </label>
+      </div>
+
+      <!-- Duration (shown when package selected) -->
+      <div id="duration-section" style="display:none;margin-bottom:32px;">
+        <p class="form-label" style="margin-bottom:16px;">How long would you like support?</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="duration-pill" onclick="selectDuration(this, '1 Week')">1 Week</button>
+          <button class="duration-pill" onclick="selectDuration(this, '2 Weeks')">2 Weeks</button>
+          <button class="duration-pill" onclick="selectDuration(this, '1 Month')">1 Month</button>
+          <button class="duration-pill" onclick="selectDuration(this, '2 Months')">2 Months</button>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+        <span style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);letter-spacing:0.08em;text-transform:uppercase;">Or</span>
+        <div style="flex:1;height:1px;background:rgba(27,56,114,0.1);"></div>
+      </div>
+
+      <!-- Individual bookings -->
+      <p class="form-label" style="margin-bottom:16px;">Individual bookings, select all that apply</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:40px;">
+        <label class="pkg-card" id="card-meals" onclick="toggleIndividual('meals', this)">
+          <input type="checkbox" name="individual" value="meals">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Meal Delivery</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $85 / day or $30 / meal</div>
+        </label>
+        <label class="pkg-card" id="card-inhome" onclick="toggleIndividual('inhome', this)">
+          <input type="checkbox" name="individual" value="inhome">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">In-Home Care</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $45 / hour</div>
+        </label>
+        <label class="pkg-card" id="card-selfcare" onclick="toggleIndividual('selfcare', this)">
+          <input type="checkbox" name="individual" value="selfcare">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Self Care</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $150 / treatment</div>
+        </label>
+        <label class="pkg-card" id="card-mental" onclick="toggleIndividual('mental', this)">
+          <input type="checkbox" name="individual" value="mental">
+          <div class="heading-display" style="font-size:1.125rem;color:var(--ink);margin-bottom:4px;">Mental Health Support</div>
+          <div class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">From $100 / appointment</div>
+        </label>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;">
+        <button class="btn-primary" onclick="goToStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 2: Your Details ─── -->
+    <div class="form-step" id="step-2">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">Tell us about yourself.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">We'll use this to reach out and confirm your plan.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+        <div>
+          <label class="form-label" for="first-name">First name</label>
+          <input class="form-input" type="text" id="first-name" placeholder="Emily">
+        </div>
+        <div>
+          <label class="form-label" for="last-name">Last name</label>
+          <input class="form-input" type="text" id="last-name" placeholder="Miller">
+        </div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="email">Email address</label>
+        <input class="form-input" type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="phone">Phone number</label>
+        <input class="form-input" type="tel" id="phone" placeholder="(555) 000-0000">
+      </div>
+      <div style="margin-bottom:32px;">
+        <label class="form-label" for="zip">Zip code</label>
+        <input class="form-input" type="text" id="zip" placeholder="10001" style="max-width:200px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;">We'll confirm service availability in your area.</p>
+      </div>
+
+      <!-- Insurance navigation question -->
+      <div style="margin-bottom:32px;">
+        <label class="form-label" style="margin-bottom:16px;">Would you like help navigating insurance?</label>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <label class="pkg-card" id="ins-yes-card" onclick="toggleInsuranceNav('yes')" style="max-width:100%;">
+            <input type="radio" name="insurance_nav" value="yes" id="ins-yes-input">
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Yes, I'd like help with insurance</span>
+          </label>
+          <label class="pkg-card" id="ins-no-card" onclick="toggleInsuranceNav('no')" style="max-width:100%;">
+            <input type="radio" name="insurance_nav" value="no" id="ins-no-input">
+            <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">No, I'll be paying out of pocket</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- DOB — shown only when Yes is selected -->
+      <div id="dob-section" style="display:none;margin-bottom:32px;">
+        <label class="form-label" for="dob">Date of birth</label>
+        <input class="form-input" type="date" id="dob" style="max-width:280px;">
+        <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;">Required for insurance eligibility verification.</p>
+      </div>
+
+      <!-- Insurance extra — shown when Yes is selected -->
+      <div id="insurance-extra" style="display:none;">
+
+        <!-- Not covered follow-up -->
+        <div style="margin-bottom:32px;">
+          <label class="form-label" style="margin-bottom:16px;">If a service isn't covered by your insurance, would you still like to be matched with a provider?</label>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <label class="pkg-card" id="not-covered-yes-card" onclick="toggleNotCovered('yes')" style="max-width:100%;">
+              <input type="radio" name="not_covered_match" value="yes" id="not-covered-yes-input">
+              <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">Yes, I'd still like to be matched</span>
+            </label>
+            <label class="pkg-card" id="not-covered-no-card" onclick="toggleNotCovered('no')" style="max-width:100%;">
+              <input type="radio" name="not_covered_match" value="no" id="not-covered-no-input">
+              <span style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink);">No, only match me if covered</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Inline insurance authorization -->
+        <div style="background:var(--navy-wash);border:1px solid rgba(27,56,114,0.12);border-radius:12px;padding:32px;margin-bottom:32px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required to proceed</p>
+          <h3 style="font-family:'Spectral',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:8px;">Insurance Authorization</h3>
+          <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:24px;">By signing below, you authorize Cleo Care to verify your insurance benefits and, where applicable, submit claims on your behalf.</p>
+
+          <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:8px;padding:20px 24px;margin-bottom:20px;max-height:220px;overflow-y:auto;">
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;color:var(--ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">1. Authorization to Release Health Information</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:14px;">I authorize Cleo Care, LLC and its designated staff to contact my insurer and to request, receive, and discuss information regarding my insurance coverage and benefits for the purpose of verifying my eligibility. This may include my plan status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage for specific services, and any prior authorization requirements. I may revoke this authorization at any time in writing.</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;color:var(--ink);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">2. Authorization for Claims Submission</p>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me by my insurer — Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label class="form-label" for="auth-sig-name">Full legal name <span style="font-weight:400;color:var(--ink-muted);">(acts as your electronic signature)</span></label>
+            <input class="form-input" type="text" id="auth-sig-name" placeholder="Type your full name" autocomplete="name" oninput="validateAuthSig()">
+          </div>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-bottom:16px;">Signed electronically on <strong id="auth-date"></strong></p>
+
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+            <div id="auth-agree-box" onclick="toggleAuthAgree()" style="width:20px;height:20px;min-width:20px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.3);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:background 0.15s,border-color 0.15s;">
+              <svg id="auth-agree-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I have read and agree to both authorizations above. I understand that typing my name acts as my electronic signature.</span>
+          </label>
+          <p id="auth-error" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#DC2626;margin-top:10px;display:none;">Please enter your full name and check the box above to continue.</p>
+        </div>
+
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-ghost" onclick="goToStep(1)">← Back</button>
+        <button class="btn-primary" onclick="continueFromStep2()">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 3: Your Journey ─── -->
+    <div class="form-step" id="step-3">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">About your journey.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">This helps us understand where you are in your journey.</p>
+
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="due-date">Due date or baby's date of birth</label>
+        <input class="form-input" type="date" id="due-date" style="max-width:280px;">
+      </div>
+      <div style="margin-bottom:20px;">
+        <label class="form-label" for="referral">How did you hear about Cleo?</label>
+        <select class="form-input" id="referral" style="background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237888A8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 16px center;padding-right:44px;cursor:pointer;">
+          <option value="" disabled selected>Select an option</option>
+          <option value="instagram">Instagram</option>
+          <option value="friend">Friend or family</option>
+          <option value="google">Google</option>
+          <option value="provider">Healthcare provider</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div style="margin-bottom:40px;">
+        <label class="form-label" for="notes">Anything else you'd like us to know? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+        <textarea class="form-input" id="notes" rows="4" placeholder="Tell us about your priorities, any specific needs, or questions you have..." style="resize:vertical;"></textarea>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <button class="btn-ghost" onclick="goToStep(2)">← Back</button>
+        <button class="btn-primary" onclick="goToStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP 4: Reserve ─── -->
+    <div class="form-step" id="step-4">
+      <h2 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:8px;">Reserve your spot.</h2>
+      <p class="body-text" style="font-size:0.9375rem;color:var(--ink-muted);margin-bottom:40px;">Review your selection below and submit to hold your place.</p>
+
+      <!-- Summary card -->
+      <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:12px;padding:36px 40px;margin-bottom:32px;box-shadow:0 2px 8px rgba(27,56,114,0.04),0 12px 32px rgba(27,56,114,0.05);">
+        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:24px;">Your Selection</p>
+        <div id="summary-content" style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- Payment placeholder -->
+      <div style="background:var(--warm);border:1px solid rgba(27,56,114,0.08);border-radius:10px;padding:28px 32px;margin-bottom:36px;display:flex;align-items:flex-start;gap:16px;">
+        <div style="width:36px;height:36px;min-width:36px;border-radius:50%;background:var(--navy-wash);display:flex;align-items:center;justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="3" width="14" height="10" rx="2" stroke="#6B0826" stroke-width="1.4"/><path d="M1 7h14" stroke="#6B0826" stroke-width="1.4"/><rect x="3" y="9.5" width="3" height="1.5" rx="0.5" fill="#6B0826" opacity="0.5"/></svg>
+        </div>
+        <div>
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;color:var(--ink);margin-bottom:4px;">Payment</p>
+          <p class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);line-height:1.6;">We'll be in touch within 48 hours to confirm your plan and finalize payment. No card required today.</p>
+        </div>
+      </div>
+
+      <!-- Insurance disclaimer -->
+      <div id="insurance-disclaimer" style="display:none;background:var(--olive-pale);border:1px solid rgba(107,122,80,0.2);border-radius:8px;padding:20px 24px;margin-bottom:24px;">
+        <label style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;">
+          <div id="disclaimer-box" onclick="toggleDisclaimer()" style="width:18px;height:18px;min-width:18px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.3);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:background 0.15s ease,border-color 0.15s ease;flex-shrink:0;">
+            <svg id="disclaimer-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s ease;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <input type="checkbox" id="disclaimer-cb" style="position:absolute;opacity:0;pointer-events:none;">
+          <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I understand that Cleo makes no representation that any provider or service will be covered by my insurance plan. I am responsible for all charges for services rendered, regardless of whether reimbursement is received from my insurer.</span>
+        </label>
+      </div>
+
+      <div id="submit-area">
+        <button class="btn-primary" id="submit-btn" onclick="submitForm()" style="width:100%;padding:18px;font-size:1rem;">Submit & Reserve Your Spot</button>
+      </div>
+
+      <!-- Confirmation (hidden until submit) -->
+      <div id="confirmation" style="display:none;text-align:center;padding:48px 0;">
+        <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#E1654B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="heading-display" style="font-size:1.75rem;color:var(--ink);margin-bottom:12px;">You're all set.</h3>
+        <p class="body-text" style="font-size:1rem;color:var(--ink-muted);max-width:400px;margin:0 auto 32px;line-height:1.75;">Thank you — we'll be in touch within 48 hours to confirm your plan and next steps.</p>
+        <a href="index.html" class="btn-ghost">Back to Home</a>
+      </div>
+
+      <div style="margin-top:24px;display:flex;justify-content:flex-start;">
+        <button class="btn-ghost" onclick="goToStep(3)" id="back-btn-4">← Back</button>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#070F1E;padding:80px 56px 44px;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:64px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
+      <div>
+        <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
+        <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Supporting mothers from fertility through postpartum.</p>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="our-story.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Our Story</a></li>
+          <li><a href="our-team.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Our Team</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Resources</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="faq.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">FAQ</a></li>
+          <li><a href="offerings.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Offerings</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'Inter',sans-serif;font-size:0.625rem;font-weight:600;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Support</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:14px;">
+          <li><a href="mailto:em.cleo@gmail.com" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Contact Us</a></li>
+          <li><a href="/privacy" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Privacy Policy</a></li>
+          <li><a href="/terms" style="font-family:'Inter',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;">
+      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
+      <a href="https://www.instagram.com/cleo" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // State
+  const state = {
+    packageType: null,   // 'essential' | 'premium' | null
+    duration: null,
+    individual: [],
+  };
+
+  // Step navigation
+  let currentStep = 1;
+
+  function goToStep(n) {
+    const current = document.getElementById('step-' + currentStep);
+    const next = document.getElementById('step-' + n);
+    current.classList.remove('active');
+    current.style.display = 'none';
+    next.style.display = 'block';
+    // Force reflow then animate
+    requestAnimationFrame(() => {
+      next.classList.add('active', 'entering');
+      setTimeout(() => next.classList.remove('entering'), 350);
+    });
+    currentStep = n;
+    updateProgress(n);
+    if (n === 4) { buildSummary(); updateDisclaimerVisibility(); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateProgress(step) {
+    for (let i = 1; i <= 4; i++) {
+      const dot = document.getElementById('dot-' + i);
+      const label = document.getElementById('step-label-' + i);
+      dot.className = 'progress-dot';
+      label.style.fontWeight = '500';
+      label.style.color = 'var(--ink-muted)';
+      if (i < step) { dot.classList.add('done'); }
+      else if (i === step) {
+        dot.classList.add('active');
+        label.style.fontWeight = '600';
+        label.style.color = 'var(--navy)';
+      }
+    }
+  }
+
+  // Package selection
+  function selectPackage(type) {
+    state.packageType = type;
+    // Clear individual selections when a package is chosen
+    state.individual = [];
+    document.querySelectorAll('[id^="card-meals"],[id^="card-inhome"],[id^="card-selfcare"],[id^="card-mental"]').forEach(c => c.classList.remove('selected'));
+
+    document.getElementById('card-essential').classList.toggle('selected', type === 'essential');
+    document.getElementById('card-premium').classList.toggle('selected', type === 'premium');
+    document.getElementById('duration-section').style.display = 'block';
+  }
+
+  // Duration selection
+  function selectDuration(el, val) {
+    state.duration = val;
+    document.querySelectorAll('.duration-pill').forEach(p => p.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // Individual bookings
+  function toggleIndividual(key, card) {
+    // Deselect package if individual chosen
+    state.packageType = null;
+    state.duration = null;
+    document.getElementById('card-essential').classList.remove('selected');
+    document.getElementById('card-premium').classList.remove('selected');
+    document.getElementById('duration-section').style.display = 'none';
+    document.querySelectorAll('.duration-pill').forEach(p => p.classList.remove('selected'));
+
+    const idx = state.individual.indexOf(key);
+    if (idx > -1) {
+      state.individual.splice(idx, 1);
+      card.classList.remove('selected');
+    } else {
+      state.individual.push(key);
+      card.classList.add('selected');
+    }
+  }
+
+  // Build summary for step 4
+  const prices = {
+    essential: { '1 Week': '$1,800', '2 Weeks': '$3,400', '1 Month': '$6,000', '2 Months': '$11,500' },
+    premium:   { '1 Week': '$6,000', '2 Weeks': '$11,800', '1 Month': '$22,800', '2 Months': '$44,600' },
+  };
+  const individualLabels = {
+    meals: 'Meal Delivery | From $85 / day',
+    inhome: 'In-Home Care | From $45 / hour',
+    selfcare: 'Self Care | From $150 / treatment',
+    mental: 'Mental Health Support | From $100 / appointment',
+  };
+
+  function buildSummary() {
+    const el = document.getElementById('summary-content');
+    el.innerHTML = '';
+
+    const row = (label, value) => `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.06);">
+        <span style="font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink-mid);">${label}</span>
+        <span style="font-family:'Spectral',serif;font-size:1rem;color:var(--navy);">${value}</span>
+      </div>`;
+
+    if (state.packageType) {
+      const pkg = state.packageType === 'essential' ? 'Essential' : 'Premium';
+      const dur = state.duration || 'Duration TBD';
+      const price = state.duration ? prices[state.packageType][state.duration] : 'TBD';
+      el.innerHTML += row('Package', pkg);
+      el.innerHTML += row('Duration', dur);
+      el.innerHTML += row('Starting from', price);
+    } else if (state.individual.length > 0) {
+      state.individual.forEach(key => {
+        el.innerHTML += row(individualLabels[key].split('|')[0].trim(), individualLabels[key].split('|')[1].trim());
+      });
+    } else {
+      el.innerHTML = '<p style="font-family:\'Inter\',sans-serif;font-size:0.9375rem;color:var(--ink-muted);">No selection made. We\'ll discuss options on your intro call.</p>';
+    }
+  }
+
+  // Insurance navigation
+  let insuranceNav = null;
+  let notCoveredMatch = null;
+  let authAgreeChecked = false;
+  let disclaimerChecked = false;
+
+  function toggleInsuranceNav(val) {
+    insuranceNav = val;
+    document.getElementById('ins-yes-card').classList.toggle('selected', val === 'yes');
+    document.getElementById('ins-no-card').classList.toggle('selected', val === 'no');
+    document.getElementById('ins-yes-input').checked = val === 'yes';
+    document.getElementById('ins-no-input').checked = val === 'no';
+    document.getElementById('dob-section').style.display = val === 'yes' ? 'block' : 'none';
+    document.getElementById('insurance-extra').style.display = val === 'yes' ? 'block' : 'none';
+    if (val === 'yes') {
+      const today = new Date().toLocaleDateString(undefined, {year:'numeric',month:'long',day:'numeric'});
+      document.getElementById('auth-date').textContent = today;
+    }
+    updateDisclaimerVisibility();
+  }
+
+  function toggleNotCovered(val) {
+    notCoveredMatch = val;
+    document.getElementById('not-covered-yes-card').classList.toggle('selected', val === 'yes');
+    document.getElementById('not-covered-no-card').classList.toggle('selected', val === 'no');
+    document.getElementById('not-covered-yes-input').checked = val === 'yes';
+    document.getElementById('not-covered-no-input').checked = val === 'no';
+  }
+
+  function toggleAuthAgree() {
+    authAgreeChecked = !authAgreeChecked;
+    const box = document.getElementById('auth-agree-box');
+    const check = document.getElementById('auth-agree-check');
+    box.style.background = authAgreeChecked ? 'var(--navy)' : '#fff';
+    box.style.borderColor = authAgreeChecked ? 'var(--navy)' : 'rgba(27,56,114,0.3)';
+    check.style.opacity = authAgreeChecked ? '1' : '0';
+  }
+
+  function validateAuthSig() {
+    document.getElementById('auth-error').style.display = 'none';
+  }
+
+  function continueFromStep2() {
+    if (insuranceNav === 'yes') {
+      const name = document.getElementById('auth-sig-name').value.trim();
+      if (name.length < 2 || !authAgreeChecked) {
+        document.getElementById('auth-error').style.display = 'block';
+        document.getElementById('auth-sig-name').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+    }
+    goToStep(3);
+  }
+
+  function updateDisclaimerVisibility() {
+    const disc = document.getElementById('insurance-disclaimer');
+    if (disc) disc.style.display = insuranceNav === 'yes' ? 'block' : 'none';
+  }
+
+  function toggleDisclaimer() {
+    disclaimerChecked = !disclaimerChecked;
+    const box = document.getElementById('disclaimer-box');
+    const check = document.getElementById('disclaimer-check');
+    const cb = document.getElementById('disclaimer-cb');
+    box.style.background = disclaimerChecked ? 'var(--navy)' : '#fff';
+    box.style.borderColor = disclaimerChecked ? 'var(--navy)' : 'rgba(27,56,114,0.3)';
+    check.style.opacity = disclaimerChecked ? '1' : '0';
+    cb.checked = disclaimerChecked;
+  }
+
+  // Submit
+  function submitForm() {
+    if (insuranceNav === 'yes' && !disclaimerChecked) {
+      const box = document.getElementById('disclaimer-box');
+      box.style.borderColor = '#DC2626';
+      box.style.boxShadow = '0 0 0 3px rgba(220,38,38,0.1)';
+      document.getElementById('insurance-disclaimer').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    console.log('Form submitted', {
+      state,
+      name: document.getElementById('first-name').value + ' ' + document.getElementById('last-name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      zip: document.getElementById('zip').value,
+      dob: document.getElementById('dob').value,
+      insuranceNav,
+      notCoveredMatch,
+      insuranceAuthSig: insuranceNav === 'yes' ? document.getElementById('auth-sig-name').value.trim() : null,
+      dueDate: document.getElementById('due-date').value,
+      referral: document.getElementById('referral').value,
+      notes: document.getElementById('notes').value,
+    });
+    document.getElementById('submit-area').style.display = 'none';
+    document.getElementById('back-btn-4').style.display = 'none';
+    document.getElementById('insurance-disclaimer').style.display = 'none';
+    document.getElementById('confirmation').style.display = 'block';
+  }
+</script>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>

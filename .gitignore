@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# macOS / Google Drive cruft
+.DS_Store
+.tmp.drivedownload/
+.tmp.driveupload/
+
+# Screenshot and scratch output (18MB, all rebuildable)
+screenshots/
+temporary screenshots/
+*.png.tmp
+
+# Local-only reference material
+inspo
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Credentials never belong in this repo
+.env
+.env.*
+client_secret*.json
+token*.json

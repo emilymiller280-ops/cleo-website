@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- NO ANALYTICS ON THIS PAGE - DELIBERATE, DO NOT ADD IT BACK.
+     This form collects health information, insurance member IDs and a signed
+     insurance authorization. The Privacy Policy states in four places that we
+     run no third-party analytics or tracking on pages where health information
+     is submitted, so any tag here would make those statements false. Attribution
+     is captured by the "How did you hear about Cleo?" (referral) field below and
+     saved with the submission. Analytics stays on the marketing pages only. -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Care | Cleo</title>
+  <meta name="description" content="Tell us what you need and we'll build a care plan around you. Cleo supports women and families through every stage of their maternal journey.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Spectral', serif;
+      background: #FAF6B7;
+      color: #463A33;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --navy: #6B0826;
+      --navy-dark: #4E0519;
+      --navy-light: #E1654B;
+      --navy-pale: #C9D3EE;
+      --navy-wash: #F6F2DA;
+      --ink: #463A33;
+      --ink-mid: #6B5A52;
+      --ink-muted: #8A7B72;
+      --cream: #FAF6B7;
+      --warm: #E3C4D5;
+      --warm-mid: #CD96B3;
+      --olive: #E1654B;
+      --olive-light: #C74E36;
+      --olive-pale: #F6F2DA;
+    }
+    .heading-display {
+      font-family: 'Spectral', serif;
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .nav-link {
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .nav-link:focus-visible { outline: 2px solid var(--navy); outline-offset: 4px; border-radius: 2px; }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .nav-btn:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .nav-btn:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Spectral', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
+      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid var(--navy-pale); outline-offset: 3px; }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .form-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      appearance: none;
+    }
+    .form-input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+    .form-input::placeholder { color: var(--ink-muted); }
+
+    .toggle-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 6px;
+      padding: 13px 16px;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .toggle-btn:hover { border-color: var(--navy-light); }
+    .toggle-btn.active {
+      border-color: var(--navy);
+      background: var(--navy-wash);
+      color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+
+    .service-chip {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      background: #fff;
+      border: 1.5px solid rgba(27,56,114,0.15);
+      border-radius: 99px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .service-chip:hover { border-color: var(--navy-light); }
+    .service-chip.selected {
+      background: var(--navy-wash);
+      border-color: var(--navy);
+      color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid rgba(27,56,114,0.1);
+      margin: 8px 0;
+    }
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Nav */
+    .hamburger { display:none; flex-direction:column; justify-content:space-between; width:24px; height:16px; background:none; border:none; cursor:pointer; padding:0; }
+    .hamburger span { display:block; width:100%; height:2px; background:var(--ink); border-radius:1px; transition:transform 0.25s ease, opacity 0.2s ease; }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width: 768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display: none !important; }
+    }
+    @media (max-width: 600px) {
+      .two-col { grid-template-columns: 1fr !important; }
+    }
+  </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="page-hero h-sky page-hero--compact">
+    <div class="page-hero__tex"></div>
+    <div class="page-hero__inner">
+      <span class="page-hero__eyebrow">Book Your Care</span>
+      <h1>Full-Spectrum Maternal Care</h1>
+      <p class="page-hero__lede">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
+      <p class="page-hero__note">Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan.</p>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section style="padding:0 32px 96px;max-width:680px;margin:0 auto;">
+
+    <div id="form-wrap">
+      <form id="booking-form" action="https://app.cleocare.co/api/intake" method="POST" style="display:flex;flex-direction:column;gap:28px;">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
+
+        <!-- About You -->
+        <div>
+          <p class="section-label">About You</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label" for="first-name">First name</label>
+                <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First" required>
+              </div>
+              <div>
+                <label class="form-label" for="last-name">Last name</label>
+                <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Last" required>
+              </div>
+            </div>
+            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div>
+                <label class="form-label" for="email">Email</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="you@email.com" required>
+              </div>
+              <div>
+                <label class="form-label" for="phone">Phone</label>
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="(555) 000-0000" required>
+              </div>
+            </div>
+            <div>
+              <label class="form-label" for="zipcode">Zip code</label>
+              <input class="form-input" type="text" id="zipcode" name="zipcode" placeholder="e.g. 90210" style="max-width:200px;" required>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Where You Are -->
+        <div>
+          <p class="section-label">Where You Are</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label">Where are you in your journey?</label>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;">
+                <button type="button" class="toggle-btn" id="stage-ttc" onclick="setStage('ttc')" style="padding:13px 6px;">Trying to Conceive</button>
+                <button type="button" class="toggle-btn" id="stage-pregnant" onclick="setStage('pregnant')" style="padding:13px 6px;">Pregnant</button>
+                <button type="button" class="toggle-btn" id="stage-postpartum" onclick="setStage('postpartum')" style="padding:13px 6px;">Postpartum</button>
+                <button type="button" class="toggle-btn" id="stage-other" onclick="setStage('other')" style="padding:13px 6px;">Something Else</button>
+                <button type="button" class="toggle-btn" id="stage-gift" onclick="setStage('gift')" style="padding:13px 6px;">Gifting</button>
+              </div>
+              <input type="hidden" name="journey_stage" id="stage-hidden">
+            </div>
+            <div id="date-wrap" style="display:none;">
+              <label class="form-label" id="date-label" for="key-date">Due date</label>
+              <input class="form-input" type="date" id="key-date" name="key_date" style="max-width:280px;">
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- What You're Looking For -->
+        <div>
+          <p class="section-label">What You're Looking For</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div>
+              <label class="form-label">What kind of support are you interested in? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;">
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Meal Delivery')">Meal Delivery</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Postpartum Doula')">Postpartum Doula</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Birth Doula')">Birth Doula</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Lactation Consulting')">Lactation Consulting</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Pelvic Floor PT')">Pelvic Floor PT</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Mental Health Support')">Mental Health Support</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Night Care')">Night Care</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Massage / Bodywork')">Massage / Bodywork</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Acupuncture')">Acupuncture</button>
+              </div>
+              <div style="margin-top:10px;text-align:center;">
+                <button type="button" class="service-chip" id="chip-other" onclick="toggleOther(this)">Other</button>
+              </div>
+              <div id="other-service-wrap" style="display:none;margin-top:10px;">
+                <input class="form-input" type="text" id="other-service-input" name="other_service" placeholder="What are you looking for?">
+              </div>
+              <input type="hidden" name="services_interested" id="services-hidden">
+            </div>
+            <div id="care-setting-wrap" style="display:none;">
+              <label class="form-label">How would you like to receive care? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
+              <div id="setting-chips" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;">
+                <button type="button" class="service-chip" data-setting="home" onclick="toggleSetting(this,'In-home')">In your home</button>
+                <button type="button" class="service-chip" data-setting="virtual" onclick="toggleSetting(this,'Telehealth')">Virtual (telehealth)</button>
+                <button type="button" class="service-chip" data-setting="office" onclick="toggleSetting(this,'In-office')">In office</button>
+              </div>
+              <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:8px;line-height:1.5;">We only show the settings your selected services support (for example, bodywork &amp; acupuncture aren't offered virtually; mental health isn't offered in-home).</p>
+              <input type="hidden" name="care_settings" id="care-settings-hidden">
+            </div>
+            <div>
+              <label class="form-label" for="notes">Tell us more about what you're looking for <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+              <textarea class="form-input" id="notes" name="notes" rows="4" placeholder="Specific needs, concerns, timeline, anything on your mind..." style="resize:vertical;min-height:100px;"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- Insurance -->
+        <div>
+          <p class="section-label">Insurance</p>
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:4px;">Mental health support, pelvic floor physical therapy and lactation consultations may be covered under your insurance plan*. Once booked, we help check your eligibility where applicable and navigate insurance related headache for you.</p>
+            <div>
+              <label class="form-label">Would you like help navigating insurance coverage?</label>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <button type="button" class="toggle-btn" id="ins-yes" onclick="setInsurance('yes')">Yes, please</button>
+                <button type="button" class="toggle-btn" id="ins-no" onclick="setInsurance('no')">No, thanks</button>
+              </div>
+              <input type="hidden" name="insurance_help" id="ins-hidden">
+            </div>
+            <div id="insurance-details" style="display:none;background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:24px;flex-direction:column;gap:16px;">
+              <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);margin-bottom:4px;">Tell us about your insurance plan</p>
+              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="ins-provider">Insurance provider</label>
+                  <input class="form-input" type="text" id="ins-provider" name="ins_provider" placeholder="e.g. Blue Cross, Aetna">
+                </div>
+                <div>
+                  <label class="form-label" for="ins-plan">Plan name</label>
+                  <input class="form-input" type="text" id="ins-plan" name="ins_plan" placeholder="e.g. PPO Gold">
+                </div>
+              </div>
+              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <label class="form-label" for="ins-member">Member ID</label>
+                  <input class="form-input" type="text" id="ins-member" name="ins_member" placeholder="Member ID">
+                </div>
+                <div>
+                  <label class="form-label" for="ins-group">Group number</label>
+                  <input class="form-input" type="text" id="ins-group" name="ins_group" placeholder="Group number">
+                </div>
+              </div>
+              <div>
+                <label class="form-label" for="ins-dob">Date of birth</label>
+                <input class="form-input" type="date" id="ins-dob" name="ins_dob" style="max-width:280px;">
+              </div>
+
+              <!-- Home address (required for insurance claims) -->
+              <div>
+                <label class="form-label">Home address <span style="font-weight:400;color:var(--ink-muted);">(for insurance claims)</span></label>
+                <input class="form-input" type="text" name="ins_street" placeholder="Street address" style="margin-bottom:10px;">
+                <div class="two-col" style="display:grid;grid-template-columns:2fr 1fr;gap:14px;">
+                  <input class="form-input" type="text" name="ins_city" placeholder="City">
+                  <input class="form-input" type="text" name="ins_state" placeholder="State" maxlength="2" style="text-transform:uppercase;">
+                </div>
+              </div>
+
+              <!-- Policyholder -->
+              <div>
+                <label class="form-label" style="margin-bottom:12px;">Are you the primary policyholder on this plan?</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <button type="button" class="toggle-btn" id="ph-yes" onclick="setPolicyholder('yes')">Yes, it's mine</button>
+                  <button type="button" class="toggle-btn" id="ph-no" onclick="setPolicyholder('no')">No, someone else's</button>
+                </div>
+                <input type="hidden" name="policyholder_self" id="ph-hidden">
+                <div id="subscriber-details" style="display:none;margin-top:16px;flex-direction:column;gap:14px;">
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">Policyholder's information</p>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div><label class="form-label" for="sub-first">First name</label><input class="form-input" type="text" id="sub-first" name="subscriber_first_name"></div>
+                    <div><label class="form-label" for="sub-last">Last name</label><input class="form-input" type="text" id="sub-last" name="subscriber_last_name"></div>
+                  </div>
+                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div><label class="form-label" for="sub-dob">Their date of birth</label><input class="form-input" type="date" id="sub-dob" name="subscriber_dob"></div>
+                    <div><label class="form-label" for="sub-rel">Relationship to you</label>
+                      <select class="form-input" id="sub-rel" name="subscriber_relationship">
+                        <option value="">Select…</option>
+                        <option value="spouse">Spouse</option>
+                        <option value="parent">Parent</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <label class="form-label" for="ins-notes">Anything else we should know about your coverage? <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
+                <textarea class="form-input" id="ins-notes" name="ins_notes" rows="2" placeholder="e.g. specific services you think may be covered…" style="resize:vertical;"></textarea>
+              </div>
+
+              <!-- Not covered follow-up -->
+              <div>
+                <label class="form-label" style="margin-bottom:12px;">If a service isn't covered by your insurance, would you still like to be matched with a provider?</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                  <button type="button" class="toggle-btn" id="not-covered-yes" onclick="setNotCovered('yes')">Yes, match me anyway</button>
+                  <button type="button" class="toggle-btn" id="not-covered-no" onclick="setNotCovered('no')">No, only if covered</button>
+                </div>
+                <input type="hidden" name="match_if_not_covered" id="not-covered-hidden">
+              </div>
+
+              <!-- Inline authorization -->
+              <div style="border-top:1px solid rgba(27,56,114,0.1);padding-top:20px;">
+                <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--navy);opacity:0.7;margin-bottom:10px;">Required — Insurance Authorization</p>
+                <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);line-height:1.65;margin-bottom:16px;">To verify your benefits and submit claims on your behalf, we need your authorization below.</p>
+                <div style="background:#fff;border:1px solid rgba(27,56,114,0.1);border-radius:8px;padding:18px 20px;max-height:200px;overflow-y:auto;margin-bottom:16px;">
+                  <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">1. Authorization to Release Health Information</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:14px;">I authorize Cleo Care, LLC and its designated staff to contact my insurer and to request, receive, and discuss information regarding my insurance coverage and benefits for the purpose of verifying my eligibility. This may include my plan status, deductible and out-of-pocket amounts, copay and coinsurance details, coverage for specific services, and any prior authorization requirements. I may revoke this authorization at any time in writing.</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink);margin-bottom:8px;">2. Authorization for Claims Submission</p>
+                  <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I designate Cleo Care, LLC as my authorized agent for submitting health insurance claims on my behalf. All reimbursements are issued directly to me — Cleo will not receive or redirect any funds. Cleo acts solely as a submission agent and is not an insurance company or claims adjudicator. I may revoke this authorization at any time in writing.</p>
+                </div>
+                <div style="margin-bottom:12px;">
+                  <label class="form-label" for="auth-sig">Full legal name <span style="font-weight:400;color:var(--ink-muted);">(electronic signature)</span></label>
+                  <input class="form-input" type="text" id="auth-sig" name="insurance_auth_signature" placeholder="Type your full name" autocomplete="name">
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;" onclick="toggleAuthAgree()">
+                  <div id="auth-agree-box" style="flex-shrink:0;width:20px;height:20px;border-radius:4px;border:1.5px solid rgba(27,56,114,0.3);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:background 0.15s,border-color 0.15s;">
+                    <svg id="auth-agree-check" width="10" height="8" viewBox="0 0 10 8" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 4l3 3 5-6" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">I have read and agree to both authorizations above. I understand that typing my name acts as my electronic signature.</span>
+                </div>
+                <input type="hidden" id="auth-agreed-hidden" name="insurance_auth_agreed" value="">
+                <p id="auth-error" style="font-family:'Inter',sans-serif;font-size:0.75rem;color:#DC2626;margin-top:10px;display:none;">Please enter your full name and check the box to continue.</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-rule">
+
+        <!-- How did you hear -->
+        <div>
+          <label class="form-label" for="referral">How did you hear about Cleo?</label>
+          <input class="form-input" type="text" id="referral" name="referral" placeholder="Instagram, a friend, Google…">
+        </div>
+
+        <!-- Insurance disclaimer (shown when yes) -->
+        <div id="ins-disclaimer" style="display:none;background:var(--olive-pale);border:1.5px solid var(--olive);border-radius:8px;padding:20px 24px;">
+          <div style="display:flex;align-items:flex-start;gap:14px;cursor:pointer;" onclick="toggleDisclaimer()">
+            <div id="disclaimer-box" style="flex-shrink:0;width:20px;height:20px;border-radius:4px;border:1.5px solid var(--olive);background:#fff;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:background 0.15s,border-color 0.15s;">
+              <svg id="disclaimer-check" width="12" height="10" viewBox="0 0 12 10" fill="none" style="opacity:0;transition:opacity 0.15s;"><path d="M1 5l3.5 3.5L11 1" stroke="var(--olive)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin:0;">I understand that Cleo makes no representation that any provider or service will be covered by my insurance plan. I am responsible for all charges for services rendered, regardless of whether reimbursement is received from my insurer.</p>
+          </div>
+          <input type="hidden" id="disclaimer-hidden" name="insurance_disclaimer" value="">
+        </div>
+
+        <!-- Federal healthcare program screening (eligibility gate) -->
+        <div>
+          <label class="form-label">Are you currently covered by Medicaid / Medi-Cal, TRICARE, or IHS?</label>
+          <div style="display:flex;gap:12px;margin-top:4px;">
+            <button type="button" class="toggle-btn" id="fed-no" onclick="setFederal('no')">No</button>
+            <button type="button" class="toggle-btn" id="fed-yes" onclick="setFederal('yes')">Yes</button>
+          </div>
+          <input type="hidden" name="federal_beneficiary" id="fed-hidden">
+          <div id="fed-notice" style="display:none;margin-top:14px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:14px 18px;font-family:'Inter',sans-serif;font-size:0.8125rem;color:#B5654A;line-height:1.6;">
+            We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time. Please reach out to <a href="mailto:hello@cleocare.co" style="color:#B5654A;text-decoration:underline;">hello@cleocare.co</a> with any questions.
+          </div>
+        </div>
+
+        <!-- Terms + Privacy acceptance. Required: this is the point of collection,
+             so the notice has to be here, not only in the footer. -->
+        <div style="border-top:1px solid rgba(27,56,114,0.1);padding-top:24px;">
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+            <input type="checkbox" id="legal-cb" name="legal_accepted" value="yes" required
+                   style="width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:#6B0826;cursor:pointer;flex-shrink:0;">
+            <span style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;">
+              I have read and agree to Cleo Care&rsquo;s
+              <a href="https://cleocare.co/terms" target="_blank" rel="noopener" style="color:#6B0826;text-decoration:underline;">Terms of Service</a>
+              and
+              <a href="https://cleocare.co/privacy" target="_blank" rel="noopener" style="color:#6B0826;text-decoration:underline;">Privacy Policy</a>,
+              including how my health information is collected and shared with the providers I&rsquo;m matched with.
+            </span>
+          </label>
+          <input type="hidden" name="legal_version" value="2026-08-13">
+        </div>
+
+        <!-- Submit -->
+        <div style="padding-top:8px;">
+          <button type="submit" id="submit-btn" class="btn-primary" style="width:100%;padding:18px;font-size:1.0625rem;">
+            Request My Care Plan
+          </button>
+          <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:12px;line-height:1.6;">Your concierge will be in touch within 48 hours to confirm your plan.</p>
+        </div>
+
+        <!-- Error -->
+        <div id="form-error" style="display:none;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:14px 18px;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:#DC2626;">Something went wrong. Please try again or email <a href="mailto:hello@cleocare.co" style="color:#DC2626;text-decoration:underline;">hello@cleocare.co</a></p>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- Success state -->
+    <div id="form-success" style="display:none;text-align:center;padding:72px 32px;">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--olive-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+        <svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M2 10l6.5 6.5L22 2" stroke="var(--olive)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Request Received</p>
+      <h2 class="heading-display" style="font-size:2rem;color:var(--ink);margin-bottom:16px;">We'll be in touch soon.</h2>
+      <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:400px;margin:0 auto 32px;">Thank you. A member of our team will contact you within 48 hours to walk through your care plan.</p>
+      <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:var(--navy);text-decoration:none;letter-spacing:0.03em;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;">Back to Cleo</a>
+    </div>
+
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:40px;line-height:1.7;">*Insurance coverage varies by plan. Cleo makes no guarantee of reimbursement.</p>
+
+  </section>
+
+  <!-- Footer -->
+  <footer style="border-top:1px solid rgba(27,56,114,0.08);padding:48px 32px;text-align:center;">
+    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);">© 2025 Cleo. All rights reserved. <a href="mailto:hello@cleocare.co" style="color:var(--ink-muted);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.2);">hello@cleocare.co</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const m = document.getElementById('mobile-menu');
+      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // Journey stage
+    function setStage(val) {
+      ['ttc','pregnant','postpartum','other','gift'].forEach(v => {
+        document.getElementById('stage-' + v).classList.toggle('active', v === val);
+      });
+      document.getElementById('stage-hidden').value = val;
+      const wrap = document.getElementById('date-wrap');
+      const lbl = document.getElementById('date-label');
+      if (val === 'pregnant') {
+        wrap.style.display = 'block';
+        lbl.textContent = 'Due date';
+      } else if (val === 'postpartum' || val === 'gift') {
+        wrap.style.display = 'block';
+        lbl.textContent = "Due date or baby's birth date";
+      } else {
+        wrap.style.display = 'none';
+      }
+    }
+
+    // Service chips
+    const selectedServices = new Set();
+    let otherSelected = false;
+
+    function toggleOther(el) {
+      otherSelected = !otherSelected;
+      el.classList.toggle('selected', otherSelected);
+      document.getElementById('other-service-wrap').style.display = otherSelected ? 'block' : 'none';
+      if (!otherSelected) document.getElementById('other-service-input').value = '';
+      updateCareSettings();
+    }
+
+    function toggleChip(el, val) {
+      if (selectedServices.has(val)) {
+        selectedServices.delete(val);
+        el.classList.remove('selected');
+      } else {
+        selectedServices.add(val);
+        el.classList.add('selected');
+      }
+      document.getElementById('services-hidden').value = [...selectedServices].join(', ');
+      updateCareSettings();
+    }
+
+    // Which care settings each service can be delivered in. Bodywork/acupuncture
+    // are never virtual; mental health is never in-home. Meal delivery has no
+    // "setting" choice.
+    const SERVICE_SETTINGS = {
+      'Meal Delivery': [],
+      'Postpartum Doula': ['home', 'virtual'],
+      'Birth Doula': ['home', 'virtual'],
+      'Lactation Consulting': ['home', 'virtual', 'office'],
+      'Pelvic Floor PT': ['office', 'home'],
+      'Mental Health Support': ['virtual', 'office'],
+      'Night Care': ['home'],
+      'Massage / Bodywork': ['home', 'office'],
+      'Acupuncture': ['home', 'office'],
+    };
+    const SETTING_LABEL = { home: 'In-home', virtual: 'Telehealth', office: 'In-office' };
+    const selectedSettings = new Set();
+
+    function syncSettings() {
+      document.getElementById('care-settings-hidden').value = [...selectedSettings].join(', ');
+    }
+
+    // Show only the settings valid for the selected services; hide the section if none apply.
+    function updateCareSettings() {
+      const allowed = new Set();
+      selectedServices.forEach(s => (SERVICE_SETTINGS[s] || []).forEach(x => allowed.add(x)));
+      if (otherSelected) ['home', 'virtual', 'office'].forEach(x => allowed.add(x));
+      const wrap = document.getElementById('care-setting-wrap');
+      if (allowed.size === 0) {
+        wrap.style.display = 'none';
+        selectedSettings.clear();
+        syncSettings();
+        return;
+      }
+      wrap.style.display = 'block';
+      document.querySelectorAll('#setting-chips [data-setting]').forEach(btn => {
+        const key = btn.getAttribute('data-setting');
+        const ok = allowed.has(key);
+        btn.style.display = ok ? '' : 'none';
+        if (!ok && selectedSettings.has(SETTING_LABEL[key])) {
+          selectedSettings.delete(SETTING_LABEL[key]);
+          btn.classList.remove('selected');
+        }
+      });
+      syncSettings();
+    }
+
+    function toggleSetting(el, label) {
+      if (selectedSettings.has(label)) { selectedSettings.delete(label); el.classList.remove('selected'); }
+      else { selectedSettings.add(label); el.classList.add('selected'); }
+      syncSettings();
+    }
+
+    // Insurance
+    let disclaimerChecked = false;
+    let authAgreeChecked = false;
+
+    function setInsurance(val) {
+      document.getElementById('ins-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('ins-no').classList.toggle('active', val === 'no');
+      document.getElementById('ins-hidden').value = val;
+      document.getElementById('insurance-details').style.display = val === 'yes' ? 'flex' : 'none';
+      document.getElementById('ins-disclaimer').style.display = val === 'yes' ? 'block' : 'none';
+    }
+
+    function setFederal(val) {
+      document.getElementById('fed-no').classList.toggle('active', val === 'no');
+      document.getElementById('fed-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('fed-hidden').value = val;
+      document.getElementById('fed-notice').style.display = val === 'yes' ? 'block' : 'none';
+      const b = document.getElementById('submit-btn');
+      b.disabled = val === 'yes';
+      b.style.opacity = val === 'yes' ? '0.5' : '1';
+    }
+
+    function setNotCovered(val) {
+      document.getElementById('not-covered-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('not-covered-no').classList.toggle('active', val === 'no');
+      document.getElementById('not-covered-hidden').value = val;
+    }
+
+    function setPolicyholder(val) {
+      document.getElementById('ph-yes').classList.toggle('active', val === 'yes');
+      document.getElementById('ph-no').classList.toggle('active', val === 'no');
+      document.getElementById('ph-hidden').value = val;
+      document.getElementById('subscriber-details').style.display = val === 'no' ? 'flex' : 'none';
+    }
+
+    function toggleAuthAgree() {
+      authAgreeChecked = !authAgreeChecked;
+      const box = document.getElementById('auth-agree-box');
+      const check = document.getElementById('auth-agree-check');
+      box.style.background = authAgreeChecked ? 'var(--navy)' : '#fff';
+      box.style.borderColor = authAgreeChecked ? 'var(--navy)' : 'rgba(27,56,114,0.3)';
+      check.style.opacity = authAgreeChecked ? '1' : '0';
+      document.getElementById('auth-agreed-hidden').value = authAgreeChecked ? 'agreed' : '';
+    }
+
+    function toggleDisclaimer() {
+      disclaimerChecked = !disclaimerChecked;
+      document.getElementById('disclaimer-box').style.background = disclaimerChecked ? 'var(--olive-pale)' : '#fff';
+      document.getElementById('disclaimer-check').style.opacity = disclaimerChecked ? '1' : '0';
+      document.getElementById('disclaimer-hidden').value = disclaimerChecked ? 'agreed' : '';
+    }
+
+    // Submit
+    document.getElementById('booking-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const fedVal = document.getElementById('fed-hidden').value;
+      if (fedVal !== 'no') {
+        const notice = document.getElementById('fed-notice');
+        notice.textContent = fedVal === 'yes'
+          ? "We're so sorry — Cleo isn't able to serve Medicaid, Medi-Cal, TRICARE, or IHS beneficiaries at this time."
+          : 'Please answer the eligibility question above to continue.';
+        notice.style.display = 'block';
+        notice.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      const insVal = document.getElementById('ins-hidden').value;
+      if (insVal === 'yes') {
+        const sigName = document.getElementById('auth-sig').value.trim();
+        if (sigName.length < 2 || !authAgreeChecked) {
+          document.getElementById('auth-error').style.display = 'block';
+          document.getElementById('auth-sig').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        document.getElementById('auth-error').style.display = 'none';
+      }
+      if (insVal === 'yes' && !disclaimerChecked) {
+        const disc = document.getElementById('ins-disclaimer');
+        disc.style.borderColor = '#DC2626';
+        disc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => { disc.style.borderColor = 'var(--olive)'; }, 2000);
+        return;
+      }
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+      document.getElementById('form-error').style.display = 'none';
+      try {
+        const res = await fetch(this.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(this),
+        });
+        if (res.ok) {
+          document.getElementById('form-wrap').style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          throw new Error();
+        }
+      } catch {
+        document.getElementById('form-error').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Request My Care Plan';
+      }
+    });
+  </script>
+
+</body>
+</html>

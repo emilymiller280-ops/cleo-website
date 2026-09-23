@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJRX3HD7CC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJRX3HD7CC');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Cleo</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: #FAF6B7; color: #463A33; -webkit-font-smoothing: antialiased; }
+    :root {
+      --navy: #6B0826; --navy-light: #E1654B;
+      --ink: #463A33; --ink-mid: #6B5A52; --ink-muted: #8A7B72;
+      --olive: #E1654B; --olive-pale: #F6F2DA;
+    }
+    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
+    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
+    .nav-link {
+      font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400;
+      color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--navy); }
+    .btn-primary {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
+      font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em;
+      padding: 10px 24px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .btn-primary:hover { background: var(--navy-light); }
+  
+    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
+    .mobile-menu.open { display:flex; }
+    @media (max-width:768px) {
+      .hamburger { display:flex !important; }
+      header nav > div { display:none !important; }
+      #nav-center { display:none !important; }
+    }
+  </style>
+<style id="cleo-rebrand">
+/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
+@font-face{font-family:'Spectral';src:url('/brand/fonts/rosevale.woff2') format('woff2');font-weight:300 700;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
+:root{
+ --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
+ --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
+ --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
+ --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
+ --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
+}
+body{background:#FAF6B7;}
+</style>
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
+</head>
+<body>
+
+<!-- NAV -->
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="faq.html">How We Work</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="https://app.cleocare.co/gift">Gifting</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
+    </div>
+  </header>
+
+<main class="page-hero h-blush" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner" style="max-width:520px;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(255,254,247,.18);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#FAF6B7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <h1 style="font-size:clamp(2rem,4vw,2.9rem);">Thank you for your interest in joining our network.</h1>
+    <p class="page-hero__lede" style="margin-top:1.1em;">We carefully review each submission and will reach out within 48 hours.</p>
+    <div class="page-hero__cta"><a href="index.html" class="hbtn hbtn--primary">Back to Home</a></div>
+  </div>
+</main>
+
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+</body>
+</html>
