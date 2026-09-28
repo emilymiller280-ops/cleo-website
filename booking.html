@@ -232,13 +232,16 @@ body{background:#FAF6B7;}
 <link rel="stylesheet" href="/brand/nav.css">
 <style id="cleo-sky-field">
   /* Continuous light-blue squiggle behind the whole Book Care page */
-  body{ background:#E4EAF6 !important; position:relative; }
+  body{ background:#99AADB !important; position:relative; }
   body::before{ content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#99AADB; opacity:.2;
+    background:#7C8FCB; opacity:.42;
     -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
     mask:url('/brand/img/texture-mono.svg') center/150% no-repeat; }
   .page-hero.h-sky{ background:transparent !important; }
   .page-hero .page-hero__tex{ display:none !important; }
+  /* Small labels + fine print read burgundy on the blue; placeholders stay soft grey */
+  body{ --ink-muted:#6B0826; }
+  .form-input::placeholder{ color:#8A7B72; }
 </style>
 </head>
 <body>
@@ -347,7 +350,7 @@ body{background:#FAF6B7;}
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Meal Delivery')">Meal Delivery</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Postpartum Doula')">Postpartum Doula</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Birth Doula')">Birth Doula</button>
-                <button type="button" class="service-chip" onclick="toggleChip(this,'Lactation Consulting')">Lactation Consulting</button>
+                <button type="button" class="service-chip" onclick="toggleChip(this,'Lactation Consulting')">Lactation Support</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Pelvic Floor PT')">Pelvic Floor PT</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Mental Health Support')">Mental Health Support</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Night Care')">Night Care</button>
