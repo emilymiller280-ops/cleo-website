@@ -41,13 +41,13 @@
 
 .page-hero__eyebrow{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600;
   font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:20px; }
-.page-hero h1{ font-family:"Rosevale",Georgia,serif; font-weight:400; line-height:1.06;
-  letter-spacing:-.01em; font-size:clamp(2.4rem,5.2vw,4.2rem); margin:0 auto .26em; }
+.page-hero h1{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:400; line-height:1.1;
+  letter-spacing:-.02em; font-size:clamp(2.4rem,5.2vw,4.2rem); margin:0 auto .26em; }
 .page-hero h1 em{ font-style:italic; }
 .page-hero__lede{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:400;
   font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.65; max-width:56ch; margin:0 auto; }
-.page-hero__lede + .page-hero__lede{ margin-top:1em; font-size:1.02rem; opacity:.88; }
-.page-hero__note{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:1rem; line-height:1.75;
+.page-hero__lede + .page-hero__lede{ margin-top:1em; opacity:.88; }
+.page-hero__note{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:clamp(1.05rem,1.5vw,1.28rem); line-height:1.65;
   max-width:56ch; margin:1em auto 0; opacity:.85; }
 
 /* CTA row + inline category nav */
