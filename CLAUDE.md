@@ -21,11 +21,12 @@ Pages reference `/brand/brand.css` with an absolute path, so **always preview th
 Tokens live in `brand/brand.css`. Also `brand/nav.css`, `brand/hero.css`, `brand/fonts/`, `brand/img/`.
 Palette: Sky, Coral, Burgundy, Blush, Butter, Ivory. Type: Rosevale, Host Grotesk, Palmello.
 
-**Emily's standing rules, all four:**
+**Emily's standing rules, all five:**
 - No black text
 - The main font is never red — red is for accents only
 - No white backgrounds
 - **No em dashes.** Anywhere, in any copy.
+- **Headings are Host Grotesk, regular weight, never bold** (2026-09-28). Rosevale is for the Cleo logo only: nav, homepage CLEO, footer wordmarks. Use `var(--font-logo)` for it, `var(--font-display)` for headings.
 
 ## Legal pages are generated, not hand-edited
 `terms.html` and `privacy.html` come from counsel's documents via:
