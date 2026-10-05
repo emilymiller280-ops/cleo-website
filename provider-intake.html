@@ -380,6 +380,10 @@ body{background:#FAF6B7;}
               <input class="form-input" type="text" id="service-area" name="service_area" placeholder="e.g. Greater Los Angeles, NYC metro" required>
             </div>
             <div>
+              <label class="form-label" for="base-zip">Zip code you work from</label>
+              <input class="form-input" type="text" id="base-zip" name="base_zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" pattern="[0-9]{5}" title="Five-digit zip code" placeholder="e.g. 90045" required>
+            </div>
+            <div>
               <label class="form-label" for="availability">General availability</label>
               <textarea class="form-input" id="availability" name="availability" rows="3" placeholder="e.g. Weekdays 9am-5pm, some evenings available, limited weekend slots..." style="resize:vertical;min-height:80px;" required></textarea>
             </div>
