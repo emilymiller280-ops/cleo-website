@@ -11,309 +11,194 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cleo Care | Meal Delivery for Fertility, Pregnancy &amp; Postpartum</title>
-  <meta name="description" content="Cleo Care is chef-prepared meal delivery for trying to conceive, pregnancy, and postpartum. Nutrient-dense, omega-3 forward, and screened for each stage. Nourishing for the whole family. A Kooshi Gourmet program, delivered through Cleo.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Spectral', serif;
-      background: #FAF6B7;
-      color: #463A33;
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-      min-height: 100vh;
-    }
-    :root {
-      --navy: #6B0826;
-      --navy-light: #E1654B;
-      --navy-pale: #C9D3EE;
-      --ink: #463A33;
-      --ink-mid: #6B5A52;
-      --ink-muted: #8A7B72;
-      --cream: #FAF6B7;
-      --warm: #E3C4D5;
-      --olive: #E1654B;
-      --olive-pale: #F6F2DA;
-    }
-    .nav-link {
-      font-family: 'Spectral', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink-mid);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s ease;
-    }
-    .nav-link:hover { color: var(--navy); }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      background: var(--navy);
-      color: #fff;
-      font-family: 'Spectral', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      padding: 16px 36px;
-      border-radius: 4px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
-      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s ease, background 0.15s ease;
-    }
-    .btn-primary:hover {
-      background: var(--navy-light);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32);
-    }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #E3C4D5; }
-    ::-webkit-scrollbar-thumb { background: rgba(27,56,114,0.18); border-radius: 99px; }
-  
-    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
-    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
-    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
-    .mobile-menu.open { display:flex; }
-    @media (max-width:768px) {
-      .hamburger { display:flex !important; }
-      header nav > div { display:none !important; }
-      #nav-center { display:none !important; }
-    }
-  </style>
-<style id="cleo-rebrand">
-/* Cleo rebrand (Born ID) — alias old fonts to new + remap tokens; content untouched */
-@font-face{font-family:'Spectral';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:300 700;font-display:swap}
-@font-face{font-family:'Inter';src:url('/brand/fonts/host-300.woff2') format('woff2');font-weight:300;font-display:swap}
-@font-face{font-family:'Inter';src:url('/brand/fonts/host-400.woff2') format('woff2');font-weight:400;font-display:swap}
-@font-face{font-family:'Inter';src:url('/brand/fonts/host-500.woff2') format('woff2');font-weight:500;font-display:swap}
-@font-face{font-family:'Inter';src:url('/brand/fonts/host-600.woff2') format('woff2');font-weight:600;font-display:swap}
-@font-face{font-family:'Inter';src:url('/brand/fonts/host-700.woff2') format('woff2');font-weight:700;font-display:swap}
-:root{
- --navy:#6B0826;--navy-dark:#4E0519;--navy-light:#E1654B;--navy-pale:#C9D3EE;--navy-wash:#F6F2DA;
- --ink:#463A33;--ink-mid:#6B5A52;--ink-muted:#8A7B72;
- --cream:#FAF6B7;--warm:#E3C4D5;--warm-mid:#CD96B3;
- --olive:#E1654B;--olive-light:#C74E36;--olive-pale:#F6F2DA;
- --sage:#99AADB;--slate:#6B0826;--teal:#99AADB;
-}
-body{background:#FAF6B7;}
-</style>
+  <meta name="description" content="Cleo Care is chef-prepared meal delivery for trying to conceive, pregnancy, and postpartum. Nutrient-dense, omega-3 forward, and screened for each stage. Nourishing for the whole family. A Kooshi Gourmet program, delivered through Cleo."><rect width='100' height='100' rx='12' fill='white'/><text y='.9em' font-size='82' font-family='Georgia,serif' fill='%231B3872' x='50%' text-anchor='middle' dy='0.1em'>C</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%236B0826'/><text y='.9em' font-size='74' font-family='Georgia,serif' fill='%23FAF6B7' x='50%' text-anchor='middle' dy='0.06em'>C</text></svg>">
+<link rel="stylesheet" href="/brand/brand.css">
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
+<style>
+  .md-by{ font-family:var(--font-script); font-size:clamp(1.6rem,3vw,2.2rem); color:var(--coral); display:block; margin:6px 0 18px; }
+  .md-hero-lede{ max-width:620px; margin:0 auto 28px; }
+  .md-benefits{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1040px; margin:0 auto; }
+  .md-benefit{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg); padding:28px 26px; box-shadow:var(--shadow-sm); }
+  .md-benefit h3{ font-size:1.2rem; margin-bottom:8px; color:var(--burgundy); }
+  .md-benefit p{ margin:0; color:var(--text); font-size:1rem; line-height:1.6; }
+  .md-benefit:nth-child(3n+1){ border-top:5px solid var(--coral); }
+  .md-benefit:nth-child(3n+2){ border-top:5px solid var(--sky-deep); }
+  .md-benefit:nth-child(3n+3){ border-top:5px solid var(--blush); }
+  .md-family{ max-width:720px; margin:34px auto 0; text-align:center; background:var(--butter); border-radius:var(--radius-lg); padding:22px 28px; color:var(--burgundy); font-size:1.05rem; line-height:1.6; }
+  .md-quote{ max-width:820px; margin:0 auto; text-align:center; }
+  .md-quote .big{ font-size:clamp(1.5rem,3vw,2.3rem); line-height:1.25; margin:14px 0 22px; color:var(--ivory); }
+  .md-quote .big span{ color:var(--butter); display:block; margin-top:6px; }
+  .md-quote p{ color:rgba(255,254,247,.86); font-size:1.08rem; line-height:1.7; }
+  .md-days{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1040px; margin:0 auto; }
+  .md-day{ background:var(--ivory); border-radius:var(--radius-lg); padding:26px 24px; box-shadow:var(--shadow-sm); }
+  .md-day .script{ font-size:2rem; color:var(--coral); display:block; margin-bottom:10px; }
+  .md-day ul{ list-style:none; margin:0; padding:0; }
+  .md-day li{ padding:9px 0; border-top:1px solid var(--line); color:var(--text); font-size:.98rem; line-height:1.45; }
+  .md-day li:first-child{ border-top:0; }
+  .md-how{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; max-width:920px; margin:0 auto; }
+  .md-how .sn{ font-family:var(--font-script); font-size:3.1rem; color:var(--burgundy); display:block; line-height:1; margin-bottom:12px; }
+  .md-how h3{ font-size:1.3rem; margin-bottom:9px; color:var(--burgundy); }
+  .md-how p{ color:var(--text); font-size:1.02rem; }
+  .md-note{ text-align:center; max-width:640px; margin:34px auto 0; color:var(--text); }
+  .md-legal{ max-width:820px; margin:0 auto; }
+  .md-legal p{ font-size:.8rem; line-height:1.7; color:var(--text); opacity:.85; margin:0 0 12px; }
+  .md-legal a{ color:var(--burgundy); }
+  body{ padding-bottom:42px; }
+  .foot{ position:relative; overflow:hidden; background:var(--burgundy); color:var(--butter); }
+  .foot .wrap{ position:relative; z-index:1; padding-block:56px 30px; }
+  .foot a{ color:rgba(250,246,183,.85); text-decoration:none; } .foot a:hover{ color:var(--butter); }
+  .foot-bar{ border-top:1px solid rgba(250,246,183,.24); margin-top:34px; padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
+  @media(max-width:820px){ .md-benefits,.md-days,.md-how{ grid-template-columns:1fr; } }
+</style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <header class="cleo-nav">
-    <div class="cleo-nav__inner">
-      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
-      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
-      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
-      <nav class="cleo-nav__links">
-        <a href="faq.html">How We Work</a>
-        <a href="meal-delivery.html">Meal Delivery</a>
-        <a href="favorites.html">Our Favorites</a>
-        <a href="our-story.html">Our Story</a>
-        <a href="gifting.html">Gifting</a>
-        <a href="provider-intake.html">For Providers</a>
-        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
-      </nav>
+
+<!-- Nav -->
+<header class="cleo-nav">
+  <div class="cleo-nav__inner">
+    <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+    <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+    <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <nav class="cleo-nav__links">
+      <a href="faq.html">How We Work</a>
+      <a href="meal-delivery.html">Meal Delivery</a>
+      <a href="favorites.html">Our Favorites</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="gifting.html">Gifting</a>
+      <a href="provider-intake.html">For Providers</a>
+      <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="page-hero h-butter">
+  <div class="page-hero__tex"></div>
+  <div class="page-hero__inner">
+    <h1>Meal Delivery</h1>
+    <span class="md-by">powered by Kooshi Gourmet</span>
+    <p class="lede md-hero-lede">We're teaming up with Southern California's leading meal delivery service to offer organic, chef-prepared meals directly to your door. Nutrient-dense and designed specifically for your needs, and your family.</p>
+    <a href="https://app.cleocare.co/join?next=/client/meals" class="btn btn--primary">Build Your Program &rarr;</a>
+  </div>
+</section>
+
+<!-- What's on the plate -->
+<section class="section bg-ivory">
+  <div class="wrap">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
+      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">What's on the plate</span>
+      <h2>Stage-aware nutrition, chef-quality every day.</h2>
     </div>
-  </header>
-
-<style>
-  :root { --sage:#8FA99C; --teal:#6FA39B; --slate:#4B5563; }
-  .k-wrap { max-width:1000px; margin:0 auto; }
-  .k-2col { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
-  .k-3col { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  .k-benefits { display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
-  .k-eyebrow { font-family:'Inter',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--olive); }
-  .k-h2 { font-family:'Spectral',serif; font-weight:300; font-size:clamp(2rem,3.8vw,2.9rem); color:var(--navy); line-height:1.1; letter-spacing:-0.02em; }
-  .k-body { font-family:'Spectral',serif; font-weight:300; font-size:1.0625rem; color:var(--ink-mid); line-height:1.8; }
-  @media (max-width:768px) {
-    .k-2col, .k-3col, .k-benefits { grid-template-columns:1fr !important; gap:32px; }
-    section.k-sec { padding-left:24px !important; padding-right:24px !important; }
-  }
-  html { scroll-behavior:smooth; }
-
-  /* One continuous, soft light-yellow squiggle behind everything */
-  body{ position:relative; background:#F6F2DA !important; }
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#E9E09A; opacity:.14;
-    -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
-    mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
-  }
-  /* Hero rides the same field so the squiggle is continuous top-to-bottom */
-  .page-hero.h-butter{ background:transparent !important; }
-  .page-hero .page-hero__tex{ display:none !important; }
-  /* The meal card lifts off the squiggle, favorites-style */
-  .meal-card{
-    background:var(--ivory); border:1px solid rgba(107,8,38,0.10);
-    border-radius:26px; padding:clamp(36px,5vw,56px) clamp(28px,5vw,52px);
-    box-shadow:0 18px 44px rgba(36,28,30,.10);
-  }
-  /* Favorites-style stage cards */
-  .meal-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
-  .meal-brand{ background:#fff; border:1.5px solid rgba(107,8,38,0.09); border-radius:16px; overflow:hidden;
-    display:flex; flex-direction:column; box-shadow:0 2px 8px rgba(36,28,30,0.06),0 8px 24px rgba(36,28,30,0.06);
-    transition:transform 0.2s ease, box-shadow 0.2s ease; }
-  .meal-brand:hover{ transform:translateY(-4px); box-shadow:0 4px 16px rgba(36,28,30,0.1),0 16px 40px rgba(36,28,30,0.12); }
-  .meal-brand__head{ height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; }
-  .meal-brand__icon{ width:52px; height:52px; display:block; }
-  .meal-brand__name{ font-family:'Spectral',serif; font-size:1.5rem; font-weight:300; color:var(--navy); letter-spacing:0.02em; }
-  .meal-brand__body{ padding:22px 24px; flex:1; display:flex; flex-direction:column; align-items:center; }
-  .meal-brand__eyebrow{ font-family:'Inter',sans-serif; font-size:0.6875rem; font-weight:600; letter-spacing:0.14em;
-    text-transform:uppercase; color:var(--olive); display:block; }
-  @media(max-width:900px){ .meal-grid{ grid-template-columns:repeat(2,1fr) !important; } }
-  @media(max-width:600px){ .meal-grid{ grid-template-columns:1fr !important; } }
-</style>
-
-<main>
-  <!-- HERO -->
-  <section class="page-hero h-butter page-hero--compact">
-    <div class="page-hero__tex"></div>
-    <div class="page-hero__inner">
-      <span class="page-hero__eyebrow">Cleo Care × Kooshi Gourmet</span>
-      <h1>Meal Delivery</h1>
-      <p class="page-hero__lede" style="font-style:italic;color:var(--coral);">powered by Kooshi Gourmet</p>
-      <p class="page-hero__note">We're teaming up with Southern California's leading meal delivery service to offer organic, chef-prepared meals directly to your door. Nutrient-dense and designed specifically for your needs, and your family.</p>
+    <div class="md-benefits">
+      <div class="md-benefit"><h3>Organic</h3><p>Every meal is made with organic ingredients.</p></div>
+      <div class="md-benefit"><h3>Rich in vitamins &amp; omega-3</h3><p>Premium whole-food ingredients naturally high in essential vitamins, minerals, and omega-3 (DHA).</p></div>
+      <div class="md-benefit"><h3>Expert-screened</h3><p>Designed by Kooshi's in-house registered dietitian, a mother herself.</p></div>
     </div>
-  </section>
+    <p class="md-family"><strong>And for the whole family.</strong> Add meals for a partner or children to any program, and everyone eats the same good food she does.</p>
+  </div>
+</section>
 
-  <!-- MEALS BY STAGE (favorites-style card grid) -->
-  <section style="padding:80px 56px 32px;position:relative;z-index:1;">
-    <div style="max-width:1100px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:52px;">
-        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--olive);margin-bottom:16px;">Cleo's Kitchen</p>
-        <h2 style="font-family:'Spectral',serif;font-weight:300;font-size:clamp(2rem,3.5vw,2.75rem);color:var(--navy);letter-spacing:-0.02em;margin-bottom:16px;">Meals Made for Every Stage</h2>
-        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.0625rem;color:var(--ink-mid);line-height:1.75;max-width:560px;margin:0 auto;">Organic, chef-prepared, and screened for each phase of your journey. Nutrient-dense and nourishing, with the option to order for the whole family too.</p>
-      </div>
-      <div class="meal-grid">
-        <div class="meal-brand">
-          <div class="meal-brand__head" style="background:linear-gradient(135deg,#EFDDE6 0%,#E3C4D5 100%);">
-            <span class="meal-brand__icon" style="background:#CD96B3;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span>
-            <span class="meal-brand__name">Trying to Conceive</span>
-          </div>
-          <div class="meal-brand__body">
-            <span class="meal-brand__eyebrow">Fertility Nutrition</span>
-          </div>
-        </div>
-        <div class="meal-brand">
-          <div class="meal-brand__head" style="background:linear-gradient(135deg,#EAD5DB 0%,#D9AEBC 100%);">
-            <span class="meal-brand__icon" style="background:#6B0826;-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span>
-            <span class="meal-brand__name">Pregnancy</span>
-          </div>
-          <div class="meal-brand__body">
-            <span class="meal-brand__eyebrow">Every Trimester</span>
-          </div>
-        </div>
-        <div class="meal-brand">
-          <div class="meal-brand__head" style="background:linear-gradient(135deg,#F6D9CF 0%,#EDB09C 100%);">
-            <span class="meal-brand__icon" style="background:#E1654B;-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span>
-            <span class="meal-brand__name">Postpartum</span>
-          </div>
-          <div class="meal-brand__body">
-            <span class="meal-brand__eyebrow">The Fourth Trimester</span>
-          </div>
-        </div>
-      </div>
+<!-- Why it's different -->
+<section class="section bg-burgundy on-dark">
+  <div class="wrap md-quote">
+    <span class="eyebrow">Why it's different</span>
+    <p class="big">Most programs optimize for calories or convenience.<span>Cleo Care optimizes for this season of a woman's life.</span></p>
+    <p>We started from our signature chef-driven kitchen and added a layer that doesn't exist anywhere else: a fertility, pregnancy &amp; breastfeeding safety classification, applied to every ingredient before it reaches the menu.</p>
+  </div>
+</section>
+
+<!-- Sample menu -->
+<section class="section bg-sky">
+  <div class="wrap">
+    <div style="text-align:center;max-width:680px;margin:0 auto 40px;">
+      <span class="eyebrow" style="color:var(--burgundy);display:block;margin-bottom:12px;">A taste of the menu</span>
+      <h2>A look at the plate.</h2>
+      <p style="margin-top:16px;color:var(--text);">Chef-prepared, rotating daily and seasonally. Here's a sample three days from our kitchen. Every Cleo Care menu starts here and is screened against published guidance on seafood, alcohol and caffeine.</p>
     </div>
-  </section>
+    <div class="md-days">
+      <div class="md-day"><span class="script">Day One</span><ul>
+        <li>Organic Banana Oat Pancakes · Organic Berries</li>
+        <li>Farmers Market Chopped Vegetable Salad</li>
+        <li>Italian Turkey Meatballs · Garlic Green Beans</li>
+        <li>Super Green Omega Smoothie</li>
+        <li>Gluten-Free Chocolate Chip Walnut Cookie</li></ul></div>
+      <div class="md-day"><span class="script">Day Two</span><ul>
+        <li>Green Breakfast Tacos · Avocado · Tomatillo Salsa</li>
+        <li>Asian Kale Caesar Salad · Wild Salmon</li>
+        <li>Grilled Steak Mexicana · Grilled Chili Corn</li>
+        <li>Chia Seed Mango Jasmine Tea</li>
+        <li>Berry-Nut Trail Mix</li></ul></div>
+      <div class="md-day"><span class="script">Day Three</span><ul>
+        <li>Gluten-Free Berry Waffle · Greek Yogurt</li>
+        <li>Lemon Roasted Salmon · Grilled Asparagus</li>
+        <li>Herb Roasted Chicken · Cauliflower Puree</li>
+        <li>Fresh Berry Mint Smoothie</li>
+        <li>Gluten-Free Apple Banana Macadamia Nut Bread</li></ul></div>
+    </div>
+    <p class="md-note">Menus rotate daily and seasonally.</p>
+  </div>
+</section>
 
-  <section style="display:flex;align-items:center;justify-content:center;padding:48px 24px 88px;">
-    <div class="meal-card" style="max-width:560px;width:100%;text-align:center;">
+<!-- How it works -->
+<section class="section bg-blush">
+  <div class="wrap">
+    <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
+      <span class="eyebrow" style="color:var(--burgundy);display:block;margin-bottom:12px;">How it works</span>
+      <h2>Three steps to a full fridge.</h2>
+    </div>
+    <div class="md-how">
+      <div><span class="sn">1</span><h3>Choose your plan</h3><p>Pick your meals per day and how long you'd like them.</p></div>
+      <div><span class="sn">2</span><h3>We screen, cook &amp; deliver</h3><p>Every ingredient pre-vetted against published guidance on seafood, alcohol and caffeine.</p></div>
+      <div><span class="sn">3</span><h3>Everyone eats well</h3><p>No menus to research, no labels to decode, and enough on the table for the people she feeds.</p></div>
+    </div>
+    <p class="md-note">Available in flexible packages, from short reset weeks to month long support. Add meals for a partner and children to any program.</p>
+    <div style="text-align:center;margin-top:30px;">
+      <a href="https://app.cleocare.co/join?next=/client/meals" class="btn btn--primary">Build Your Program &rarr;</a>
+    </div>
+  </div>
+</section>
 
-      <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);margin-bottom:18px;">Register your interest here</p>
-      <form id="meal-waitlist-form" action="https://app.cleocare.co/api/meal-waitlist" method="POST" style="display:flex;flex-direction:column;gap:12px;max-width:400px;margin:0 auto;">
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
-        <input name="email" type="email" required placeholder="you@example.com" style="width:100%;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:14px 16px;outline:none;">
-        <button type="submit" class="btn-primary" style="justify-content:center;width:100%;">Keep me posted →</button>
-      </form>
-      <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);margin-top:14px;">No spam. Just one note when Cleo Care meals are ready.</p>
+<!-- Important information -->
+<section id="start" class="section bg-ivory" style="padding-block:48px;">
+  <div class="wrap md-legal">
+    <span class="eyebrow" style="display:block;margin-bottom:14px;">Important information</span>
+      <p><strong style="color:var(--ink-mid);">Cleo Care meals are food, not medicine.</strong> This material is for general informational purposes only, is not medical, nutritional, or lactation advice, and is not a substitute for care from your physician or a qualified healthcare provider. Cleo Care does not diagnose, treat, cure, or prevent any disease or condition, including postpartum depression or lactation insufficiency. Always consult your healthcare provider before changing your diet while pregnant, postpartum, or breastfeeding, and regarding any allergies or medical conditions. Individual results vary; no specific outcome is promised or guaranteed.</p>
+      <p>Our ingredient screening is a culinary screening tool, not a clinical or safety certification. It reflects our good-faith interpretation of publicly available guidance (FDA, EPA, CDC, WHO, ACOG, NIH/NLM LactMed®) as of the date of preparation, and does not account for your personal medical history, medications, sensitivities, or your infant's needs.</p>
+      <p><strong style="color:var(--ink-mid);">Allergens.</strong> Cleo Care meals are prepared in a kitchen that also handles milk, eggs, fish, shellfish, tree nuts, peanuts, wheat, soy, and sesame. We cannot guarantee any meal is free from any allergen or from cross-contact.</p>
+      <p><strong style="color:var(--ink-mid);">California Proposition 65 WARNING.</strong> Consuming certain foods and beverages can expose you to chemicals, including methylmercury in fish and chemicals such as acrylamide that can form in cooked or heated foods, which are known to the State of California to cause cancer and/or birth defects or other reproductive harm. For more information go to <a href="https://www.P65Warnings.ca.gov/food" target="_blank" rel="noopener" style="color:var(--ink-mid);text-decoration:underline;">www.P65Warnings.ca.gov/food</a>.</p>
+      <p>Availability, pricing, menu items, ingredients, and the classification framework are subject to change without notice. Your purchase is governed by the applicable Cleo Care / Kooshi Gourmet Terms of Service. Third-party names and sources (FDA, EPA, CDC, WHO, ACOG, NIH/NLM, LactMed®) are cited for reference only and do not imply endorsement or affiliation. LactMed® is a registered trademark of its respective owner.</p>
+  </div>
+</section>
 
-
-      <div style="margin-top:56px;padding-top:32px;border-top:1px solid rgba(27,56,114,0.12);">
-        <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--olive);margin-bottom:14px;">Friends at Kooshi</p>
-        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1rem;color:var(--ink-mid);line-height:1.7;margin-bottom:16px;">Enter your password to view the preview.</p>
-        <form id="kooshi-gate" style="display:flex;gap:10px;max-width:400px;margin:0 auto;">
-          <input id="kooshi-pw" type="password" placeholder="Password" autocomplete="off" style="flex:1;font-family:'Inter',sans-serif;font-size:0.9375rem;color:var(--ink);background:#fff;border:1.5px solid rgba(27,56,114,0.15);border-radius:6px;padding:13px 15px;outline:none;">
-          <button type="submit" class="btn-primary" style="padding:13px 24px;font-size:0.875rem;">Enter</button>
-        </form>
-        <p id="kooshi-err" style="display:none;font-family:'Inter',sans-serif;font-size:0.8125rem;color:#B4443C;margin-top:12px;">That password isn't right. Try again or email hello@cleocare.co.</p>
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined. Fertility through postpartum, across Los Angeles, Orange County &amp; Santa Barbara.</p>
       </div>
-
-      <div id="meal-waitlist-confirm" style="display:none;padding:16px 0;">
-        <div style="width:52px;height:52px;border-radius:50%;background:#F6F2DA;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#E1654B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <p style="font-family:'Spectral',serif;font-weight:300;font-size:1.5rem;color:var(--navy);">You're on the list! 🌿</p>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How We Work</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
       </div>
     </div>
-  </section>
-</main><script>
-  document.getElementById('meal-waitlist-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-      if (res.ok) { form.style.display = 'none'; document.getElementById('meal-waitlist-confirm').style.display = 'block'; }
-      else alert('Something went wrong. Please try again or email hello@cleocare.co.');
-    } catch { alert('Something went wrong. Please try again or email hello@cleocare.co.'); }
-  });
-</script>
-<script>
-  // Courtesy gate for the Kooshi preview. The password is compared as a SHA-256
-  // digest so the literal string isn't sitting in the page source, but this is a
-  // static site: it keeps casual visitors out, it is not real access control.
-  document.getElementById('kooshi-gate').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const pw = document.getElementById('kooshi-pw').value.trim();
-    const err = document.getElementById('kooshi-err');
-    const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pw)))]
-      .map(b => b.toString(16).padStart(2, '0')).join('');
-    if (digest === '99245e70eced8348856428019100af5aad6f897936d66605369480de81186f41') {
-      try { localStorage.setItem('cleo_kooshi_preview', '1'); } catch (e) {}
-      window.location.href = 'meal-delivery-preview.html';
-    } else {
-      err.style.display = 'block';
-      document.getElementById('kooshi-pw').value = '';
-    }
-  });
-</script>
-
-<footer style="background:transparent;border-top:1px solid rgba(107,8,38,0.12);padding:40px 56px;position:relative;z-index:1;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <span style="font-family:'Rosevale',Georgia,serif;font-size:1.375rem;font-weight:400;color:var(--navy);">Cleo Care</span>
-    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);">© 2026 Cleo Care, LLC. All rights reserved.</p>
-    <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--navy);text-decoration:none;">@cleo.care.co</a>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
   </div>
 </footer>
 
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const btn = document.getElementById('hamburger');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-</script>
-
-<div id="mobile-cta-bar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(250,248,244,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(27,56,114,0.1);padding:12px 20px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -4px 24px rgba(27,56,114,0.1);">
-  <a href="booking.html" style="display:flex;align-items:center;justify-content:center;width:100%;background:#6B0826;color:#fff;font-family:'Spectral',serif;font-size:1rem;font-weight:400;letter-spacing:0.04em;padding:16px 24px;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(27,56,114,0.25),0 8px 24px rgba(27,56,114,0.2);">
-    Book Care
-  </a>
-</div>
-<style>
-  @media (max-width: 768px) {
-    #mobile-cta-bar { display: block !important; }
-    body { padding-bottom: 80px; }
-  }
-</style>
 </body>
 </html>
