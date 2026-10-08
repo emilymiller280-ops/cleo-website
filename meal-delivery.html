@@ -66,6 +66,11 @@
             mask:url("/brand/img/texture-mono.svg") center top/max(1500px,130%) auto repeat-y; }
   .md-butter > section, .md-butter > .page-hero.h-butter{ position:relative; z-index:1; background:transparent; }
   .md-stages-sec{ padding-top:24px; }
+  .md-legal-d summary{ cursor:pointer; list-style:none; display:inline-flex; align-items:center; gap:8px; font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--text-mid, #6B5C53); }
+  .md-legal-d summary::-webkit-details-marker{ display:none; }
+  .md-legal-d summary::after{ content:"+"; font-size:1rem; font-weight:400; letter-spacing:0; }
+  .md-legal-d[open] summary::after{ content:"\2212"; }
+  .md-legal-d p{ font-size:.78rem; line-height:1.6; margin:12px 0 0; }
 </style>
 </head>
 <body>
@@ -198,14 +203,16 @@
 </section>
 
 <!-- Important information -->
-<section id="start" class="section bg-ivory" style="padding-block:48px;">
+<section id="start" class="section bg-ivory" style="padding-block:28px;">
   <div class="wrap md-legal">
-    <span class="eyebrow" style="display:block;margin-bottom:14px;">Important information</span>
+    <details class="md-legal-d">
+    <summary>Important information</summary>
       <p><strong style="color:var(--ink-mid);">Cleo Care meals are food, not medicine.</strong> This material is for general informational purposes only, is not medical, nutritional, or lactation advice, and is not a substitute for care from your physician or a qualified healthcare provider. Cleo Care does not diagnose, treat, cure, or prevent any disease or condition, including postpartum depression or lactation insufficiency. Always consult your healthcare provider before changing your diet while pregnant, postpartum, or breastfeeding, and regarding any allergies or medical conditions. Individual results vary; no specific outcome is promised or guaranteed.</p>
       <p>Our ingredient screening is a culinary screening tool, not a clinical or safety certification. It reflects our good-faith interpretation of publicly available guidance (FDA, EPA, CDC, WHO, ACOG, NIH/NLM LactMed®) as of the date of preparation, and does not account for your personal medical history, medications, sensitivities, or your infant's needs.</p>
       <p><strong style="color:var(--ink-mid);">Allergens.</strong> Cleo Care meals are prepared in a kitchen that also handles milk, eggs, fish, shellfish, tree nuts, peanuts, wheat, soy, and sesame. We cannot guarantee any meal is free from any allergen or from cross-contact.</p>
       <p><strong style="color:var(--ink-mid);">California Proposition 65 WARNING.</strong> Consuming certain foods and beverages can expose you to chemicals, including methylmercury in fish and chemicals such as acrylamide that can form in cooked or heated foods, which are known to the State of California to cause cancer and/or birth defects or other reproductive harm. For more information go to <a href="https://www.P65Warnings.ca.gov/food" target="_blank" rel="noopener" style="color:var(--ink-mid);text-decoration:underline;">www.P65Warnings.ca.gov/food</a>.</p>
       <p>Availability, pricing, menu items, ingredients, and the classification framework are subject to change without notice. Your purchase is governed by the applicable Cleo Care / Kooshi Gourmet Terms of Service. Third-party names and sources (FDA, EPA, CDC, WHO, ACOG, NIH/NLM, LactMed®) are cited for reference only and do not imply endorsement or affiliation. LactMed® is a registered trademark of its respective owner.</p>
+    </details>
   </div>
 </section>
 
