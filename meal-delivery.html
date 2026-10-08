@@ -60,6 +60,12 @@
   .md-stage__body{ padding:20px 24px; text-align:center; }
   .md-stage__eyebrow{ font-size:.6875rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--coral); }
   @media(max-width:820px){ .md-stages{ grid-template-columns:1fr; } }
+  .md-butter{ position:relative; overflow:hidden; background:var(--butter); }
+  .md-butter__tex{ position:absolute; inset:0; z-index:0; background:var(--butter-deep); opacity:.6;
+    -webkit-mask:url("/brand/img/texture-mono.svg") center top/max(1500px,130%) auto repeat-y;
+            mask:url("/brand/img/texture-mono.svg") center top/max(1500px,130%) auto repeat-y; }
+  .md-butter > section, .md-butter > .page-hero.h-butter{ position:relative; z-index:1; background:transparent; }
+  .md-stages-sec{ padding-top:24px; }
 </style>
 </head>
 <body>
@@ -84,8 +90,9 @@
 </header>
 
 <!-- Hero -->
+<!-- Hero + stages share one butter squiggle (Emily, 2026-10-08) -->
+<div class="md-butter"><div class="md-butter__tex"></div>
 <section class="page-hero h-butter">
-  <div class="page-hero__tex"></div>
   <div class="page-hero__inner">
     <h1>Meal Delivery</h1>
     <span class="md-by">powered by Kooshi Gourmet</span>
@@ -95,7 +102,7 @@
 </section>
 
 <!-- Meals for every stage -->
-<section class="section bg-ivory">
+<section class="section md-stages-sec">
   <div class="wrap">
     <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
       <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">Cleo's Kitchen</span>
@@ -127,6 +134,8 @@
     </div>
   </div>
 </section>
+
+</div>
 
 <!-- Why it's different -->
 <section class="section bg-burgundy on-dark">
