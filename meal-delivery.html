@@ -71,6 +71,9 @@
   .md-legal-d summary::after{ content:"+"; font-size:1rem; font-weight:400; letter-spacing:0; }
   .md-legal-d[open] summary::after{ content:"\2212"; }
   .md-legal-d p{ font-size:.78rem; line-height:1.6; margin:12px 0 0; }
+  /* No one-word last lines (Emily, 2026-10-08) */
+  h1, h2, h3, .lede, .md-note, .md-quote p, div[style*="text-align:center"] > p{ text-wrap:balance; }
+  p, li{ text-wrap:pretty; }
 </style>
 </head>
 <body>
@@ -195,8 +198,8 @@
       <div><span class="sn">2</span><h3>We screen, cook &amp; deliver</h3><p>Kooshi's chefs cook fresh and deliver to your door.</p></div>
       <div><span class="sn">3</span><h3>Everyone eats well</h3><p>No menus to research, no labels to decode, and enough on the table for everyone you feed.</p></div>
     </div>
-    <p class="md-note">Plans from 5 to 40 days of meals, weekdays only or every day. Want longer? Just ask. Add meals for a partner and children to any program.</p>
-    <p class="md-note" style="margin-top:12px;">Delivering across Los Angeles, Orange County and Santa Barbara. Your first delivery arrives at least 4 days after you order.</p>
+    <p class="md-note">Add meals for a partner and children to any program.</p>
+    <p class="md-note" style="margin-top:12px;">Delivering across Southern California.</p>
     <div style="text-align:center;margin-top:30px;">
       <a href="https://app.cleocare.co/join?next=/client/meals" class="btn btn--primary">Build Your Program &rarr;</a>
     </div>
