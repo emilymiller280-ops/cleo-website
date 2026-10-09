@@ -71,10 +71,10 @@
   .md-legal-d summary::after{ content:"+"; font-size:1rem; font-weight:400; letter-spacing:0; }
   .md-legal-d[open] summary::after{ content:"\2212"; }
   .md-legal-d p{ font-size:.78rem; line-height:1.6; margin:12px 0 0; }
-  /* No one-word last lines (Emily, 2026-10-08) */
-  h1, h2, h3, .lede, .md-note, .md-quote p, div[style*="text-align:center"] > p{ text-wrap:balance; }
-  p, li{ text-wrap:pretty; }
+  /* No one-word last lines: the shared rule is in brand/nav.css; these blocks also balance. */
+  .md-note, .md-quote p{ text-wrap:balance; }
 </style>
+<script src="/brand/no-widows.js" defer></script>
 </head>
 <body>
 
@@ -182,7 +182,6 @@
         <li>Fresh Berry Mint Smoothie</li>
         <li>Gluten-Free Apple Banana Macadamia Nut Bread</li></ul></div>
     </div>
-    <p class="md-note">Menus rotate daily and seasonally.</p>
   </div>
 </section>
 

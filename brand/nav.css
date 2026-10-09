@@ -52,3 +52,8 @@
   .cleo-nav__toggle:checked ~ .cleo-nav__burger span:nth-child(2){ opacity:0; }
   .cleo-nav__toggle:checked ~ .cleo-nav__burger span:nth-child(3){ bottom:auto; top:50%; transform:translateY(-50%) rotate(-45deg); }
 }
+
+/* No one-word last lines on any heading or paragraph (Emily, 2026-10-08).
+   balance evens out short centred blocks; pretty fixes the last line of body text. */
+h1, h2, h3, h4, .lede, [style*="text-align:center"] > p{ text-wrap:balance; }
+p, li, blockquote{ text-wrap:pretty; }
