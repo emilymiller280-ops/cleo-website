@@ -24,7 +24,7 @@
       <p class="greeting" id="greeting">Welcome.</p>
       <h1 class="title">Authorization to verify your insurance benefits</h1>
       <p class="lede">
-        This lets Cleo Care contact your insurer to check your coverage on your behalf —
+        This lets Cleo Care contact your insurer to check your coverage on your behalf
         and, where it applies, submit claims for you. Please read the two authorizations
         below, then add your name and agree at the bottom.
       </p>
@@ -48,8 +48,8 @@
             authorization requirements.
           </p>
           <p>
-            I authorize the release of information necessary to perform this verification —
-            including my name, date of birth, member identification number, and group number —
+            I authorize the release of information necessary to perform this verification,
+            including my name, date of birth, member identification number, and group number,
             to my insurer and its representatives.
           </p>
           <p>
@@ -117,7 +117,7 @@
       <h1 class="title">Thank you, <span id="done-name">friend</span>.</h1>
       <p class="lede">
         Your authorization has been recorded. Cleo can now verify your benefits with your insurer
-        on your behalf — we'll be in touch shortly with what we find.
+        on your behalf. We'll be in touch shortly with what we find.
       </p>
       <p class="done-stamp" id="done-stamp"></p>
     </section>
@@ -283,7 +283,7 @@
           });
           if (!res.ok) throw new Error("Network response was not ok");
         } else {
-          const subject = encodeURIComponent("Insurance Authorization signed — " + record.client_name);
+          const subject = encodeURIComponent("Insurance Authorization signed: " + record.client_name);
           const body = encodeURIComponent(
             "Insurance authorization signed via Cleo consent page.\n\n" +
             "Name: " + record.client_name + "\n" +
