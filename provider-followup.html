@@ -96,7 +96,7 @@
     }
     .form-input::placeholder { color: var(--ink-muted); }
 
-    .toggle-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .toggle-three { display: grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 10px; }
     .toggle-btn {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
@@ -171,7 +171,7 @@
         <div>
           <p class="section-label">About the Call</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="provider-first">Your first name</label>
                 <input class="form-input" type="text" id="provider-first" name="provider_first_name" placeholder="First" required>
@@ -200,7 +200,7 @@
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Overall assessment</label>
-              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+              <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;">
                 <button type="button" class="toggle-btn" id="assess-excellent" onclick="setAssessment('excellent')" style="padding:13px 6px;">Excellent</button>
                 <button type="button" class="toggle-btn" id="assess-great" onclick="setAssessment('great')" style="padding:13px 6px;">Great</button>
                 <button type="button" class="toggle-btn" id="assess-good" onclick="setAssessment('good')" style="padding:13px 6px;">Good</button>

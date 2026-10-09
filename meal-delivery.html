@@ -19,7 +19,7 @@
 <style>
   .md-by{ font-family:var(--font-script); font-size:clamp(1.6rem,3vw,2.2rem); color:var(--coral); display:block; margin:6px 0 18px; }
   .md-hero-lede{ max-width:620px; margin:0 auto 28px; }
-  .md-benefits{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1040px; margin:0 auto; }
+  .md-benefits{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:1040px; margin:0 auto; }
   .md-benefit{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg); padding:28px 26px; box-shadow:var(--shadow-sm); }
   .md-benefit h3{ font-size:1.2rem; margin-bottom:8px; color:var(--burgundy); }
   .md-benefit p{ margin:0; color:var(--text); font-size:1rem; line-height:1.6; }
@@ -31,13 +31,13 @@
   .md-quote .big{ font-size:clamp(1.5rem,3vw,2.3rem); line-height:1.25; margin:14px 0 22px; color:var(--ivory); }
   .md-quote .big span{ color:var(--butter); display:block; margin-top:6px; }
   .md-quote p{ color:rgba(255,254,247,.86); font-size:1.08rem; line-height:1.7; }
-  .md-days{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1040px; margin:0 auto; }
+  .md-days{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:1040px; margin:0 auto; }
   .md-day{ background:var(--ivory); border-radius:var(--radius-lg); padding:26px 24px; box-shadow:var(--shadow-sm); }
   .md-day .script{ font-size:2rem; color:var(--coral); display:block; margin-bottom:10px; }
   .md-day ul{ list-style:none; margin:0; padding:0; }
   .md-day li{ padding:9px 0; border-top:1px solid var(--line); color:var(--text); font-size:.98rem; line-height:1.45; }
   .md-day li:first-child{ border-top:0; }
-  .md-how{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; max-width:920px; margin:0 auto; }
+  .md-how{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:32px; max-width:920px; margin:0 auto; }
   .md-how .sn{ font-family:var(--font-script); font-size:3.1rem; color:var(--burgundy); display:block; line-height:1; margin-bottom:12px; }
   .md-how h3{ font-size:1.3rem; margin-bottom:9px; color:var(--burgundy); }
   .md-how p{ color:var(--text); font-size:1.02rem; }
@@ -51,7 +51,7 @@
   .foot a{ color:rgba(250,246,183,.85); text-decoration:none; } .foot a:hover{ color:var(--butter); }
   .foot-bar{ border-top:1px solid rgba(250,246,183,.24); margin-top:34px; padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
   @media(max-width:820px){ .md-benefits,.md-days,.md-how{ grid-template-columns:1fr; } }
-  .md-stages{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:1040px; margin:0 auto; }
+  .md-stages{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; max-width:1040px; margin:0 auto; }
   .md-stage{ background:var(--ivory); border:1px solid var(--line); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); transition:transform .2s ease, box-shadow .2s ease; }
   .md-stage:hover{ transform:translateY(-4px); }
   .md-stage__head{ height:170px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; }

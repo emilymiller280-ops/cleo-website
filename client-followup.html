@@ -189,7 +189,7 @@
         <div>
           <p class="section-label">About You</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="client-first">Your first name</label>
                 <input class="form-input" type="text" id="client-first" name="client_first_name" placeholder="First" required>
@@ -214,7 +214,7 @@
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Overall, how did the call feel?</label>
-              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;">
+              <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;">
                 <button type="button" class="toggle-btn" id="feel-great" onclick="setFeeling('great')">Great</button>
                 <button type="button" class="toggle-btn" id="feel-good" onclick="setFeeling('good')">Good</button>
                 <button type="button" class="toggle-btn" id="feel-okay" onclick="setFeeling('okay')">Okay</button>

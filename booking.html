@@ -288,7 +288,7 @@ body{background:#FAF6B7;}
         <div>
           <p class="section-label">About You</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="first-name">First name</label>
                 <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First" required>
@@ -298,7 +298,7 @@ body{background:#FAF6B7;}
                 <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Last" required>
               </div>
             </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="email">Email</label>
                 <input class="form-input" type="email" id="email" name="email" placeholder="you@email.com" required>
@@ -347,7 +347,7 @@ body{background:#FAF6B7;}
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">What kind of support are you interested in? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;">
+              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:4px;">
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Meal Delivery')">Meal Delivery</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Postpartum Doula')">Postpartum Doula</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Birth Doula')">Birth Doula</button>
@@ -372,7 +372,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Meal Delivery" style="display:none;">
                   <p class="svc-followup__title">A little more on meal delivery</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="md-freq">How often would you like meals?</label>
                       <select class="form-input" id="md-freq" name="md_frequency">
@@ -392,7 +392,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Postpartum Doula" style="display:none;">
                   <p class="svc-followup__title">A little more on postpartum doula support</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="ppd-when">When do you need support?</label>
                       <select class="form-input" id="ppd-when" name="ppd_when">
@@ -418,7 +418,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Birth Doula" style="display:none;">
                   <p class="svc-followup__title">A little more on birth doula support</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="bd-place">Where are you planning to give birth?</label>
                       <select class="form-input" id="bd-place" name="bd_birth_setting">
@@ -442,7 +442,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Lactation Consulting" style="display:none;">
                   <p class="svc-followup__title">A little more on lactation consulting</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="lc-focus">What are you hoping to work on?</label>
                       <select class="form-input" id="lc-focus" name="lc_focus">
@@ -497,7 +497,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Night Care" style="display:none;">
                   <p class="svc-followup__title">A little more on night care</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="nc-nights">How many nights per week?</label>
                       <select class="form-input" id="nc-nights" name="nc_nights">
@@ -545,7 +545,7 @@ body{background:#FAF6B7;}
 
                 <div class="svc-followup" data-svc="Sleep Support" style="display:none;">
                   <p class="svc-followup__title">A little more on sleep support</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div>
                       <label class="form-label" for="sl-who">Who is the sleep support for?</label>
                       <select class="form-input" id="sl-who" name="sl_who">
@@ -574,7 +574,7 @@ body{background:#FAF6B7;}
             </div>
             <div id="care-setting-wrap" style="display:none;">
               <label class="form-label">How would you like to receive care? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-              <div id="setting-chips" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;">
+              <div id="setting-chips" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:4px;">
                 <button type="button" class="service-chip" data-setting="home" onclick="toggleSetting(this,'In-home')">In your home</button>
                 <button type="button" class="service-chip" data-setting="virtual" onclick="toggleSetting(this,'Telehealth')">Virtual (telehealth)</button>
                 <button type="button" class="service-chip" data-setting="office" onclick="toggleSetting(this,'In-office')">In office</button>
@@ -598,7 +598,7 @@ body{background:#FAF6B7;}
             <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:4px;">Mental health support, pelvic floor physical therapy and lactation consultations may be covered under your insurance plan*. Once booked, we help check your eligibility where applicable and navigate insurance related headache for you.</p>
             <div>
               <label class="form-label">Would you like help navigating insurance coverage?</label>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;">
                 <button type="button" class="toggle-btn" id="ins-yes" onclick="setInsurance('yes')">Yes, please</button>
                 <button type="button" class="toggle-btn" id="ins-no" onclick="setInsurance('no')">No, thanks</button>
               </div>
@@ -606,7 +606,7 @@ body{background:#FAF6B7;}
             </div>
             <div id="insurance-details" style="display:none;background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:24px;flex-direction:column;gap:16px;">
               <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);margin-bottom:4px;">Tell us about your insurance plan</p>
-              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                 <div>
                   <label class="form-label" for="ins-provider">Insurance provider</label>
                   <input class="form-input" type="text" id="ins-provider" name="ins_provider" placeholder="e.g. Blue Cross, Aetna">
@@ -616,7 +616,7 @@ body{background:#FAF6B7;}
                   <input class="form-input" type="text" id="ins-plan" name="ins_plan" placeholder="e.g. PPO Gold">
                 </div>
               </div>
-              <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                 <div>
                   <label class="form-label" for="ins-member">Member ID</label>
                   <input class="form-input" type="text" id="ins-member" name="ins_member" placeholder="Member ID">
@@ -644,18 +644,18 @@ body{background:#FAF6B7;}
               <!-- Policyholder -->
               <div>
                 <label class="form-label" style="margin-bottom:12px;">Are you the primary policyholder on this plan?</label>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;">
                   <button type="button" class="toggle-btn" id="ph-yes" onclick="setPolicyholder('yes')">Yes, it's mine</button>
                   <button type="button" class="toggle-btn" id="ph-no" onclick="setPolicyholder('no')">No, someone else's</button>
                 </div>
                 <input type="hidden" name="policyholder_self" id="ph-hidden">
                 <div id="subscriber-details" style="display:none;margin-top:16px;flex-direction:column;gap:14px;">
                   <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);">Policyholder's information</p>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div><label class="form-label" for="sub-first">First name</label><input class="form-input" type="text" id="sub-first" name="subscriber_first_name"></div>
                     <div><label class="form-label" for="sub-last">Last name</label><input class="form-input" type="text" id="sub-last" name="subscriber_last_name"></div>
                   </div>
-                  <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                  <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
                     <div><label class="form-label" for="sub-dob">Their date of birth</label><input class="form-input" type="date" id="sub-dob" name="subscriber_dob"></div>
                     <div><label class="form-label" for="sub-rel">Relationship to you</label>
                       <select class="form-input" id="sub-rel" name="subscriber_relationship">
@@ -677,7 +677,7 @@ body{background:#FAF6B7;}
               <!-- Not covered follow-up -->
               <div>
                 <label class="form-label" style="margin-bottom:12px;">If a service isn't covered by your insurance, would you still like to be matched with a provider?</label>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+                <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;">
                   <button type="button" class="toggle-btn" id="not-covered-yes" onclick="setNotCovered('yes')">Yes, match me anyway</button>
                   <button type="button" class="toggle-btn" id="not-covered-no" onclick="setNotCovered('no')">No, only if covered</button>
                 </div>

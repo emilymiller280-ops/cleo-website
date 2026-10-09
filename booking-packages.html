@@ -243,7 +243,7 @@
     }
 
     /* Toggle buttons */
-    .toggle-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .toggle-pair { display: grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap: 10px; }
     .toggle-btn {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
@@ -659,7 +659,7 @@
           </div>
 
           <!-- Name -->
-          <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;">
             <div>
               <label class="form-label" for="first-name">First name <span style="color:var(--olive);">*</span></label>
               <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Jane" required>
@@ -671,7 +671,7 @@
           </div>
 
           <!-- Email + Phone -->
-          <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;">
             <div>
               <label class="form-label" for="email">Email <span style="color:var(--olive);">*</span></label>
               <input class="form-input" type="email" id="email" name="email" placeholder="jane@email.com" required>
@@ -685,7 +685,7 @@
           <!-- Stage toggle (hidden for prebirth) -->
           <div id="stage-row">
             <label class="form-label">Where are you in your journey? <span style="color:var(--olive);">*</span></label>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;">
               <button type="button" class="toggle-btn" id="stage-ttc" onclick="setStage('ttc')">Trying to Conceive</button>
               <button type="button" class="toggle-btn" id="stage-expecting" onclick="setStage('expecting')">Currently expecting</button>
               <button type="button" class="toggle-btn" id="stage-delivered" onclick="setStage('delivered')">Recently delivered</button>
@@ -728,7 +728,7 @@
           <!-- Insurance details (shown when yes) -->
           <div id="insurance-details" style="display:none;background:var(--navy-wash);border:1.5px solid rgba(27,56,114,0.12);border-radius:8px;padding:24px;display:none;flex-direction:column;gap:16px;">
             <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;font-weight:600;color:var(--navy);margin-bottom:4px;">Tell us about your insurance plan</p>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="ins-provider">Insurance provider</label>
                 <input class="form-input" type="text" id="ins-provider" name="ins_provider" placeholder="e.g. Blue Cross, Aetna">
@@ -738,7 +738,7 @@
                 <input class="form-input" type="text" id="ins-plan" name="ins_plan" placeholder="e.g. PPO Gold">
               </div>
             </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="ins-member">Member ID</label>
                 <input class="form-input" type="text" id="ins-member" name="ins_member" placeholder="Member ID">
@@ -823,7 +823,7 @@
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;padding-top:32px;flex-wrap:wrap;gap:8px;">
       <p style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
         <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
         <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
         <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a></div>

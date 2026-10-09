@@ -227,7 +227,7 @@ body{background:#FAF6B7;}
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
 
       <!-- Name -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:20px;">
         <div>
           <label class="form-label" for="first-name">First name</label>
           <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First name" required>
@@ -266,7 +266,7 @@ body{background:#FAF6B7;}
       <!-- Services -->
       <div style="margin-bottom:48px;">
         <label class="form-label" style="margin-bottom:16px;">Services of interest <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;">
 
           <label class="service-card" id="svc-meals" onclick="toggleService(this)">
             <input type="checkbox" name="services" value="Meal Delivery">
@@ -408,7 +408,7 @@ body{background:#FAF6B7;}
     <span style="font-family:'Rosevale',Georgia,serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
     <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
     <a href="mailto:hello@cleocare.co" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
-    <div style="display:flex;align-items:center;gap:20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
         <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
         <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
         <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a></div>

@@ -99,8 +99,8 @@
     }
     .form-input::placeholder { color: var(--ink-muted); }
 
-    .toggle-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .toggle-three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .toggle-pair { display: grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap: 10px; }
+    .toggle-three { display: grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap: 10px; }
     .toggle-btn {
       font-family: 'Inter', sans-serif;
       font-size: 0.875rem;
@@ -235,7 +235,7 @@ body{background:#FAF6B7;}
         <div>
           <p class="section-label">About You</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="first-name">First name</label>
                 <input class="form-input" type="text" id="first-name" name="first_name" placeholder="First" required>
@@ -245,7 +245,7 @@ body{background:#FAF6B7;}
                 <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Last" required>
               </div>
             </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="email">Email</label>
                 <input class="form-input" type="email" id="email" name="email" placeholder="you@practice.com" required>
@@ -303,7 +303,7 @@ body{background:#FAF6B7;}
               <label class="form-label" for="practice-name">Practice or business name <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
               <input class="form-input" type="text" id="practice-name" name="practice_name" placeholder="Your practice name">
             </div>
-            <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
                 <label class="form-label" for="website">Website <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
                 <input class="form-input" type="url" id="website" name="website" placeholder="https://yoursite.com">
@@ -530,7 +530,7 @@ body{background:#FAF6B7;}
           <label class="form-label">Degrees &amp; credentials <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
           <input class="form-input" type="text" name="credentials_${slug}" placeholder="e.g. LMFT, PsyD, IBCLC, DPT, CPM">
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
           <div>
             <label class="form-label">License number <span style="font-weight:400;color:var(--ink-muted);">(optional)</span></label>
             <input class="form-input" type="text" name="license_${slug}" placeholder="License #">
