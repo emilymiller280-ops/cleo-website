@@ -242,6 +242,16 @@ body{background:#FAF6B7;}
   .bk-hero{ min-height:min(88svh,860px); }
   .bk-hero h1, .bk-hero .page-hero__eyebrow{ text-shadow:none !important; }
   .bk-intro{ margin:0 0 40px; padding-bottom:32px; border-bottom:1.5px solid rgba(107,8,38,.14); }
+  /* form opens on Get started (Emily, 2026-10-19), same as For Providers */
+  #form-wrap.bk-closed{ display:none; }
+  .bk-intro.bk-open{ border-bottom:1.5px solid rgba(107,8,38,.14); }
+  .bk-intro.bk-open .bk-start{ display:none; }
+  .bk-start{ margin-top:26px; display:inline-flex; align-items:center; font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:1rem;
+    padding:15px 34px; border:0; border-radius:999px; background:#6B0826; color:#FFFEF7; cursor:pointer; box-shadow:0 6px 18px rgba(107,8,38,.3);
+    transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
+  .bk-start:hover{ transform:translateY(-2px); background:#4E0519; }
+  .bk-start:focus-visible{ outline:2px solid #E1654B; outline-offset:3px; }
+  .bk-intro:not(.bk-open){ border-bottom:0; padding-bottom:0; margin-bottom:clamp(40px,6vw,72px); }
   .bk-intro p{ font-family:"Host Grotesk",system-ui,sans-serif; color:#463A33; font-size:1rem; line-height:1.7; margin:0; }
   .bk-intro .bk-intro__lead{ color:#6B0826; font-size:clamp(1.2rem,2vw,1.45rem); line-height:1.45; margin-bottom:14px; }
   .bk-ready{ background:#6B0826; padding:clamp(32px,4vw,52px) 32px; text-align:left; }
@@ -288,9 +298,10 @@ body{background:#FAF6B7;}
     <div class="bk-intro">
       <p class="bk-intro__lead">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
       <p>Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees.</p>
+      <button type="button" class="bk-start" id="bk-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
     </div>
 
-    <div id="form-wrap">
+    <div id="form-wrap" class="bk-closed">
       <form id="booking-form" action="https://app.cleocare.co/api/intake" method="POST" style="display:flex;flex-direction:column;gap:28px;">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
 
@@ -809,7 +820,7 @@ body{background:#FAF6B7;}
       <p class="bk-ready__eyebrow">Ready when you are</p>
       <h2>Let's find the care that's right for you.</h2>
       <p>Tell us where you are in your journey, and we'll match you with a trusted provider.</p>
-      <a href="#booking-form" class="bk-ready__btn">Start your request</a>
+      <a href="#booking-form" class="bk-ready__btn" data-bk-open>Start your request</a>
     </div>
   </section>
   <svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
@@ -1090,5 +1101,17 @@ body{background:#FAF6B7;}
     });
   </script>
 
+<script>
+  (function(){
+    var b=document.getElementById('bk-start'), w=document.getElementById('form-wrap'), intro=b&&b.closest('.bk-intro');
+    if(!b||!w) return;
+    function open(scroll){ w.classList.remove('bk-closed'); b.setAttribute('aria-expanded','true'); if(intro) intro.classList.add('bk-open');
+      if(scroll){ w.scrollIntoView({behavior:'smooth',block:'start'}); var f=w.querySelector('input:not([type=hidden]):not([name=_gotcha])'); if(f) setTimeout(function(){ f.focus({preventScroll:true}); },400); } }
+    b.addEventListener('click',function(){ open(true); });
+    document.querySelectorAll('[data-bk-open]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); open(true); }); });
+    // links straight to the form (e.g. booking.html#booking-form) still open it
+    if(/^#(booking-form|form-wrap)$/.test(location.hash)) open(true);
+  })();
+</script>
 </body>
 </html>
