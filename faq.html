@@ -150,6 +150,14 @@ body{background:#FAF6B7;}
   .faq-steps .hiw-step:nth-child(4n+3){ background:#FFFEF7; }
   .faq-steps p[style*="Four simple steps"]{ color:#6B0826 !important; }
   section.faq-ask{ background:#E3C4D5 !important; }
+  /* 2026-10-19: no boxes anywhere on this page. Open columns with a thin rule above, like Gifting */
+  #faq-hero ~ section .copy-cards > p, .hiw-step, .pillar,
+  .hiw-step:nth-child(n), .pillar:nth-child(n), .faq-steps .hiw-step:nth-child(n){ background:transparent !important; box-shadow:none !important; border-radius:0 !important;
+    padding:20px 0 0 !important; border-top:1.5px solid rgba(107,8,38,.2); }
+  .copy-cards{ gap:clamp(24px,3.5vw,48px) !important; }
+  .copy-cards > p{ color:#463A33 !important; font-size:.95rem !important; }
+  .faq-steps .hiw-step{ border-top-color:rgba(107,8,38,.28); }
+  .hiw-grid, .pillar-grid{ gap:clamp(24px,3.5vw,48px) !important; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
