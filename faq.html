@@ -131,17 +131,25 @@ body{background:#FAF6B7;}
 </style>
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
-<style id="cleo-pink-field">
-  /* Lighter pink squiggle behind the whole How We Work page */
-  body{ background:#E3C4D5 !important; position:relative; }
-  body::before{ content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#CD96B3; opacity:.28;
-    -webkit-mask:url('/brand/img/texture-mono.svg') center/140% no-repeat;
-    mask:url('/brand/img/texture-mono.svg') center/140% no-repeat; }
-  /* Let the pink field show through every band */
-  .page-hero.h-butter{ background:transparent !important; }
-  .page-hero .page-hero__tex{ display:none !important; }
+<style id="cleo-cream-page">
+  /* Cream page, colour only in the banners; squiggle only in nav + footer (Emily, 2026-10-16) */
+  body{ background:#F8F2E6 !important; }
   section[style*="#FAF6B7"], section[style*="#E3C4D5"]{ background:transparent !important; }
+  /* Steps + pillars read as rounded cards, not loose paragraphs */
+  .hiw-step, .pillar{ padding:28px 26px; border-radius:26px; }
+  .hiw-step:nth-child(4n+1), .pillar:nth-child(4n+1){ background:#CD96B3; }
+  .hiw-step:nth-child(4n+2), .pillar:nth-child(4n+2){ background:#FAF6B7; }
+  .hiw-step:nth-child(4n+3), .pillar:nth-child(4n+3){ background:#99AADB; }
+  .hiw-step:nth-child(4n), .pillar:nth-child(4n){ background:#FFFEF7; box-shadow:0 6px 20px rgba(78,5,25,.07); }
+  .hiw-step h3, .pillar h3{ color:#6B0826 !important; }
+  .hiw-step p, .pillar p{ color:#463A33 !important; }
+  .hiw-step .hiw-num{ color:#6B0826 !important; }
+  .hiw-grid{ gap:20px !important; } .pillar-grid{ gap:20px !important; }
+  /* 2026-10-19: steps sit in a sky band under a photo wave; questions in a blush band */
+  section.faq-steps{ background:#99AADB !important; }
+  .faq-steps .hiw-step:nth-child(4n+3){ background:#FFFEF7; }
+  .faq-steps p[style*="Four simple steps"]{ color:#6B0826 !important; }
+  section.faq-ask{ background:#E3C4D5 !important; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -167,8 +175,8 @@ body{background:#FAF6B7;}
   </header>
 
 <!-- HERO -->
-<section id="faq-hero" class="page-hero h-butter">
-  <div class="page-hero__tex"></div>
+<section id="faq-hero" class="page-hero page-hero--photo h-blush">
+  <div class="page-hero__photo hero-notint"><img src="/brand/img/photos/hero-how.jpg" alt="A woman stretching on a yoga mat" style="object-position:50% 45%"></div>
   <div class="page-hero__inner">
     <span class="page-hero__eyebrow">How We Work</span>
     <h1>How Cleo Works</h1>
@@ -181,7 +189,6 @@ body{background:#FAF6B7;}
   .jstrip .col{ display:flex; flex-direction:column; align-items:center; gap:16px; }
   .jstrip .ico{ width:clamp(58px,7vw,82px); height:clamp(58px,7vw,82px); display:block; }
   .jstrip .lbl{ font-family:'Spectral',serif; font-size:1.2rem; letter-spacing:.01em; }
-  #faq-hero .page-hero__inner{ padding-bottom:clamp(18px,2.5vw,30px) !important; }
 </style>
 <section style="padding:clamp(8px,1.5vw,18px) 32px 4px;background:#FAF6B7;">
   <div class="jstrip">
@@ -202,11 +209,13 @@ body{background:#FAF6B7;}
 
 <!-- WHY CLEO / INTRO -->
 <section style="padding:clamp(72px,9vw,104px) 32px 40px;background:#FAF6B7;">
-  <div style="max-width:700px;margin:0 auto;text-align:center;">
+  <div style="max-width:1040px;margin:0 auto;text-align:center;">
     <p style="font-family:'Palmello',cursive;color:var(--navy);font-size:clamp(2.3rem,5.4vw,3.3rem);line-height:1.05;margin-bottom:30px;">Human first, always.</p>
-    <p style="font-family:'Inter',sans-serif;font-size:1.1rem;color:var(--ink);line-height:1.8;margin-bottom:1.35em;">Some of life's biggest moments come with questions, uncertainty, and the need for support that feels both trusted and personal. Cleo was created to make that support easier to find. By thoughtfully connecting women with trusted, personalized care, we remove the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path to care.</p>
-    <p style="font-family:'Inter',sans-serif;font-size:1.1rem;color:var(--ink);line-height:1.8;margin-bottom:1.35em;">Cleo offers clarity, guidance, and trusted options without prescribing a single way forward. Because support shouldn't be something you have to search for; it should simply be there when you need it.</p>
-    <p style="font-family:'Inter',sans-serif;font-size:1.1rem;color:var(--ink);line-height:1.8;">Beyond expertise, Cleo is deeply committed to making every woman feel seen, understood, and cared for. Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of her health journey.</p>
+    <div class="copy-cards">
+      <p>Some of life's biggest moments come with questions, uncertainty, and the need for support that feels both trusted and personal. Cleo was created to make that support easier to find. By thoughtfully connecting women with trusted, personalized care, we remove the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path to care.</p>
+      <p>Cleo offers clarity, guidance, and trusted options without prescribing a single way forward. Because support shouldn't be something you have to search for; it should simply be there when you need it.</p>
+      <p>Beyond expertise, Cleo is deeply committed to making every woman feel seen, understood, and cared for. Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of her health journey.</p>
+    </div>
   </div>
 </section>
 
@@ -219,7 +228,12 @@ body{background:#FAF6B7;}
   @media(max-width:768px){ .hiw-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 24px; } }
   @media(max-width:460px){ .hiw-grid{ grid-template-columns:1fr; } }
 </style>
-<section style="padding:36px 32px clamp(80px,10vw,112px);background:#FAF6B7;">
+<!-- Photo 26 with a sky wave into Four simple steps (Emily, 2026-10-19) -->
+<div class="wband wband--sky">
+  <div class="wband__photo"><img src="/brand/img/photos/band-meadow.jpg" alt="A parent holding a child's hand in a wildflower meadow" style="object-position:50% 40%"></div>
+  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+</div>
+<section class="faq-steps" style="padding:24px 32px clamp(64px,8vw,96px);">
   <div style="max-width:1040px;margin:0 auto;">
     <p style="text-align:center;font-family:'Spectral',serif;color:var(--olive);font-size:clamp(2.1rem,4.2vw,2.9rem);margin-bottom:44px;">Four simple steps</p>
     <div class="hiw-grid">
@@ -230,6 +244,7 @@ body{background:#FAF6B7;}
     </div>
   </div>
 </section>
+<svg class="wdown wdown--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
 <!-- OUR PILLARS -->
 <style>
@@ -402,8 +417,9 @@ body{background:#FAF6B7;}
   </div>
 </section>
 
-<!-- STILL HAVE QUESTIONS -->
-<section style="padding:100px 56px;background:#E3C4D5;">
+<!-- STILL HAVE QUESTIONS (blush band, waves in) -->
+<svg class="wup wup--blush" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<section class="faq-ask" style="padding:60px 56px 100px;">
   <div id="questions-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:80px;align-items:center;">
     <div>
       <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:24px;opacity:0.6;">Have another question?</p>
@@ -416,15 +432,33 @@ body{background:#FAF6B7;}
 </section>
 
 <!-- FOOTER -->
-<footer style="background:transparent;border-top:1px solid rgba(107,8,38,0.14);padding:44px 56px;position:relative;z-index:1;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-    <span style="font-family:'Rosevale',Georgia,serif;font-size:1.5rem;color:var(--navy);">Cleo Care</span>
-    <p class="body-text" style="font-size:0.8125rem;color:var(--ink-muted);">© 2026 Cleo Care, LLC · <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-decoration:none;">hello@cleocare.co</a></p>
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;">
-      <a href="terms.html" class="body-text" style="font-size:0.8125rem;color:var(--navy);text-decoration:none;">Terms</a>
-      <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:var(--navy);text-decoration:none;">Privacy</a>
-      <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:var(--navy);text-decoration:none;">@cleo.care.co</a>
-      <a href="https://cleocare.substack.com" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:var(--navy);text-decoration:none;">Substack</a>
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="provider-intake.html" style="display:block;margin-bottom:9px;">For Providers</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Follow</p>
+          <a href="https://cleocare.substack.com" style="display:block;margin-bottom:9px;">Substack</a>
+          <a href="https://www.instagram.com/cleo.care.co" style="display:block;">Instagram</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
     </div>
   </div>
 </footer>

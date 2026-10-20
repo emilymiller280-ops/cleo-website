@@ -6,6 +6,7 @@
 <title>Cleo Care, Maternal care, simplified</title>
 <link rel="stylesheet" href="/brand/brand.css">
 <link rel="stylesheet" href="/brand/nav.css">
+<link rel="stylesheet" href="/brand/hero.css">
 <style>
   .nav{ position:absolute; top:0; left:0; right:0; z-index:50; background:transparent; }
   .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:90px; }
@@ -45,6 +46,113 @@
   .why-sources a{ color:rgba(255,254,247,.72); text-decoration:underline; text-underline-offset:2px; }
   .why-sources a:hover{ color:var(--butter); }
   @media(max-width:700px){ .why-sources{ grid-template-columns:1fr; } }
+  /* Why Cleo on white (ivory), not a big red block; faint ~10% squiggle as the accent (Emily, 2026-10-19) */
+  .why{ background:var(--cream); }  /* same cream as the section above, no squiggle (Emily, 2026-10-19) */
+  /* Header left-aligned: WHY CLEO bigger, the line under it smaller (Emily, 2026-10-19) */
+  .why .section-head{ text-align:left; margin:0 0 40px; max-width:none; }
+  .why .section-head .eyebrow{ color:var(--coral); font-size:clamp(1rem,1.4vw,1.25rem); letter-spacing:.18em; margin-bottom:10px; }
+  .why .section-head h2{ color:var(--burgundy); font-size:clamp(1.4rem,2.2vw,1.9rem); }
+  .why .stats{ gap:0; border-radius:0; overflow:visible; }
+  .why .stat{ background:transparent; padding:30px 28px; border-top:1.5px solid rgba(107,8,38,.18); }
+  .why .stat .num{ color:var(--burgundy); }
+  .why .stat p{ color:var(--text); }
+  .why .stat sup a{ color:var(--coral); }
+  .why .why-sources li{ color:rgba(70,58,51,.6); }
+  .why .why-sources li::before{ color:var(--coral); }
+  .why .why-sources a{ color:rgba(70,58,51,.75); }
+  .why .why-sources a:hover{ color:var(--burgundy); }
+  /* Why Cleo = magazine rows beside a photo (Emily, 2026-10-19) */
+  .why-grid{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(28px,5vw,72px); align-items:start; }
+  .why-ph{ position:sticky; top:110px; border-radius:var(--radius-lg); overflow:hidden; aspect-ratio:4/5; }
+  .why-photo{ display:block; max-width:none; width:calc(100% + 14px); height:calc(100% + 14px); margin:-7px; object-fit:cover; }
+  /* maroon wave over the photo, same as the hero (Emily, 2026-10-19) */
+  .why-ph__wave{ position:absolute; left:0; bottom:-1px; width:100%; height:19%; fill:var(--burgundy); display:block; }
+  .why .stats{ display:block; }
+  .why .stat{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:28px; align-items:baseline; padding:24px 0; }
+  .why .stat:last-child{ border-bottom:1.5px solid rgba(107,8,38,.18); }
+  .why .stat .num{ font-size:clamp(2.2rem,3.8vw,3.6rem); margin:0; white-space:nowrap; }
+  .why .stat:nth-child(odd) .num{ color:var(--coral); }
+  .why .stat p{ font-size:1.02rem; }
+  @media(max-width:900px){ .why-grid{ grid-template-columns:1fr; } .why-ph{ position:relative; top:auto; aspect-ratio:4/3; } .why .stat{ grid-template-columns:1fr; gap:10px; } }
+  /* Enter Cleo, option B */
+  .enter3__grid > div{ max-width:820px; }  /* text only now, photo + squiggle removed (Emily, 2026-10-19) */
+  .enter3__script{ font-family:var(--font-script); color:var(--coral); font-size:clamp(3rem,6vw,5rem); line-height:1; display:block; margin-bottom:14px; }
+  .enter3 h2{ color:var(--burgundy); font-size:clamp(1.8rem,3.4vw,2.8rem); line-height:1.1; margin:0 0 .4em; }
+  .enter3 p{ color:var(--text); max-width:52ch; }
+  .enter3__ph{ position:relative; }
+  .enter3__ph img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:200px 200px var(--radius-lg) var(--radius-lg); display:block; position:relative; z-index:1; }
+  .enter3__sq{ position:absolute; z-index:2; width:clamp(90px,10vw,150px); aspect-ratio:1; border-radius:50%; left:-50px; bottom:-40px; background:var(--sky); pointer-events:none;
+    -webkit-mask:url("/brand/img/texture-mono.svg") center/320% no-repeat; mask:url("/brand/img/texture-mono.svg") center/320% no-repeat; }
+  @media(max-width:820px){ .enter3__grid{ grid-template-columns:1fr; } .enter3__ph{ max-width:420px; } .enter3__sq{ left:-12px; bottom:-24px; } }
+  /* Maroon wave over a photo, repeated from the hero (Emily, 2026-10-19) */
+  .wband{ position:relative; } .wband + section{ margin-top:-1px; }
+  .wband__photo{ height:clamp(300px,40vw,560px); overflow:hidden; }
+  .wband__photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .wband__wave{ position:absolute; left:0; bottom:-1px; width:100%; height:clamp(50px,7vw,110px); fill:var(--burgundy); display:block; }
+  /* and the maroon waves back down into the cream */
+  .wdown{ display:block; width:100%; height:clamp(50px,7vw,110px); fill:var(--burgundy); background:linear-gradient(to top, var(--burgundy) 4px, var(--cream) 4px); transform:scaleY(-1); margin-top:-2px; position:relative; }
+  /* Why Cleo on maroon under the field-photo wave band; stats in two columns (Emily, 2026-10-19) */
+  .why.why{ background:var(--burgundy); }
+  .why .section-head h2{ color:var(--butter); }
+  .why .why-grid{ display:block; }
+  .why .stats{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(32px,5vw,72px); }
+  .why .stat{ border-top-color:rgba(255,254,247,.22); }
+  .why .stat:nth-last-child(-n+2){ border-bottom:1.5px solid rgba(255,254,247,.22); }
+  .why .stat .num{ color:var(--butter); }
+  .why .stat:nth-child(odd) .num{ color:var(--coral); }
+  .why .stat p{ color:var(--ivory); opacity:.92; }
+  .why .why-sources li{ color:rgba(255,254,247,.55); }
+  .why .why-sources a{ color:rgba(255,254,247,.75); }
+  .why .why-sources a:hover{ color:var(--butter); }
+  @media(max-width:900px){ .why .stats{ grid-template-columns:1fr; } .why .stat:nth-last-child(2){ border-bottom:0; } }
+  /* Network: an editorial numbered list instead of pill bubbles */
+  .netlist{ margin-top:56px; }
+  .netlist__title{ display:block; font-weight:600; text-transform:uppercase; letter-spacing:.16em; color:var(--coral); font-size:.85rem; margin-bottom:14px; }
+  .netlist ol{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(32px,5vw,72px); }
+  .netlist li{ display:flex; align-items:baseline; gap:18px; padding:18px 0; border-top:1.5px solid rgba(107,8,38,.16);
+    font-family:var(--font-display); color:var(--burgundy); font-size:clamp(1.15rem,1.8vw,1.5rem); }
+  .netlist li:nth-last-child(-n+2){ border-bottom:1.5px solid rgba(107,8,38,.16); }
+  .netlist .nn{ font-family:var(--font-body); font-size:.8rem; font-weight:600; color:var(--coral); letter-spacing:.08em; min-width:2ch; }
+  @media(max-width:700px){ .netlist ol{ grid-template-columns:1fr; } .netlist li:nth-last-child(2){ border-bottom:0; } }
+  /* Enter Cleo + Our Network heads: heading left, text right, thin rule between */
+  .ehead{ display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); gap:clamp(28px,5vw,72px); align-items:end; }
+  .ehead h2{ margin:0; }
+  .ehead p{ margin:0; }
+  .ehead--net{ margin-top:clamp(48px,6vw,80px); padding-top:clamp(40px,5vw,64px); border-top:1.5px solid rgba(107,8,38,.16); margin-bottom:40px; }
+  .ehead--net .eyebrow{ display:block; margin-bottom:12px; }
+  .ehead--net h2{ font-size:clamp(1.8rem,3.4vw,2.8rem); line-height:1.1; color:var(--burgundy); }
+  .netlist li::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--coral); flex-shrink:0; transform:translateY(-.15em); }
+  @media(max-width:820px){ .ehead{ grid-template-columns:1fr; gap:18px; } }
+  /* For Practitioners, compact band with butter text */
+  .prac2{ padding-block:clamp(28px,4vw,48px) clamp(36px,5vw,60px); }
+  .prac2__row{ display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+  .prac2 .eyebrow{ color:var(--butter); opacity:.8; display:block; margin-bottom:10px; }
+  .prac2 h2{ color:var(--butter); font-size:clamp(1.6rem,2.8vw,2.3rem); margin:0 0 .35em; }
+  .prac2 p{ color:var(--butter); opacity:.9; max-width:52ch; margin:0; }
+  .prac2__btn{ background:var(--butter); color:var(--burgundy); }
+  .prac2__btn:hover{ background:#F1EA8E; }
+  /* the newborn band above it is shorter too */
+  .wband--short .wband__photo{ height:clamp(220px,26vw,380px); }
+  /* Enter Cleo label = same colour, font and size as WHY CLEO */
+  .enter3__title{ display:block; color:var(--coral); font-size:clamp(1rem,1.4vw,1.25rem); letter-spacing:.18em; margin-bottom:10px; }
+  .enter3{ padding-bottom:clamp(48px,6vw,80px); }
+  /* Our Network head, little maroon band */
+  /* Our Network head back on cream, no maroon band (Emily, 2026-10-19) */
+  .netband{ background:var(--cream); padding-block:0; }
+  .netband .wrap{ border-top:1.5px solid rgba(107,8,38,.16); padding-top:clamp(36px,4.5vw,56px); }
+  .netband .eyebrow{ display:block; color:var(--coral); margin-bottom:10px; }
+  .netband h2{ color:var(--burgundy); font-size:clamp(1.6rem,2.8vw,2.3rem); line-height:1.1; }
+  .netband p{ color:var(--text); }
+  .netbody{ padding-top:clamp(40px,5vw,64px); }
+  /* Journey cards, option D (Emily, 2026-10-19): photo fills the card, colour band holds the words */
+  .journeys .journey{ padding:0; min-height:520px; justify-content:flex-end; }
+  .journey > .jphoto{ position:absolute; inset:0; z-index:0; width:100%; height:100%; aspect-ratio:auto; margin:0; clip-path:none; object-fit:cover; }
+  .jband{ width:100%; padding:8px 26px 0; border-radius:28px 28px 0 0; display:flex; flex-direction:column; align-items:center; }
+  .j-fertility .jband{ background:var(--blush); } .j-pregnancy .jband{ background:var(--burgundy); } .j-postpartum .jband{ background:var(--coral); }
+  .jband .jname{ margin-top:14px; }
+  .jband .more{ padding:16px 0 28px; }
+  /* Journey cards: everything centred */
+  .journeys .journey{ text-align:center; align-items:center; }
 
   /* Cleo's Calling — post previews + mini signup */
   .posts{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-bottom:44px; }
@@ -60,7 +168,7 @@
   .signup-mini{ max-width:540px; margin:0 auto; text-align:center; }
   .signup-mini form{ display:flex; gap:10px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
   .signup-mini input[type=email]{ flex:1; min-width:220px; font-family:var(--font-body); font-size:1rem;
-    padding:14px 18px; border-radius:var(--radius-pill); border:1.5px solid rgba(255,254,247,.5);
+    padding:14px 18px; border-radius:var(--radius-pill); border:1.5px solid rgba(107,8,38,.22);
     background:var(--ivory); color:var(--text); outline:none; }
   @media(max-width:820px){ .posts{ grid-template-columns:1fr; } }
 
@@ -124,66 +232,65 @@
   .band-cta{ text-align:center; border-radius:var(--radius-lg); padding:clamp(48px,7vw,88px) 24px; }
   .band-cta h2{ max-width:20ch; margin:0 auto .4em; }
 
-  /* Footer — squiggly blue with butter writing, matching the header */
-  .foot{ position:relative; overflow:hidden; background:var(--sky); color:var(--butter); }
-  .foot::before{ content:""; position:absolute; inset:0; z-index:0; background:var(--sky-deep); opacity:.5;
-    -webkit-mask:url("/brand/img/texture-mono.svg") center/130% no-repeat; mask:url("/brand/img/texture-mono.svg") center/130% no-repeat; }
-  .foot .wrap{ position:relative; z-index:1; }
-  .foot a{ color:var(--butter); opacity:.88; text-decoration:none; } .foot a:hover{ opacity:1; }
-  .foot-top{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; padding-block:60px 40px; }
-  .foot .logo{ width:120px; height:56px; }
-  .foot-cols{ display:flex; gap:64px; flex-wrap:wrap; }
-  .foot-col a{ display:block; margin-bottom:10px; font-size:.95rem; }
-  .foot-col .eyebrow{ color:rgba(250,246,183,.7); margin-bottom:16px; }
-  .foot-bar{ border-top:1px solid rgba(250,246,183,.28); padding-block:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
+  /* Cream body (Emily, 2026-10-16): no squiggle mid-page, colour lives in banners + cards.
+     Footer = the shared burgundy footer.foot in /brand/hero.css. */
+  .cream{ background:var(--cream); }
+  .cream .eyebrow{ color:var(--coral); }
+  .cream h2{ color:var(--burgundy); }
+  .cream .section-lede{ color:var(--text); max-width:62ch; margin:.6em auto 0; }
 
-  /* One continuous sky squiggle spanning Cleo's Calling + the footer */
-  .sky-field{ position:relative; background:var(--sky); isolation:isolate; }
-  .sky-field::before{ content:""; position:absolute; inset:0; z-index:0; background:var(--sky-deep); opacity:.42;
-    -webkit-mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; mask:url("/brand/img/texture-mono.svg") center/cover no-repeat; }
-  .sky-field > *{ position:relative; z-index:1; }
-  .sky-field .foot{ background:transparent; }
-  .sky-field .foot::before{ display:none; }
-  .sky-field .hero{ background:transparent; }
-  /* Care-for-the-whole-woman on the blue field: butter/ivory writing */
-  .sky-field .p3 .script{ color:var(--butter); }
-  .sky-field .p3 p{ color:var(--ivory); }
-  .sky-field .svc{ color:var(--butter); border-color:rgba(255,254,247,.6); background:transparent; }
+  /* Pillars + Substack posts as the pink / butter / sky copy cards, left-aligned */
+  .p3, .post{ border-radius:26px; padding:30px 28px; text-align:left; }
+  .p3:nth-child(3n+1), .post:nth-child(3n+1){ background:var(--blush); }
+  .p3:nth-child(3n+2), .post:nth-child(3n+2){ background:var(--butter); }
+  .p3:nth-child(3n), .post:nth-child(3n){ background:var(--sky); }
+  .pillars3{ gap:22px; }
+  .p3 p, .post p{ color:var(--burgundy-deep); }
+  .post{ box-shadow:none; }
+  .post .tag{ color:var(--burgundy); opacity:.75; }
+
+  /* Enter Cleo text sits in a card beside the blob photo */
+  .enter2__card{ background:var(--blush); border-radius:26px; padding:clamp(28px,4vw,44px); text-align:left; }
+  .enter2__card .eyebrow{ color:var(--burgundy); opacity:.75; }
+  .enter2__card h2, .enter2__card p{ color:var(--burgundy-deep); }
 
   @media(max-width:900px){
-    .journeys,.pillars3,.stats{ grid-template-columns:1fr; } .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .journeys,.pillars3,.stats{ grid-template-columns:1fr; } .why .stats{ display:block; } .steps{ grid-template-columns:repeat(2,minmax(0,1fr)); }
     .prac{ grid-template-columns:1fr; } .journal-card{ grid-template-columns:1fr; } .nav-links{ display:none; }
   }
   @media(max-width:560px){ .steps{ grid-template-columns:1fr; } }
 
-  /* Homepage: nav rides transparent over the blue squiggle hero (butter type),
-     then solidifies to the ivory bar once you scroll past it. */
-  body.home .cleo-nav{ background:transparent; backdrop-filter:none; -webkit-backdrop-filter:none;
-    border-bottom-color:transparent; transition:background .25s ease, border-color .25s ease; }
-  body.home .cleo-nav__brand,
-  body.home .cleo-nav__links a{ color:var(--butter); }
-  body.home .cleo-nav__burger span{ background:var(--butter); }
-  body.home .cleo-nav__cta{ background:var(--burgundy); color:var(--ivory)!important;
-    box-shadow:0 4px 16px rgba(78,5,25,.38); }
-  body.home .cleo-nav--solid{ background:rgba(255,254,247,.92); backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px); border-bottom-color:rgba(107,8,38,.10); }
-  body.home .cleo-nav--solid .cleo-nav__brand,
-  body.home .cleo-nav--solid .cleo-nav__links a{ color:var(--burgundy); }
-  body.home .cleo-nav--solid .cleo-nav__burger span{ background:var(--burgundy); }
-  @media(max-width:900px){
-    /* mobile dropdown panel is ivory, so its links read burgundy even over the hero */
-    body.home .cleo-nav__links a{ color:var(--burgundy); }
-  }
 
   /* Instagram module (Cleo's Calling) */
   .ig{ margin-top:60px; text-align:center; }
   .ig-handle{ display:inline-flex; align-items:center; gap:10px; margin-top:6px; font-family:var(--font-display);
-    font-size:clamp(1.5rem,3vw,2.05rem); color:var(--butter); text-decoration:none; }
+    font-size:clamp(1.5rem,3vw,2.05rem); color:var(--burgundy); text-decoration:none; }
   .ig-handle svg{ width:.9em; height:.9em; }
   .ig-handle:hover{ text-decoration:underline; text-underline-offset:4px; }
   .ig-feed{ max-width:760px; margin:26px auto 30px;
     --behold-row-gap:16px; --behold-column-gap:16px; --behold-border-radius:var(--radius-lg); }
 
+  /* Cleo's Calling + Instagram combined, compact */
+  .calling{ padding-block:clamp(48px,6vw,76px); }
+  .calling__grid{ display:grid; grid-template-columns:1.15fr .5fr .85fr; gap:clamp(32px,5vw,64px); align-items:start; }
+  .calling__title{ display:block; font-size:clamp(1.3rem,2vw,1.7rem); letter-spacing:.16em; margin-bottom:22px; }
+  .calling__posts{ display:flex; flex-direction:column; gap:10px; }
+  .calling__post{ display:grid; grid-template-columns:150px 1fr auto; align-items:center; gap:14px; padding:16px 22px;
+    border-radius:18px; text-decoration:none; color:var(--burgundy-deep); transition:transform .18s ease; }
+  .calling__post:hover{ transform:translateX(4px); }
+  .calling__post:nth-child(3n+1){ background:var(--blush); } .calling__post:nth-child(3n+2){ background:var(--butter); } .calling__post:nth-child(3n){ background:var(--sky); }
+  .calling__post .tag{ font-weight:600; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; opacity:.75; }
+  .calling__post .ttl{ font-size:1rem; }
+  .calling__form{ display:flex; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .calling__form input[type=email]{ flex:1; min-width:200px; font-family:var(--font-body); font-size:1rem; padding:13px 18px;
+    border-radius:var(--radius-pill); border:1.5px solid rgba(107,8,38,.22); background:var(--ivory); color:var(--text); outline:none; }
+  .calling__fine{ font-size:.8rem; color:var(--text); opacity:.75; margin-top:10px; }
+  .calling__fine a{ color:var(--burgundy); text-decoration:underline; }
+  /* photo 82, the tulip video, as a reel beside the feed (Emily, 2026-10-19) */
+  .calling__vid video{ width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:var(--radius-lg); display:block; }
+  .calling__ig .ig-handle{ display:flex; margin-top:10px; font-size:1.5rem; }
+  .calling__ig .ig-feed{ max-width:none; margin:18px 0 0; }
+  @media(max-width:820px){ .calling__grid{ grid-template-columns:1fr; } .calling__vid{ max-width:300px; } .calling__post{ grid-template-columns:1fr auto; } .calling__post .tag{ grid-column:1 / -1; } }
   /* Welcome email-capture popup */
   .welcome{ position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
     padding:24px; background:rgba(78,5,25,.52); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
@@ -195,10 +302,6 @@
   .welcome.is-open .welcome__card{ transform:translateY(0) scale(1); }
   .welcome__band{ position:relative; overflow:hidden; background:var(--sky);
     padding:38px 40px 30px; text-align:center; }
-  .welcome__band::before{ content:""; position:absolute; inset:0; z-index:0; color:var(--sky-deep); opacity:.5;
-    background:currentColor; -webkit-mask:url("/brand/img/texture-mono.svg") center/160% no-repeat;
-    mask:url("/brand/img/texture-mono.svg") center/160% no-repeat; }
-  .welcome__band > *{ position:relative; z-index:1; }
   .welcome__eyebrow{ font-family:var(--font-body); font-weight:600; font-size:.7rem; letter-spacing:.16em;
     text-transform:uppercase; color:var(--butter); margin-bottom:12px; }
   .welcome__title{ font-family:var(--font-display); color:var(--butter); font-size:clamp(1.9rem,6vw,2.5rem);
@@ -222,14 +325,60 @@
   .welcome.is-done .welcome__form,
   .welcome.is-done .welcome__intro{ display:none; }
   .welcome.is-done .welcome__success{ display:block; }
+  /* Photo hero (brand book): full-screen photo, wave into burgundy */
+  .phero{ position:relative; background:var(--burgundy); }
+  /* Shorter photo so the burgundy band rides higher; photo pushed up so her eyes sit above the frame (Emily, 2026-10-19) */
+  .phero__photo{ position:relative; height:max(540px, 84svh); overflow:hidden; }
+  .phero__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+  @media(max-width:820px){ .phero__photo img{ position:absolute; left:0; bottom:0; height:103%; object-position:30% 100%; } }
+  .phero__cleo{ position:absolute; z-index:2; left:0; right:0; bottom:clamp(70px,11vw,150px); text-align:left; text-shadow:0 2px 24px rgba(78,5,25,.25);
+    font-family:var(--font-logo); color:var(--butter); font-size:clamp(3.6rem,12vw,9.5rem); line-height:.86; letter-spacing:.01em;
+    }
+  /* "Cleo" stacked directly over "Care", both on the left (Emily, 2026-10-19) */
+  .phero__cleo .wrap{ display:flex; flex-direction:column; align-items:flex-start; }
+  .phero__wave{ position:absolute; z-index:3; left:0; width:100%; height:clamp(50px,7vw,110px);
+    bottom:auto; margin-top:calc(-1 * clamp(50px,7vw,110px) + 1px); fill:var(--burgundy); display:block; }
+  .phero__band{ position:relative; z-index:3; }
+  /* Hero copy sits on the left, left-aligned (Emily, 2026-10-19) */
+  .phero__inner{ text-align:left; padding-block:clamp(30px,4vw,52px) clamp(72px,9vw,110px); }
+  .phero h1{ font-family:var(--font-display); font-weight:400; color:var(--butter); font-size:clamp(2rem,4.6vw,3.6rem); line-height:1.08; margin:0 0 .45em; }
+  .phero .lede{ color:var(--ivory); max-width:58ch; margin:0 0 2em; opacity:.95; text-wrap:pretty; }
+  .phero .hero-cta{ justify-content:flex-start; }
+
+  /* Journey card photos: the Canva Kit Blob Cutter shapes (Born ID originals, never redrawn).
+     Each photo bleeds off the card's top and one side; the blob edge faces into the card. */
+  .jphoto{ display:block; width:calc(100% + 32px); aspect-ratio:1080/692; object-fit:cover; margin:-40px -32px 10px 0; }
+  .jphoto--fertility{ clip-path:url(#kit-blob-fertility); }
+  .jphoto--pregnancy{ clip-path:url(#kit-blob-pregnancy); margin:-40px 0 10px -32px; object-position:50% 12%; }
+  .jphoto--postpartum{ clip-path:url(#kit-blob-postpartum); aspect-ratio:801/864; width:calc(80% + 32px); margin-left:auto; }
+
+  /* Enter Cleo on ivory, blob photo left */
+  .enter2__grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(32px,6vw,80px); align-items:center; max-width:1080px; }
+  .enter2__photo{ width:100%; aspect-ratio:4/5; object-fit:cover; object-position:50% 40%;
+    border-radius:60% 40% 55% 45% / 50% 60% 40% 50%; display:block; }
+  @media(max-width:820px){ .enter2__grid{ grid-template-columns:1fr; } .enter2__photo{ max-width:420px; margin-inline:auto; aspect-ratio:1; } }
+
   @media(prefers-reduced-motion:reduce){
     .welcome, .welcome__card, .welcome__close{ transition:none; }
     .welcome__card{ transform:none; }
   }
+  /* Why Cleo, compact (Emily, 2026-10-19): less padding, 3 stats per row, number above its sentence */
+  .section.why{ padding-block:clamp(36px,5vw,64px) clamp(44px,6vw,76px); }
+  .why .section-head{ margin-bottom:22px; }
+  .why .stats{ grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:clamp(24px,3.5vw,48px); }
+  .why .stat{ display:block; padding:16px 0 18px; }
+  .why .stat:nth-last-child(-n+3){ border-bottom:1.5px solid rgba(255,254,247,.22); }
+  .why .stat .num{ font-size:clamp(1.9rem,3vw,2.7rem); margin:0 0 8px; }
+  .why .stat p{ font-size:.92rem; line-height:1.5; }
+  .why .why-sources{ margin-top:18px; }
+  @media(max-width:900px){ .why .stats{ grid-template-columns:repeat(2,minmax(0,1fr)); } .why .stat:nth-last-child(3){ border-bottom:0; } }
+  @media(max-width:560px){ .why .stats{ grid-template-columns:1fr; } .why .stat:nth-last-child(2){ border-bottom:0; } }
+  .wup{ display:block; width:100%; height:clamp(50px,7vw,110px); fill:var(--burgundy); background:linear-gradient(to bottom, var(--cream) calc(100% - 4px), var(--burgundy) calc(100% - 4px)); margin-bottom:-2px; position:relative; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
-<body class="home">
+<body class="home cream-page">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><clipPath id="kit-blob-fertility" clipPathUnits="objectBoundingBox"><path d="M0.0226,0.5925 C0.0000,0.3324 0.1729,0.1185 0.4211,0.0954 C0.5990,0.0795 0.6892,0.2168 0.8120,0.1474 C0.8997,0.0983 0.9499,0.0217 1.0251,0.0000 L1.5263,0.0000 L1.5263,0.9249 L1.0251,0.9249 C0.8997,0.8020 0.7769,0.7399 0.6491,0.7977 C0.4987,0.8671 0.3985,1.0000 0.2456,0.9566 C0.0977,0.9133 0.0426,0.7803 0.0226,0.5925 Z"/></clipPath><clipPath id="kit-blob-pregnancy" clipPathUnits="objectBoundingBox"><path d="M0.9774,0.4075 C1.0000,0.6676 0.8271,0.8815 0.5789,0.9046 C0.4010,0.9205 0.3108,0.7832 0.1880,0.8526 C0.1003,0.9017 0.0501,0.9783 -0.0251,1.0000 L-0.5263,1.0000 L-0.5263,0.0751 L-0.0251,0.0751 C0.1003,0.1980 0.2231,0.2601 0.3509,0.2023 C0.5013,0.1329 0.6015,0.0000 0.7544,0.0434 C0.9023,0.0867 0.9574,0.2197 0.9774,0.4075 Z"/></clipPath><clipPath id="kit-blob-postpartum" clipPathUnits="objectBoundingBox"><path d="M0.0683,0.7528 C-0.0005,0.5534 0.1297,0.3525 0.3673,0.2868 C0.5378,0.2402 0.6504,0.3304 0.7577,0.2525 C0.8343,0.1972 0.8694,0.1275 0.9388,0.0962 L1.4272,-0.0001 L1.5934,0.7244 L1.1049,0.8207 C0.9607,0.7485 0.8298,0.7234 0.7157,0.7933 C0.5816,0.8765 0.5079,0.9999 0.3511,0.9953 C0.1991,0.9897 0.1216,0.8962 0.0683,0.7528 Z"/></clipPath></defs></svg>
 
 <!-- Nav -->
 <header class="cleo-nav">
@@ -238,7 +387,7 @@
     <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
     <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
     <nav class="cleo-nav__links">
-        <a href="faq.html">How We Work</a>
+        <a href="faq.html">How It Works</a>
         <a href="meal-delivery.html">Meal Delivery</a>
         <a href="favorites.html">Our Favorites</a>
         <a href="our-story.html">Our Story</a>
@@ -249,62 +398,73 @@
   </div>
 </header>
 
-<!-- HERO + JOURNEYS share one continuous sky squiggle -->
-<div class="sky-field">
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-inner">
-    <div class="hero-cleo">CLEO</div>
-    <p class="eyebrow hero-eyebrow">Maternal care, simplified</p>
-    <p class="lede">We're reimagining a new standard of maternal wellness, connecting you with vetted specialists for personal, human support, exactly when you need it.</p>
-    <div class="hero-cta">
-      <a href="booking.html" class="btn btn--primary">Start here</a>
-      <a href="faq.html" class="btn btn--on-dark">How we work</a>
+<!-- HERO: full-screen photo, wave into burgundy (Born ID brand book) -->
+<section class="phero">
+  <div class="phero__photo">
+    <img src="/brand/img/photos/hero-smile.jpg" alt="A smiling woman in a white shirt, hair moving, in warm light">
+    <div class="phero__cleo"><div class="wrap"><span>Cleo</span><span>Care</span></div></div>
+  </div>
+  <svg class="phero__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+  <div class="phero__band">
+    <div class="wrap phero__inner">
+      <h1>Maternal care, simplified.</h1>
+      <p class="lede">We're reimagining a new standard of maternal wellness, connecting you with vetted specialists for personal, human support, exactly when you need it.</p>
+      <div class="hero-cta">
+        <a href="booking.html" class="btn btn--primary" style="background:var(--butter);color:var(--burgundy);">Start here</a>
+        <a href="faq.html" class="btn btn--on-dark">How it works</a>
+      </div>
     </div>
   </div>
 </section>
+<svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
-<!-- JOURNEYS -->
-<section class="section" id="journeys" style="position:relative;padding-block:clamp(56px,7vw,88px);">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="jstrip">
-      <div class="col">
-        <span class="ico" style="background:#E3C4D5;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span>
-        <span class="lbl" style="color:var(--butter);">Fertility</span>
-      </div>
-      <div class="col">
-        <span class="ico" style="background:#F1EA8E;-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span>
-        <span class="lbl" style="color:var(--butter);">Pregnancy</span>
-      </div>
-      <div class="col">
-        <span class="ico" style="background:#E1654B;-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span>
-        <span class="lbl" style="color:var(--butter);">Postpartum</span>
-      </div>
-    </div>
-    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Every stage, supported</span><h2 class="oneline" style="color:var(--butter);">Wherever you are, we meet you there.</h2></div>
-    <div class="journeys">
-      <a href="booking.html" class="journey j-fertility"><div class="j-tex"></div><span class="jicon fertility"></span><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next.</p><span class="more">Explore fertility care →</span></a>
-      <a href="booking.html" class="journey j-pregnancy"><div class="j-tex"></div><span class="jicon pregnancy"></span><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week.</p><span class="more">Explore pregnancy care →</span></a>
-      <a href="booking.html" class="journey j-postpartum"><div class="j-tex"></div><span class="jicon postpartum"></span><span class="script jname">Postpartum</span><p>Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></a>
-    </div>
-  </div>
-</section>
-</div><!-- /sky-field -->
-
-<!-- PROBLEM / STATS -->
-<section class="section bg-burgundy">
+<!-- JOURNEYS (cream) -->
+<section class="section cream" id="journeys" style="padding-block:clamp(56px,7vw,88px);">
   <div class="wrap">
-    <div class="section-head on-dark">
+    <div class="journeys">
+      <a href="booking.html" class="journey j-fertility"><img class="jphoto jphoto--fertility" src="/brand/img/photos/card-fertility.jpg" alt=""><div class="jband"><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next.</p><span class="more">Explore fertility care →</span></div></a>
+      <a href="booking.html" class="journey j-pregnancy"><img class="jphoto jphoto--pregnancy" src="/brand/img/photos/card-pregnancy.jpg" alt=""><div class="jband"><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week.</p><span class="more">Explore pregnancy care →</span></div></a>
+      <a href="booking.html" class="journey j-postpartum"><img class="jphoto jphoto--postpartum" src="/brand/img/photos/card-postpartum.jpg" alt=""><div class="jband"><span class="script jname">Postpartum</span><p>Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></div></a>
+    </div>
+    <div class="section-head" style="margin:52px auto 0;"><span class="eyebrow">Every stage, supported</span><h2>Wherever You Are, We'll Meet You There.</h2></div>
+    <div class="jstrip" style="margin:40px 0 0;">
+      <div class="col">
+        <span class="ico" style="background:var(--blush);-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--burgundy);">Fertility</span>
+      </div>
+      <div class="col">
+        <span class="ico" style="background:var(--burgundy);-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--burgundy);">Pregnancy</span>
+      </div>
+      <div class="col">
+        <span class="ico" style="background:var(--coral);-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span>
+        <span class="lbl" style="color:var(--burgundy);">Postpartum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Photo band with the big maroon wave rolling over it, into Why Cleo (Emily, 2026-10-19) -->
+<div class="wband">
+  <div class="wband__photo"><img src="/brand/img/photos/hero-field.jpg" alt="A pregnant woman laughing in a field, arms open" style="object-position:50% 2%;transform:scale(1.04);"></div>
+  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+</div>
+<!-- PROBLEM / STATS (maroon) -->
+<section class="section why">
+  <div class="wrap">
+    <div class="section-head">
       <span class="eyebrow">Why Cleo</span>
       <h2>Maternal health is underserved.</h2>
     </div>
-    <div class="stats">
+    <div class="why-grid">
+      <div class="stats">
       <div class="stat"><div class="num">1 in 5</div><p>Women experience perinatal mood disorders, a rate that has more than doubled since 2010.<sup><a href="#why-src-1" aria-label="Source 1">1</a></sup></p></div>
       <div class="stat"><div class="num">1 in 6</div><p>People worldwide are affected by infertility, yet the path to support is rarely clear or coordinated.<sup><a href="#why-src-2" aria-label="Source 2">2</a></sup></p></div>
       <div class="stat"><div class="num">40%</div><p>Of women undergoing fertility treatment meet the criteria for clinical depression or anxiety, comparable to cancer patients.<sup><a href="#why-src-3" aria-label="Source 3">3</a></sup></p></div>
       <div class="stat"><div class="num">Only one</div><p>High-income country with no national paid parental leave. Federal law guarantees just 12 weeks, unpaid.<sup><a href="#why-src-4" aria-label="Source 4">4</a></sup></p></div>
       <div class="stat"><div class="num">Zero</div><p>Guaranteed postpartum home visits in the US. We're the only wealthy nation that doesn't provide them.<sup><a href="#why-src-5" aria-label="Source 5">5</a></sup></p></div>
       <div class="stat"><div class="num">Highest</div><p>The US has the highest maternal mortality rate of any high-income nation, and it's been rising.<sup><a href="#why-src-6" aria-label="Source 6">6</a></sup></p></div>
+    </div>
     </div>
     <ol class="why-sources">
       <li id="why-src-1">Prevalence: Policy Center for Maternal Mental Health, <a href="https://policycentermmh.org/maternal-mental-health-fact-sheet/" target="_blank" rel="noopener">Maternal Mental Health Fact Sheet</a>. Rise since 2010: <a href="https://www.healthaffairs.org/doi/10.1377/hlthaff.2023.01437" target="_blank" rel="noopener">Health Affairs, 2023</a> (PMAD diagnoses up ~93%, 2008&ndash;2020).</li>
@@ -316,104 +476,104 @@
     </ol>
   </div>
 </section>
+<svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
-<!-- ENTER CLEO + CARE share one continuous sky squiggle -->
-<div class="sky-field">
-<!-- ENTER CLEO -->
-<section class="section" style="position:relative;">
-  <div class="wrap enter" style="position:relative;z-index:1;max-width:980px;">
-    <span class="eyebrow" style="color:var(--butter);display:block;margin-bottom:14px;">Enter Cleo</span>
-    <h2 style="margin-bottom:.4em;color:var(--butter);text-wrap:balance;">Empowering women through knowledge, clarity, and trusted guidance.</h2>
-    <p class="lede" style="color:var(--ivory);max-width:760px;margin-inline:auto;">Cleo exists to simplify complexity. By thoughtfully connecting women with the right care at the right time, we replace uncertainty with confidence.</p>
-  </div>
-</section>
-
-<!-- CARE SYSTEM (pillars + services combined) -->
-<section class="section">
+  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+</div>
+<!-- ENTER CLEO flows straight into OUR NETWORK: one section, both heads left-aligned in the same two columns (Emily, 2026-10-19) -->
+<section class="section cream enter3">
   <div class="wrap">
-    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Our Network</span><h2 style="color:var(--butter);">Everything your journey requires.</h2><p class="muted" style="margin-top:.6em;max-width:62ch;margin-inline:auto;color:rgba(255,254,247,.9);">A comprehensive maternal care system, vetted, in-home or on your terms. Our goal is to make your healthcare feel intuitive, informed, and empowering rather than overwhelming.</p></div>
-    <div class="pillars3">
-      <div class="p3"><span class="script">Physical</span><p>Your body carries an enormous amount through fertility, pregnancy, and birth. We coordinate targeted bodywork, massage, acupuncture, and chef-prepared meals tailored to where you are.</p></div>
-      <div class="p3"><span class="script">Emotional</span><p>The weight of this journey is real, and often invisible. Licensed mental health therapists and ongoing support ensure no part is carried alone.</p></div>
-      <div class="p3"><span class="script">Connection</span><p>From birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
-    </div>
-    <div class="services" style="margin-top:52px;">
-      <span class="svc">Birth &amp; Postpartum Doulas</span>
-      <span class="svc">Lactation Consultants</span>
-      <span class="svc">Meal Delivery</span>
-      <span class="svc">Massage Therapy + Bodywork</span>
-      <span class="svc">Mental Health Support</span>
-      <span class="svc">Acupuncture</span>
-      <span class="svc">Night Care</span>
-      <span class="svc">Pelvic Floor PT</span>
-      <span class="svc">Nutrition</span>
-      <span class="svc">Sleep Support</span>
+    <div class="ehead">
+      <div>
+        <span class="eyebrow enter3__title">Enter Cleo</span>
+        <h2>Empowering women through knowledge, clarity, and trusted guidance.</h2>
+      </div>
+      <div>
+        <p>Cleo exists to simplify complexity. By thoughtfully connecting families with the right care at the right time, we replace uncertainty with confidence.</p>
+        <a href="booking.html" class="btn btn--primary" style="margin-top:22px;">Find your care</a>
+      </div>
     </div>
   </div>
 </section>
-</div><!-- /sky-field -->
 
-<!-- FOR PRACTITIONERS -->
-<section class="section bg-burgundy">
-  <div class="wrap prac on-dark">
+<!-- OUR NETWORK head in a little maroon band (Emily, 2026-10-19) -->
+<section class="netband">
+  <div class="wrap ehead">
+    <div>
+      <span class="eyebrow">Our Network</span>
+      <h2>Everything your journey requires.</h2>
+    </div>
+    <div>
+      <p>A comprehensive maternal care system, vetted, in-home or on your terms. Our goal is to make your healthcare feel intuitive, informed, and empowering rather than overwhelming.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section cream netbody">
+  <div class="wrap">
+    <!-- Physical / Emotional / Connection as click-through tabs (Emily picked option D, 2026-10-19) -->
+    <div class="ctabs" data-ctabs>
+      <div>
+        <div class="ctabs__tabs" role="tablist" aria-label="How we care for you">
+          <button role="tab" id="pt-1" aria-controls="pp-1">Physical</button>
+          <button role="tab" id="pt-2" aria-controls="pp-2">Emotional</button>
+          <button role="tab" id="pt-3" aria-controls="pp-3">Connection</button>
+        </div>
+        <div class="ctabs__panel" role="tabpanel" id="pp-1" aria-labelledby="pt-1"><p>Your body carries an enormous amount through fertility, pregnancy, and birth. We coordinate targeted bodywork, massage, acupuncture, and chef-prepared meals tailored to where you are.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="pp-2" aria-labelledby="pt-2"><p>The weight of this journey is real, and often invisible. Licensed mental health therapists and ongoing support ensure no part is carried alone.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="pp-3" aria-labelledby="pt-3"><p>From birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
+      </div>
+      <div class="ctabs__media">
+        <img src="/brand/img/photos/care-massage.jpg" alt="A woman resting with her eyes closed during a facial massage" style="object-position:50% 40%">
+        <img src="/brand/img/photos/pillar-emotional.jpg" alt="A woman with wet hair looking back over her shoulder, by a stone wall" style="object-position:50% 34%">
+        <img src="/brand/img/photos/pillar-connection.jpg" alt="Two women embracing by the water" style="object-position:50% 35%">
+      </div>
+    </div>
+    <div class="netlist">
+      <span class="netlist__title">Who's in our network</span>
+      <ol><li>Birth &amp; Postpartum Doulas</li><li>Lactation Consultants</li><li>Meal Delivery</li><li>Massage Therapy + Bodywork</li><li>Mental Health Support</li><li>Acupuncture</li><li>Night Care</li><li>Pelvic Floor Physical Therapy</li><li>Nutrition</li><li>Sleep Support</li></ol>
+    </div>
+  </div>
+</section>
+
+<!-- cream waves into the maroon practitioners band (beach photo moved to For Providers hero, 2026-10-19) -->
+<svg class="wup" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<!-- FOR PRACTITIONERS: compact, butter text, no list (Emily, 2026-10-19) -->
+<section class="section bg-burgundy prac2">
+  <div class="wrap prac2__row">
     <div>
       <span class="eyebrow">For practitioners</span>
-      <h2 style="margin:14px 0 .5em;">Passionate about maternal care?</h2>
-      <p style="color:rgba(255,254,247,.9);max-width:44ch;">We're building a network of dedicated practitioners. If you share our commitment to full-spectrum care, we'd love to hear from you.</p>
-      <a href="provider-intake.html" class="btn btn--on-dark" style="margin-top:26px;">Join our network →</a>
+      <h2>Passionate about maternal care?</h2>
+      <p>We're building a network of dedicated practitioners. If you share our commitment to full-spectrum care, we'd love to hear from you.</p>
     </div>
-    <ul>
-      <li>Doulas &amp; birth workers</li>
-      <li>Lactation consultants</li>
-      <li>Therapists &amp; mental health providers</li>
-      <li>Massage therapists &amp; bodyworkers</li>
-      <li>Nutritionists &amp; meal providers</li>
-      <li>Pelvic floor PTs</li>
-      <li>Acupuncturists</li>
-      <li>Sleep consultants</li>
-      <li style="list-style:none;margin-top:14px;opacity:.85;font-style:italic;">Not seeing your speciality? We'd still love to <a href="mailto:hello@cleocare.co" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">connect</a>.</li>
-    </ul>
+    <a href="provider-intake.html" class="btn prac2__btn">Join our network →</a>
   </div>
 </section>
+<svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
-<!-- CLEO'S CALLING + FOOTER share one continuous sky squiggle -->
-<div class="sky-field">
-<section class="section" id="journal">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="section-head"><span class="eyebrow" style="color:var(--butter);">Cleo's Calling</span><h2 style="color:var(--butter);">Notes on maternal care.</h2><p class="lede" style="color:var(--ivory);max-width:54ch;margin:.5em auto 0;">Provider spotlights and the ideas shaping how we support women, from the friends who always know where to begin.</p></div>
-    <div class="posts">
-      <a class="post" href="https://cleocare.substack.com/p/word-of-mouth-4-lana-mihaiyu-ibclc" target="_blank" rel="noopener">
-        <span class="tag">Word of Mouth · No. 4</span>
-        <h3>Lana Mihaiyu, IBCLC</h3>
-        <p>Why choosing a lactation consultant is a nervous-system decision, and how to prep before birth.</p>
-        <span class="more">Read on Substack →</span>
-      </a>
-      <a class="post" href="https://cleocare.substack.com/p/word-of-mouth-3-kiki-lazarus-birth" target="_blank" rel="noopener">
-        <span class="tag">Word of Mouth · No. 3</span>
-        <h3>Kiki Lazarus, Doula</h3>
-        <p>The questions she hopes clients ask, and what to keep in mind when finding the right match.</p>
-        <span class="more">Read on Substack →</span>
-      </a>
-      <a class="post" href="https://cleocare.substack.com/p/cortisol-101-with-dr-thara-vayali" target="_blank" rel="noopener">
-        <span class="tag">Expert Q&amp;A</span>
-        <h3>Cortisol 101 with Dr. Thara Vayali, ND</h3>
-        <p>Her advice to battle its daily curve may surprise you.</p>
-        <span class="more">Read on Substack →</span>
-      </a>
-    </div>
-    <div class="signup-mini">
-      <p style="color:var(--ivory);font-size:1rem;margin-bottom:4px;">Stay in the loop on our launch, partnerships, and events.</p>
-      <form action="https://app.cleocare.co/api/waitlist" method="POST">
+
+<!-- CLEO'S CALLING + INSTAGRAM, one compact section (Emily, 2026-10-19) -->
+<section class="section cream calling" id="journal">
+  <div class="wrap calling__grid">
+    <div>
+      <span class="eyebrow calling__title">Cleo's Calling</span>
+      <div class="calling__posts">
+        <a class="calling__post" href="https://cleocare.substack.com/p/word-of-mouth-4-lana-mihaiyu-ibclc" target="_blank" rel="noopener"><span class="tag">Word of Mouth · No. 4</span><span class="ttl">Lana Mihaiyu, IBCLC</span><span class="arr">→</span></a>
+        <a class="calling__post" href="https://cleocare.substack.com/p/word-of-mouth-3-kiki-lazarus-birth" target="_blank" rel="noopener"><span class="tag">Word of Mouth · No. 3</span><span class="ttl">Kiki Lazarus, Doula</span><span class="arr">→</span></a>
+        <a class="calling__post" href="https://cleocare.substack.com/p/cortisol-101-with-dr-thara-vayali" target="_blank" rel="noopener"><span class="tag">Expert Q&amp;A</span><span class="ttl">Cortisol 101 with Dr. Thara Vayali, ND</span><span class="arr">→</span></a>
+      </div>
+      <form class="calling__form" action="https://app.cleocare.co/api/waitlist" method="POST">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
-        <input type="email" name="email" placeholder="you@email.com" required>
-        <button type="submit" class="btn btn--dark">Subscribe</button>
+        <input type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>
+        <button type="submit" class="btn btn--primary">Subscribe</button>
       </form>
-      <p style="color:rgba(255,254,247,.75);font-size:.8rem;margin-top:12px;">No spam. Unsubscribe any time. &nbsp;·&nbsp; <a href="https://cleocare.substack.com" target="_blank" rel="noopener" style="color:var(--butter);text-decoration:underline;">Read all posts</a></p>
+      <p class="calling__fine">No spam. Unsubscribe any time. &nbsp;·&nbsp; <a href="https://cleocare.substack.com" target="_blank" rel="noopener">Read all posts</a></p>
     </div>
-
-    <!-- Instagram -->
-    <div class="ig">
-      <span class="eyebrow" style="color:var(--butter);display:block;">Follow along</span>
+    <div class="calling__vid">
+      <video src="/brand/img/photos/tulips.mp4" autoplay muted loop playsinline aria-label="A woman holding a bouquet of pink and white tulips"></video>
+    </div>
+    <div class="calling__ig">
+      <span class="eyebrow">Follow along</span>
       <a class="ig-handle" href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
         @cleo.care.co
@@ -421,23 +581,31 @@
       <div class="ig-feed">
         <behold-widget feed-id="x0ckfuIJWszvSuqK93BB"></behold-widget>
       </div>
-      <a class="btn btn--on-dark" href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener">Follow @cleo.care.co →</a>
     </div>
   </div>
 </section>
-
-<!-- FOOTER -->
+<!-- FOOTER (shared burgundy footer, squiggle inside; styles in /brand/hero.css) -->
 <footer class="foot">
   <div class="wrap">
-    <div class="foot-top">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
       <div style="max-width:280px;">
-        <span class="logo --butter"></span>
-        <p style="opacity:.8;margin-top:16px;font-size:.95rem;">Maternal care, reimagined. Fertility through postpartum, across Southern California.</p>
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined.</p>
       </div>
-      <div class="foot-cols">
-        <div class="foot-col"><p class="eyebrow">Care</p><a href="booking.html">Book Care</a><a href="faq.html">How We Work</a><a href="meal-delivery.html">Meal Delivery</a><a href="favorites.html">Our Favorites</a><a href="our-story.html">Our Story</a><a href="gifting.html">Gifting</a></div>
-        <div class="foot-col"><p class="eyebrow">Providers</p><a href="provider-intake.html">Join the network</a><a href="mailto:hello@cleocare.co">Contact</a></div>
-        <div class="foot-col"><p class="eyebrow">Follow</p><a href="https://cleocare.substack.com">Substack</a><a href="https://www.instagram.com/cleo.care.co">Instagram</a></div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="provider-intake.html" style="display:block;margin-bottom:9px;">For Providers</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Follow</p>
+          <a href="https://cleocare.substack.com" style="display:block;margin-bottom:9px;">Substack</a>
+          <a href="https://www.instagram.com/cleo.care.co" style="display:block;">Instagram</a></div>
       </div>
     </div>
     <div class="foot-bar">
@@ -446,7 +614,6 @@
     </div>
   </div>
 </footer>
-</div><!-- /sky-field -->
 
 <script>
   /* Homepage nav: transparent over the hero, solid once scrolled past it */
@@ -537,5 +704,6 @@
   })();
 </script>
 
+<script src="/brand/ctabs.js" defer></script>
 </body>
 </html>

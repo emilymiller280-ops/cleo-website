@@ -179,18 +179,8 @@ body{background:#FAF6B7;}
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
 <style>
-  /* One continuous, soft light-yellow squiggle behind everything (matches Meal Delivery) */
-  body{ position:relative; background:#F6F2DA !important; }
-  body::before{
-    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
-    background:#E9E09A; opacity:.14;
-    -webkit-mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
-    mask:url('/brand/img/texture-mono.svg') center/150% no-repeat;
-  }
-  /* Hero rides the same field so the squiggle is continuous top-to-bottom */
-  .page-hero.h-butter{ background:transparent !important; }
-  .page-hero .page-hero__tex{ display:none !important; }
-  footer{ background:transparent !important; }
+  /* Cream page, colour only in the banners; squiggle only in nav + footer (Emily, 2026-10-16) */
+  body{ background:#F8F2E6 !important; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -215,19 +205,38 @@ body{background:#FAF6B7;}
   </header>
 
   <!-- Hero -->
-  <section class="page-hero h-butter page-hero--compact">
-    <div class="page-hero__tex"></div>
+  <section class="page-hero page-hero--photo h-butter">
+    <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/band-beach-run.jpg" alt="Two women running together on the beach in white" style="object-position:50% 8%"></div>
     <div class="page-hero__inner">
       <span class="page-hero__eyebrow">Provider Network</span>
       <h1>Care with Cleo</h1>
-      <p class="page-hero__lede" style="font-size:1.02rem;color:var(--navy);">Join our network of trusted practitioners.<br>Tell us a bit more about your practice, and we'll take it from there.</p>
     </div>
   </section>
+
+  <!-- Intro under the photo, then Get started opens the form (Emily, 2026-10-19) -->
+  <style>
+    .pi-intro{ max-width:680px; margin:0 auto; padding:8px 32px 40px; text-align:center; }
+    .pi-intro p{ font-size:clamp(1.05rem,1.5vw,1.25rem); line-height:1.65; color:#463A33; margin:0 0 6px; }
+    .pi-intro p:first-child{ font-size:clamp(1.3rem,2.2vw,1.7rem); color:#6B0826; margin-bottom:10px; }
+    .pi-intro .btn{ margin-top:26px; display:inline-flex; align-items:center; font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:1rem;
+      padding:15px 34px; border:0; border-radius:999px; background:#6B0826; color:#FFFEF7; cursor:pointer; box-shadow:0 6px 18px rgba(107,8,38,.3);
+      transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
+    .pi-intro .btn:hover{ transform:translateY(-2px); background:#4E0519; }
+    .pi-intro .btn:focus-visible{ outline:2px solid #E1654B; outline-offset:3px; }
+    .pi-intro{ padding-bottom:72px; }
+    #form-wrap.pi-closed{ display:none; }
+    .pi-intro.pi-open .btn{ display:none; }
+  </style>
+  <div class="pi-intro" id="pi-intro">
+    <p>Join our network of trusted practitioners.</p>
+    <p>Tell us a bit more about your practice, and we'll take it from there.</p>
+    <button type="button" class="btn btn--primary" id="pi-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
+  </div>
 
   <!-- Form -->
   <section style="padding:0 32px 96px;max-width:680px;margin:0 auto;" id="form-section">
 
-    <div id="form-wrap">
+    <div id="form-wrap" class="pi-closed">
       <form id="provider-form" action="https://app.cleocare.co/api/intake-provider" method="POST" enctype="multipart/form-data" style="display:flex;flex-direction:column;gap:28px;">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" aria-hidden="true">
 
@@ -458,10 +467,36 @@ body{background:#FAF6B7;}
 
   </section>
 
-  <!-- Footer -->
-  <footer style="border-top:1px solid rgba(27,56,114,0.08);padding:32px;text-align:center;">
-    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);">© 2025 Cleo. All rights reserved. <a href="mailto:hello@cleocare.co" style="color:var(--ink-muted);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.2);">hello@cleocare.co</a></p>
-  </footer>
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="provider-intake.html" style="display:block;margin-bottom:9px;">For Providers</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Follow</p>
+          <a href="https://cleocare.substack.com" style="display:block;margin-bottom:9px;">Substack</a>
+          <a href="https://www.instagram.com/cleo.care.co" style="display:block;">Instagram</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </div>
+</footer>
 
   <script>
     // Show form with fade-in
@@ -621,5 +656,16 @@ body{background:#FAF6B7;}
     });
   </script>
 
+<script>
+  (function(){
+    var b=document.getElementById('pi-start'), w=document.getElementById('form-wrap');
+    if(!b||!w) return;
+    // open straight away if someone lands on a link to the form or the form has an error to show
+    function open(scroll){ w.classList.remove('pi-closed'); b.setAttribute('aria-expanded','true'); document.getElementById('pi-intro').classList.add('pi-open');
+      if(scroll){ w.scrollIntoView({behavior:'smooth',block:'start'}); var f=w.querySelector('input:not([type=hidden]):not([name=_gotcha])'); if(f) setTimeout(function(){ f.focus({preventScroll:true}); },400); } }
+    b.addEventListener('click',function(){ open(true); });
+    if(location.hash==='#form-section'||location.hash==='#form-wrap') open(false);
+  })();
+</script>
 </body>
 </html>

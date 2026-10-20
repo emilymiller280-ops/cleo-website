@@ -167,14 +167,30 @@ body{background:#FAF6B7;}
 </style>
 <link rel="stylesheet" href="/brand/hero.css">
 <link rel="stylesheet" href="/brand/nav.css">
+<style id="fav-gate-cream">
+  /* Gate follows the site rules (Emily, 2026-10-16): photo on top waving into cream, no squiggle, dark text */
+  #fav-gate{ background:#F8F2E6 !important; display:block !important; padding:0 !important; }
+  .fav-gate__photo{ position:relative; height:clamp(460px,80vh,900px); overflow:hidden; }  /* taller so more of the photo shows (Emily, 2026-10-19) */
+  .fav-gate__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 16%; display:block; }
+  .fav-gate__photo::after{ content:""; position:absolute; left:0; right:0; bottom:-1px; height:clamp(40px,6vw,90px);
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23F8F2E6' d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat; }
+  .fav-gate__body{ padding:24px 24px 72px; }
+  #fav-gate h1, #fav-confirmation p{ color:#6B0826 !important; }
+  #fav-gate .fav-gate__body > p:first-child, #fav-gate .fav-gate__body div > p:first-child{ color:#E1654B !important; }
+  #fav-gate p{ color:#463A33 !important; }
+  #fav-gate .fav-gate__body > p:first-child{ color:#E1654B !important; }
+  #fav-gate .gate-label{ color:#6B0826 !important; }
+  #fav-gate .fav-gate__body > div{ border-top-color:rgba(107,8,38,.16) !important; }
+  #fav-pw{ border-color:rgba(107,8,38,.2) !important; }
+</style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
 <body>
 
 <!-- Coming-soon gate (password-protected preview) -->
-<div id="fav-gate" style="position:fixed;top:74px;left:0;right:0;bottom:0;z-index:90;background:#E1654B;display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:48px 32px;overflow:auto;">
-  <div style="position:absolute;inset:0;background:#FFFEF7;opacity:.12;-webkit-mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;mask:url('/brand/img/texture-mono.svg') center/120% no-repeat;"></div>
-  <div style="position:relative;z-index:1;max-width:520px;width:100%;margin:auto;">
+<div id="fav-gate" style="position:fixed;top:98px;left:0;right:0;bottom:0;z-index:90;background:#E1654B;display:flex;align-items:flex-start;justify-content:center;text-align:center;padding:48px 32px;overflow:auto;">
+  <div class="fav-gate__photo" aria-hidden="true"><img src="/brand/img/photos/hero-favorites.jpg" alt=""></div>
+  <div class="fav-gate__body" style="position:relative;z-index:1;max-width:520px;width:100%;margin:auto;">
     <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#FAF6B7;margin:0 0 18px;">Our Favorites</p>
     <h1 style="font-family:'Host Grotesk','Inter',sans-serif;font-weight:400;letter-spacing:-.02em;font-size:clamp(2.6rem,7vw,4rem);color:#FAF6B7;line-height:1.05;margin:0 0 16px;">Coming soon.</h1>
     <p style="font-family:'Host Grotesk',system-ui,sans-serif;font-size:1.05rem;line-height:1.6;color:#FFFEF7;margin:0 0 28px;">We're putting the finishing touches on Cleo's edit of the brands we love. Have the password? Take a peek.</p>
@@ -238,8 +254,8 @@ body{background:#FAF6B7;}
   </header>
 
 <!-- HERO -->
-<section class="page-hero h-coral">
-  <div class="page-hero__tex"></div>
+<section class="page-hero page-hero--photo h-coral">
+  <div class="page-hero__photo" aria-hidden="true"><img src="/brand/img/photos/hero-favorites.jpg" alt="" style="object-position:50% 16%;"></div>
   <div class="page-hero__inner">
     <span class="page-hero__eyebrow">Cleo's Favorites</span>
     <h1>The brands we love,<br><em>curated for your journey.</em></h1>
@@ -492,15 +508,33 @@ body{background:#FAF6B7;}
 </section>
 
 <!-- FOOTER -->
-<footer style="background:#070F1E;padding:60px 56px 44px;">
-  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.06);padding-top:36px;">
-    <span style="font-family:'Rosevale',Georgia,serif;font-size:1.375rem;font-weight:400;color:rgba(255,255,255,0.6);">Cleo</span>
-    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo. All rights reserved.</p>
-    <a href="mailto:hello@cleocare.co" style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Contact</a>
-    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;"><a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
-        <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
-        <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
-        <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" style="font-family:'Spectral',serif;font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a></div>
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined.</p>
+      </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="provider-intake.html" style="display:block;margin-bottom:9px;">For Providers</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Follow</p>
+          <a href="https://cleocare.substack.com" style="display:block;margin-bottom:9px;">Substack</a>
+          <a href="https://www.instagram.com/cleo.care.co" style="display:block;">Instagram</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
+    </div>
   </div>
 </footer>
 

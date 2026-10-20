@@ -22,6 +22,7 @@
   --blush:#CD96B3;      --blush-soft:#E3C4D5;
   --butter:#FAF6B7;     --butter-deep:#F1EA8E;
   --ivory:#FFFEF7;
+  --cream:#F8F2E6;   /* off-white page background (Emily, 2026-10-16) */
   /* Working ink + neutrals. --ink (burgundy) = ACCENT type only (display + script).
      --text = MAIN/body font, a warm espresso so reading copy is never red or black. */
   --ink:#6B0826;        --text:#463A33;   --ink-soft:#8A7B72;   --line:rgba(107,8,38,.14);

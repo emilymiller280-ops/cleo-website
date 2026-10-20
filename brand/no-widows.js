@@ -34,3 +34,11 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start()
 })()
+
+/* Nav: mark the page you're on so it reads apart from the other links. */
+;(function(){
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.cleo-nav__links a:not(.cleo-nav__cta)').forEach(function(a){
+    if (a.getAttribute('href') === here) a.setAttribute('aria-current','page');
+  });
+})();

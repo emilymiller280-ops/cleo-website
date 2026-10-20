@@ -10,20 +10,33 @@
 @font-face{ font-family:"Host Grotesk"; src:url("fonts/host-600.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
 
 .cleo-nav{
-  --burgundy:#6B0826; --burgundy-deep:#4E0519; --ivory:#FFFEF7;
+  --burgundy:#6B0826; --burgundy-deep:#4E0519; --ivory:#FFFEF7; --sky:#99AADB; --butter:#FAF6B7;
   position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(255,254,247,.9); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(107,8,38,.10);
+  background:var(--sky);
   font-family:"Host Grotesk",system-ui,sans-serif;
 }
-.cleo-nav__inner{ max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,56px);
-  height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
-.cleo-nav__brand{ font-family:"Rosevale",Georgia,serif; font-size:1.7rem; letter-spacing:.005em;
-  color:var(--burgundy); text-decoration:none; flex-shrink:0; white-space:nowrap; line-height:1; }
-.cleo-nav__links{ display:flex; align-items:center; gap:30px; }
-.cleo-nav__links a{ color:var(--burgundy); text-decoration:none; font-weight:500; font-size:.95rem;
-  opacity:.82; transition:opacity .15s ease; white-space:nowrap; }
+/* Straight bar with the Born ID squiggle inside it (Emily, 2026-10-16). */
+.cleo-nav::before{ content:""; position:absolute; inset:0; z-index:0; pointer-events:none; background:#7C8FCB; opacity:.42;
+  -webkit-mask:url("img/texture-mono.svg") center/cover no-repeat; mask:url("img/texture-mono.svg") center/cover no-repeat; }
+.cleo-nav__inner{ max-width:1400px; margin:0 auto; padding:0 clamp(20px,4vw,56px);
+  height:98px; display:flex; align-items:center; justify-content:space-between; gap:22px; position:relative; z-index:1; }
+/* "Cleo Care" sits dead centre in butter; three links either side, Book Care far right. */
+.cleo-nav__brand{ font-family:"Rosevale",Georgia,serif; font-size:2.5rem; letter-spacing:.005em;
+  color:var(--butter); text-decoration:none; white-space:nowrap; line-height:1;
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+.cleo-nav__links{ display:flex; align-items:center; gap:22px; flex:1; }
+.cleo-nav__links a:nth-child(3){ margin-right:auto; }
+.cleo-nav__links a{ color:var(--burgundy); text-decoration:none; font-weight:500; font-size:1rem;
+  opacity:.88; transition:opacity .15s ease; white-space:nowrap; }
 .cleo-nav__links a:hover{ opacity:1; }
+@media(min-width:1181px){
+  .cleo-nav__links a:not(.cleo-nav__cta){ position:relative; }
+  .cleo-nav__links a:nth-child(2)::before, .cleo-nav__links a:nth-child(3)::before,
+  .cleo-nav__links a:nth-child(5)::before, .cleo-nav__links a:nth-child(6)::before{
+    content:""; position:absolute; left:-13px; top:50%; width:4px; height:4px; margin-top:-2px; border-radius:50%; background:var(--butter); }
+  .cleo-nav__links a[aria-current="page"]{ opacity:1; text-decoration:underline; text-decoration-color:var(--butter);
+    text-decoration-thickness:2px; text-underline-offset:7px; }
+}
 .cleo-nav__cta{ background:var(--burgundy); color:var(--ivory)!important; opacity:1!important;
   padding:11px 22px; border-radius:999px; font-weight:600!important; box-shadow:0 4px 14px rgba(107,8,38,.28);
   transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
@@ -31,21 +44,22 @@
 
 /* Mobile toggle (pure CSS) */
 .cleo-nav__toggle{ position:absolute; opacity:0; pointer-events:none; }
-.cleo-nav__burger{ display:none; width:30px; height:22px; position:relative; cursor:pointer; flex-shrink:0; }
+.cleo-nav__burger{ display:none; width:30px; height:22px; position:relative; margin-left:auto; cursor:pointer; flex-shrink:0; }
 .cleo-nav__burger span{ position:absolute; left:0; right:0; height:1.6px; background:var(--burgundy);
   transition:transform .3s ease, opacity .3s ease; }
 .cleo-nav__burger span:nth-child(1){ top:0; }
 .cleo-nav__burger span:nth-child(2){ top:50%; transform:translateY(-50%); }
 .cleo-nav__burger span:nth-child(3){ bottom:0; }
 
-@media(max-width:900px){
+@media(max-width:1180px){
   .cleo-nav__burger{ display:block; }
-  .cleo-nav__links{ position:fixed; top:74px; left:0; right:0; flex-direction:column; align-items:stretch;
+  .cleo-nav__links{ position:fixed; top:98px; left:0; right:0; flex-direction:column; align-items:stretch;
     gap:4px; padding:18px clamp(20px,5vw,56px) 26px; background:var(--ivory);
     border-bottom:1px solid rgba(107,8,38,.10); box-shadow:0 16px 30px rgba(36,28,30,.12);
     transform:translateY(-135%); transition:transform .32s cubic-bezier(.4,0,.2,1); }
   .cleo-nav__links a{ padding:12px 2px; font-size:1.05rem; opacity:.9; border-bottom:1px solid rgba(107,8,38,.08); }
   .cleo-nav__links a:last-child{ border-bottom:0; }
+  .cleo-nav__links a:nth-child(3){ margin-right:0; }
   .cleo-nav__cta{ margin-top:12px; text-align:center; box-shadow:none; }
   .cleo-nav__toggle:checked ~ .cleo-nav__links{ transform:translateY(0); }
   .cleo-nav__toggle:checked ~ .cleo-nav__burger span:nth-child(1){ top:50%; transform:translateY(-50%) rotate(45deg); }
