@@ -158,6 +158,13 @@ body{background:#FAF6B7;}
   .copy-cards > p{ color:#463A33 !important; font-size:.95rem !important; }
   .faq-steps .hiw-step{ border-top-color:rgba(107,8,38,.28); }
   .hiw-grid, .pillar-grid{ gap:clamp(24px,3.5vw,48px) !important; }
+  /* photo 148 small, in an arch beside the intro, so it stays sharp (Emily, 2026-10-20) */
+  .hww-intro{ display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:clamp(32px,6vw,80px); align-items:center; text-align:left; }
+  .hww-intro .copy-cards{ grid-template-columns:1fr; gap:26px !important; }
+  .hww-intro .copy-cards > p{ font-size:1rem !important; }
+  .hww-photo{ margin:0; aspect-ratio:4/5; overflow:hidden; border-radius:200px 200px 0 0; }
+  .hww-photo img{ width:100%; height:100%; object-fit:cover; object-position:0% 6%; display:block; }
+  @media(max-width:760px){ .hww-intro{ grid-template-columns:1fr; } .hww-photo{ width:min(280px,76%); margin:0 auto; } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -219,10 +226,13 @@ body{background:#FAF6B7;}
 <section style="padding:clamp(72px,9vw,104px) 32px 40px;background:#FAF6B7;">
   <div style="max-width:1040px;margin:0 auto;text-align:center;">
     <p style="font-family:'Palmello',cursive;color:var(--navy);font-size:clamp(2.3rem,5.4vw,3.3rem);line-height:1.05;margin-bottom:30px;">Human first, always.</p>
+    <div class="hww-intro">
+    <figure class="hww-photo"><img src="/brand/img/photos/band-shoulder.jpg" alt="A close-up of a woman's neck and shoulder in soft light" loading="lazy"></figure>
     <div class="copy-cards">
       <p>Some of life's biggest moments come with questions, uncertainty, and the need for support that feels both trusted and personal. Cleo was created to make that support easier to find. By thoughtfully connecting women with trusted, personalized care, we remove the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path to care.</p>
       <p>Cleo offers clarity, guidance, and trusted options without prescribing a single way forward. Because support shouldn't be something you have to search for; it should simply be there when you need it.</p>
       <p>Beyond expertise, Cleo is deeply committed to making every woman feel seen, understood, and cared for. Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of her health journey.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -451,7 +461,7 @@ body{background:#FAF6B7;}
       <div style="display:flex;gap:56px;flex-wrap:wrap;">
         <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
           <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
-          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How We Work</a>
           <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
           <a href="favorites.html" style="display:block;">Our Favorites</a></div>
         <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>

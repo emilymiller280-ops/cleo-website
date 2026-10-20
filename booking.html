@@ -167,6 +167,13 @@
       box-shadow: 0 0 0 3px rgba(27,56,114,0.08);
     }
 
+
+    /* pills, not boxes (Emily, 2026-10-20): buttons size to their words, ivory not white, burgundy when picked */
+    .bk-pills{ display:flex; flex-wrap:wrap; gap:10px; }
+    .toggle-btn, .service-chip{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:.92rem; color:#6B0826; background:#FFFEF7; border:1.5px solid rgba(107,8,38,.22); border-radius:999px; padding:11px 20px; box-shadow:none; }
+    .toggle-btn:hover, .service-chip:hover{ border-color:#6B0826; }
+    .toggle-btn.active, .service-chip.selected{ background:#6B0826; border-color:#6B0826; color:#FAF6B7; box-shadow:none; }
+
     .section-rule {
       border: none;
       border-top: 1px solid rgba(27,56,114,0.1);
@@ -174,13 +181,12 @@
     }
 
     /* Per-service follow-up cards (revealed as each care type is chosen) */
-    #service-followups { display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+    #service-followups { display:flex; flex-direction:column; gap:22px; margin-top:10px; }
     #service-followups:empty, #service-followups.is-empty { display:none; }
+    /* open, no box: thin line above, like the rest of the site (Emily, 2026-10-20) */
     .svc-followup {
-      background: var(--navy-wash);
-      border: 1.5px solid rgba(107,8,38,0.12);
-      border-radius: 10px;
-      padding: 18px 20px;
+      border-top: 1px solid rgba(107,8,38,0.22);
+      padding: 18px 0 0;
     }
     .svc-followup__title {
       font-family: 'Inter', sans-serif; font-size: 0.6875rem; font-weight: 600;
@@ -284,7 +290,7 @@ body{background:#FAF6B7;}
 
   <!-- Hero -->
   <section class="page-hero page-hero--photo h-sky bk-hero">
-    <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/hero-booking.jpg" alt="A close-up of a woman's neck and shoulder in soft light" style="object-position:0% 6%"></div>
+    <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/hero-booking-48.jpg" alt="A woman in a white ribbed top stretching" style="object-position:50% 30%"></div>
     <div class="page-hero__inner">
       <span class="page-hero__eyebrow">Book Your Care</span>
       <h1>Full-Spectrum Maternal Care</h1>
@@ -344,12 +350,12 @@ body{background:#FAF6B7;}
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Where are you in your journey?</label>
-              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;">
-                <button type="button" class="toggle-btn" id="stage-ttc" onclick="setStage('ttc')" style="padding:13px 6px;">Trying to Conceive</button>
-                <button type="button" class="toggle-btn" id="stage-pregnant" onclick="setStage('pregnant')" style="padding:13px 6px;">Pregnant</button>
-                <button type="button" class="toggle-btn" id="stage-postpartum" onclick="setStage('postpartum')" style="padding:13px 6px;">Postpartum</button>
-                <button type="button" class="toggle-btn" id="stage-other" onclick="setStage('other')" style="padding:13px 6px;">Something Else</button>
-                <button type="button" class="toggle-btn" id="stage-gift" onclick="setStage('gift')" style="padding:13px 6px;">Gifting</button>
+              <div class="bk-pills">
+                <button type="button" class="toggle-btn" id="stage-ttc" onclick="setStage('ttc')">Trying to Conceive</button>
+                <button type="button" class="toggle-btn" id="stage-pregnant" onclick="setStage('pregnant')">Pregnant</button>
+                <button type="button" class="toggle-btn" id="stage-postpartum" onclick="setStage('postpartum')">Postpartum</button>
+                <button type="button" class="toggle-btn" id="stage-other" onclick="setStage('other')">Something Else</button>
+                <button type="button" class="toggle-btn" id="stage-gift" onclick="setStage('gift')">Gifting</button>
               </div>
               <input type="hidden" name="journey_stage" id="stage-hidden">
             </div>
@@ -368,7 +374,7 @@ body{background:#FAF6B7;}
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">What kind of support are you interested in? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-              <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:4px;">
+              <div class="bk-pills" style="margin-top:4px;">
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Meal Delivery')">Meal Delivery</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Postpartum Doula')">Postpartum Doula</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Birth Doula')">Birth Doula</button>
@@ -380,7 +386,7 @@ body{background:#FAF6B7;}
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Acupuncture')">Acupuncture</button>
                 <button type="button" class="service-chip" onclick="toggleChip(this,'Sleep Support')">Sleep Support</button>
               </div>
-              <div style="margin-top:10px;text-align:center;">
+              <div style="margin-top:10px;">
                 <button type="button" class="service-chip" id="chip-other" onclick="toggleOther(this)">Other</button>
               </div>
               <div id="other-service-wrap" style="display:none;margin-top:10px;">
@@ -595,7 +601,7 @@ body{background:#FAF6B7;}
             </div>
             <div id="care-setting-wrap" style="display:none;">
               <label class="form-label">How would you like to receive care? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
-              <div id="setting-chips" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:4px;">
+              <div id="setting-chips" class="bk-pills" style="margin-top:4px;">
                 <button type="button" class="service-chip" data-setting="home" onclick="toggleSetting(this,'In-home')">In your home</button>
                 <button type="button" class="service-chip" data-setting="virtual" onclick="toggleSetting(this,'Telehealth')">Virtual (telehealth)</button>
                 <button type="button" class="service-chip" data-setting="office" onclick="toggleSetting(this,'In-office')">In office</button>
@@ -837,7 +843,7 @@ body{background:#FAF6B7;}
       <div style="display:flex;gap:56px;flex-wrap:wrap;">
         <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
           <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
-          <a href="faq.html" style="display:block;margin-bottom:9px;">How It Works</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How We Work</a>
           <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
           <a href="favorites.html" style="display:block;">Our Favorites</a></div>
         <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
