@@ -160,13 +160,17 @@ body{background:#FAF6B7;}
   .copy-cards > p{ color:#463A33 !important; font-size:.95rem !important; }
   .faq-steps .hiw-step{ border-top-color:rgba(107,8,38,.28); }
   .hiw-grid, .pillar-grid{ gap:clamp(24px,3.5vw,48px) !important; }
-  /* photo 148 small, in an arch beside the intro, so it stays sharp (Emily, 2026-10-20) */
-  .hww-intro{ display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:clamp(32px,6vw,80px); align-items:center; text-align:left; }
+  /* intro: photo 148 bleeds off the left edge, the pink steps wave rises over its foot,
+     "Human first, always." sits above the text on the right (Emily, 2026-10-20) */
+  .hww-intro{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); align-items:stretch; text-align:left; }
+  .hww-text{ align-self:center; padding-bottom:clamp(60px,8vw,120px); }
+  .hww-text .hww-title{ font-family:'Palmello',cursive; color:var(--navy); font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.05; margin:0 0 30px; }
   .hww-intro .copy-cards{ grid-template-columns:1fr; gap:26px !important; }
   .hww-intro .copy-cards > p{ font-size:1rem !important; }
-  .hww-photo{ margin:0; aspect-ratio:4/5; overflow:hidden; border-radius:200px 200px 0 0; }
+  .hww-photo{ margin:0 0 0 calc(-1 * max(32px, (100vw - 1040px)/2)); min-height:600px; overflow:hidden; }
   .hww-photo img{ width:100%; height:100%; object-fit:cover; object-position:0% 6%; display:block; }
-  @media(max-width:760px){ .hww-intro{ grid-template-columns:1fr; } .hww-photo{ width:min(280px,76%); margin:0 auto; } }
+  .wup.wup--over{ position:relative; z-index:2; margin-top:calc(-1 * clamp(50px,7vw,110px)); background:linear-gradient(to bottom, transparent calc(100% - 4px), #E3C4D5 calc(100% - 4px)); }
+  @media(max-width:760px){ .hww-intro{ grid-template-columns:1fr; gap:28px; } .hww-photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .hww-text{ padding-bottom:40px; } .wup.wup--over{ margin-top:0; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #E3C4D5 calc(100% - 4px)); } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -225,15 +229,17 @@ body{background:#FAF6B7;}
 </section>
 
 <!-- WHY CLEO / INTRO -->
-<section style="padding:clamp(72px,9vw,104px) 32px 40px;background:#FAF6B7;">
-  <div style="max-width:1040px;margin:0 auto;text-align:center;">
-    <p style="font-family:'Palmello',cursive;color:var(--navy);font-size:clamp(2.3rem,5.4vw,3.3rem);line-height:1.05;margin-bottom:30px;">Human first, always.</p>
+<section style="padding:clamp(72px,9vw,104px) 32px 0;background:#FAF6B7;">
+  <div style="max-width:1040px;margin:0 auto;">
     <div class="hww-intro">
     <figure class="hww-photo"><img src="/brand/img/photos/band-shoulder.jpg" alt="A close-up of a woman's neck and shoulder in soft light" loading="lazy"></figure>
+    <div class="hww-text">
+    <p class="hww-title">Human first, always.</p>
     <div class="copy-cards">
       <p>Some of life's biggest moments come with questions, uncertainty, and the need for support that feels both trusted and personal. Cleo was created to make that support easier to find. By thoughtfully connecting women with trusted, personalized care, we remove the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path to care.</p>
       <p>Cleo offers clarity, guidance, and trusted options without prescribing a single way forward. Because support shouldn't be something you have to search for; it should simply be there when you need it.</p>
       <p>Beyond expertise, Cleo is deeply committed to making every woman feel seen, understood, and cared for. Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of her health journey.</p>
+    </div>
     </div>
     </div>
   </div>
@@ -248,12 +254,9 @@ body{background:#FAF6B7;}
   @media(max-width:768px){ .hiw-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 24px; } }
   @media(max-width:460px){ .hiw-grid{ grid-template-columns:1fr; } }
 </style>
-<!-- Photo 26 with a pink wave into Four simple steps (Emily, 2026-10-20) -->
-<div class="wband wband--pink">
-  <div class="wband__photo"><img src="/brand/img/photos/band-meadow.jpg" alt="A parent holding a child's hand in a wildflower meadow" style="object-position:50% 40%"></div>
-  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-</div>
-<section class="faq-steps" style="padding:24px 32px clamp(64px,8vw,96px);">
+<!-- pink wave into Four simple steps, rising over the foot of photo 148; meadow photo removed (Emily, 2026-10-20) -->
+<svg class="wup wup--blush wup--over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<section class="faq-steps" style="padding:clamp(24px,3vw,40px) 32px clamp(64px,8vw,96px);">
   <div style="max-width:1040px;margin:0 auto;">
     <p style="text-align:center;font-family:'Spectral',serif;color:var(--olive);font-size:clamp(2.1rem,4.2vw,2.9rem);margin-bottom:44px;">Four simple steps</p>
     <div class="hiw-grid">
