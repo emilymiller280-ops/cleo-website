@@ -46,8 +46,26 @@
   .gift-how > div{ background:transparent; box-shadow:none; border-radius:0; padding:22px 0 0; border-top:1.5px solid rgba(107,8,38,.25); }
   .gift-how .sn{ color:#6B0826; }
   .gf-how .eyebrow{ color:#6B0826 !important; }
+  /* 2026-10-20 (Emily): bigger gift-type text; How it works = photo left bleeding off, cut by the wave, click-through steps right */
+  .gift-card p{ font-size:1.06rem !important; line-height:1.7; }
+  .gf-wave-over{ fill:#F8F2E6; background:none; z-index:2; margin-top:0; }
+  .gf-how2{ background:#99AADB; padding:0 32px clamp(56px,7vw,96px); margin-top:calc(-1 * clamp(50px,7vw,110px)); }
+  .gf-how2__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); max-width:1040px; margin:0 auto; align-items:stretch; }
+  .gf-how2__photo{ margin:0 0 0 calc(-1 * max(32px, (100vw - 1040px)/2)); min-height:600px; overflow:hidden; }
+  .gf-how2__photo img{ width:100%; height:100%; object-fit:cover; object-position:40% 40%; display:block; transform:scale(1.07); }
+  .gf-how2__text{ align-self:center; padding-top:clamp(40px,5vw,72px); text-align:left; }
+  .gf-how2 .eyebrow{ display:block; color:#6B0826; margin-bottom:12px; }
+  .gf-how2 h2{ color:#6B0826; font-size:clamp(2rem,3.6vw,2.8rem); line-height:1.1; margin:0 0 24px; text-wrap:balance; }
+  .gf-steps.ctabs--solo{ max-width:none; margin:0 0 28px; border-top:1.5px solid rgba(107,8,38,.25); padding-top:14px; }
+  .gf-steps .ctabs__tabs{ gap:clamp(28px,4vw,48px); margin-bottom:8px; }
+  .gf-steps .ctabs__panel{ min-height:110px; }
+  .gf-steps h3{ font-size:1.2rem; color:#6B0826; margin:0 0 8px; }
+  .gf-steps p{ color:#463A33; font-size:1.05rem; margin:0; }
+  @media(max-width:760px){
+    .gf-how2__grid{ grid-template-columns:1fr; gap:28px; } .gf-how2__photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .gf-how2__text{ padding-top:0; } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
+<script src="/brand/ctabs.js" defer></script>
 </head>
 <body>
 
@@ -107,23 +125,25 @@
 </section>
 
 <!-- Photo band with a sky wave into How it works (Emily, 2026-10-19) -->
-<div class="wband wband--sky">
-  <div class="wband__photo"><img src="/brand/img/photos/band-newborn.jpg" alt="A mother holding her sleeping newborn" style="object-position:50% 40%"></div>
-  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-</div>
-<!-- How gifting works (sky band) -->
-<section class="section bg-sky gf-how" style="position:relative;overflow:hidden;padding-top:clamp(16px,2.5vw,32px);">
-  <div class="wrap" style="position:relative;z-index:1;">
-    <div class="section-head" style="text-align:center;max-width:640px;margin:0 auto 44px;">
-      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">How it works</span>
+<!-- cream wave cuts into the top of the newborn photo (Emily, 2026-10-20) -->
+<svg class="wdown gf-wave-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<!-- How gifting works: photo bleeds off the left, steps click through on the right, like Meal Delivery (Emily, 2026-10-20) -->
+<section class="gf-how2">
+  <div class="gf-how2__grid">
+    <figure class="gf-how2__photo"><img src="/brand/img/photos/band-newborn.jpg" alt="A mother holding her sleeping newborn"></figure>
+    <div class="gf-how2__text">
+      <span class="eyebrow">How it works</span>
       <h2>Simple to send, lovely to receive.</h2>
-    </div>
-    <div class="gift-how">
-      <div><span class="sn">1</span><h3>Choose your gift</h3><p>Pick an amount or a specific service, and add a personal note.</p></div>
-      <div><span class="sn">2</span><h3>We deliver it</h3><p>She receives a beautiful message with everything she needs to redeem.</p></div>
-      <div><span class="sn">3</span><h3>She gets cared for</h3><p>Cleo matches her with trusted providers and coordinates every detail.</p></div>
-    </div>
-    <div style="text-align:center;margin-top:44px;">
+      <div class="ctabs ctabs--solo gf-steps" data-ctabs>
+        <div>
+          <div class="ctabs__tabs" role="tablist" aria-label="How gifting works">
+            <button role="tab" id="gt-1" aria-controls="gp-1">1</button><button role="tab" id="gt-2" aria-controls="gp-2">2</button><button role="tab" id="gt-3" aria-controls="gp-3">3</button>
+          </div>
+          <div class="ctabs__panel" role="tabpanel" id="gp-1" aria-labelledby="gt-1"><h3>Choose your gift</h3><p>Pick an amount or a specific service, and add a personal note.</p></div>
+          <div class="ctabs__panel" role="tabpanel" id="gp-2" aria-labelledby="gt-2"><h3>We deliver it</h3><p>She receives a beautiful message with everything she needs to redeem.</p></div>
+          <div class="ctabs__panel" role="tabpanel" id="gp-3" aria-labelledby="gt-3"><h3>She gets cared for</h3><p>Cleo matches her with trusted providers and coordinates every detail.</p></div>
+        </div>
+      </div>
       <a href="https://app.cleocare.co/gift" class="btn btn--primary">Send a gift &rarr;</a>
     </div>
   </div>

@@ -112,8 +112,6 @@
   .md-plate .md-day:nth-child(3){ background:var(--ivory); }
   /* produce photo is bigger and tucks up under the blue wave above it */
   .wdown--over{ background:none; z-index:2; }
-  .md-produce{ margin-top:calc(-1 * clamp(50px,7vw,110px)); }
-  .md-produce .wband__photo{ height:clamp(380px,50vw,640px); }
   .md-hero-photo .wband__photo{ height:clamp(480px,76svh,840px); }  /* tomato hero, a touch bigger so more cucumber shows (Emily, 2026-10-19) */
   .md-why .md-quote{ background:transparent; padding:0; }
   .md-why .eyebrow{ color:var(--burgundy); }
@@ -132,6 +130,19 @@
   .md-steps h3{ font-size:1.2rem; color:var(--burgundy); margin:0 0 8px; }
   .md-steps p{ color:var(--text); font-size:1.02rem; margin:0; }
   @media(max-width:820px){ .md-split{ grid-template-columns:1fr; gap:28px; } }
+  /* Peek at your plate: photo left bleeding off the page, menu right (Emily, 2026-10-20) */
+  .md-plate{ background:var(--cream); padding:0 32px clamp(56px,7vw,96px); margin-top:calc(-1 * clamp(50px,7vw,110px)); }
+  .md-plate__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:clamp(32px,6vw,80px); align-items:stretch; max-width:1040px; margin:0 auto; }
+  .md-plate__photo{ margin:0 0 0 calc(-1 * max(32px, (100vw - 1040px)/2)); min-height:560px; overflow:hidden; }
+  .md-plate__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 50%; display:block; }
+  .md-plate__text{ align-self:center; padding-top:clamp(40px,5vw,72px); text-align:left; }
+  .md-plate__text h2{ font-size:clamp(1.6rem,2.8vw,2.2rem); margin:0; }
+  .md-plate__lede{ margin:10px 0 22px; color:var(--text); }
+  .md-plate .ctabs--solo{ max-width:none; margin:0; }
+  .md-plate .ctabs__tabs{ justify-content:flex-start; }
+  .md-plate .md-menu{ max-width:none; margin:0; }
+  .md-plate .md-menu li{ text-align:left; }
+  @media(max-width:760px){ .md-plate__grid{ grid-template-columns:1fr; gap:28px; } .md-plate__photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .md-plate__text{ padding-top:0; } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -222,19 +233,14 @@
 </section>
 <svg class="wdown wdown--sky wdown--over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
-<!-- Photo 69 (produce) with a cream wave into A peek at your plate (Emily, 2026-10-19) -->
-<div class="wband wband--cream md-produce">
-  <div class="wband__photo"><img src="/brand/img/photos/md-band-springrolls.jpg" alt="Fresh spring rolls with vegetables and dipping sauce" style="object-position:50% 38%"></div>
-  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-</div>
-<!-- A peek at your plate: cream like the homepage, days as click-through tabs (option D) -->
-<section class="section md-plate">
-  <div class="wrap">
-    <div style="text-align:center;max-width:680px;margin:0 auto 22px;">
+<!-- A peek at your plate: spring rolls beside the menu, bleeding off the left, the blue wave above cuts into the top of the photo (Emily, 2026-10-20) -->
+<section class="md-plate">
+  <div class="md-plate__grid">
+    <figure class="md-plate__photo"><img src="/brand/img/photos/md-band-springrolls.jpg" alt="Fresh spring rolls with vegetables and dipping sauce"></figure>
+    <div class="md-plate__text">
       <h2>A peek at your plate.</h2>
-      <p style="margin-top:10px;color:var(--text);">Chef-prepared, rotating daily and seasonally. Here's a sample three days from our kitchen.</p>
-    </div>
-    <div class="ctabs ctabs--solo" data-ctabs>
+      <p class="md-plate__lede">Chef-prepared, rotating daily and seasonally. Here's a sample three days from our kitchen.</p>
+      <div class="ctabs ctabs--solo" data-ctabs>
       <div>
         <div class="ctabs__tabs" role="tablist" aria-label="Sample menu days">
           <button role="tab" id="dt-1" aria-controls="dp-1">Day One</button>
@@ -247,6 +253,7 @@
       </div>
     </div>
   </div>
+    </div>
 </section>
 
 
