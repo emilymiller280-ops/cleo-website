@@ -34,18 +34,6 @@
 </style>
 <script src="/brand/no-widows.js" defer></script>
 <style id="os-waves">
-  /* hero waves straight into the maroon mission band (one wave, not two) (Emily, 2026-10-19) */
-  .os-hero::after{ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23E3C4D5' d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat !important; }
-  /* Cleo's Story: plain text columns, no boxes */
-  /* founder: two paragraphs left, photo right; closing line in a maroon wave band (Emily, 2026-10-19) */
-  .os-founder{ padding-block:clamp(48px,6vw,80px); }
-  .os-founder__grid{ display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:clamp(28px,5vw,64px); align-items:center; max-width:980px; }
-  .os-founder h2{ font-size:clamp(1.5rem,2.4vw,2rem); margin:0 0 18px; color:#6B0826; text-align:left; }
-  .os-cols{ text-align:left; }
-  .os-cols p{ margin:0 0 .9em; color:#463A33; font-size:.9rem; line-height:1.75; }
-  .os-cols p:last-child{ margin-bottom:0; }
-  /* closing line: light yellow wave band, blue text (deepened sky so it reads on butter) */
-  /* every wave on this page is light yellow with blue text (Emily, 2026-10-19) */
   /* Our Story waves pink, accent text burgundy (Emily, 2026-10-20; was yellow + blue) */
   .section.os-butter{ background:#E3C4D5 !important; }
   .os-wband-butter .wband__wave{ fill:#E3C4D5; }
@@ -55,38 +43,36 @@
   .wdown--butter{ fill:#E3C4D5; background:linear-gradient(to top, #E3C4D5 4px, #F8F2E6 4px); }
   /* ---- 2026-10-20 rebuild (Emily): How We Work / Meal Delivery treatments ---- */
   .os-hero h1{ font-size:clamp(3.4rem,9vw,7rem); letter-spacing:-.01em; }
-  .os-mission{ padding-block:clamp(36px,5vw,64px) clamp(28px,4vw,48px); text-align:left; }
-  .os-mission .wrap{ max-width:980px; }
-  .os-mission h2{ font-size:clamp(1.9rem,3.8vw,3rem); line-height:1.08; color:#6B0826; margin:0; max-width:760px; text-wrap:balance; }
-  .os-mission__step{ margin:clamp(28px,4vw,48px) 0 0 auto; max-width:520px; }
-  .os-mission__hard{ font-size:clamp(1.3rem,2.2vw,1.7rem); line-height:1.3; color:#6B0826; margin:0 0 14px; text-wrap:balance; }
-  .os-mission__statement{ font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.7; color:#463A33; margin:0; text-wrap:pretty; }
-  .os-wave-over{ z-index:2; background:none; margin-top:-3px; }
-  .os-hero::after{ bottom:-3px !important; }
-  .os-mission{ position:relative; }
-  .os-founder{ background:var(--cream); padding:0 32px; margin-top:calc(-1 * clamp(50px,7vw,110px)); }
-  .os-founder__grid{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); max-width:1040px; margin:0 auto; align-items:stretch; }
-  .os-founder__text{ align-self:center; padding-block:clamp(110px,12vw,170px) clamp(56px,7vw,96px); text-align:left; }
-  .os-founder h2{ font-size:clamp(2.1rem,3.8vw,3rem); margin:0 0 24px; color:#6B0826; text-align:left; }
-  .os-founder__text p{ font-size:1.06rem; line-height:1.8; color:#463A33; margin:0 0 1.1em; max-width:58ch; }
-  .os-founder__text .os-founder__open{ font-size:clamp(1.2rem,1.9vw,1.45rem); line-height:1.55; color:#6B0826; margin:0 0 1.3em; }
-  .os-founder__photo{ margin:0 calc(-1 * max(32px, (100vw - 1040px)/2)) 0 0; overflow:hidden; min-height:640px; }
-  .os-founder__photo{ position:relative; }
-  .os-founder__photo figcaption{ position:absolute; left:clamp(20px,3vw,40px); bottom:clamp(20px,3vw,36px); font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:#FAF6B7; }
-  .os-founder__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; }
-  .os-cta-photo{ position:relative; height:clamp(620px,62vw,900px); overflow:hidden; }
+  .os-intro{ background:var(--cream); padding:clamp(16px,2.5vw,32px) 32px 0; }
+  .os-intro__grid{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); max-width:1040px; margin:0 auto; align-items:stretch; }
+  .os-intro__photo{ position:relative; margin:0 0 0 calc(-1 * max(32px, (100vw - 1040px)/2)); min-height:680px; overflow:hidden; }
+  .os-intro__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 30%; display:block; }
+  .os-intro__photo figcaption{ position:absolute; left:clamp(20px,3vw,40px); top:clamp(20px,3vw,32px); font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:#FAF6B7; }
+  .os-intro__text{ align-self:center; padding-bottom:clamp(60px,8vw,120px); text-align:left; }
+  .os-intro__title{ font-family:var(--font-script); color:#6B0826; font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.05; margin:0 0 30px; }
+  .os-lines p{ margin:0; padding:22px 0; border-top:1.5px solid rgba(107,8,38,.18); color:#463A33; font-size:1rem; line-height:1.75; }
+  .os-wup-over{ position:relative; z-index:2; margin-top:calc(-1 * clamp(50px,7vw,110px)); background:none; }
+  .os-pink{ position:relative; z-index:3; background:#E3C4D5; margin-top:-3px; padding:clamp(16px,2.5vw,32px) 32px clamp(40px,5vw,64px); }
+  .os-pink__in{ max-width:980px; margin:0 auto; }
+  .os-pink h2{ font-size:clamp(1.9rem,3.8vw,3rem); line-height:1.08; color:#6B0826; margin:0; max-width:760px; text-wrap:balance; text-align:left; }
+  .os-pink__step{ margin:clamp(24px,3.5vw,40px) 0 0 auto; max-width:520px; text-align:left; }
+  .os-pink__hard{ font-size:clamp(1.3rem,2.2vw,1.7rem); line-height:1.3; color:#6B0826; margin:0 0 14px; text-wrap:balance; }
+  .os-pink__stmt{ font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.7; color:#463A33; margin:0; text-wrap:pretty; }
+  .os-wdown-pink{ fill:#E3C4D5; background:none; margin-top:-2px; z-index:3; }
+  .os-cta-photo{ position:relative; height:clamp(620px,62vw,900px); overflow:hidden; margin-top:calc(-1 * clamp(50px,7vw,110px)); }
   .os-cta-photo > img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%; }
   .os-cta-photo__inner{ position:relative; z-index:1; height:100%; max-width:1180px; margin:0 auto; padding:0 32px; display:flex; align-items:center; justify-content:flex-end; }
   .os-cta-photo__text{ max-width:440px; text-align:left; padding-bottom:clamp(40px,6vw,90px); }
   .os-cta-photo__text h2{ font-size:clamp(2.1rem,3.8vw,3rem); line-height:1.1; color:#6B0826; margin:0 0 .45em; text-wrap:balance; }
   .os-cta-photo__text p{ color:#463A33; font-size:1.06rem; margin:0 0 1.5em; }
   @media(max-width:760px){
-    .os-mission__step{ margin-left:clamp(24px,10vw,56px); }
-    .os-founder{ margin-top:0; }
-    .os-wave-over{ background:linear-gradient(to top, #E3C4D5 4px, #F8F2E6 4px); }
-    .os-founder__grid{ grid-template-columns:1fr; gap:0; }
-    .os-founder__photo{ order:-1; width:100vw; min-height:0; aspect-ratio:4/5; margin:0 0 0 calc(50% - 50vw); }
-    .os-founder__text{ padding-block:36px 56px; }
+    .os-intro{ padding-top:0; }
+    .os-intro__grid{ grid-template-columns:1fr; gap:28px; }
+    .os-intro__photo{ width:100vw; min-height:0; aspect-ratio:4/5; margin:0 0 0 calc(50% - 50vw); }
+    .os-intro__text{ padding-bottom:40px; }
+    .os-intro__photo figcaption{ top:auto; bottom:16px; }
+    .os-wup-over{ margin-top:0; background:var(--cream); }
+    .os-pink__step{ margin-left:clamp(24px,10vw,56px); }
     .os-cta-photo{ height:auto; display:flex; flex-direction:column; }
     .os-cta-photo > img{ position:static; height:auto; aspect-ratio:4/5; }
     .os-cta-photo__inner{ display:block; padding:40px 24px 120px; background:var(--cream); }
@@ -120,29 +106,31 @@
     <h1>Our Story</h1>
   </div>
 </section>
-<!-- Mission in the pink: big headline, the hard line, then the mission statement (Emily, 2026-10-20) -->
-<section class="section os-butter os-mission">
-  <div class="wrap">
+<!-- Built like How We Work (Emily, 2026-10-20): photo bleeds off the left, story on the right,
+     pink wave rises over the photo's foot into the mission band -->
+<section class="os-intro">
+  <div class="os-intro__grid">
+    <figure class="os-intro__photo"><img src="brand_assets/founder.jpg" alt="Emily Miller, founder of Cleo, sitting on a sofa and smiling"><figcaption>Emily Miller, Founder</figcaption></figure>
+    <div class="os-intro__text">
+      <p class="os-intro__title">Cleo's Story</p>
+      <div class="os-lines">
+        <p>Cleo was born from a personal observation: women are too often left to navigate life's biggest health transitions with far less support than they deserve. Growing up in a large, female-dominated family and watching friends become mothers, Emily saw how fragmented it was to find trusted care beyond the <span style="white-space:nowrap">OB-GYN</span> or fertility specialist.</p>
+        <p>A background in neuroscience, years working alongside women in entertainment, and time living in London, where pregnancy and postpartum care looked very different, all pointed to the same truth: exceptional care already existed. It just wasn't easy to find. Women deserve a more thoughtful, human-centered experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<svg class="wup wup--blush os-wup-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<section class="os-pink">
+  <div class="os-pink__in">
     <h2>We're on a mission to make your life easier.</h2>
-    <div class="os-mission__step">
-      <p class="os-mission__hard">Finding great care shouldn't be this hard.</p>
-      <p class="os-mission__statement">Cleo makes finding trusted care simple, personal and effortless, connecting every woman with the right support exactly when she needs it, so she can navigate her health with confidence.</p>
+    <div class="os-pink__step">
+      <p class="os-pink__hard">Finding great care shouldn't be this hard.</p>
+      <p class="os-pink__stmt">Cleo makes finding trusted care simple, personal and effortless, connecting every woman with the right support exactly when she needs it, so she can navigate her health with confidence.</p>
     </div>
   </div>
 </section>
-<svg class="wdown wdown--butter os-wave-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-<!-- Cleo's Story: text left, Emily's photo full height bleeding off the right, the pink wave cuts into its top;
-     the vision paragraph (was its own pink band) closes the story (Emily, 2026-10-20) -->
-<section class="os-founder">
-  <div class="os-founder__grid">
-    <div class="os-founder__text">
-      <h2>Cleo's Story</h2>
-      <p>Cleo was born from a personal observation: women are too often left to navigate life's biggest health transitions with far less support than they deserve. Growing up in a large, female-dominated family and watching friends become mothers, Emily saw how fragmented it was to find trusted care beyond the <span style="white-space:nowrap">OB-GYN</span> or fertility specialist.</p>
-      <p>A background in neuroscience, years working alongside women in entertainment, and time living in London, where pregnancy and postpartum care looked very different, all pointed to the same truth: exceptional care already existed. It just wasn't easy to find. Women deserve a more thoughtful, human-centered experience.</p>
-    </div>
-    <figure class="os-founder__photo"><img src="brand_assets/founder.jpg" alt="Emily Miller, founder of Cleo, sitting on a sofa and smiling"><figcaption>Emily Miller, Founder</figcaption></figure>
-  </div>
-</section>
+<svg class="wdown os-wdown-pink" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <!-- Last photo, bigger, with the Book Care invitation over it; waves into the footer (Emily, 2026-10-20) -->
 <section class="os-cta-photo">
   <img src="/brand/img/photos/band-story.jpg" alt="A brush applying a white face mask">
