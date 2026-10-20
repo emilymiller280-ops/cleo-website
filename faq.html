@@ -145,9 +145,11 @@ body{background:#FAF6B7;}
   .hiw-step p, .pillar p{ color:#463A33 !important; }
   .hiw-step .hiw-num{ color:#6B0826 !important; }
   .hiw-grid{ gap:20px !important; } .pillar-grid{ gap:20px !important; }
-  /* 2026-10-19: steps sit in a sky band under a photo wave; questions in a blush band */
-  section.faq-steps{ background:#99AADB !important; }
-  .faq-steps .hiw-step:nth-child(4n+3){ background:#FFFEF7; }
+  /* steps + questions both sit in light pink bands (2026-10-20) */
+  /* How We Work = PINK wave page (Emily, 2026-10-20). Meal Delivery is the blue one. */
+  section.faq-steps{ background:#E3C4D5 !important; }
+  .wband--pink .wband__wave{ fill:#E3C4D5; }
+  .wdown--pink{ fill:#E3C4D5; background:linear-gradient(to top, #E3C4D5 4px, #F8F2E6 4px); }
   .faq-steps p[style*="Four simple steps"]{ color:#6B0826 !important; }
   section.faq-ask{ background:#E3C4D5 !important; }
   /* 2026-10-19: no boxes anywhere on this page. Open columns with a thin rule above, like Gifting */
@@ -246,8 +248,8 @@ body{background:#FAF6B7;}
   @media(max-width:768px){ .hiw-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 24px; } }
   @media(max-width:460px){ .hiw-grid{ grid-template-columns:1fr; } }
 </style>
-<!-- Photo 26 with a sky wave into Four simple steps (Emily, 2026-10-19) -->
-<div class="wband wband--sky">
+<!-- Photo 26 with a pink wave into Four simple steps (Emily, 2026-10-20) -->
+<div class="wband wband--pink">
   <div class="wband__photo"><img src="/brand/img/photos/band-meadow.jpg" alt="A parent holding a child's hand in a wildflower meadow" style="object-position:50% 40%"></div>
   <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 </div>
@@ -262,7 +264,7 @@ body{background:#FAF6B7;}
     </div>
   </div>
 </section>
-<svg class="wdown wdown--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<svg class="wdown wdown--pink" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
 <!-- OUR PILLARS -->
 <style>
