@@ -120,6 +120,18 @@
   .md-why .md-quote .big{ color:var(--burgundy); }
   .md-why .md-quote .big span{ color:#4E0519; }
   .md-why .md-quote p{ color:#4E0519; }
+  /* How it works: split, script heading left, click-through steps right, no boxes (Emily, 2026-10-20) */
+  .md-split{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,6vw,88px); align-items:center; max-width:1040px; margin:0 auto; }
+  .md-split__head{ text-align:left; }
+  .md-split__head h2{ font-family:var(--font-script) !important; font-weight:400; font-size:clamp(2.3rem,4.6vw,3.2rem) !important; line-height:1.05; color:var(--burgundy); margin:0 0 18px; }
+  .md-split__head .md-note{ text-align:left; margin:0 0 6px; max-width:none; }
+  .md-split__head .btn{ margin-top:20px; }
+  .md-steps.ctabs--solo{ max-width:none; margin:0; border-top:1.5px solid rgba(107,8,38,.25); padding-top:14px; }
+  .md-steps .ctabs__tabs{ gap:clamp(28px,4vw,48px); margin-bottom:8px; }
+  .md-steps .ctabs__panel{ min-height:120px; }
+  .md-steps h3{ font-size:1.2rem; color:var(--burgundy); margin:0 0 8px; }
+  .md-steps p{ color:var(--text); font-size:1.02rem; margin:0; }
+  @media(max-width:820px){ .md-split{ grid-template-columns:1fr; gap:28px; } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -147,9 +159,9 @@
 <!-- Hero -->
 <!-- Hero + stages share one butter squiggle (Emily, 2026-10-08) -->
 <div class="md-butter"><div class="md-butter__tex"></div>
-<!-- Hero like the homepage: photo 63 (tomatoes + cucumbers) with a sky wave rolling over it, copy in the sky band below (Emily, 2026-10-19) -->
+<!-- Hero like the homepage: photo 70 (radishes; was 63, Emily 2026-10-20) with a sky wave rolling over it, copy in the sky band below (Emily, 2026-10-19) -->
 <div class="wband wband--sky wband--tall md-hero-photo">
-  <div class="wband__photo"><img src="/brand/img/photos/md-hero-tomatoes.jpg" alt="Boxes of fresh red tomatoes and green cucumbers" style="object-position:50% 40%"></div>
+  <div class="wband__photo"><img src="/brand/img/photos/md-band-radishes.jpg" alt="Fresh radishes with their greens in a woven basket" style="object-position:50% 50%"></div>
   <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 </div>
 <section class="md-hero-band">
@@ -187,20 +199,24 @@
 </div>
 <!-- How it works -->
 <section class="section md-how-sec">
-  <div class="wrap">
-    <div style="text-align:center;max-width:640px;margin:0 auto 44px;">
+  <!-- split: script heading + button left, steps click through on the right (Emily, 2026-10-20) -->
+  <div class="wrap md-split">
+    <div class="md-split__head">
       <span class="eyebrow" style="color:var(--burgundy);display:block;margin-bottom:12px;">How it works</span>
       <h2>Three steps to a full fridge.</h2>
-    </div>
-    <div class="md-how">
-      <div><span class="sn">1</span><h3>Choose your plan</h3><p>Create your Cleo account, then pick your meals, portion and how many days.</p></div>
-      <div><span class="sn">2</span><h3>We cook &amp; deliver</h3><p>Kooshi's chefs cook fresh and deliver to your door.</p></div>
-      <div><span class="sn">3</span><h3>Everyone eats well</h3><p>No menus to research, no labels to decode, and enough on the table for everyone you feed.</p></div>
-    </div>
-    <p class="md-note">Add meals for a partner and children to any program.</p>
-    <p class="md-note" style="margin-top:12px;">Delivering across Southern California.</p>
-    <div style="text-align:center;margin-top:30px;">
+      <p class="md-note">Add meals for a partner and children to any program.</p>
+      <p class="md-note">Delivering across Southern California.</p>
       <a href="https://app.cleocare.co/meals" class="btn btn--primary">Build Your Program &rarr;</a>
+    </div>
+    <div class="ctabs ctabs--solo md-steps" data-ctabs>
+      <div>
+        <div class="ctabs__tabs" role="tablist" aria-label="How it works">
+          <button role="tab" id="st-1" aria-controls="sp-1">1</button><button role="tab" id="st-2" aria-controls="sp-2">2</button><button role="tab" id="st-3" aria-controls="sp-3">3</button>
+        </div>
+        <div class="ctabs__panel" role="tabpanel" id="sp-1" aria-labelledby="st-1"><h3>Choose your plan</h3><p>Create your Cleo account, then pick your meals, portion and how many days.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="sp-2" aria-labelledby="st-2"><h3>We cook &amp; deliver</h3><p>Kooshi's chefs cook fresh and deliver to your door.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="sp-3" aria-labelledby="st-3"><h3>Everyone eats well</h3><p>No menus to research, no labels to decode, and enough on the table for everyone you feed.</p></div>
+      </div>
     </div>
   </div>
 </section>
