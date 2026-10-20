@@ -64,6 +64,14 @@
   .os-pink__cols{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(24px,4vw,56px); }
   .os-pink__cols p{ margin:0; padding-top:20px; border-top:1.5px solid rgba(107,8,38,.25); color:#463A33; font-size:1rem; line-height:1.75; text-align:left; }
   @media(max-width:760px){ .os-pink__cols{ grid-template-columns:1fr; } }
+  /* the hero's wavy edge sits right on top of the founder photo, no cream between (Emily, 2026-10-20) */
+  .os-hero{ position:relative; z-index:4; --osw:clamp(40px,6vw,90px);
+    -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - var(--osw) + 1px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1440,0 L1440,40 C1350,30 1260,54 1080,86 C900,118 720,94 540,52 C360,10 180,10 0,64 Z'/%3E%3C/svg%3E") bottom/100% var(--osw) no-repeat;
+            mask:linear-gradient(#000,#000) top/100% calc(100% - var(--osw) + 1px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 L1440,0 L1440,40 C1350,30 1260,54 1080,86 C900,118 720,94 540,52 C360,10 180,10 0,64 Z'/%3E%3C/svg%3E") bottom/100% var(--osw) no-repeat; }
+  .os-hero::after{ display:none !important; }
+  .os-intro{ margin-top:calc(-1 * clamp(40px,6vw,90px)); padding-top:0 !important; }
+  .os-intro__photo figcaption{ position:static; padding:14px 0 0 clamp(20px,3vw,40px); color:#6B0826; }
+  .os-cap{ position:absolute; top:6px; left:clamp(20px,3vw,40px); margin:0; font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:#6B0826; }
   .os-wdown-pink{ fill:#E3C4D5; background:none; margin-top:-2px; z-index:3; }
   .os-cta-photo{ position:relative; height:clamp(620px,62vw,900px); overflow:hidden; margin-top:calc(-1 * clamp(50px,7vw,110px)); }
   .os-cta-photo > img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 40%; }
@@ -71,12 +79,16 @@
   .os-cta-photo__text{ max-width:440px; text-align:left; padding-bottom:clamp(40px,6vw,90px); }
   .os-cta-photo__text h2{ font-size:clamp(2.1rem,3.8vw,3rem); line-height:1.1; color:#6B0826; margin:0 0 .45em; text-wrap:balance; }
   .os-cta-photo__text p{ color:#463A33; font-size:1.06rem; margin:0 0 1.5em; }
+  @media(min-width:761px){ .os-intro__photo figcaption{ display:none; } }
   @media(max-width:760px){
+    .os-cap{ display:none; }
+    .os-intro__photo{ overflow:visible; aspect-ratio:auto !important; height:auto; }
+    .os-intro__photo img{ aspect-ratio:4/5; height:auto; }
     .os-intro{ padding-top:0; }
     .os-intro__grid{ grid-template-columns:1fr; gap:28px; }
     .os-intro__photo{ width:100vw; min-height:0; aspect-ratio:4/5; margin:0 0 0 calc(50% - 50vw); }
     .os-intro__text{ padding-bottom:40px; }
-    .os-intro__photo figcaption{ top:auto; bottom:16px; }
+
     .os-wup-over{ margin-top:0; background:var(--cream); }
     .os-pink__step{ margin-left:clamp(24px,10vw,56px); }
     .os-cta-photo{ height:auto; display:flex; flex-direction:column; }
@@ -128,6 +140,7 @@
 </section>
 <svg class="wup wup--blush os-wup-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <section class="os-pink">
+  <p class="os-cap" aria-hidden="true">Emily Miller, Founder</p>
   <div class="os-pink__in">
     <p class="os-pink__title">Cleo's Story</p>
     <div class="os-pink__cols">
