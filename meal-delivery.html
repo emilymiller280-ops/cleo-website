@@ -87,10 +87,12 @@
   .md-note, .md-quote p{ text-wrap:balance; }
   /* 2026-10-19: Why it's different is a full maroon band again (wave over photo 70 above it) */
   /* 2026-10-19: blue waves, homepage-style hero (Emily) */
-  .md-hero-band, .section.md-why, .section.md-how-sec{ background:var(--sky) !important; }
+  .section.md-why, .section.md-how-sec{ background:var(--sky) !important; }
+  /* 2026-10-21: standard header on every page: photo, CREAM wave, title on the cream below (Emily) */
+  .md-hero-band{ background:#F8F2E6 !important; text-align:left !important; }  /* copy sits left (Emily, 2026-10-21) */
   .md-hero-band{ margin-top:-1px; padding:clamp(20px,3vw,40px) 0 clamp(56px,7vw,90px); text-align:left; }
   .md-hero-band h1{ font-family:var(--font-display); font-weight:400; color:var(--burgundy); font-size:clamp(2.4rem,5vw,4rem); line-height:1.05; margin:0; }
-  .md-hero-band .md-by{ color:var(--butter); text-shadow:0 1px 10px rgba(78,5,25,.25); }
+  .md-hero-band .md-by{ color:var(--coral); text-shadow:none; }
   .md-hero-band .md-hero-lede{ color:#4E0519; margin:0 0 28px; max-width:62ch; }
   /* 2026-10-19 round 2: Why it's different sits under Meals Made for Every Stage on cream; compact plate section in sky */
   .md-quote.md-why-in{ background:transparent; border-radius:0; margin:44px auto 0; padding:36px 0 0; border-top:1.5px solid rgba(107,8,38,.14); }
@@ -100,7 +102,27 @@
   /* the two sentences sit on one line on desktop (Emily, 2026-10-19) */
   @media(min-width:1100px){ .md-quote.md-why-in{ max-width:none; } .md-why-in .big{ font-size:clamp(1.15rem,1.6vw,1.45rem); white-space:nowrap; } }
   .md-why-in p{ color:var(--text); font-size:1rem; }
-  .md-apple .wband__photo{ height:clamp(480px,72svh,820px); }
+  /* 2026-10-21: stages in a blue band; apple photo bigger with Why it's different on it (Emily) */
+  /* thick deep-blue line tracing the wave edges above and below How it works (Emily, 2026-10-21) */
+  .md-edge{ fill:none !important; stroke:#7C8FCB; stroke-width:16px; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+  .md-apple .wband__wave, .md-plate-top{ overflow:visible; }
+  .md-plate-top{ margin-top:-4px; }
+  /* footer cuts the foot of the spring rolls; fine print sits under the menu */
+  .md-plate{ padding-bottom:0 !important; }
+  .md-plate__text{ padding-bottom:clamp(40px,5vw,64px); }
+  .md-legal--side{ max-width:none; margin:36px 0 0; }
+  .wup--sky{ fill:#99AADB; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #99AADB calc(100% - 4px)); }
+  .section.md-stages-sec{ background:#99AADB !important; padding-bottom:clamp(40px,5vw,64px); }
+  .md-stages-sec .eyebrow{ color:#6B0826 !important; opacity:.75; }
+  .md-stages-sec p{ color:#4E0519 !important; }
+  .md-apple-top{ margin-bottom:calc(-1 * clamp(50px,7vw,110px) + 3px); }
+  .md-apple .wband__photo{ height:clamp(640px,96svh,1000px); }
+  .md-apple__copy{ position:absolute; z-index:3; left:max(32px, calc((100vw - 1040px)/2)); top:50%; transform:translateY(-50%); max-width:min(480px, calc(100vw - 64px)); text-align:left; }
+  .md-apple__copy .eyebrow{ color:#FAF6B7; display:block; margin-bottom:12px; }
+  .md-apple__copy .big{ font-family:var(--font-display); color:#FFFEF7; font-size:clamp(1.5rem,2.6vw,2.1rem); line-height:1.2; margin:0 0 18px; text-wrap:balance; }
+  .md-apple__copy .big span{ color:#FAF6B7; }
+  .md-apple__copy p{ color:#FFFEF7; font-size:clamp(1rem,1.3vw,1.1rem); line-height:1.7; margin:0; }
+  .md-apple__copy, .md-apple__copy *{ text-shadow:0 1px 14px rgba(30,15,5,.55); }
   .section.md-plate{ background:var(--cream) !important; padding-block:clamp(20px,3vw,36px) clamp(44px,6vw,72px); }
   .md-plate .ctabs__tabs{ justify-content:center; }
   .md-menu{ list-style:none; margin:0 auto; padding:0; max-width:560px; }
@@ -173,7 +195,7 @@
 <!-- Hero + stages share one butter squiggle (Emily, 2026-10-08) -->
 <div class="md-butter"><div class="md-butter__tex"></div>
 <!-- Hero like the homepage: photo 70 (radishes; was 63, Emily 2026-10-20) with a sky wave rolling over it, copy in the sky band below (Emily, 2026-10-19) -->
-<div class="wband wband--sky wband--tall md-hero-photo">
+<div class="wband wband--cream wband--tall md-hero-photo">
   <div class="wband__photo"><img src="/brand/img/photos/md-band-radishes.jpg" alt="Fresh radishes with their greens in a woven basket" style="object-position:50% 50%"></div>
   <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 </div>
@@ -185,9 +207,9 @@
     <a href="https://app.cleocare.co/meals" class="btn btn--primary">Build Your Program &rarr;</a>
   </div>
 </section>
-<svg class="wdown wdown--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
-<!-- Meals for every stage, with Why it's different right under it (stage tiles removed, Emily 2026-10-19) -->
+<!-- Meals for every stage, in a blue wave band (Emily, 2026-10-21) -->
+<svg class="wup wup--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <section class="section md-stages-sec">
   <div class="wrap">
     <div style="text-align:center;max-width:640px;margin:0 auto;">
@@ -195,20 +217,21 @@
       <h2>Wherever you are, we'll meet you there.</h2>
       <p style="margin-top:16px;color:var(--text);">Organic, chef-prepared, and planned for each phase of your journey. Nutrient-dense and nourishing.</p>
     </div>
-    <div class="md-quote md-why-in">
-      <span class="eyebrow">Why it's different</span>
-      <p class="big">Most programs optimize for calories or convenience. <span>Cleo optimizes for the season of your life.</span></p>
-      <p>Every menu is designed with you in mind, from trying to conceive through the fourth trimester. And if you're not in this crew? We have you covered as well! Order for yourself, or for the whole family.</p>
-    </div>
   </div>
 </section>
 
 </div>
 
-<!-- Photo 71 (apple), bigger, with a sky wave into How it works -->
+<!-- Photo 71 (apple), bigger, the blue wave above cuts its top, Why it's different sits on the photo (Emily, 2026-10-21) -->
+<svg class="wdown wdown--sky wdown--over md-apple-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <div class="wband wband--sky md-apple">
   <div class="wband__photo"><img src="/brand/img/photos/md-band-apple.jpg" alt="A close-up of someone biting into a green apple" style="object-position:50% 46%"></div>
-  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+  <div class="md-apple__copy">
+    <span class="eyebrow">Why it's different</span>
+    <p class="big">Most programs optimize for calories or convenience. <span>Cleo optimizes for the season of your life.</span></p>
+    <p>Every menu is designed with you in mind, from trying to conceive through the fourth trimester. And if you're not in this crew? We have you covered as well! Order for yourself, or for the whole family.</p>
+  </div>
+  <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/><path class="md-edge" d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40"/></svg>
 </div>
 <!-- How it works -->
 <section class="section md-how-sec">
@@ -233,7 +256,7 @@
     </div>
   </div>
 </section>
-<svg class="wdown wdown--sky wdown--over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<svg class="wdown wdown--sky wdown--over md-plate-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/><path class="md-edge" d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40"/></svg>
 
 <!-- A peek at your plate: spring rolls beside the menu, bleeding off the left, the blue wave above cuts into the top of the photo (Emily, 2026-10-20) -->
 <section class="md-plate">
@@ -253,6 +276,16 @@
         <div class="ctabs__panel" role="tabpanel" id="dp-2" aria-labelledby="dt-2"><ul class="md-menu"><li>Green Breakfast Tacos · Avocado · Tomatillo Salsa</li><li>Asian Kale Caesar Salad · Wild Salmon</li><li>Grilled Steak Mexicana · Grilled Chili Corn</li><li>Chia Seed Mango Jasmine Tea</li><li>Berry-Nut Trail Mix</li></ul></div>
         <div class="ctabs__panel" role="tabpanel" id="dp-3" aria-labelledby="dt-3"><ul class="md-menu"><li>Gluten-Free Berry Waffle · Greek Yogurt</li><li>Lemon Roasted Salmon · Grilled Asparagus</li><li>Herb Roasted Chicken · Cauliflower Puree</li><li>Fresh Berry Mint Smoothie</li><li>Gluten-Free Apple Banana Macadamia Nut Bread</li></ul></div>
       </div>
+      <div id="start" class="md-legal md-legal--side">
+    <details class="md-legal-d">
+      <summary>Important information</summary>
+        <p><strong style="color:var(--ink-mid);">Cleo Care meals are food, not medicine.</strong> This material is for general informational purposes only, is not medical, nutritional, or lactation advice, and is not a substitute for care from your physician or a qualified healthcare provider. Cleo Care does not diagnose, treat, cure, or prevent any disease or condition, including postpartum depression or lactation insufficiency. Always consult your healthcare provider before changing your diet while pregnant, postpartum, or breastfeeding, and regarding any allergies or medical conditions. Individual results vary; no specific outcome is promised or guaranteed.</p>
+        <p>Our ingredient screening is a culinary screening tool, not a clinical or safety certification. It reflects our good-faith interpretation of publicly available guidance (FDA, EPA, CDC, WHO, ACOG, NIH/NLM LactMed®) as of the date of preparation, and does not account for your personal medical history, medications, sensitivities, or your infant's needs.</p>
+        <p><strong style="color:var(--ink-mid);">Allergens.</strong> Cleo Care meals are prepared in a kitchen that also handles milk, eggs, fish, shellfish, tree nuts, peanuts, wheat, soy, and sesame. We cannot guarantee any meal is free from any allergen or from cross-contact.</p>
+        <p><strong style="color:var(--ink-mid);">California Proposition 65 WARNING.</strong> Consuming certain foods and beverages can expose you to chemicals, including methylmercury in fish and chemicals such as acrylamide that can form in cooked or heated foods, which are known to the State of California to cause cancer and/or birth defects or other reproductive harm. For more information go to <a href="https://www.P65Warnings.ca.gov/food" target="_blank" rel="noopener" style="color:var(--ink-mid);text-decoration:underline;">www.P65Warnings.ca.gov/food</a>.</p>
+        <p>Availability, pricing, menu items, ingredients, and the classification framework are subject to change without notice. Your purchase is governed by the applicable Cleo Care / Kooshi Gourmet Terms of Service. Third-party names and sources (FDA, EPA, CDC, WHO, ACOG, NIH/NLM, LactMed®) are cited for reference only and do not imply endorsement or affiliation. LactMed® is a registered trademark of its respective owner.</p>
+      </details>
+      </div>
     </div>
   </div>
     </div>
@@ -260,18 +293,6 @@
 
 
 <!-- Important information -->
-<section id="start" class="section bg-ivory" style="padding-block:28px;">
-  <div class="wrap md-legal">
-    <details class="md-legal-d">
-    <summary>Important information</summary>
-      <p><strong style="color:var(--ink-mid);">Cleo Care meals are food, not medicine.</strong> This material is for general informational purposes only, is not medical, nutritional, or lactation advice, and is not a substitute for care from your physician or a qualified healthcare provider. Cleo Care does not diagnose, treat, cure, or prevent any disease or condition, including postpartum depression or lactation insufficiency. Always consult your healthcare provider before changing your diet while pregnant, postpartum, or breastfeeding, and regarding any allergies or medical conditions. Individual results vary; no specific outcome is promised or guaranteed.</p>
-      <p>Our ingredient screening is a culinary screening tool, not a clinical or safety certification. It reflects our good-faith interpretation of publicly available guidance (FDA, EPA, CDC, WHO, ACOG, NIH/NLM LactMed®) as of the date of preparation, and does not account for your personal medical history, medications, sensitivities, or your infant's needs.</p>
-      <p><strong style="color:var(--ink-mid);">Allergens.</strong> Cleo Care meals are prepared in a kitchen that also handles milk, eggs, fish, shellfish, tree nuts, peanuts, wheat, soy, and sesame. We cannot guarantee any meal is free from any allergen or from cross-contact.</p>
-      <p><strong style="color:var(--ink-mid);">California Proposition 65 WARNING.</strong> Consuming certain foods and beverages can expose you to chemicals, including methylmercury in fish and chemicals such as acrylamide that can form in cooked or heated foods, which are known to the State of California to cause cancer and/or birth defects or other reproductive harm. For more information go to <a href="https://www.P65Warnings.ca.gov/food" target="_blank" rel="noopener" style="color:var(--ink-mid);text-decoration:underline;">www.P65Warnings.ca.gov/food</a>.</p>
-      <p>Availability, pricing, menu items, ingredients, and the classification framework are subject to change without notice. Your purchase is governed by the applicable Cleo Care / Kooshi Gourmet Terms of Service. Third-party names and sources (FDA, EPA, CDC, WHO, ACOG, NIH/NLM, LactMed®) are cited for reference only and do not imply endorsement or affiliation. LactMed® is a registered trademark of its respective owner.</p>
-    </details>
-  </div>
-</section>
 
 <!-- Footer -->
 <footer class="foot">
