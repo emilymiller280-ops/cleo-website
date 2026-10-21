@@ -79,6 +79,25 @@
     .os-cta-photo > img{ position:static; height:auto; aspect-ratio:4/5; }
     .os-cta-photo__inner{ display:block; padding:40px 24px 120px; background:var(--cream); }
   }
+  /* 2026-10-21 (Emily): orange line stacked under the mission, one left block; no gap under the founder photo */
+  .os-pink__accent{ display:block; color:var(--coral); margin-top:8px; }
+  .os-pink__step{ margin:clamp(18px,2.5vw,28px) 0 0 !important; max-width:620px; }
+  .os-intro{ padding-bottom:clamp(8px,1.5vw,20px) !important; }
+  /* title the same size as every other page; mission line sits under it (Emily, 2026-10-21) */
+  .os-hero h1{ font-size:clamp(2.4rem,5.2vw,4.2rem) !important; }
+  .os-mission{ font-family:"Libre Baskerville",Georgia,serif; color:#6B0826; font-size:clamp(1.3rem,2.4vw,1.8rem); line-height:1.3; margin:.4em auto 0; text-wrap:balance; }
+  .os-pink__accent{ margin-top:0; color:#6B0826 !important; }  /* maroon (Emily, 2026-10-21) */
+  /* solid pink wave: no hairline where the founder photo peeked through the seam (Emily, 2026-10-21) */
+  .os-pink{ z-index:4; }
+  .os-wdown-pink{ background:linear-gradient(to top, #E3C4D5 8px, transparent 8px) !important; z-index:4 !important; margin-top:-4px !important; }
+  /* last photo rises to meet the founder photo: its own wavy top cuts into it, no cream strip; caption sits on the photo (Emily, 2026-10-21) */
+  :root{ --os-wave:clamp(50px,7vw,110px); }
+  .os-intro{ padding-bottom:0 !important; }
+  .os-cta-photo{ z-index:5; margin-top:calc(-1 * var(--os-wave)) !important;
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") top/100% var(--os-wave) no-repeat, linear-gradient(#000,#000) 0 calc(var(--os-wave) - 1px)/100% 100% no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") top/100% var(--os-wave) no-repeat, linear-gradient(#000,#000) 0 calc(var(--os-wave) - 1px)/100% 100% no-repeat; }
+  .os-intro__frame figcaption{ position:absolute; left:clamp(20px,3vw,40px); bottom:calc(var(--os-wave) + 18px); z-index:1; padding:0; font-size:.82rem; letter-spacing:.16em; text-transform:uppercase; color:#FFFEF7; text-shadow:0 1px 12px rgba(20,10,5,.55); }
+  @media(max-width:760px){ .os-intro{ padding-bottom:calc(var(--os-wave) + 32px) !important; } .os-intro__frame figcaption{ bottom:18px; } }
 </style>
 </head>
 <body>
@@ -105,16 +124,17 @@
 <section class="page-hero page-hero--photo h-burgundy os-hero">
   <div class="page-hero__photo hero-notint"><img src="/brand/img/photos/hero-our-story.jpg" alt="A woman leaning out of a car window, hair blowing, green trees rushing past" style="object-position:50% 45%"></div>
   <div class="page-hero__inner">
+    <span class="page-hero__eyebrow">Meet Cleo</span>
     <h1>Our Story</h1>
+    <p class="os-mission">We're on a mission to make your life easier.</p>
   </div>
 </section>
 <!-- Title sits on cream under the photo, then a pink wave rises into the mission band (Emily, 2026-10-21) -->
 <svg class="wup wup--blush" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <section class="os-pink">
   <div class="os-pink__in">
-    <h2>We're on a mission to make your life easier.</h2>
+    <h2><span class="os-pink__accent">Finding great care shouldn't be this hard.</span></h2>
     <div class="os-pink__step">
-      <p class="os-pink__hard">Finding great care shouldn't be this hard.</p>
       <p class="os-pink__stmt">Cleo makes finding trusted care simple, personal and effortless, connecting every woman with the right support exactly when she needs it, so she can navigate her health with confidence.</p>
     </div>
   </div>
@@ -123,7 +143,7 @@
 <!-- Cleo's Story: pink wave cuts into the top of the founder photo, which bleeds off the left (Emily, 2026-10-20) -->
 <section class="os-intro">
   <div class="os-intro__grid">
-    <figure class="os-intro__photo"><div class="os-intro__frame"><img src="brand_assets/founder.jpg" alt="Emily Miller, founder of Cleo, sitting on a sofa and smiling"></div><figcaption>Emily Miller, Founder</figcaption></figure>
+    <figure class="os-intro__photo"><div class="os-intro__frame"><img src="brand_assets/founder.jpg" alt="Emily Miller, founder of Cleo, sitting on a sofa and smiling"><figcaption>Emily Miller, Founder</figcaption></div></figure>
     <div class="os-intro__text">
       <p class="os-intro__title">Cleo's Story</p>
       <div class="os-lines">
@@ -133,7 +153,6 @@
     </div>
   </div>
 </section>
-<svg class="wdown os-wdown-cream" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <!-- Last photo, bigger, with the Book Care invitation over it; waves into the footer (Emily, 2026-10-20) -->
 <section class="os-cta-photo">
   <img src="/brand/img/photos/band-story.jpg" alt="A brush applying a white face mask">
