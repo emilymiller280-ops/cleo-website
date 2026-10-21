@@ -92,7 +92,10 @@
       section > div { max-width: 100% !important; }
 
       #faq-layout { grid-template-columns: 1fr !important; gap: 0 !important; }
-      #faq-sidebar { display: none !important; }
+      #faq-sidebar { display: block !important; position: static !important; margin-bottom: 28px; }
+      #faq-sidebar > p { display: none; }
+      #faq-sidebar > div { flex-direction: row !important; flex-wrap: wrap; gap: 8px 18px !important; }
+      #faq-sidebar .faq-cat { border-bottom: 0 !important; padding: 6px 0 !important; }
 
       #questions-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
 
@@ -186,6 +189,12 @@ body{background:#FAF6B7;}
   @media(max-width:760px){ .hww-text{ padding-top:8px; } .hww-lead{ text-align:left; } }  /* phones: left, no justify gaps */
   .wup.wup--over{ position:relative; z-index:2; margin-top:calc(-1 * clamp(50px,7vw,110px)); background:linear-gradient(to bottom, transparent calc(100% - 4px), #E3C4D5 calc(100% - 4px)); }
   @media(max-width:760px){ .hww-intro{ grid-template-columns:1fr; gap:28px; } .hww-photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .hww-text{ padding-bottom:40px; } .wup.wup--over{ margin-top:0; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #E3C4D5 calc(100% - 4px)); } }
+  /* FAQ: one category at a time, picked from the list on the left (Emily, 2026-10-21) */
+  .faq-group{ margin:0 !important; }
+  .faq-js .faq-group:not(.on){ display:none; }
+  .faq-cat.on{ color:var(--navy) !important; font-weight:600 !important; }
+  .faq-cat:not(.on){ font-weight:400 !important; color:var(--ink-mid) !important; }
+  .faq-cat:hover{ color:var(--navy) !important; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 <script src="/brand/ctabs.js" defer></script>
@@ -313,11 +322,11 @@ body{background:#FAF6B7;}
     <div id="faq-sidebar" style="position:sticky;top:100px;">
       <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:24px;">Categories</p>
       <div style="display:flex;flex-direction:column;gap:4px;">
-        <a href="#getting-started" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--navy);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);font-weight:500;">Getting Started</a>
-        <a href="#services" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Services &amp; Providers</a>
-        <a href="#pricing" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Pricing &amp; Gifting</a>
-        <a href="#logistics" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Logistics</a>
-        <a href="#practitioners" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">For Practitioners</a>
+        <a href="#getting-started" class="faq-cat" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--navy);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);font-weight:500;">Getting Started</a>
+        <a href="#services" class="faq-cat" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Services &amp; Providers</a>
+        <a href="#pricing" class="faq-cat" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Pricing &amp; Gifting</a>
+        <a href="#logistics" class="faq-cat" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(27,56,114,0.08);" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">Logistics</a>
+        <a href="#practitioners" class="faq-cat" style="font-family:'Spectral',serif;font-size:0.9375rem;color:var(--ink-mid);text-decoration:none;padding:10px 0;" onmouseover="this.style.color='var(--navy)'" onmouseout="this.style.color='var(--ink-mid)'">For Practitioners</a>
       </div>
     </div>
 
@@ -325,7 +334,7 @@ body{background:#FAF6B7;}
     <div>
 
       <!-- GETTING STARTED -->
-      <div id="getting-started" style="margin-bottom:72px;">
+      <div id="getting-started" class="faq-group" style="margin-bottom:72px;">
         <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Getting Started</p>
 
         <div class="faq-item">
@@ -354,7 +363,7 @@ body{background:#FAF6B7;}
       </div>
 
       <!-- SERVICES & PROVIDERS -->
-      <div id="services" style="margin-bottom:72px;">
+      <div id="services" class="faq-group" style="margin-bottom:72px;">
         <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Services &amp; Providers</p>
 
         <div class="faq-item">
@@ -384,7 +393,7 @@ body{background:#FAF6B7;}
       </div>
 
       <!-- PRICING & GIFTING -->
-      <div id="pricing" style="margin-bottom:72px;">
+      <div id="pricing" class="faq-group" style="margin-bottom:72px;">
         <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Pricing &amp; Gifting</p>
 
         <div class="faq-item">
@@ -414,7 +423,7 @@ body{background:#FAF6B7;}
       </div>
 
       <!-- LOGISTICS -->
-      <div id="logistics" style="margin-bottom:72px;">
+      <div id="logistics" class="faq-group" style="margin-bottom:72px;">
         <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">Logistics</p>
 
         <div class="faq-item">
@@ -436,7 +445,7 @@ body{background:#FAF6B7;}
       </div>
 
       <!-- FOR PRACTITIONERS -->
-      <div id="practitioners" style="margin-top:64px;">
+      <div id="practitioners" class="faq-group" style="margin-top:64px;">
         <p style="font-family:'Spectral',serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--navy);margin-bottom:32px;opacity:0.6;">For Practitioners</p>
 
         <div class="faq-item">
@@ -501,6 +510,21 @@ body{background:#FAF6B7;}
 </footer>
 
 <script>
+  // FAQ: show one category at a time (Emily, 2026-10-21)
+  (function(){
+    var cats=[].slice.call(document.querySelectorAll('.faq-cat'));
+    var groups=[].slice.call(document.querySelectorAll('.faq-group'));
+    if(!cats.length||!groups.length) return;
+    document.getElementById('faq-layout').classList.add('faq-js');
+    function show(id){
+      groups.forEach(function(g){ g.classList.toggle('on', g.id===id); });
+      cats.forEach(function(c){ c.classList.toggle('on', c.getAttribute('href')==='#'+id); });
+    }
+    cats.forEach(function(c){ c.addEventListener('click', function(e){ e.preventDefault(); show(c.getAttribute('href').slice(1)); }); });
+    var h=location.hash.slice(1);
+    show(groups.some(function(g){return g.id===h;}) ? h : groups[0].id);
+  })();
+
   function toggleFaq(trigger) {
     const item = trigger.closest('.faq-item');
     const body = item.querySelector('.faq-body');

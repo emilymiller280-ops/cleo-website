@@ -167,6 +167,17 @@
   .md-plate .md-menu{ max-width:none; margin:0; }
   .md-plate .md-menu li{ text-align:left; }
   @media(max-width:760px){ .md-plate__grid{ grid-template-columns:1fr; gap:28px; } .md-plate__photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .md-plate__text{ padding-top:0; } }
+  /* small label above the title, like How We Work (Emily, 2026-10-21) */
+  .md-kicker{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:20px; color:var(--burgundy); opacity:.72; }
+  /* Three steps to a full fridge: same cream as every page, heavy lines in the Wherever-band blue, waves a bit bigger,
+     the lower one cuts into the spring rolls (Emily, 2026-10-21) */
+  .section.md-how-sec{ background:#F8F2E6 !important; }
+  .md-edge{ stroke:#99AADB; stroke-width:18px; }
+  .md-apple .wband__wave{ fill:#F8F2E6; height:clamp(64px,9vw,140px); }
+  .md-plate-top{ fill:#F8F2E6; background:none; height:clamp(64px,9vw,140px); }
+  .md-plate{ margin-top:calc(-1 * clamp(64px,9vw,140px)) !important; }
+  /* Wherever you are sits left, lined up with the copy above it */
+  .md-where{ text-align:left !important; margin:0 !important; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 </head>
@@ -201,6 +212,7 @@
 </div>
 <section class="md-hero-band">
   <div class="wrap">
+    <span class="md-kicker">Cleo's Kitchen</span>
     <h1>Meal Delivery</h1>
     <span class="md-by">powered by Kooshi Gourmet</span>
     <p class="lede md-hero-lede">We're teaming up with Southern California's leading meal delivery service to offer organic, chef-prepared meals directly to your door. Nutrient-dense and designed specifically for your needs, and your family.</p>
@@ -212,8 +224,7 @@
 <svg class="wup wup--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 <section class="section md-stages-sec">
   <div class="wrap">
-    <div style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">Cleo's Kitchen</span>
+    <div class="md-where" style="text-align:center;max-width:640px;margin:0 auto;">
       <h2>Wherever you are, we'll meet you there.</h2>
       <p style="margin-top:16px;color:var(--text);">Organic, chef-prepared, and planned for each phase of your journey. Nutrient-dense and nourishing.</p>
     </div>
