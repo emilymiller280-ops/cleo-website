@@ -65,6 +65,57 @@
   .gf-steps p{ color:#463A33; font-size:1.05rem; margin:0; }
   @media(max-width:760px){
     .gf-how2__grid{ grid-template-columns:1fr; gap:28px; } .gf-how2__photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .gf-how2__text{ padding-top:0; } }
+  /* 2026-10-21 (Emily): second title removed; no empty blue under the steps; last photo with Send a gift, into the footer */
+  :root{ --gf-wave:clamp(50px,7vw,110px); }
+  .gf-how2{ padding-bottom:0 !important; }
+  .gf-how2__text{ padding-bottom:calc(var(--gf-wave) + 32px); }
+  /* 2026-10-21 round 2 (Emily): last photo removed; line above Send a gift, a bit lower; small left header over the gift options; step names on the tabs; more of her face in the hero */
+  .gf-ways{ display:block; text-align:left; color:var(--coral); max-width:1040px; margin:0 auto 18px; font-size:.86rem; }
+  .gf-steps .ctabs__tabs button{ font-size:clamp(1.6rem,2.6vw,2.2rem); }
+  .gf-thinking{ font-family:"Libre Baskerville",Georgia,serif; color:#6B0826; font-size:clamp(1.15rem,1.8vw,1.4rem); line-height:1.35; margin:clamp(20px,3vw,36px) 0 18px; text-wrap:balance; }
+  .gf-how2__text{ padding-bottom:clamp(40px,5vw,64px) !important; }
+  .gf-sub{ font-family:"Libre Baskerville",Georgia,serif; color:#6B0826; font-size:clamp(1.2rem,2.2vw,1.6rem); line-height:1.3; margin:.4em auto 0; text-wrap:balance; }
+  .gf-how2 .btn{ margin-top:clamp(12px,2vw,24px); }
+  /* Ways to give as stacked rows, like the Meal Delivery menu: script name left, description right (Emily, 2026-10-21) */
+  .gift-grid{ grid-template-columns:1fr !important; gap:0 !important; max-width:900px; }
+  .gf-ways{ max-width:900px !important; }
+  .gift-card, .gift-card:nth-child(n){ display:grid !important; grid-template-columns:minmax(0,280px) minmax(0,1fr); column-gap:clamp(24px,4vw,56px); align-items:start; padding:26px 0 !important; border-top:1.5px solid rgba(107,8,38,.18); }
+  .gift-card:last-child{ border-bottom:1.5px solid rgba(107,8,38,.18); }
+  .gift-card .script{ grid-column:1; margin:0; }
+  .gift-card .tag{ grid-column:1; justify-self:start; margin:8px 0 0 !important; }
+  .gift-card p{ grid-column:2; grid-row:1 / span 2; margin:0 !important; padding-top:6px; }
+  @media(max-width:700px){ .gift-card, .gift-card:nth-child(n){ grid-template-columns:1fr; } .gift-card p{ grid-column:1; grid-row:auto; padding-top:10px; } }
+  /* no hairline above the blue band: cream wave overlaps the seam (Emily, 2026-10-21) */
+  .gf-wave-over{ background:none !important; margin-top:0 !important; z-index:4 !important; position:relative; }
+  .gf-how2{ margin-top:calc(-1 * clamp(50px,7vw,110px) + 6px) !important; }  /* blue starts under the cream, never at the wave's top edge */
+  .section.bg-butter{ padding-bottom:clamp(36px,4.5vw,64px) !important; }  /* band sits a bit higher (Emily, 2026-10-21) */
+  /* Gift options = preview Option B (Emily, 2026-10-21) */
+  .gf-ways-b{ padding:clamp(24px,3vw,40px) 32px clamp(48px,6vw,80px); }
+  .gf-ways-b .pv-b__grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); max-width:1040px; margin:0 auto; align-items:center; }
+  .gf-ways-b .pv-b__photo{ margin:0 calc(-1 * max(32px, (100vw - 1040px)/2)) 0 0; height:clamp(460px,44vw,620px); overflow:hidden; border-radius:0 !important; }
+  .gf-ways-b .pv-b__photo img{ width:100%; height:100%; object-fit:cover; display:block; border-radius:0 !important; }
+  .gf-gtabs .ctabs__tabs{ flex-direction:column; gap:4px; align-items:flex-start; border-bottom:1.5px solid rgba(107,8,38,.2); padding-bottom:16px; margin-bottom:16px; }
+  .gf-gtabs .ctabs__tabs button{ font-size:clamp(1.8rem,2.8vw,2.4rem); }
+  .gf-gtabs .ctabs__panel{ min-height:110px; }
+  .gf-gtabs p{ color:#463A33; font-size:1.06rem; line-height:1.7; margin:0; }
+  .gf-gtabs .tag{ position:static; display:inline-block; margin:0 0 10px; font-family:var(--font-body); font-weight:600; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; background:var(--coral); color:#FFFEF7; padding:5px 12px; border-radius:999px; }
+  @media(max-width:760px){ .gf-ways-b .pv-b__grid{ grid-template-columns:1fr; } .gf-ways-b .pv-b__photo{ margin:0 calc(50% - 50vw); height:auto; aspect-ratio:4/5; } }
+  .gf-ways-b .pv-b__photo img[hidden]{ display:none; }  /* photo changes with the gift */
+  /* thick blue wave lines above and below the gift options, like Meal Delivery (Emily, 2026-10-21) */
+  .gf-edge{ fill:none !important; stroke:#99AADB; stroke-width:18px; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+  .gf-line{ display:block; width:100%; height:clamp(50px,7vw,110px); overflow:visible; margin:clamp(8px,1.5vw,20px) 0 0; }
+  .gf-wave-over{ overflow:visible; }
+  /* the two thick lines cut into the gift photo, top and bottom (Emily, 2026-10-21) */
+  :root{ --gw:clamp(50px,7vw,110px); }
+  .gf-line{ position:relative; z-index:6; }
+  .gf-ways-b{ padding-block:0 !important; }
+  .gf-ways-b .pv-b__grid{ align-items:stretch; }
+  .gf-ways-b .pv-b__text{ align-self:center; padding:clamp(24px,3vw,40px) 0 clamp(40px,5vw,64px); }
+  @media(min-width:761px){
+    .gf-ways-b .pv-b__photo{ position:relative; z-index:5; height:auto !important; min-height:clamp(520px,48vw,700px); margin-top:calc(-1 * var(--gw)) !important; margin-bottom:calc(-1 * var(--gw)) !important;
+      -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") right top/100vw var(--gw) no-repeat, linear-gradient(#000,#000) 0 calc(var(--gw) - 1px)/100% calc(100% - 2 * var(--gw) + 2px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C180,110 360,110 540,68 C720,26 900,2 1080,34 C1260,66 1350,90 1440,80 L1440,0 L0,0 Z'/%3E%3C/svg%3E") right bottom/100vw var(--gw) no-repeat; mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") right top/100vw var(--gw) no-repeat, linear-gradient(#000,#000) 0 calc(var(--gw) - 1px)/100% calc(100% - 2 * var(--gw) + 2px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath d='M0,56 C180,110 360,110 540,68 C720,26 900,2 1080,34 C1260,66 1350,90 1440,80 L1440,0 L0,0 Z'/%3E%3C/svg%3E") right bottom/100vw var(--gw) no-repeat; } }
+  .gf-bwrap{ position:relative; }
+  .gf-edge-over{ position:absolute; inset:0; width:100%; height:100%; transform:scaleY(-1); z-index:6; overflow:visible; pointer-events:none; }
 </style>
 <script src="/brand/no-widows.js" defer></script>
 <script src="/brand/ctabs.js" defer></script>
@@ -91,55 +142,32 @@
 
 <!-- Hero -->
 <section class="page-hero page-hero--photo h-coral">
-  <div class="page-hero__photo hero-notint" aria-hidden="true"><img src="/brand/img/photos/hero-gifting.jpg" alt="" style="object-position:50% 16%;"></div>
+  <div class="page-hero__photo hero-notint" aria-hidden="true"><img src="/brand/img/photos/hero-gifting.jpg" alt="" style="object-position:50% 58%;"></div>
   <div class="page-hero__inner">
     <span class="page-hero__eyebrow">Gifting</span>
     <h1>Give the gift of care.</h1>
+    <p class="gf-sub">The easiest way to say <em>I'm thinking of you.</em></p>
   </div>
 </section>
 
-<!-- What you can gift -->
-<section class="section bg-butter" style="padding-top:clamp(32px,4.5vw,52px);">
-  <div class="wrap">
-    <div class="section-head" style="text-align:center;max-width:640px;margin:0 auto 48px;">
-      <span class="eyebrow" style="color:var(--coral);display:block;margin-bottom:12px;">What you can give</span>
-      <h2>A gift she'll actually use.</h2>
-    </div>
-    <div class="gift-grid">
-      <article class="gift-card">
-        <span class="script">A single session</span>
-        <p>Treat her to one meaningful visit, a prenatal massage, a lactation consult, or a night of newborn care so she can rest.</p>
-      </article>
-      <article class="gift-card">
-        <span class="script">A care credit</span>
-        <span class="tag">Most loved</span>
-        <p>Give an open credit she can put toward whatever she needs most, whenever she needs it. The easiest way to say "I'm thinking of you."</p>
-      </article>
-      <article class="gift-card">
-        <span class="script">Ongoing support</span>
-        <p>Cover a stretch of care across her journey, from meals and bodywork to doula and night support, coordinated by Cleo.</p>
-      </article>
-    </div>
-    <div style="text-align:center;margin-top:48px;">
-      <a href="https://app.cleocare.co/gift" class="btn btn--primary">Send a gift &rarr;</a>
-    </div>
-  </div>
-</section>
+<svg class="gf-line" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path class="gf-edge" d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40"/></svg>
+<!-- Gift options: tap a gift on the left, photo bleeds off the right and changes with it (148 / 66 / 16) (Emily, 2026-10-21) -->
+<section class="gf-ways-b" data-ctabs><div class="pv-b__grid"><div class="pv-b__text"><div class="gf-gtabs"><div class="ctabs__tabs" role="tablist"><button role="tab" id="bt0" aria-controls="bp0">A single session</button><button role="tab" id="bt1" aria-controls="bp1">A care credit</button><button role="tab" id="bt2" aria-controls="bp2">Ongoing support</button></div><div class="ctabs__panel" role="tabpanel" id="bp0" aria-labelledby="bt0"><p>Treat her to one meaningful visit, a prenatal massage, a lactation consult, or a night of newborn care so she can rest.</p></div><div class="ctabs__panel" role="tabpanel" id="bp1" aria-labelledby="bt1"><span class="tag" style="position:static;display:inline-block;margin:0 0 10px;">Most loved</span><p>Give an open credit she can put toward whatever she needs most, whenever she needs it.</p></div><div class="ctabs__panel" role="tabpanel" id="bp2" aria-labelledby="bt2"><p>Cover a stretch of care across her journey, from meals and bodywork to doula and night support, coordinated by Cleo.</p></div></div><div style="margin-top:28px"><a href="https://app.cleocare.co/gift" class="btn btn--primary">Send a gift &rarr;</a></div></div><div class="ctabs__media pv-b__photo"><img src="/brand/img/photos/band-shoulder.jpg" alt=""><img src="/brand/img/photos/gift-66-cream.jpg" alt=""><img src="/brand/img/photos/gift-16-crop.jpg" alt=""></div></div></section>
 
 <!-- Photo band with a sky wave into How it works (Emily, 2026-10-19) -->
 <!-- cream wave cuts into the top of the newborn photo (Emily, 2026-10-20) -->
-<svg class="wdown gf-wave-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<div class="gf-bwrap"><svg class="wdown gf-wave-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/><path class="gf-edge" d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40"/></svg><svg class="gf-edge-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path class="gf-edge" d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40"/></svg></div>
 <!-- How gifting works: photo bleeds off the left, steps click through on the right, like Meal Delivery (Emily, 2026-10-20) -->
 <section class="gf-how2">
   <div class="gf-how2__grid">
-    <figure class="gf-how2__photo"><img src="/brand/img/photos/band-newborn.jpg" alt="A mother holding her sleeping newborn"></figure>
+    <figure class="gf-how2__photo"><img src="/brand/img/photos/gift-95-dusk.jpg" alt="A couple in white embracing on a rocky beach at dusk"></figure>
     <div class="gf-how2__text">
       <span class="eyebrow">How it works</span>
       <h2>Simple to send, lovely to receive.</h2>
       <div class="ctabs ctabs--solo gf-steps" data-ctabs>
         <div>
           <div class="ctabs__tabs" role="tablist" aria-label="How gifting works">
-            <button role="tab" id="gt-1" aria-controls="gp-1">1</button><button role="tab" id="gt-2" aria-controls="gp-2">2</button><button role="tab" id="gt-3" aria-controls="gp-3">3</button>
+            <button role="tab" id="gt-1" aria-controls="gp-1">Select</button><button role="tab" id="gt-2" aria-controls="gp-2">Deliver</button><button role="tab" id="gt-3" aria-controls="gp-3">Care</button>
           </div>
           <div class="ctabs__panel" role="tabpanel" id="gp-1" aria-labelledby="gt-1"><h3>Choose your gift</h3><p>Pick an amount or a specific service, and add a personal note.</p></div>
           <div class="ctabs__panel" role="tabpanel" id="gp-2" aria-labelledby="gt-2"><h3>We deliver it</h3><p>She receives a beautiful message with everything she needs to redeem.</p></div>
@@ -150,7 +178,6 @@
     </div>
   </div>
 </section>
-<svg class="wdown wdown--sky" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
 <!-- Footer -->
 <footer class="foot">
