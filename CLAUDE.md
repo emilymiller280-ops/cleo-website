@@ -19,14 +19,15 @@ Pages reference `/brand/brand.css` with an absolute path, so **always preview th
 
 ## Brand — Born ID
 Tokens live in `brand/brand.css`. Also `brand/nav.css`, `brand/hero.css`, `brand/fonts/`, `brand/img/`.
-Palette: Sky, Coral, Burgundy, Blush, Butter, Ivory. Type: Rosevale, Host Grotesk, Palmello.
+Palette: Sky, Coral, Burgundy, Blush, Butter, Ivory. Type: Libre Baskerville (headings), Rosevale (logo), Host Grotesk (body), Palmello (script).
 
 **Emily's standing rules, all five:**
 - No black text
 - The main font is never red — red is for accents only
 - No white backgrounds
 - **No em dashes.** Anywhere, in any copy.
-- **Headings are Host Grotesk, regular weight, never bold** (2026-09-28). Rosevale is for the Cleo logo only: nav, homepage CLEO, footer wordmarks. Use `var(--font-logo)` for it, `var(--font-display)` for headings.
+- **Headings are Libre Baskerville, regular weight, never bold** (2026-10-21; was Host Grotesk). Self-hosted in `brand/fonts/`, set by `--font-display` in `brand.css` AND an `!important` rule in `brand/hero.css` (older pages alias `'Spectral'` to Host Grotesk inline). Rosevale is for the Cleo logo only: nav, homepage CLEO, footer wordmarks. Use `var(--font-logo)` for it, `var(--font-display)` for headings.
+- **Standard page header** (2026-10-21): photo with NO text on it, cream wave, then eyebrow + title in burgundy on the cream below. Lives in `brand/hero.css` for `.page-hero--photo`; Meal Delivery does the same with its own `wband`. Homepage is the exception (text on the photo, maroon waves).
 
 ## Legal pages are generated, not hand-edited
 `terms.html` and `privacy.html` come from counsel's documents via:

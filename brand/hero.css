@@ -117,6 +117,23 @@
 .page-hero--photo::after{ content:""; position:absolute; z-index:2; left:0; right:0; bottom:-1px; height:clamp(40px,6vw,90px); pointer-events:none;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23F8F2E6' d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat; }
 
+/* ---- Standard header (Emily, 2026-10-21): NO text on the photo. The photo stands alone,
+   the cream wave cuts its foot, and the eyebrow + page title sit on the cream below in burgundy.
+   Scoped to heroes that actually have a photo; an empty slot keeps the old filled block. ---- */
+section.page-hero.page-hero--photo:has(.page-hero__photo img){ display:block; min-height:0; background:#F8F2E6; overflow:visible; padding:0 !important; }
+.page-hero--photo:has(.page-hero__photo img)::after{ display:none; }
+.page-hero--photo .page-hero__photo:has(img){ position:relative; inset:auto; height:min(70svh,640px); overflow:hidden; }
+.page-hero--photo .page-hero__photo:has(img)::before{ content:""; position:absolute; z-index:2; left:0; right:0; bottom:-1px; height:clamp(40px,6vw,90px); pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120' preserveAspectRatio='none'%3E%3Cpath fill='%23F8F2E6' d='M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z'/%3E%3C/svg%3E") center bottom/100% 100% no-repeat; }
+.page-hero--photo:has(.page-hero__photo img) .page-hero__inner{ padding-block:clamp(14px,2.5vw,30px) clamp(36px,5vw,64px); }
+.page-hero--photo:has(.page-hero__photo img) h1{ color:var(--burgundy) !important; text-shadow:none !important; }
+.page-hero--photo:has(.page-hero__photo img) .page-hero__eyebrow{ color:var(--burgundy) !important; opacity:.72; text-shadow:none !important; }
+.page-hero--photo:has(.page-hero__photo img) .page-hero__lede,
+.page-hero--photo:has(.page-hero__photo img) .page-hero__note{ color:var(--text) !important; text-shadow:none !important; }
+.page-hero--photo:has(.page-hero__photo img) .page-hero__nav a{ color:var(--burgundy); border-bottom:1.5px solid rgba(107,8,38,.35); }
+.page-hero--photo:has(.page-hero__photo img) .hbtn--primary{ background:var(--burgundy); color:var(--ivory); }
+@media(max-width:760px){ .page-hero--photo .page-hero__photo:has(img){ height:56svh; } }
+
 /* ---- Footer squiggle: the one place besides the nav bar that carries the texture ---- */
 footer.foot{ position:relative; isolation:isolate; overflow:hidden; }
 footer.foot::before{ content:""; position:absolute; inset:0; z-index:-1; pointer-events:none; background:#7C8FCB; opacity:.42;

@@ -87,7 +87,6 @@
       header nav div { gap: 16px !important; }
       header nav div .btn-primary { padding: 8px 16px !important; font-size: 0.75rem !important; }
 
-      #faq-hero { padding: 120px 20px 60px !important; }
 
       section { padding-left: 20px !important; padding-right: 20px !important; }
       section > div { max-width: 100% !important; }
@@ -167,13 +166,29 @@ body{background:#FAF6B7;}
   .hww-text{ align-self:center; padding-bottom:clamp(60px,8vw,120px); }
   .hww-text .hww-title{ font-family:'Palmello',cursive; color:var(--navy); font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.05; margin:0 0 30px; }
   .hww-intro .copy-cards{ grid-template-columns:1fr; gap:26px !important; }
-  .hww-intro .copy-cards > p{ font-size:1rem !important; }
+  .hww-intro .copy-cards > p{ font-size:clamp(1.08rem,1.45vw,1.2rem) !important; line-height:1.7 !important; border-top:0 !important; padding-top:0 !important; }  /* bigger, no rules (Emily, 2026-10-21) */
   .hww-photo{ margin:0 0 0 calc(-1 * max(32px, (100vw - 1040px)/2)); min-height:600px; overflow:hidden; }
   .hww-photo img{ width:100%; height:100%; object-fit:cover; object-position:0% 6%; display:block; }
+  .hww-band{ background:#E3C4D5; padding:clamp(20px,3vw,40px) 32px clamp(28px,4vw,56px); }
+  .hww-band__in{ max-width:1040px; margin:0 auto; text-align:left; }  /* left + justified (Emily, 2026-10-21) */
+  .hww-band .hww-title{ font-family:'Palmello',cursive; color:#6B0826; font-size:clamp(2.3rem,5.4vw,3.3rem); line-height:1.05; margin:0 0 24px; }
+  .hww-lead{ color:#463A33; font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.75; margin:0; max-width:62ch; text-align:justify; }
+  .hww-lead + .hww-lead{ margin-top:1em; }
+  .wdown.wdown--pink-over{ fill:#E3C4D5; background:transparent; z-index:2; margin-bottom:calc(-1 * clamp(50px,7vw,110px) + 3px); }
+  .hww-text{ padding-top:clamp(60px,8vw,120px); }
+  .hww-steps-h{ font-size:clamp(2rem,3.6vw,2.7rem); color:#6B0826; margin:0 0 14px; text-align:left; }
+  .hww-steps-lede{ color:#463A33; font-size:clamp(1.02rem,1.35vw,1.12rem); line-height:1.7; margin:0 0 26px; max-width:46ch; }
+  .hww-steps.ctabs--solo{ max-width:none; margin:0; border-top:1.5px solid rgba(107,8,38,.25); padding-top:14px; }
+  .hww-steps .ctabs__tabs{ gap:clamp(28px,4vw,48px); margin-bottom:8px; }
+  .hww-steps .ctabs__panel{ min-height:150px; }
+  .hww-steps h3{ font-size:1.25rem; color:#6B0826; margin:0 0 8px; }
+  .hww-steps p{ color:#463A33; font-size:1.05rem; line-height:1.7; margin:0; }
+  @media(max-width:760px){ .hww-text{ padding-top:8px; } .hww-lead{ text-align:left; } }  /* phones: left, no justify gaps */
   .wup.wup--over{ position:relative; z-index:2; margin-top:calc(-1 * clamp(50px,7vw,110px)); background:linear-gradient(to bottom, transparent calc(100% - 4px), #E3C4D5 calc(100% - 4px)); }
   @media(max-width:760px){ .hww-intro{ grid-template-columns:1fr; gap:28px; } .hww-photo{ width:100vw; min-height:0; aspect-ratio:4/3; margin:0 0 0 calc(50% - 50vw); } .hww-text{ padding-bottom:40px; } .wup.wup--over{ margin-top:0; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #E3C4D5 calc(100% - 4px)); } }
 </style>
 <script src="/brand/no-widows.js" defer></script>
+<script src="/brand/ctabs.js" defer></script>
 </head>
 <body>
 
@@ -205,14 +220,15 @@ body{background:#FAF6B7;}
   </div>
 </section>
 
-<!-- JOURNEY ICONS (below "How Cleo works") -->
+
+<!-- JOURNEY ICONS: right under "How Cleo Works", on the cream (Emily, 2026-10-21) -->
 <style>
   .jstrip{ display:flex; justify-content:center; gap:clamp(40px,9vw,110px); flex-wrap:wrap; align-items:flex-start; }
   .jstrip .col{ display:flex; flex-direction:column; align-items:center; gap:16px; }
   .jstrip .ico{ width:clamp(58px,7vw,82px); height:clamp(58px,7vw,82px); display:block; }
   .jstrip .lbl{ font-family:'Spectral',serif; font-size:1.2rem; letter-spacing:.01em; }
 </style>
-<section style="padding:clamp(8px,1.5vw,18px) 32px 4px;background:#FAF6B7;">
+<section style="padding:0 32px clamp(32px,4vw,56px);background:#FAF6B7;">
   <div class="jstrip">
     <div class="col">
       <span class="ico" style="background:#CD96B3;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span>
@@ -229,57 +245,51 @@ body{background:#FAF6B7;}
   </div>
 </section>
 
-<!-- WHY CLEO / INTRO -->
-<section style="padding:clamp(72px,9vw,104px) 32px 0;background:#FAF6B7;">
+<!-- WHY CLEO / INTRO (Emily, 2026-10-21): pink band with "Human first, always." + the first paragraph,
+     then the pink wave cuts into the top of the photo, the other two paragraphs to its right -->
+<svg class="wup wup--blush" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<section class="hww-band">
+  <div class="hww-band__in">
+    <p class="hww-title">Human first, always.</p>
+    <p class="hww-lead">Some of life's biggest moments come with questions, uncertainty, and the need for support you can trust. Cleo was created to make that support easier to find. We connect women with personalized care, removing the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path.</p>
+    <p class="hww-lead">We offer clarity, guidance, and options without prescribing a single way forward. Support shouldn't be something you have to search for; it should simply be there when you need it.</p>
+  </div>
+</section>
+<svg class="wdown wdown--pink-over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+
+<section style="padding:0 32px;background:#FAF6B7;">
   <div style="max-width:1040px;margin:0 auto;">
     <div class="hww-intro">
     <figure class="hww-photo"><img src="/brand/img/photos/band-shoulder.jpg" alt="A close-up of a woman's neck and shoulder in soft light" loading="lazy"></figure>
     <div class="hww-text">
-    <p class="hww-title">Human first, always.</p>
-    <div class="copy-cards">
-      <p>Some of life's biggest moments come with questions, uncertainty, and the need for support that feels both trusted and personal. Cleo was created to make that support easier to find. By thoughtfully connecting women with trusted, personalized care, we remove the burden of navigating a fragmented system, whether they're returning to work after maternity leave or exploring a less traditional path to care.</p>
-      <p>Cleo offers clarity, guidance, and trusted options without prescribing a single way forward. Because support shouldn't be something you have to search for; it should simply be there when you need it.</p>
-      <p>Beyond expertise, Cleo is deeply committed to making every woman feel seen, understood, and cared for. Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of her health journey.</p>
+    <h2 class="hww-steps-h">Four simple steps</h2>
+    <p class="hww-steps-lede">Every interaction is designed to provide comfort, reassurance, and personalized support throughout every stage of your health journey.</p>
+    <div class="ctabs ctabs--solo hww-steps" data-ctabs>
+      <div>
+        <div class="ctabs__tabs" role="tablist" aria-label="Four simple steps"><button role="tab" id="hs-1" aria-controls="hp-1">1</button><button role="tab" id="hs-2" aria-controls="hp-2">2</button><button role="tab" id="hs-3" aria-controls="hp-3">3</button><button role="tab" id="hs-4" aria-controls="hp-4">4</button></div>
+        <div class="ctabs__panel" role="tabpanel" id="hp-1" aria-labelledby="hs-1"><h3>Book your care</h3><p>Tell us about yourself, where you are in your journey, and the support you're looking for. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees… ever.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="hp-2" aria-labelledby="hs-2"><h3>We match you</h3><p>We personally review your request and pair you with vetted providers who fit your needs, timing, and location.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="hp-3" aria-labelledby="hs-3"><h3>Choose your time</h3><p>Your matched provider shares their availability. You pick what works and confirm, all through one point of contact.</p></div>
+        <div class="ctabs__panel" role="tabpanel" id="hp-4" aria-labelledby="hs-4"><h3>Care that fits you</h3><p>Your provider meets you where it works best: in your home, in their office, or virtually. We coordinate ongoing care based on future needs and preferences.</p></div>
+      </div>
+    </div>
     </div>
     </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<style>
-  .hiw-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:32px; }
-  .hiw-step .hiw-num{ font-family:'Spectral',serif; font-size:2.6rem; color:var(--olive); line-height:1; display:block; margin-bottom:14px; }
-  .hiw-step h3{ font-family:'Spectral',serif; font-size:1.2rem; color:var(--navy); margin-bottom:10px; letter-spacing:-0.01em; }
-  .hiw-step p{ font-family:'Inter',sans-serif; font-size:0.9375rem; color:var(--ink-mid); line-height:1.7; }
-  @media(max-width:768px){ .hiw-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:36px 24px; } }
-  @media(max-width:460px){ .hiw-grid{ grid-template-columns:1fr; } }
-</style>
-<!-- pink wave into Four simple steps, rising over the foot of photo 148; meadow photo removed (Emily, 2026-10-20) -->
-<svg class="wup wup--blush wup--over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-<section class="faq-steps" style="padding:clamp(24px,3vw,40px) 32px clamp(64px,8vw,96px);">
-  <div style="max-width:1040px;margin:0 auto;">
-    <p style="text-align:center;font-family:'Libre Baskerville',Georgia,serif;color:#6B0826;font-size:clamp(2.1rem,4.2vw,2.9rem);margin-bottom:44px;">Four simple steps</p>
-    <div class="hiw-grid">
-      <div class="hiw-step"><span class="hiw-num">01</span><h3>Book your care</h3><p>Tell us about yourself, where you are in your journey, and the support you're looking for. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees… ever.</p></div>
-      <div class="hiw-step"><span class="hiw-num">02</span><h3>We match you</h3><p>We personally review your request and pair you with vetted providers who fit your needs, timing, and location.</p></div>
-      <div class="hiw-step"><span class="hiw-num">03</span><h3>Choose your time</h3><p>Your matched provider shares their availability. You pick what works and confirm, all through one point of contact.</p></div>
-      <div class="hiw-step"><span class="hiw-num">04</span><h3>Care that fits you</h3><p>Your provider meets you where it works best, in your home, in their office, or virtually. We coordinate ongoing care based on future needs and preferences.</p></div>
-    </div>
-  </div>
-</section>
-<svg class="wdown wdown--pink" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-
-<!-- OUR PILLARS -->
+<!-- OUR PILLARS: in the pink wave band, rising over the foot of the photo (Emily, 2026-10-21) -->
 <style>
   .pillar-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:38px 52px; max-width:920px; margin:0 auto; }
   .pillar h3{ font-family:'Spectral',serif; font-weight:400; font-size:1.4rem; color:var(--navy); margin-bottom:10px; letter-spacing:-0.01em; }
   .pillar p{ font-family:'Inter',sans-serif; font-size:0.95rem; color:var(--ink-mid); line-height:1.75; }
   @media(max-width:700px){ .pillar-grid{ grid-template-columns:1fr; gap:32px; } }
 </style>
-<section style="padding:36px 32px clamp(84px,10vw,116px);background:#FAF6B7;">
+<svg class="wup wup--blush wup--over" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+<section class="faq-steps" style="padding:clamp(24px,3vw,40px) 32px clamp(64px,8vw,96px);">
   <div style="max-width:1040px;margin:0 auto;">
-    <p style="text-align:center;font-family:'Libre Baskerville',Georgia,serif;color:var(--olive);font-size:clamp(2.1rem,4.2vw,2.9rem);margin-bottom:48px;">Our pillars</p>
+    <p style="text-align:center;font-family:'Libre Baskerville',Georgia,serif;color:#6B0826;font-size:clamp(2.1rem,4.2vw,2.9rem);margin-bottom:48px;">Our pillars</p>
     <div class="pillar-grid">
       <div class="pillar"><h3>Human Connection</h3><p>We believe your care should feel personal, compassionate, and deeply understanding, creating experiences that are built around people, not systems.</p></div>
       <div class="pillar"><h3>Trusted Guidance</h3><p>Exceptional care already exists. Our role is to thoughtfully connect every woman with trusted experts, removing the stress of searching and replacing it with confidence.</p></div>
@@ -288,10 +298,13 @@ body{background:#FAF6B7;}
     </div>
   </div>
 </section>
+<svg class="wdown wdown--pink" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+
+
 
 <!-- FAQ CONTENT -->
-<section style="padding:120px 56px 140px;background:#FAF6B7;">
-  <div style="max-width:1100px;margin:0 auto 60px;text-align:center;">
+<section style="padding:clamp(48px,6vw,80px) 56px 140px;background:#FAF6B7;">
+  <div style="max-width:1100px;margin:0 auto 60px;text-align:left;">
     <h2 class="heading-display" style="font-size:clamp(2rem,3.6vw,3rem);color:var(--navy);">Questions? Answered.</h2>
   </div>
   <div id="faq-layout" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:100px;align-items:start;">
