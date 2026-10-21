@@ -208,18 +208,14 @@ body{background:#FAF6B7;}
 
   <!-- Hero -->
   <section class="page-hero page-hero--photo h-butter">
-    <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/band-beach-run.jpg" alt="Two women running together on the beach in white" style="object-position:50% 8%"></div>
-    <div class="page-hero__inner">
-      <span class="page-hero__eyebrow">Provider Network</span>
-      <h1>Care with Cleo</h1>
-    </div>
+    <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/prov-140.jpg" alt="A therapist's hands during a back massage" style="object-position:50% 52%"></div>
   </section>
 
   <!-- Intro under the photo, then Get started opens the form (Emily, 2026-10-19) -->
   <style>
     .pi-intro{ max-width:680px; margin:0 auto; padding:8px 32px 40px; text-align:center; }
     .pi-intro p{ font-size:clamp(1.05rem,1.5vw,1.25rem); line-height:1.65; color:#463A33; margin:0 0 6px; }
-    .pi-intro p:first-child{ font-size:clamp(1.3rem,2.2vw,1.7rem); color:#6B0826; margin-bottom:10px; }
+    .pi-intro p:first-of-type{ font-size:clamp(1.3rem,2.2vw,1.7rem); color:#6B0826; margin-bottom:10px; }
     .pi-intro .btn{ margin-top:26px; display:inline-flex; align-items:center; font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:1rem;
       padding:15px 34px; border:0; border-radius:999px; background:#6B0826; color:#FFFEF7; cursor:pointer; box-shadow:0 6px 18px rgba(107,8,38,.3);
       transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
@@ -228,11 +224,44 @@ body{background:#FAF6B7;}
     .pi-intro{ padding-bottom:72px; }
     #form-wrap.pi-closed{ display:none; }
     .pi-intro.pi-open .btn{ display:none; }
+    /* header + intro sit left, lined up, like Meal Delivery (Emily, 2026-10-21) */
+    .page-hero .page-hero__inner{ max-width:1104px; text-align:left; padding-bottom:clamp(8px,1.5vw,20px); }
+    .page-hero .page-hero__inner h1{ margin-left:0; }
+    .pi-intro{ max-width:1104px; text-align:left; padding-inline:clamp(22px,5vw,72px); }
+    .pi-intro p{ max-width:60ch; }
+    /* photo 140, taller header so more of it shows (Emily, 2026-10-21) */
+    .page-hero--photo .page-hero__photo:has(img){ height:min(88svh,860px); }
+    @media(max-width:760px){ .page-hero--photo .page-hero__photo:has(img){ height:min(60svh,480px); } }
+    /* B: words left, icons stacked right (Emily, 2026-10-21) */
+    .pi-split{ max-width:1104px; margin:0 auto; padding:clamp(8px,1.5vw,20px) clamp(22px,5vw,72px) clamp(56px,7vw,96px); display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:clamp(32px,6vw,96px); align-items:center; }
+    .pi-split .pi-intro{ max-width:none; padding:0; margin:0; }
+    .pi-lab{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:#6B0826; opacity:.72; display:block; margin-bottom:14px; }
+    .pi-h1{ font-family:"Libre Baskerville",Georgia,serif; font-weight:400; color:#6B0826; font-size:clamp(2.4rem,5.2vw,4.2rem); line-height:1.1; letter-spacing:-.02em; margin:0 0 .35em; }
+    .pi-side{ display:flex; align-items:stretch; gap:clamp(24px,4vw,56px); }
+    .pi-side .jstrip{ display:flex; flex-direction:column; justify-content:center; gap:22px; }
+    .pi-side .col{ display:flex; flex-direction:row; align-items:center; gap:20px; }
+    .pi-side .ico{ width:clamp(54px,6vw,76px); height:clamp(54px,6vw,76px); display:block; }
+    .pi-side .lbl{ font-family:'Spectral',serif; font-size:1.15rem; }
+    .page-hero--photo .page-hero__photo:has(img){ margin-bottom:0; }
+    @media(max-width:760px){ .pi-split{ grid-template-columns:1fr; } .pi-side .jstrip{ flex-direction:row; gap:28px; } .pi-side .col{ flex-direction:column; gap:10px; } }
   </style>
+  <!-- Split: title + words left, icons stacked right (Emily, 2026-10-21) -->
+  <div class="pi-split">
   <div class="pi-intro" id="pi-intro">
-    <p>Join our network of trusted practitioners.</p>
+    <span class="pi-lab">Provider Network</span>
+    <h1 class="pi-h1">Care with Cleo</h1>
+    <p>Join our community of trusted practitioners.</p>
     <p>Tell us a bit more about your practice, and we'll take it from there.</p>
     <button type="button" class="btn btn--primary" id="pi-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
+  </div>
+    <div class="pi-side">
+      <div class="jstrip">
+
+      <div class="col"><span class="ico" style="background:#CD96B3;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#CD96B3;">Fertility</span></div>
+      <div class="col"><span class="ico" style="background:#6B0826;-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#6B0826;">Pregnancy</span></div>
+      <div class="col"><span class="ico" style="background:#E1654B;-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#E1654B;">Postpartum</span></div>
+      </div>
+    </div>
   </div>
 
   <!-- Form -->
