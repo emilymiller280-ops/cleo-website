@@ -288,6 +288,13 @@ body{background:#FAF6B7;}
   .bk-ready{ padding-inline:0 !important; }
   .bk-ready > div{ max-width:1104px !important; padding-inline:clamp(22px,5vw,72px); }  /* band copy lines up with the title */
   .bk-ready p{ max-width:62ch; }
+  /* lead on two lines; band runs straight into the footer until the form is open (Emily, 2026-10-21) */
+  .pi-split .bk-intro{ max-width:none !important; }
+  .pi-split .bk-intro__lead{ max-width:960px; text-wrap:balance; }
+  .bk-book{ margin-top:clamp(20px,2.5vw,28px); display:inline-flex; align-items:center; font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:1rem; padding:15px 34px; border:0; border-radius:999px; background:#6B0826; color:#FFFEF7; cursor:pointer; box-shadow:0 6px 18px rgba(107,8,38,.3); transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
+  .bk-book:hover{ transform:translateY(-2px); background:#4E0519; }
+  .bk-book:focus-visible{ outline:2px solid #E1654B; outline-offset:3px; }
+  body:has(#form-wrap.bk-closed) .bk-ready-down, body:has(#form-wrap.bk-closed) .bk-foot-gap{ display:none; }
   @media(max-width:760px){ .pi-split{ grid-template-columns:1fr; } .pi-side .jstrip{ flex-direction:row; gap:28px; } .pi-side .col{ flex-direction:column; gap:10px; } }
 </style>
 </head>
@@ -323,6 +330,7 @@ body{background:#FAF6B7;}
       <span class="pi-lab">Book Your Care</span>
       <h1 class="pi-h1">Full-Spectrum Maternal Care</h1>
       <p class="bk-intro__lead">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
+      <button type="button" class="bk-book" data-bk-open aria-controls="form-wrap">Book Care</button>
     </div>
   </div>
 
@@ -332,12 +340,12 @@ body{background:#FAF6B7;}
     <div style="max-width:760px;margin:0 auto;">
       <p class="bk-ready__eyebrow">Ready when you are</p>
       <h2>Let's find the care that's right for you.</h2>
-      <p>Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees.</p>
+      <p>Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan. It only takes a few minutes, and it's completely free to sign up.</p>
       <button type="button" class="bk-ready__btn bk-start-band" id="bk-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
       <p class="bk-ready__note">*Insurance coverage varies by plan. Cleo makes no guarantee of reimbursement.</p>
     </div>
   </section>
-  <svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+  <svg class="wdown bk-ready-down" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 
   <!-- Form -->
   <section class="bk-form-sec" style="padding:0 32px 96px;max-width:680px;margin:0 auto;">
@@ -854,7 +862,7 @@ body{background:#FAF6B7;}
 
   </section>
 
-  <div style="height:clamp(24px,3vw,40px);background:#F8F2E6;"></div>
+  <div class="bk-foot-gap" style="height:clamp(24px,3vw,40px);background:#F8F2E6;"></div>
 
 <!-- Footer -->
 <footer class="foot">
