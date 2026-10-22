@@ -268,6 +268,23 @@ body{background:#FAF6B7;}
   .bk-ready p{ font-family:"Host Grotesk",system-ui,sans-serif; color:#FFFEF7; opacity:.92; font-size:1.05rem; line-height:1.65; margin:0 0 26px; }
   .bk-ready__btn{ display:inline-flex; font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; padding:15px 32px; border-radius:999px; background:#FAF6B7; color:#6B0826; text-decoration:none; transition:transform .18s ease; }
   .bk-ready__btn:hover{ transform:translateY(-2px); }
+  /* Book Care in the For Providers design (Emily, 2026-10-21) */
+  .pi-split{ max-width:1104px; margin:0 auto; padding:clamp(8px,1.5vw,20px) clamp(22px,5vw,72px) clamp(40px,5vw,72px); display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:clamp(32px,6vw,96px); align-items:center; }
+  .pi-split .bk-intro{ margin:0 !important; padding:0 !important; border:0 !important; }
+  .pi-lab{ font-family:"Host Grotesk",system-ui,sans-serif; font-weight:600; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:#6B0826; opacity:.72; display:block; margin-bottom:14px; }
+  .pi-h1{ font-family:"Libre Baskerville",Georgia,serif; font-weight:400; color:#6B0826; font-size:clamp(2.4rem,5.2vw,4.2rem); line-height:1.1; letter-spacing:-.02em; margin:0 0 .35em; text-wrap:balance; }
+  .pi-side{ display:flex; align-items:stretch; }
+  .pi-side .jstrip{ display:flex; flex-direction:column; justify-content:center; gap:22px; }
+  .pi-side .col{ display:flex; flex-direction:row; align-items:center; gap:20px; }
+  .pi-side .ico{ width:clamp(54px,6vw,76px); height:clamp(54px,6vw,76px); display:block; }
+  .pi-side .lbl{ font-family:'Spectral',serif; font-size:1.15rem; }
+  /* maroon band follows the icons; insurance note under the button (Emily, 2026-10-21) */
+  .bk-ready__note{ font-size:.75rem !important; opacity:.75 !important; margin:18px 0 0 !important; }
+  .bk-start-band{ border:0; cursor:pointer; font-size:1rem; }
+  .bk-form-sec:has(#form-wrap:not(.bk-closed)){ padding-top:clamp(40px,5vw,64px) !important; }
+  .bk-form-sec:has(#form-wrap.bk-closed){ padding-bottom:0 !important; }
+  .pi-split{ padding-bottom:clamp(8px,1.5vw,20px); }
+  @media(max-width:760px){ .pi-split{ grid-template-columns:1fr; } .pi-side .jstrip{ flex-direction:row; gap:28px; } .pi-side .col{ flex-direction:column; gap:10px; } }
 </style>
 </head>
 <body>
@@ -293,21 +310,39 @@ body{background:#FAF6B7;}
   <!-- Hero -->
   <section class="page-hero page-hero--photo h-sky bk-hero">
     <div class="page-hero__photo hero-notint hero-notint--light"><img src="/brand/img/photos/hero-booking-48.jpg" alt="A woman in a white ribbed top stretching" style="object-position:50% 30%"></div>
-    <div class="page-hero__inner">
-      <span class="page-hero__eyebrow">Book Your Care</span>
-      <h1>Full-Spectrum Maternal Care</h1>
-    </div>
   </section>
 
-  <!-- Form -->
-  <section style="padding:0 32px 96px;max-width:680px;margin:0 auto;">
-
+  <!-- Same design as For Providers: title + words left, icons stacked right (Emily, 2026-10-21) -->
+  <div class="pi-split">
     <!-- Plain intro, no boxes (Emily, 2026-10-19) -->
     <div class="bk-intro">
+      <span class="pi-lab">Book Your Care</span>
+      <h1 class="pi-h1">Full-Spectrum Maternal Care</h1>
       <p class="bk-intro__lead">From trying to conceive through postpartum recovery, Cleo brings a holistic, coordinated layer of support to complement your medical care.</p>
-      <p>Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees.</p>
-      <button type="button" class="bk-start" id="bk-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
     </div>
+    <div class="pi-side"><div class="jstrip">
+        <div class="col"><span class="ico" style="background:#CD96B3;-webkit-mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;mask:url('/brand/img/icon-fertility.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#CD96B3;">Fertility</span></div>
+        <div class="col"><span class="ico" style="background:#6B0826;-webkit-mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;mask:url('/brand/img/icon-pregnancy.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#6B0826;">Pregnancy</span></div>
+        <div class="col"><span class="ico" style="background:#E1654B;-webkit-mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;mask:url('/brand/img/icon-postpartum.svg') center/contain no-repeat;"></span><span class="lbl" style="color:#E1654B;">Postpartum</span></div>
+    </div></div>
+  </div>
+
+  <!-- Ready when you are: maroon band right under the title, opens the form below it (Emily, 2026-10-21) -->
+  <svg class="wup" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+  <section class="bk-ready">
+    <div style="max-width:760px;margin:0 auto;">
+      <p class="bk-ready__eyebrow">Ready when you are</p>
+      <h2>Let's find the care that's right for you.</h2>
+      <p>Tell us where you are and what you're looking for, and your dedicated Cleo concierge will be in touch within 48 hours to put together your plan. It only takes a few minutes, and it's completely free to sign up. No memberships or subscription fees.</p>
+      <button type="button" class="bk-ready__btn bk-start-band" id="bk-start" aria-controls="form-wrap" aria-expanded="false">Get started</button>
+      <p class="bk-ready__note">*Insurance coverage varies by plan. Cleo makes no guarantee of reimbursement.</p>
+    </div>
+  </section>
+  <svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
+
+  <!-- Form -->
+  <section class="bk-form-sec" style="padding:0 32px 96px;max-width:680px;margin:0 auto;">
+
 
     <div id="form-wrap" class="bk-closed">
       <form id="booking-form" action="https://app.cleocare.co/api/intake" method="POST" style="display:flex;flex-direction:column;gap:28px;">
@@ -817,21 +852,9 @@ body{background:#FAF6B7;}
       <a href="index.html" style="font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:500;color:var(--navy);text-decoration:none;letter-spacing:0.03em;border-bottom:1px solid rgba(27,56,114,0.3);padding-bottom:2px;">Back to Cleo</a>
     </div>
 
-    <p style="font-family:'Inter',sans-serif;font-size:0.75rem;color:var(--ink-muted);text-align:center;margin-top:40px;line-height:1.7;">*Insurance coverage varies by plan. Cleo makes no guarantee of reimbursement.</p>
 
   </section>
 
-  <!-- Ready when you are: maroon band with waves, no box (Emily, 2026-10-19) -->
-  <svg class="wup" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
-  <section class="bk-ready">
-    <div style="max-width:760px;margin:0 auto;">
-      <p class="bk-ready__eyebrow">Ready when you are</p>
-      <h2>Let's find the care that's right for you.</h2>
-      <p>Tell us where you are in your journey, and we'll match you with a trusted provider.</p>
-      <a href="#booking-form" class="bk-ready__btn" data-bk-open>Start your request</a>
-    </div>
-  </section>
-  <svg class="wdown" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
   <div style="height:clamp(24px,3vw,40px);background:#F8F2E6;"></div>
 
 <!-- Footer -->
