@@ -7,6 +7,16 @@
   <link rel="apple-touch-icon" href="/brand/img/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cleo Care, Maternal care, simplified</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cleo Care">
+<meta property="og:title" content="Cleo Care, Maternal care, simplified">
+<meta property="og:description" content="Cleo matches you with vetted specialists for fertility, pregnancy and postpartum care in Southern California.">
+<meta property="og:url" content="https://cleocare.co/">
+<meta property="og:image" content="https://cleocare.co/brand/img/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cleocare.co/brand/img/og-share.jpg">
 <link rel="stylesheet" href="/brand/brand.css">
 <link rel="stylesheet" href="/brand/nav.css">
 <link rel="stylesheet" href="/brand/hero.css">
@@ -334,6 +344,9 @@
   .phero__photo{ position:relative; height:max(540px, 84svh); overflow:hidden; }
   .phero__photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
   @media(max-width:820px){ .phero__photo img{ position:absolute; left:0; bottom:0; height:103%; object-position:30% 100%; } }
+  /* phone: maroon wave sits higher so her stomach is cut off (Emily, 2026-10-21) */
+  @media(max-width:820px){ .phero{ padding-top:var(--nav-h,98px); background:var(--sky); } .phero__photo{ height:var(--ph-h,104vw); } .phero__photo img{ top:0; bottom:auto; height:100%; object-position:30% 0%; } }
+  @media(max-width:820px){ .phero__band{ background:var(--burgundy); } }
   .phero__cleo{ position:absolute; z-index:2; left:0; right:0; bottom:clamp(70px,11vw,150px); text-align:left; text-shadow:0 2px 24px rgba(78,5,25,.25);
     font-family:var(--font-logo); color:var(--butter); font-size:clamp(3.6rem,12vw,9.5rem); line-height:.86; letter-spacing:.01em;
     }
@@ -425,9 +438,9 @@
 <section class="section cream" id="journeys" style="padding-block:clamp(56px,7vw,88px);">
   <div class="wrap">
     <div class="journeys">
-      <a href="booking.html" class="journey j-fertility"><img class="jphoto jphoto--fertility" src="/brand/img/photos/card-fertility.jpg" alt=""><div class="jband"><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next.</p><span class="more">Explore fertility care →</span></div></a>
-      <a href="booking.html" class="journey j-pregnancy"><img class="jphoto jphoto--pregnancy" src="/brand/img/photos/card-pregnancy.jpg" alt=""><div class="jband"><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week.</p><span class="more">Explore pregnancy care →</span></div></a>
-      <a href="booking.html" class="journey j-postpartum"><img class="jphoto jphoto--postpartum" src="/brand/img/photos/card-postpartum.jpg" alt=""><div class="jband"><span class="script jname">Postpartum</span><p>Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></div></a>
+      <a href="booking.html" class="journey j-fertility"><img loading="lazy" class="jphoto jphoto--fertility" src="/brand/img/photos/card-fertility.jpg" alt=""><div class="jband"><span class="script jname">Fertility</span><p>Guidance and calm support as you explore what's next.</p><span class="more">Explore fertility care →</span></div></a>
+      <a href="booking.html" class="journey j-pregnancy"><img loading="lazy" class="jphoto jphoto--pregnancy" src="/brand/img/photos/card-pregnancy.jpg" alt=""><div class="jband"><span class="script jname">Pregnancy</span><p>Trusted specialists beside you through every week.</p><span class="more">Explore pregnancy care →</span></div></a>
+      <a href="booking.html" class="journey j-postpartum"><img loading="lazy" class="jphoto jphoto--postpartum" src="/brand/img/photos/card-postpartum.jpg" alt=""><div class="jband"><span class="script jname">Postpartum</span><p>Real support for the fourth trimester and beyond.</p><span class="more">Explore postpartum care →</span></div></a>
     </div>
     <div class="section-head" style="margin:52px auto 0;"><span class="eyebrow">Every stage, supported</span><h2>Wherever You Are, We'll Meet You There.</h2></div>
     <div class="jstrip" style="margin:40px 0 0;">
@@ -449,7 +462,7 @@
 
 <!-- Photo band with the big maroon wave rolling over it, into Why Cleo (Emily, 2026-10-19) -->
 <div class="wband">
-  <div class="wband__photo"><img src="/brand/img/photos/hero-field.jpg" alt="A pregnant woman laughing in a field, arms open" style="object-position:50% 2%;transform:scale(1.04);"></div>
+  <div class="wband__photo"><img loading="lazy" src="/brand/img/photos/hero-field.jpg" alt="A pregnant woman laughing in a field, arms open" style="object-position:50% 2%;transform:scale(1.04);"></div>
   <svg class="wband__wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,64 C180,10 360,10 540,52 C720,94 900,118 1080,86 C1260,54 1350,30 1440,40 L1440,120 L0,120 Z"/></svg>
 </div>
 <!-- PROBLEM / STATS (maroon) -->
@@ -527,9 +540,9 @@
         <div class="ctabs__panel" role="tabpanel" id="pp-3" aria-labelledby="pt-3"><p>From birth doulas to lactation consultants, our network is built to guide and connect. Because it's easier when you're not doing it alone.</p></div>
       </div>
       <div class="ctabs__media">
-        <img src="/brand/img/photos/care-massage.jpg" alt="A woman resting with her eyes closed during a facial massage" style="object-position:50% 40%">
-        <img src="/brand/img/photos/pillar-emotional.jpg" alt="A woman with wet hair looking back over her shoulder, by a stone wall" style="object-position:50% 34%">
-        <img src="/brand/img/photos/pillar-connection.jpg" alt="Two women embracing by the water" style="object-position:50% 35%">
+        <img loading="lazy" src="/brand/img/photos/care-massage.jpg" alt="A woman resting with her eyes closed during a facial massage" style="object-position:50% 40%">
+        <img loading="lazy" src="/brand/img/photos/pillar-emotional.jpg" alt="A woman with wet hair looking back over her shoulder, by a stone wall" style="object-position:50% 34%">
+        <img loading="lazy" src="/brand/img/photos/pillar-connection.jpg" alt="Two women embracing by the water" style="object-position:50% 35%">
       </div>
     </div>
     <div class="netlist">
@@ -573,7 +586,7 @@
       <p class="calling__fine">No spam. Unsubscribe any time. &nbsp;·&nbsp; <a href="https://cleocare.substack.com" target="_blank" rel="noopener">Read all posts</a></p>
     </div>
     <div class="calling__vid">
-      <video src="/brand/img/photos/tulips.mp4" autoplay muted loop playsinline aria-label="A woman holding a bouquet of pink and white tulips"></video>
+      <video src="/brand/img/photos/tulips.mp4" preload="metadata" autoplay muted loop playsinline aria-label="A woman holding a bouquet of pink and white tulips"></video>
     </div>
     <div class="calling__ig">
       <span class="eyebrow">Follow along</span>
