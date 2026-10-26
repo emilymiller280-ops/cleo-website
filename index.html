@@ -43,7 +43,7 @@
         { "@type": "AdministrativeArea", "name": "Orange County, California" },
         { "@type": "State", "name": "California" }
       ],
-      "knowsAbout": ["Doula", "Lactation consultant", "Pelvic floor physical therapy", "Prenatal massage", "Postpartum massage", "Acupuncture", "Perinatal therapy", "Night nurse", "Postpartum meal delivery"],
+      "knowsAbout": ["Doula", "Lactation consultant", "Pelvic floor physical therapy", "Prenatal massage", "Postpartum massage", "Acupuncture", "Perinatal therapy", "Overnight newborn care", "Postpartum meal delivery"],
       "sameAs": ["https://www.instagram.com/cleo.care.co"]
     }
   ]
@@ -356,10 +356,19 @@
   .welcome__body{ padding:30px 40px 36px; text-align:center; }
   .welcome__body p{ color:var(--text); font-size:1rem; line-height:1.6; margin:0 0 20px; }
   .welcome__form{ display:flex; flex-direction:column; gap:12px; }
-  .welcome__form input[type=email]{ font-family:var(--font-body); font-size:1rem; padding:15px 20px;
+  .welcome__form input[type=email], .welcome__form input[type=text][name=first_name]{ font-family:var(--font-body); font-size:1rem; padding:15px 20px;
     border-radius:var(--radius-pill); border:1.5px solid rgba(107,8,38,.22); background:#FFFEF7;
     color:var(--text); outline:none; transition:border-color .16s; }
-  .welcome__form input[type=email]:focus-visible{ border-color:var(--burgundy); }
+  .welcome__form input[type=email]:focus-visible, .welcome__form input[name=first_name]:focus-visible{ border-color:var(--burgundy); }
+  /* "I'm…" one-tap choice, optional (Emily, 2026-10-26) */
+  .welcome__who{ border:0; margin:2px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; }
+  .welcome__who legend{ width:100%; text-align:center; font-size:.85rem; color:var(--ink-soft); margin-bottom:8px; padding:0; }
+  .welcome__who label{ position:relative; cursor:pointer; }
+  .welcome__who input{ position:absolute; opacity:0; width:1px; height:1px; }
+  .welcome__who span{ display:inline-block; font-size:.88rem; padding:8px 14px; border-radius:var(--radius-pill);
+    border:1.5px solid rgba(107,8,38,.22); background:#FFFEF7; color:var(--burgundy); transition:background .16s, color .16s; }
+  .welcome__who input:checked + span{ background:var(--burgundy); color:#FFFEF7; border-color:var(--burgundy); }
+  .welcome__who input:focus-visible + span{ outline:2px solid var(--burgundy); outline-offset:2px; }
   .welcome__form .btn{ width:100%; }
   .welcome__fine{ font-size:.78rem; color:var(--ink-soft); margin:16px 0 0 !important; }
   .welcome__close{ position:absolute; top:14px; right:14px; z-index:2; width:34px; height:34px;
@@ -689,7 +698,14 @@
         <p>Be the first to know about our launch, partnerships, and events, plus notes on maternal care worth reading.</p>
         <form class="welcome__form" action="https://app.cleocare.co/api/waitlist" method="POST" target="welcome-sink" id="welcome-form">
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+          <input type="text" name="first_name" placeholder="First name" aria-label="First name" autocomplete="given-name">
           <input type="email" name="email" placeholder="you@email.com" aria-label="Email address" required>
+          <fieldset class="welcome__who">
+            <legend>I'm…</legend>
+            <label><input type="radio" name="interest" value="care"><span>Looking for care</span></label>
+            <label><input type="radio" name="interest" value="provider"><span>A provider</span></label>
+            <label><input type="radio" name="interest" value="browsing"><span>Just looking around</span></label>
+          </fieldset>
           <button type="submit" class="btn btn--primary">Join us</button>
         </form>
         <p class="welcome__fine">No spam. Unsubscribe any time.</p>
@@ -709,7 +725,7 @@
     if(!el) return;
     var closeBtn = document.getElementById('welcome-close');
     var form = document.getElementById('welcome-form');
-    var emailInput = form ? form.querySelector('input[type=email]') : null;
+    var emailInput = form ? form.querySelector('input[name=first_name]') : null;
     var seen;
     try{ seen = localStorage.getItem(KEY); }catch(e){ seen = null; }
     if(seen) return;
