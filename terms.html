@@ -16,134 +16,95 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/brand/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/brand/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/brand/img/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #F8F2E6; color: #0D1F3C; -webkit-font-smoothing: antialiased; }
-    :root {
-      --navy: #1B3872; --navy-dark: #0F2352; --navy-light: #2A4F9E;
-      --navy-pale: #D6E0F5; --navy-wash: #EBF0FA;
-      --ink: #0D1F3C; --ink-mid: #3A4A6A; --ink-muted: #7888A8;
-      --cream: #F8F2E6; --warm: #F5F0E8;
-    }
-    .heading-display { font-family: 'Spectral', serif; line-height: 1.05; letter-spacing: -0.02em; }
-    .body-text { font-family: 'Inter', sans-serif; line-height: 1.7; }
-    .nav-link { font-family: 'Spectral', serif; font-size: 1rem; font-weight: 400; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s ease; }
-    .nav-link:hover { color: var(--navy); }
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--navy); color: #fff; font-family: 'Spectral', serif;
-      font-size: 0.9375rem; font-weight: 400; letter-spacing: 0.04em;
-      padding: 16px 40px; border-radius: 4px; text-decoration: none; border: none; cursor: pointer;
-      box-shadow: 0 2px 4px rgba(27,56,114,0.18), 0 6px 20px rgba(27,56,114,0.22);
-      transition: transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.18s ease, background 0.15s ease;
-    }
-    .btn-primary:hover { background: var(--navy-light); transform: translateY(-2px); box-shadow: 0 4px 8px rgba(27,56,114,0.22), 0 12px 32px rgba(27,56,114,0.32); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-primary:focus-visible, .nav-link:focus-visible, .legal-body a:focus-visible { outline: 2px solid var(--navy-light); outline-offset: 3px; border-radius: 2px; }
+<link rel="stylesheet" href="/brand/brand.css">
+<link rel="stylesheet" href="/brand/hero.css">
+<link rel="stylesheet" href="/brand/nav.css">
+<script src="/brand/no-widows.js" defer></script>
+<style>
+  /* Born ID legal pages (Emily, 2026-11-02): sky banner, cream page, burgundy footer */
+  body{ background:var(--cream); }
 
-    /* ---- Legal document typography ---- */
-    .legal-body { max-width: 760px; }
-    .legal-h2 {
-      font-family: 'Spectral', serif; font-size: 1.5rem; font-weight: 400;
-      color: var(--ink); letter-spacing: -0.01em; line-height: 1.3;
-      margin: 56px 0 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(27,56,114,0.12);
-      scroll-margin-top: 100px;
-    }
-    .legal-h3 {
-      font-family: 'Inter', sans-serif; font-size: 0.8125rem; font-weight: 600;
-      letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy);
-      line-height: 1.5; margin: 40px 0 14px; scroll-margin-top: 100px;
-    }
-    .legal-h2:first-child, .legal-h3:first-child { margin-top: 0; }
-    .legal-p {
-      font-family: 'Inter', sans-serif; font-size: 0.9375rem; line-height: 1.85;
-      color: var(--ink-mid); margin-bottom: 18px;
-    }
-    .legal-p strong { color: var(--ink); font-weight: 600; }
-    .legal-list { margin: 0 0 20px 0; padding-left: 22px; list-style: disc; }
-    .legal-list li {
-      font-family: 'Inter', sans-serif; font-size: 0.9375rem; line-height: 1.85;
-      color: var(--ink-mid); margin-bottom: 10px; padding-left: 4px;
-    }
-    .legal-body a { color: var(--navy); text-decoration: none; border-bottom: 1px solid rgba(27,56,114,0.3); transition: border-color 0.15s ease; }
-    .legal-body a:hover { border-bottom-color: var(--navy); }
-    .legal-table-wrap { overflow-x: auto; margin: 0 0 24px; border: 1px solid rgba(27,56,114,0.12); border-radius: 8px; }
-    .legal-table { width: 100%; border-collapse: collapse; background: #fff; }
-    .legal-table th, .legal-table td {
-      font-family: 'Inter', sans-serif; font-size: 0.875rem; line-height: 1.7;
-      text-align: left; padding: 14px 18px; border-bottom: 1px solid rgba(27,56,114,0.09); vertical-align: top;
-    }
-    .legal-table th { background: var(--navy-wash); color: var(--ink); font-weight: 600; }
-    .legal-table td { color: var(--ink-mid); }
-    .legal-table tr:last-child th, .legal-table tr:last-child td { border-bottom: none; }
+  /* Title sits on the cream under the nav band, no second squiggle (Emily, 2026-11-02) */
+  .legal-hero{ max-width:760px; margin:0 auto; text-align:center;
+    padding:calc(98px + clamp(48px,7vw,88px)) 32px 0; }
+  .legal-hero h1{ font-size:clamp(2.4rem,5.2vw,4.2rem); color:var(--burgundy); margin:14px 0 18px; text-wrap:balance; }
+  .legal-hero__lede{ font-size:clamp(1.02rem,1.4vw,1.15rem); line-height:1.65; color:var(--text); margin:0; text-wrap:balance; }
+  .legal-hero__date{ font-size:.9rem; color:var(--text); opacity:.75; margin:14px 0 0; }
 
-    .hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
-    .hamburger span { display:block; width:22px; height:1.5px; background:var(--navy); transition:transform 0.3s ease, opacity 0.3s ease; }
-    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity:0; }
-    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
-    .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; bottom:0; background:rgba(250,248,244,0.98); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); z-index:49; flex-direction:column; align-items:center; justify-content:center; gap:36px; }
-    .mobile-menu.open { display:flex; }
-    @media (max-width:768px) {
-      .hamburger { display:flex !important; }
-      header nav > div { display:none !important; }
-      #nav-links { display:none !important; }
-      header nav { padding: 0 20px !important; }
-      .legal-hero { padding: 130px 20px 48px !important; }
-      .legal-main { padding: 40px 20px 80px !important; }
-      .legal-h2 { font-size: 1.3rem; }
-      footer { padding: 60px 20px 36px !important; }
-      #legal-footer-bottom { flex-direction: column; align-items: flex-start !important; gap: 16px; }
-    }
-  </style>
+  /* ---- Legal document typography ---- */
+  .legal-main{ padding:clamp(40px,6vw,64px) 32px clamp(80px,10vw,120px); }
+  .legal-body{ max-width:760px; margin:0 auto; }
+  .legal-h2{
+    font-family:var(--font-display); font-size:clamp(1.35rem,2.2vw,1.65rem); font-weight:400;
+    color:var(--burgundy); line-height:1.3;
+    margin:56px 0 18px; padding-bottom:12px; border-bottom:1.5px solid rgba(107,8,38,.16);
+    scroll-margin-top:100px;
+  }
+  .legal-h3{
+    font-family:var(--font-body); font-size:.8125rem; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--burgundy);
+    line-height:1.5; margin:40px 0 14px; scroll-margin-top:100px;
+  }
+  .legal-h2:first-child, .legal-h3:first-child{ margin-top:0; }
+  .legal-p{ font-size:.98rem; line-height:1.85; color:var(--text); margin-bottom:18px; }
+  .legal-p strong{ font-weight:600; }
+  .legal-list{ margin:0 0 20px 0; padding-left:22px; list-style:disc; }
+  .legal-list li{ font-size:.98rem; line-height:1.85; color:var(--text); margin-bottom:10px; padding-left:4px; }
+  .legal-body a{ color:var(--burgundy); text-decoration:none; border-bottom:1px solid rgba(107,8,38,.35); }
+  .legal-body a:hover{ border-bottom-color:var(--burgundy); }
+  .legal-body a:focus-visible{ outline:2px solid var(--coral); outline-offset:3px; border-radius:2px; }
+  .legal-table-wrap{ overflow-x:auto; margin:0 0 24px; border:1px solid rgba(107,8,38,.14); border-radius:8px; }
+  .legal-table{ width:100%; border-collapse:collapse; background:var(--ivory); }
+  .legal-table th, .legal-table td{
+    font-size:.9rem; line-height:1.7; text-align:left; padding:14px 18px;
+    border-bottom:1px solid rgba(107,8,38,.1); vertical-align:top;
+  }
+  .legal-table th{ background:var(--butter); color:var(--text); font-weight:600; }
+  .legal-table td{ color:var(--text); }
+  .legal-table tr:last-child th, .legal-table tr:last-child td{ border-bottom:none; }
+  .legal-foot{ margin-top:56px; padding-top:28px; border-top:1.5px solid rgba(107,8,38,.16); font-size:.92rem; line-height:1.8; color:var(--text); }
+
+  .foot{ background:var(--burgundy); color:var(--butter); }
+  .foot .wrap{ padding-block:56px 30px; }
+  .foot a{ color:rgba(250,246,183,.85); text-decoration:none; } .foot a:hover{ color:var(--butter); }
+  .foot-bar{ border-top:1px solid rgba(250,246,183,.24); margin-top:34px; padding-top:22px;
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.85rem; opacity:.85; }
+  @media (max-width:768px){
+    .legal-main{ padding:40px 20px 80px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<header style="position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(250,248,244,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(27,56,114,0.07);">
-  <nav style="max-width:1280px;margin:0 auto;padding:0 56px;height:76px;display:flex;align-items:center;justify-content:space-between;position:relative;">
-    <a href="index.html" style="text-decoration:none;flex-shrink:0;">
-      <span style="font-family:'Spectral',serif;font-size:1.875rem;font-weight:300;color:var(--navy);letter-spacing:-0.01em;">Cleo</span>
-    </a>
-    <div id="nav-links" style="position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:24px;white-space:nowrap;">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="meal-delivery.html" class="nav-link">Meal Delivery</a>
-      <a href="booking.html" class="btn-primary" style="padding:10px 24px;font-size:0.75rem;width:auto;display:inline-flex;">Book Care</a>
-      <a href="favorites.html" class="nav-link">Our Favorites</a>
-      <a href="https://app.cleocare.co/gift" class="nav-link">Gift</a>
-      <a href="faq.html" class="nav-link">The Details</a>
+  <!-- Nav -->
+  <header class="cleo-nav">
+    <div class="cleo-nav__inner">
+      <a class="cleo-nav__brand" href="index.html">Cleo Care</a>
+      <input type="checkbox" id="cleo-nav-toggle" class="cleo-nav__toggle" aria-hidden="true" tabindex="-1">
+      <label for="cleo-nav-toggle" class="cleo-nav__burger" aria-label="Menu"><span></span><span></span><span></span></label>
+      <nav class="cleo-nav__links">
+        <a href="faq.html">How We Work</a>
+        <a href="meal-delivery.html">Meal Delivery</a>
+        <a href="favorites.html">Our Favorites</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="gifting.html">Gifting</a>
+        <a href="provider-intake.html">For Providers</a>
+        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+      </nav>
     </div>
-    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Home</a>
-  <a href="meal-delivery.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Meal Delivery</a>
-  <a href="favorites.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Our Favorites</a>
-  <a href="https://app.cleocare.co/gift" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">Gift</a>
-  <a href="faq.html" style="font-family:'Spectral',serif;font-size:1.75rem;font-weight:300;color:var(--navy);text-decoration:none;letter-spacing:-0.01em;">The Details</a>
-  <a href="booking.html" style="font-family:'Spectral',serif;font-size:1.125rem;font-weight:400;letter-spacing:0.03em;color:#fff;background:var(--navy);padding:14px 40px;border-radius:4px;text-decoration:none;">Book Care</a>
-</div>
+  </header>
 
 <!-- HERO -->
-<section class="legal-hero" style="padding:170px 56px 56px;background:linear-gradient(160deg, #F7F2EB 0%, #EEE5D8 55%, #E8DDD0 100%);">
-  <div style="max-width:760px;margin:0 auto;">
-    <p style="font-family:'Inter',sans-serif;font-size:0.6875rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--navy);opacity:0.65;margin-bottom:14px;">Legal</p>
-    <h1 class="heading-display" style="font-size:clamp(2.1rem,5vw,3rem);font-weight:300;color:var(--ink);margin-bottom:16px;">Terms of Service</h1>
-    <p class="body-text" style="font-size:1rem;color:var(--ink-mid);max-width:560px;">The agreement that governs your use of Cleo’s website and platform.</p>
-    <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-muted);margin-top:20px;">Last updated September 15th, 2026</p>
-  </div>
+<section class="legal-hero">
+  <span class="eyebrow" style="color:var(--burgundy);opacity:.72;">Legal</span>
+  <h1>Terms of Service</h1>
+  <p class="legal-hero__lede">The agreement that governs your use of Cleo’s website and platform.</p>
+  <p class="legal-hero__date">Last updated November 6, 2026</p>
 </section>
 
 <!-- DOCUMENT -->
-<main class="legal-main" style="padding:56px 56px 110px;">
-  <div class="legal-body" style="margin:0 auto;">
+<main class="legal-main">
+  <div class="legal-body">
 <h2 id="cleo-care-terms-of-service" class="legal-h2">CLEO CARE Terms of Service</h2>
 <p class="legal-p"><strong>PLEASE</strong><strong> CAREFULLY READ THE </strong><strong>TERMS OF SERVICE</strong><strong> (</strong><strong>the “</strong><strong>T</strong><strong>ERMS</strong><strong>”</strong><strong>)</strong><strong> </strong><strong>BEFORE USING THE</strong><strong> </strong><strong>CLEO CARE</strong><strong> </strong><strong>website located at https://cleocare.co/ (</strong><strong>the</strong><strong> “</strong><strong>Website”) and </strong><strong>CLEO CARE’S </strong><strong>other related websites, applications, and platforms (collectively, the “Platform”). </strong>The Platform, together with all related content, products, services, and functionality associated with the Platform, are collectively referred to as the “<strong>Services</strong>.”</p>
 <p class="legal-p"><strong>BY </strong><strong>ACCESSING OR </strong><strong>USING THE SERVICES, YOU CONSENT TO BE BOUND BY THE</strong><strong>SE</strong><strong> TERMS. IF YOU DO NOT AGREE TO ACCEPT THE</strong><strong>SE</strong><strong> TERMS, DO NOT </strong><strong>ACCESS OR</strong><strong> USE THE SERVICES.</strong></p>
@@ -242,7 +203,7 @@
 <h3 id="payment-processing" class="legal-h3">PAYMENT PROCESSING</h3>
 <p class="legal-p">Cleo Care uses a third-party payment processor to process credit card payments for professional services provided through the Platform on behalf of Users (the “Transaction Processing Services”). </p>
 <p class="legal-p"><em>C</em><em>ustomers</em></p>
-<p class="legal-p">For each appointment you book through the Services, you will be charged at the time of confirmation of service: (a) the Professional’s clinical fee for the applicable service; (b) a flat platform fee of ten dollars ($10.00) per appointment; and (c) a pass-through card-processing cost equal to the fee charged by our payment processor for the transaction. The platform fee and pass-through card-processing cost are in addition to the Professional’s clinical fee and any cost-sharing obligations you may owe under your health plan (such as copayments, deductibles, and coinsurance). We will display the applicable fees to you before you confirm an appointment. By confirming an appointment, you authorize us and our payment processor to charge these amounts to your designated payment method.</p>
+<p class="legal-p">For each appointment you book through the Services, you will be charged at the time of confirmation of service: (a) the Professional’s clinical fee for the applicable service; and (b) a flat platform fee of ten dollars ($10.00) per appointment. You are not charged any card-processing fee. The platform fee is in addition to the Professional’s clinical fee and any cost-sharing obligations you may owe under your health plan (such as copayments, deductibles, and coinsurance). We will display the applicable fees to you before you confirm an appointment. By confirming an appointment, you authorize us and our payment processor to charge these amounts to your designated payment method.</p>
 <p class="legal-p">We do not store or retain your full payment card information; that information is collected and processed by our payment processor in accordance with its terms of service and <a href="https://cleocare.co/privacy" target="_blank" rel="noopener">privacy policy</a>, which you can review at https://stripe.com/legal/consumer. We process payments in accordance with our <a href="https://cleocare.co/privacy" target="_blank" rel="noopener">Privacy Policy</a>. Any payment terms presented to you when you sign up for or use a paid service are part of these Terms.</p>
 <p class="legal-p">You are responsible for all charges incurred under your User Account, and you remain responsible for paying all amounts required by law or contract (such as your health plan agreement), including all cost-sharing obligations such as copayments, deductibles, and coinsurance. Cleo Care is not responsible for the products or services provided by any Professional, or for any charges submitted by a Professional. </p>
 <p class="legal-p">If you dispute any fees charged by a Professional, please notify us at <a href="mailto:hello@cleocare.co" target="_blank" rel="noopener">hello@cleocare.co</a>. Where a Professional permits it, you may use the Services to pay all or a portion of your financial obligations under your insurance coverage. While we endeavor to display accurate copayment and insurance information, we make no guarantee and disclaim all warranties that such information is correct, as it is provided by your insurer or a third-party clearinghouse and is subject to change. You may ultimately owe more or less than the amount paid through the Services, and you are likely to receive an explanation of benefits from your insurer following your appointment.</p>
@@ -253,8 +214,8 @@
 <p class="legal-p"><em>Professionals</em></p>
 <p class="legal-p">Cleo Care, through its third-party payment processor, will collect payment from Consumers for professional services provided through the Platform and will remit the applicable amounts to you, less Cleo Care’s fees. You authorize Cleo Care to deduct and retain its fees, as agreed to separately in writing between you and Cleo Care, from the amounts collected before remitting the balance to you. Cleo Care will remit the net amounts to the deposit account you designate.</p>
 <p class="legal-p">To receive payment, you must provide and maintain current, complete, and accurate deposit account information with Cleo Care or its payment processor, and you must promptly provide updated deposit information whenever your User Account details change. Cleo Care is not responsible for any delay in or failure of payment resulting from inaccurate, incomplete, or out-of-date deposit information.</p>
-<p class="legal-p">Charges to Consumers are assessed on a per-appointment basis. For each appointment, the Consumer is charged (a) your clinical fee for the applicable service, (b) a flat platform fee of ten dollars ($10.00), and (c) a pass-through card-processing cost, each collected at the time of service.</p>
-<p class="legal-p">You will be charged flat, per-booking fees for use of the Services, consisting of (a) a one-time match fee assessed on the Consumer’s first appointment with you, (b) a flat per-appointment fee assessed for each appointment thereafter, and (c) if Cleo Care provides billing services in connection with your appointments, a billing fee. These fees are as agreed to separately in writing between you and Cleo Care and will be deducted from amounts collected on your behalf as described above.</p>
+<p class="legal-p">Charges to Consumers are assessed on a per-appointment basis. For each appointment, the Consumer is charged (a) your clinical fee for the applicable service, and (b) a flat platform fee of ten dollars ($10.00), each collected at the time of service. Consumers are not charged any card-processing fee.</p>
+<p class="legal-p">You will be charged per-booking fees for use of the Services, consisting of (a) a one-time match fee assessed on the Consumer’s first appointment with you, (b) a flat per-appointment fee assessed for each appointment thereafter, (c) a pass-through of the actual card-processing cost charged by our payment processor on your clinical fee, without markup, and (d) if Cleo Care provides billing services in connection with your appointments, a billing fee. These fees are as agreed to separately in writing between you and Cleo Care and will be deducted from amounts collected on your behalf as described above.</p>
 <h3 id="representations-and-warranties" class="legal-h3">REPRESENTATIONS AND WARRANTIES.</h3>
 <p class="legal-p">In addition to other representations and warranties contained throughout the Terms, you represent and warrant that your use of the Services will be in accordance with these Terms and all applicable laws, regulations, rules, and Cleo Care policies and procedures (to the extent such policies and procedures are communicated to you). Specifically, <strong>YOU REPRESENT AND WARRANT THAT YOU ARE LEGALLY AUTHORIZED TO SHARE </strong><strong>PERSONAL INFORMATION</strong><strong> (</strong><strong>BELONGING TO YOURSELF OR OTHERS ON WHOSE BEHALF YOU ARE SUBMITTING SUCH </strong><strong>PERSONAL INFORMATION</strong><strong>)</strong><strong> WITH </strong><strong>US</strong><strong>.</strong> </p>
 <h3 id="warranty-disclaimers" class="legal-h3">WARRANTY DISCLAIMERS.</h3>
@@ -330,42 +291,41 @@
 <h3 id="cleo-care" class="legal-h3"><strong>Cleo</strong><strong> </strong><strong>Care</strong><strong> </strong></h3>
 <p class="legal-p">10 E Yanonali St. </p>
 <p class="legal-p">Santa Barbara, CA 93101</p>
-    <div style="margin-top:56px;padding-top:28px;border-top:1px solid rgba(27,56,114,0.12);">
-      <p style="font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--ink-muted);line-height:1.8;">
-        Questions about this document? Email <a href="mailto:hello@cleocare.co" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);">hello@cleocare.co</a>.
-        See also our <a href="privacy.html" style="color:var(--navy);text-decoration:none;border-bottom:1px solid rgba(27,56,114,0.3);">Privacy Policy</a>.
-      </p>
-    </div>
+    <p class="legal-foot">
+      Questions about this document? Email <a href="mailto:hello@cleocare.co">hello@cleocare.co</a>.
+      See also our <a href="privacy.html">Privacy Policy</a>.
+    </p>
   </div>
 </main>
 
-<footer style="background:#070F1E;padding:80px 56px 44px;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div style="padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,0.06);">
-      <span style="font-family:'Spectral',serif;font-size:1.625rem;font-weight:400;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;display:block;margin-bottom:20px;">Cleo</span>
-      <p class="body-text" style="font-size:0.875rem;color:rgba(255,255,255,0.38);max-width:260px;line-height:1.7;">Maternal care, reimagined.</p>
-      <a href="mailto:hello@cleocare.co" style="font-family:'Spectral',serif;font-size:0.875rem;color:rgba(255,255,255,0.55);text-decoration:none;display:inline-block;margin-top:16px;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.55)'">hello@cleocare.co</a>
-    </div>
-    <div id="legal-footer-bottom" style="display:flex;align-items:center;justify-content:space-between;padding-top:36px;gap:20px;flex-wrap:wrap;">
-      <p class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.22);">© 2026 Cleo Care, LLC. All rights reserved.</p>
-      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
-        <a href="terms.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Terms</a>
-        <a href="privacy.html" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Privacy</a>
-        <a href="https://www.instagram.com/cleo.care.co" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">@cleo.care.co</a>
-        <a href="https://substack.com/@cleocare" target="_blank" rel="noopener" class="body-text" style="font-size:0.8125rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.15s ease;" onmouseover="this.style.color='rgba(255,255,255,0.9)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Substack</a>
+<footer class="foot">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+      <div style="max-width:280px;">
+        <p style="font-family:var(--font-logo);font-size:1.6rem;color:var(--butter);margin-bottom:12px;">Cleo Care</p>
+        <p style="opacity:.82;font-size:.95rem;">Maternal care, reimagined.</p>
       </div>
+      <div style="display:flex;gap:56px;flex-wrap:wrap;">
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Care</p>
+          <a href="booking.html" style="display:block;margin-bottom:9px;">Book Care</a>
+          <a href="faq.html" style="display:block;margin-bottom:9px;">How We Work</a>
+          <a href="meal-delivery.html" style="display:block;margin-bottom:9px;">Meal Delivery</a>
+          <a href="favorites.html" style="display:block;">Our Favorites</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">More</p>
+          <a href="our-story.html" style="display:block;margin-bottom:9px;">Our Story</a>
+          <a href="gifting.html" style="display:block;margin-bottom:9px;">Gifting</a>
+          <a href="provider-intake.html" style="display:block;margin-bottom:9px;">For Providers</a>
+          <a href="mailto:hello@cleocare.co" style="display:block;">Contact</a></div>
+        <div><p class="eyebrow" style="color:rgba(250,246,183,.7);margin-bottom:14px;">Follow</p>
+          <a href="https://cleocare.substack.com" style="display:block;margin-bottom:9px;">Substack</a>
+          <a href="https://www.instagram.com/cleo.care.co" style="display:block;">Instagram</a></div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Cleo Care, LLC · hello@cleocare.co</span>
+      <span><a href="terms.html">Terms</a> &nbsp;·&nbsp; <a href="privacy.html">Privacy</a></span>
     </div>
   </div>
 </footer>
-
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const btn = document.getElementById('hamburger');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
-    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  }
-</script>
 </body>
 </html>
