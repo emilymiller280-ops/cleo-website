@@ -43,3 +43,9 @@ It resolves counsel's files **by pattern**, not exact filename — a rename used
 
 ## The app is a different repo
 `app.cleocare.co` lives in `~/Desktop/cleo-app` (Next.js, Prisma, AWS RDS). Do not mix the two.
+
+
+## Emily's Second Brain
+Her notes, handoffs and tasks live in `~/Desktop/Emily Second Brain` (also called "the vault"). It is always readable from here.
+- Before starting, read the newest handoff in `00_Inbox/Handoffs/` that matches today's work, and `01_Projects/Active_Projects.md` if the work is new.
+- At the end of any session that built, decided or half-finished something, offer to file a handoff there (`Handoff_YYYY-MM-DD_Topic.md`).
