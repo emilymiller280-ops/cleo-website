@@ -211,3 +211,8 @@ body.cream-page{ background:#F8F2E6 !important; }
 /* Waves rising out of the cream into a coloured band (cream on top, colour below). */
 .wup{ display:block; width:100%; height:clamp(50px,7vw,110px); fill:#6B0826; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #6B0826 calc(100% - 4px)); margin-bottom:-2px; position:relative; }
 .wup--blush{ fill:#E3C4D5; background:linear-gradient(to bottom, #F8F2E6 calc(100% - 4px), #E3C4D5 calc(100% - 4px)); }
+
+/* 01 / 02 / 03 numbering on the three pillars, opt-in with .ctabs--numbered (design sweep 16 Nov: Delta Cafes) */
+.ctabs--numbered .ctabs__tabs{ counter-reset:ct; }
+.ctabs--numbered .ctabs__tabs button{ counter-increment:ct; display:inline-flex; flex-direction:column; align-items:flex-start; gap:4px; }
+.ctabs--numbered .ctabs__tabs button::before{ content:"0" counter(ct); font-size:.5em; line-height:1; color:#E1654B; }

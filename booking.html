@@ -185,6 +185,14 @@
     .toggle-btn, .service-chip{ font-family:"Host Grotesk",system-ui,sans-serif; font-size:.92rem; color:#6B0826; background:#FFFEF7; border:1.5px solid rgba(107,8,38,.22); border-radius:999px; padding:11px 20px; box-shadow:none; }
     .toggle-btn:hover, .service-chip:hover{ border-color:#6B0826; }
     .toggle-btn.active, .service-chip.selected{ background:#6B0826; border-color:#6B0826; color:#FAF6B7; box-shadow:none; }
+    /* Quiet "Step 2 of 4" line above each section (design sweep 9 Nov: Les Grands Chenes) */
+    @font-face{ font-family:"Palmello"; src:url("/brand/fonts/palmello.woff2") format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+    .section-label[data-step]::before{ content:attr(data-step); display:block; font-family:"Palmello",Georgia,cursive; font-size:1.3rem; letter-spacing:0; text-transform:none; line-height:1; color:#E1654B; margin-bottom:8px; }
+    /* Soft "collected" tick when a service is selected (design sweep 9 Nov: Union Boulangerie) */
+    .service-chip.selected{ display:inline-flex; align-items:center; gap:10px; }
+    .service-chip.selected::before{ content:""; width:5px; height:10px; border:solid #FAF6B7; border-width:0 1.8px 1.8px 0; transform:rotate(45deg) translate(-1px,-1px); animation:chip-tick .22s ease-out; }
+    @keyframes chip-tick{ from{ opacity:0; transform:rotate(45deg) translate(-1px,-1px) scale(.4); } to{ opacity:1; transform:rotate(45deg) translate(-1px,-1px) scale(1); } }
+    @media(prefers-reduced-motion:reduce){ .service-chip.selected::before{ animation:none; } }
 
     .section-rule {
       border: none;
@@ -319,11 +327,22 @@ body{background:#FAF6B7;}
       <nav class="cleo-nav__links">
         <a href="faq.html">How We Work</a>
         <a href="meal-delivery.html">Meal Delivery</a>
-        <a href="favorites.html">Our Favorites</a>
+        <div class="cleo-nav__item">
+          <a href="favorites.html">Our Favorites</a>
+          <div class="cleo-nav__menu"><div class="cleo-nav__panel">
+            <div class="cleo-nav__menu-links"><a href="favorites.html">Brands we stand behind</a><a href="favorites.html#gift-guides">Care packages</a></div>
+            <div class="cleo-nav__tiles"><a href="favorites.html"><img src="/brand/img/photos/gift-16-crop.jpg" alt="" loading="lazy" width="92" height="108"><span>Fertility</span></a><a href="favorites.html"><img src="/brand/img/photos/gift-66-cream.jpg" alt="" loading="lazy" width="92" height="108"><span>Pregnancy</span></a><a href="favorites.html"><img src="/brand/img/photos/gift-95-dusk.jpg" alt="" loading="lazy" width="92" height="108"><span>Postpartum</span></a></div>
+          </div></div>
+        </div>
         <a href="our-story.html">Our Story</a>
         <a href="gifting.html">Gifting</a>
         <a href="provider-intake.html">For Providers</a>
-        <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+        <div class="cleo-nav__item cleo-nav__item--end">
+          <a href="booking.html" class="cleo-nav__cta">Book Care</a>
+          <div class="cleo-nav__menu"><div class="cleo-nav__panel">
+            <div class="cleo-nav__tiles"><a href="booking.html"><img src="/brand/img/photos/prov-140.jpg" alt="" loading="lazy" width="92" height="108"><span>Bodywork</span></a><a href="booking.html"><img src="/brand/img/photos/nav-pelvic-floor.jpg" alt="" loading="lazy" width="92" height="108"><span>Pelvic Floor PT</span></a><a href="booking.html"><img src="/brand/img/photos/card-postpartum.jpg" alt="" loading="lazy" width="92" height="108"><span>Lactation</span></a></div>
+          </div></div>
+        </div>
       </nav>
     </div>
   </header>
@@ -367,7 +386,7 @@ body{background:#FAF6B7;}
 
         <!-- About You -->
         <div>
-          <p class="section-label">About You</p>
+          <p class="section-label" data-step="Step 1 of 4">About You</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div class="two-col" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;">
               <div>
@@ -400,7 +419,7 @@ body{background:#FAF6B7;}
 
         <!-- Where You Are -->
         <div>
-          <p class="section-label">Where You Are</p>
+          <p class="section-label" data-step="Step 2 of 4">Where You Are</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">Where are you in your journey?</label>
@@ -424,7 +443,7 @@ body{background:#FAF6B7;}
 
         <!-- What You're Looking For -->
         <div>
-          <p class="section-label">What You're Looking For</p>
+          <p class="section-label" data-step="Step 3 of 4">What You're Looking For</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
             <div>
               <label class="form-label">What kind of support are you interested in? <span style="font-weight:400;color:var(--ink-muted);">(select all that apply)</span></label>
@@ -674,7 +693,7 @@ body{background:#FAF6B7;}
 
         <!-- Insurance -->
         <div>
-          <p class="section-label">Insurance</p>
+          <p class="section-label" data-step="Step 4 of 4">Insurance</p>
           <div style="display:flex;flex-direction:column;gap:20px;">
             <p style="font-family:'Inter',sans-serif;font-size:0.8125rem;color:var(--ink-mid);line-height:1.65;margin-bottom:4px;">Mental health support, pelvic floor physical therapy and lactation consultations may be covered under your insurance plan*. Once booked, we help check your eligibility where applicable and navigate insurance related headache for you.</p>
             <div>
