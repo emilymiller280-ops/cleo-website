@@ -25,14 +25,14 @@
   color:var(--butter); text-decoration:none; white-space:nowrap; line-height:1;
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
 .cleo-nav__links{ display:flex; align-items:center; gap:22px; flex:1; }
-.cleo-nav__links > :nth-child(3){ margin-right:auto; }
+.cleo-nav__links a:nth-child(3){ margin-right:auto; }
 .cleo-nav__links a{ color:var(--burgundy); text-decoration:none; font-weight:500; font-size:1rem;
   opacity:.88; transition:opacity .15s ease; white-space:nowrap; }
 .cleo-nav__links a:hover{ opacity:1; }
 @media(min-width:1181px){
   .cleo-nav__links a:not(.cleo-nav__cta){ position:relative; }
-  .cleo-nav__links > a:nth-child(2)::before, .cleo-nav__links > .cleo-nav__item:nth-child(3) > a::before,
-  .cleo-nav__links > a:nth-child(5)::before, .cleo-nav__links > a:nth-child(6)::before{
+  .cleo-nav__links a:nth-child(2)::before, .cleo-nav__links a:nth-child(3)::before,
+  .cleo-nav__links a:nth-child(5)::before, .cleo-nav__links a:nth-child(6)::before{
     content:""; position:absolute; left:-13px; top:50%; width:4px; height:4px; margin-top:-2px; border-radius:50%; background:var(--butter); }
   .cleo-nav__links a[aria-current="page"]{ opacity:1; text-decoration:underline; text-decoration-color:var(--butter);
     text-decoration-thickness:2px; text-underline-offset:7px; }
@@ -41,27 +41,6 @@
   padding:11px 22px; border-radius:999px; font-weight:600!important; box-shadow:0 4px 14px rgba(107,8,38,.28);
   transition:transform .18s cubic-bezier(.34,1.56,.64,1), background .16s ease; }
 .cleo-nav__cta:hover{ transform:translateY(-2px); background:var(--burgundy-deep); }
-
-/* Dropdowns on Our Favorites + Book Care: text links beside three small wave-cropped photos
-   (design sweep 16 Nov: Maison Integre). Desktop only, opens on hover or keyboard focus.
-   Same markup on every page so the header stays identical. */
-.cleo-nav__item{ position:relative; display:flex; align-items:center; }
-.cleo-nav__menu{ position:absolute; top:100%; left:-24px; padding-top:30px; visibility:hidden; opacity:0; transform:translateY(-6px);
-  transition:opacity .18s ease, transform .18s ease, visibility 0s linear .18s; z-index:5; }
-.cleo-nav__item--end .cleo-nav__menu{ left:auto; right:-8px; }
-.cleo-nav__item:hover .cleo-nav__menu, .cleo-nav__item:focus-within .cleo-nav__menu{ visibility:visible; opacity:1; transform:none; transition-delay:0s; }
-.cleo-nav__panel{ display:flex; align-items:flex-start; gap:30px; padding:24px 28px 26px; background:#F8F2E6; border-radius:26px;
-  box-shadow:0 18px 40px rgba(78,5,25,.16); width:max-content; }
-.cleo-nav__menu-links{ display:flex; flex-direction:column; gap:4px; min-width:150px; padding-top:4px; }
-.cleo-nav__links .cleo-nav__menu-links a{ opacity:1; font-weight:500; font-size:.98rem; color:var(--burgundy); padding:7px 0; }
-.cleo-nav__links .cleo-nav__menu-links a:hover{ text-decoration:underline; text-underline-offset:5px; text-decoration-color:#E1654B; text-decoration-thickness:1.5px; }
-.cleo-nav__tiles{ display:flex; gap:14px; }
-.cleo-nav__links .cleo-nav__tiles a{ display:flex; flex-direction:column; gap:8px; width:92px; opacity:1; white-space:normal; text-align:center; }
-.cleo-nav__tiles img{ display:block; width:92px; height:108px; object-fit:cover; border-radius:0;
-  -webkit-mask:url("img/wave-crop.svg") center/100% 100% no-repeat; mask:url("img/wave-crop.svg") center/100% 100% no-repeat; transition:transform .25s ease; }
-.cleo-nav__tiles a:hover img{ transform:translateY(-3px); }
-.cleo-nav__tiles span{ font-family:"Palmello",Georgia,cursive; font-size:1.2rem; line-height:1; color:var(--burgundy); }
-@media(prefers-reduced-motion:reduce){ .cleo-nav__menu{ transition:none; } .cleo-nav__tiles img{ transition:none; } }
 
 /* Mobile toggle (pure CSS) */
 .cleo-nav__toggle{ position:absolute; opacity:0; pointer-events:none; }
@@ -80,10 +59,7 @@
     transform:translateY(-135%); transition:transform .32s cubic-bezier(.4,0,.2,1); }
   .cleo-nav__links a{ padding:12px 2px; font-size:1.05rem; opacity:.9; border-bottom:1px solid rgba(107,8,38,.08); }
   .cleo-nav__links a:last-child{ border-bottom:0; }
-  .cleo-nav__item{ display:contents; }
-  .cleo-nav__menu{ display:none; }
-  .cleo-nav__item:last-child > a{ border-bottom:0; }
-  .cleo-nav__links > :nth-child(3){ margin-right:0; }
+  .cleo-nav__links a:nth-child(3){ margin-right:0; }
   .cleo-nav__cta{ margin-top:12px; text-align:center; box-shadow:none; }
   .cleo-nav__toggle:checked ~ .cleo-nav__links{ transform:translateY(0); }
   .cleo-nav__toggle:checked ~ .cleo-nav__burger span:nth-child(1){ top:50%; transform:translateY(-50%) rotate(45deg); }
